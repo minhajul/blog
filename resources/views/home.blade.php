@@ -13,8 +13,8 @@
 
         <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-            @foreach([1, 2, 3] as $blog)
-                <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+            @foreach($blogs as $blog)
+                <div class="mb-5 flex flex-col rounded-lg shadow-lg overflow-hidden">
                     <div class="flex-shrink-0">
                         <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
                     </div>
@@ -63,7 +63,11 @@
                     </div>
                 </div>
             @endforeach
-
         </div>
+
+        <div class="py-5">
+            {{ $blogs->links() }}
+        </div>
+
     </div>
 @endsection
