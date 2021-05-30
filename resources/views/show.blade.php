@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="bg-gray-100 py-10 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-16">
+    <div class="bg-gray-100 py-6 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10">
         <div class="relative max-w-3xl mx-auto">
 
             <svg class="absolute left-full transform translate-x-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
