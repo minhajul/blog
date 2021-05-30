@@ -5,4 +5,4 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/details/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');

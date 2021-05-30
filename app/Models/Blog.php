@@ -17,6 +17,8 @@ class Blog extends Model
         'hit_count'
     ];
 
+    protected $appends = ['short_details'];
+
     protected static function boot()
     {
         parent::boot();
@@ -35,5 +37,10 @@ class Blog extends Model
 
             $table->slug = $slug;
         });
+    }
+
+    public function getShortDetailsAttribute(): string
+    {
+        return Str::limit($this->details, 200);
     }
 }

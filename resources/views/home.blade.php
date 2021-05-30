@@ -27,10 +27,10 @@
                             </p>
                             <a href="{{ route('blog.show', $blog) }}" class="block mt-2">
                                 <p class="text-xl font-semibold text-gray-900">
-                                    Boost your conversion rate
+                                    {{ $blog->title }}
                                 </p>
                                 <p class="mt-3 text-base text-gray-500">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.
+                                    {{ $blog->short_details }}
                                 </p>
                             </a>
                         </div>
@@ -49,13 +49,13 @@
                                 </p>
                                 <div class="flex space-x-1 text-sm text-gray-500">
                                     <time datetime="2020-03-16">
-                                        Mar 16, 2020
+                                        {{ $blog->created_at->diffForHumans() }}
                                     </time>
                                     <span aria-hidden="true">
                                       ·
                                     </span>
                                     <span>
-                                      6 min read
+                                        6 min read
                                     </span>
                                 </div>
                             </div>
