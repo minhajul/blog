@@ -12,7 +12,7 @@
 
 <body class="antialiased">
 
-<div class="bg-gray-100" style="min-height: 730px;">
+<div class="bg-gray-100">
     <div x-data="{ mobileMenuOpen: true, solutionsMenuOpen: true, moreMenuOpen: false }" class="relative bg-gray-900">
         <div class="relative z-20 shadow">
             <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
@@ -189,7 +189,9 @@
     </div>
 </div>
 
-@yield('content')
+<main>
+    @yield('content')
+</main>
 
 </body>
 </html>
