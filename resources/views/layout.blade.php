@@ -13,11 +13,11 @@
 <body class="antialiased">
 
 <div class="bg-gray-100" style="min-height: 730px;">
-    <div x-data="{ mobileMenuOpen: true, solutionsMenuOpen: true, moreMenuOpen: false }" class="relative bg-white">
+    <div x-data="{ mobileMenuOpen: true, solutionsMenuOpen: true, moreMenuOpen: false }" class="relative bg-gray-900">
         <div class="relative z-20 shadow">
             <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
                 <div>
-                    <a href="#" class="flex">
+                    <a href="{{ route('home') }}" class="flex">
                         <span class="sr-only">Workflow</span>
                         <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
                     </a>
