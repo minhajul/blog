@@ -17,12 +17,19 @@ class ProfileController extends Controller
 
     public function blogs()
     {
-        return Blog::paginate(30);
+        $blogs = Blog::paginate(9);
+
+        return view('profile.blogs.index', compact('blogs'));
+    }
+
+    public function create()
+    {
+        return view('profile.blogs.create');
     }
 
     public function show(Blog $blog)
     {
-        return $blog;
+        return view('profile.blogs.update', compact('blog'));
     }
 
     protected function getAnalytics(): array

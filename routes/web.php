@@ -12,5 +12,6 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('profile/blogs', [ProfileController::class, 'blogs'])->name('profile.blogs');
     Route::get('profile/blogs/{blog}', [ProfileController::class, 'show'])->name('profile.blog.show');
+    Route::get('profile/create', [ProfileController::class, 'create'])->name('profile.blog.create');
 });
 

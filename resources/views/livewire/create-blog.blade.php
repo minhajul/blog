@@ -1,6 +1,4 @@
-<div class="px-6">
-
-    @include('errors.success')
+<div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md">
     @include('errors.message')
 
     <form wire:submit.prevent="create">

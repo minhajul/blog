@@ -12,7 +12,6 @@
         </div>
 
         <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-
             @foreach($blogs as $blog)
                 <div class="mb-5 flex flex-col rounded-lg shadow-lg overflow-hidden">
                     <div class="flex-shrink-0">

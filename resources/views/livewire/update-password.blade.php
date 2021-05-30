@@ -1,6 +1,6 @@
 <form wire:submit.prevent="update">
     <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md">
-        @include('errors.success')
+
         @include('errors.message')
 
         <div class="grid grid-cols-6 gap-6">
