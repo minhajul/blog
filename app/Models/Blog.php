@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,6 +38,22 @@ class Blog extends Model
 
             $table->slug = $slug;
         });
+    }
+
+    // Scopes
+    public function scopePublished(Builder $builder): Builder
+    {
+        return $builder->where('status', 'published');
+    }
+
+    public function scopeDrafted(Builder $builder): Builder
+    {
+        return $builder->where('status', 'drafted');
+    }
+
+    public function scopeArchived(Builder $builder): Builder
+    {
+        return $builder->where('status', 'archived');
     }
 
     public function getShortDetailsAttribute(): string

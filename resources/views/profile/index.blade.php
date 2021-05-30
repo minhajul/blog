@@ -36,8 +36,8 @@
                             </div>
 
                             <div class="px-6 py-5 text-sm font-medium text-center">
-                                <span class="text-gray-900">100</span>
-                                <span class="text-gray-600">Active jobs</span>
+                                <span class="text-gray-900">{{ $analytics['total_published_blog'] }}</span>
+                                <span class="text-gray-600">Published Blogs</span>
                             </div>
 
                             <div class="px-6 py-5 text-sm font-medium text-center">

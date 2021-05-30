@@ -13,10 +13,13 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        $status = config('enums.blog_status');
+
+        Schema::create('blogs', function (Blueprint $table) use ($status) {
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->enum('status', $status)->default($status[0]);
             $table->longText('details');
             $table->unsignedBigInteger('hit_count')->default(0);
             $table->timestamps();

@@ -39,7 +39,7 @@ class ProfileController extends Controller
         return [
             'posted_blog' => $blogs->count(),
             'total_hit_count' => $blogs->sum('hit_count'),
-            'test' => 10,
+            'total_published_blog' => $blogs->where('status', 'published')->count(),
         ];
     }
 }
