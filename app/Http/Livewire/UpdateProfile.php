@@ -3,12 +3,9 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class UpdateProfile extends Component
 {
-    use WithFileUploads;
-
     public $user;
 
     protected $rules = [
