@@ -56,6 +56,7 @@ class Blog extends Model
         return $builder->where('status', 'archived');
     }
 
+    // Accessor
     public function getShortDetailsAttribute(): string
     {
         return Str::limit($this->details, 200);
