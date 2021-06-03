@@ -9,10 +9,16 @@ use Livewire\WithPagination;
 class BlogsComponent extends Component
 {
     use WithPagination;
-    
+
+    public string $keywords = '';
+
     public function render()
     {
-        $blogs = Blog::paginate(9);
+        $keywords = $this->keywords;
+
+        $blogs = Blog::when($keywords, function ($query) use ($keywords) {
+            return $query->whereLike(['title'], $keywords);
+        })->published()->paginate(10);
 
         return view('livewire.blogs-component')->with([
             'blogs' => $blogs
