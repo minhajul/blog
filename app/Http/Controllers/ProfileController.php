@@ -17,9 +17,7 @@ class ProfileController extends Controller
 
     public function blogs()
     {
-        $blogs = Blog::paginate(9);
-
-        return view('profile.blogs.index', compact('blogs'));
+        return view('profile.blogs.index');
     }
 
     public function create()
