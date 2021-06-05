@@ -41,7 +41,7 @@
                     Home
                 </a>
 
-                <a href="#" class="text-base font-medium text-white hover:text-gray-300">
+                <a href="{{ route('profile.index') }}" class="text-base font-medium text-white hover:text-gray-300">
                     Profile
                 </a>
 
@@ -60,7 +60,6 @@
                         Sign in
                     </a>
                 @endauth
-
             </div>
         </div>
     </div>
@@ -95,40 +94,31 @@
 
             <div class="py-6 px-5 space-y-6">
                 <div class="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                        Pricing
+                    <a href="{{ route('home') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                        Home
+                    </a>
+
+                    <a href="{{ route('profile.index') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                        Profile
                     </a>
 
                     <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                        Docs
-                    </a>
-
-                    <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                        Help Center
-                    </a>
-
-                    <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                        Guides
-                    </a>
-
-                    <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                        Events
-                    </a>
-
-                    <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                        Security
+                        Contact
                     </a>
                 </div>
 
                 <div>
-                    <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                        Sign up
-                    </a>
                     <p class="mt-6 text-center text-base font-medium text-gray-500">
-                        Existing customer?
-                        <a href="#" class="text-indigo-600 hover:text-indigo-500">
-                            Sign in
-                        </a>
+                        @auth
+                            <a href="{{ route('profile.index') }}" class="text-indigo-600 hover:text-indigo-500">
+                                {{ auth()->user()->name }}
+                            </a>
+                        @else
+                            <a href="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-500">
+                                Sign in
+                            </a>
+                        @endauth
+
                     </p>
                 </div>
             </div>
