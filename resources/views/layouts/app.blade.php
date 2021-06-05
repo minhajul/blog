@@ -35,27 +35,32 @@
                     </svg>
                 </button>
             </div>
-{{--            <nav class="hidden md:flex space-x-10">--}}
-{{--                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">--}}
-{{--                    Pricing--}}
-{{--                </a>--}}
 
-{{--                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">--}}
-{{--                    Pricing--}}
-{{--                </a>--}}
+            <nav class="hidden md:flex space-x-10">
+                <a href="{{ route('home') }}" class="text-base font-medium text-white hover:text-gray-300">
+                    Home
+                </a>
 
-{{--                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">--}}
-{{--                    Docs--}}
-{{--                </a>--}}
-{{--            </nav>--}}
+                <a href="#" class="text-base font-medium text-white hover:text-gray-300">
+                    Profile
+                </a>
+
+                <a href="#" class="text-base font-medium text-white hover:text-gray-300">
+                    Contact
+                </a>
+            </nav>
 
             <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                <a href="{{ route('login') }}" class="whitespace-nowrap text-base font-medium text-white hover:text-gray-300">
-                    Sign in
-                </a>
-{{--                <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">--}}
-{{--                    Sign up--}}
-{{--                </a>--}}
+                @auth
+                    <a href="{{ route('profile.index') }}" class="whitespace-nowrap text-base font-medium text-white hover:text-gray-300">
+                        {{ auth()->user()->name }}
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="whitespace-nowrap text-base font-medium text-white hover:text-gray-300">
+                        Sign in
+                    </a>
+                @endauth
+
             </div>
         </div>
     </div>

@@ -5,7 +5,6 @@
         </h2>
     </div>
 
-
     <div class="border-b border-gray-200">
         <nav class="-mb-px flex content-center space-x-8" aria-label="Tabs">
             @foreach(config('enums.blog_status') as $item)
