@@ -7,11 +7,12 @@ use Livewire\Component;
 
 class CreateBlog extends Component
 {
-    public Blog $blog;
+    public $title;
+    public $details;
 
     protected array $rules = [
-        'blog.title' => 'required|string|min:2',
-        'blog.details' => 'required|string'
+        'title' => 'required|string|min:2',
+        'details' => 'required|string'
     ];
 
     public function create()
