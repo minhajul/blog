@@ -41,7 +41,7 @@
                     Home
                 </a>
 
-                <a href="{{ route('profile.index') }}" class="text-base font-medium text-white hover:text-gray-300">
+                <a href="{{ route('about') }}" class="text-base font-medium text-white hover:text-gray-300">
                     Profile
                 </a>
 
@@ -98,7 +98,7 @@
                         Home
                     </a>
 
-                    <a href="{{ route('profile.index') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                    <a href="{{ route('about') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
                         Profile
                     </a>
 
