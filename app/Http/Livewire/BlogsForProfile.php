@@ -6,7 +6,7 @@ use App\Models\Blog;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class BlogsForProfileComponent extends Component
+class BlogsForProfile extends Component
 {
     use WithPagination;
 
@@ -23,7 +23,7 @@ class BlogsForProfileComponent extends Component
     {
         $blogs = $this->getBlogs();
 
-        return view('livewire.blogs-for-profile-component')->with([
+        return view('livewire.blogs-for-profile')->with([
             'blogs' => $blogs
         ]);
     }
@@ -35,6 +35,5 @@ class BlogsForProfileComponent extends Component
         return Blog::when($keywords, function ($query) use ($keywords) {
             return $query->whereLike(['title'], $keywords);
         })->where('status', $this->status)->paginate(10);
-
     }
 }
