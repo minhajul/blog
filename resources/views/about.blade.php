@@ -9,7 +9,7 @@
             </div>
 
             <div class="mt-6 md:ml-6 md:mt-0">
-                <h1 class="text-5xl gradiented font-bold font-heading">
+                <h1 class="text-5xl font-bold font-heading">
                     MD Minhajul Islam
                 </h1>
 
