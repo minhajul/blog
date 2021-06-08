@@ -14,7 +14,7 @@
                             <div class="sm:flex sm:items-center sm:justify-between">
                                 <div class="sm:flex sm:space-x-5">
                                     <div class="flex-shrink-0">
-                                        <img class="mx-auto h-20 w-20 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                                        <img class="mx-auto h-20 w-20 rounded-full" src="{{ $user->avatarUrl() }}" alt="Avatar">
                                     </div>
                                     <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
                                         <p class="text-xl font-bold text-gray-900 sm:text-2xl">
@@ -54,9 +54,7 @@
                 @include('errors.message')
 
                 <livewire:update-profile />
-
-                <livewire:bio-component />
-
+                
                 <div class="hidden sm:block">
                     <div class="py-6">
                         <div class="border-t border-gray-200"></div>

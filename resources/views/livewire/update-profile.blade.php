@@ -6,6 +6,15 @@
 
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6">
+                    <label class="mt-4 block font-medium text-sm text-gray-700" for="name">
+                        Upload Profile Picture
+                    </label>
+
+                    <input type="file" wire:model="avatar" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                    @error('avatar') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
+
+                <div class="col-span-6">
                     <label class="block font-medium text-sm text-gray-700" for="name">
                         Name <span class="text-red-500">*</span>
                     </label>
@@ -20,6 +29,16 @@
                     </label>
 
                     <input type="email" readonly value="{{ $user->email }}" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                </div>
+
+                <div class="col-span-6">
+                    <label class="block font-medium text-sm text-gray-700" for="email">
+                        Bio <span class="text-red-500">*</span>
+                    </label>
+
+                    <input id="x" type="hidden" name="user.bio">
+                    <trix-editor wire:model.defer="user.bio" input="x"></trix-editor>
+                    @error('user.bio') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
                 </div>
             </div>
 

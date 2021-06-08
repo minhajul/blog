@@ -16,6 +16,7 @@ class User extends Authenticatable
         'name',
         'email',
         'bio',
+        'avatar_url',
         'password',
     ];
 
@@ -32,5 +33,15 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    // Methods
+    public function avatarUrl(): string
+    {
+        if (!empty($this->avatar_url)) {
+            return asset($this->avatar_url);
+        }
+
+        return 'https://via.placeholder.com/150x150';
     }
 }
