@@ -39,8 +39,9 @@ class UpdateProfile extends Component
             'bio' => $this->user->bio,
             'avatar_url' => $avatar_url
         ]);
-
+        
         session()->flash('success', 'Profile updated.');
+        return redirect()->to(route('profile.index'));
     }
 
     public function render()
