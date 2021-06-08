@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 class AboutController extends Controller
 {
     public function index()
     {
-        return view('about');
+        $user = User::first();
+
+        return view('about', compact('user'));
     }
 }
