@@ -34,6 +34,8 @@ class BlogsForProfile extends Component
 
         return Blog::when($keywords, function ($query) use ($keywords) {
             return $query->whereLike(['title'], $keywords);
-        })->where('status', $this->status)->orderByDesc('created_at')->paginate(10);
+        })->where('status', $this->status)
+            ->orderByDesc('created_at')
+            ->paginate(10);
     }
 }
