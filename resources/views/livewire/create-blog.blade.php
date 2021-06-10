@@ -28,6 +28,15 @@
                 </div>
 
                 <div class="col-span-6">
+                    <label class="block font-medium text-sm text-gray-700" for="name">
+                        Upload Banner <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="file" wire:model="banner" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                    @error('banner') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
+
+                <div class="col-span-6">
                     <label class="block font-medium text-sm text-gray-700" for="email">
                         Details <span class="text-red-500">*</span>
                     </label>

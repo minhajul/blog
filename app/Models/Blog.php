@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Blog extends Model
@@ -15,6 +15,7 @@ class Blog extends Model
         'title',
         'slug',
         'details',
+        'banner_path',
         'hit_count'
     ];
 
@@ -59,6 +60,18 @@ class Blog extends Model
     // Accessor
     public function getShortDetailsAttribute(): string
     {
-        return Str::limit($this->details, 200);
+        return Str::limit(strip_tags($this->details), 200);
+    }
+
+    // Methods
+    public function bannerUrl(): string
+    {
+        $banner = $this->banner_path;
+
+        if (!empty($banner)) {
+            return asset($banner);
+        }
+
+        return "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80";
     }
 }

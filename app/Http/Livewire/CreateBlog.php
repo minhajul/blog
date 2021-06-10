@@ -3,23 +3,34 @@
 namespace App\Http\Livewire;
 
 use App\Models\Blog;
+use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreateBlog extends Component
 {
-    public $title;
-    public $details;
+    use WithFileUploads;
+
+    public $title, $details, $banner;
 
     protected array $rules = [
         'title' => 'required|string|min:2',
-        'details' => 'required|string'
+        'banner' => 'max:2048',
+        'details' => 'required|string',
     ];
 
     public function create()
     {
-        $validatedData = $this->validate();
+        $this->validate();
 
-        Blog::create($validatedData);
+        $fileName = Str::random(5) . '.' . $this->banner->extension();
+        $bannerPath = $this->banner->storeAs('blog', $fileName);
+
+        Blog::create([
+            'title' => $this->title,
+            'details' => $this->details,
+            'banner_path' => $bannerPath,
+        ]);
 
         session()->flash('success', 'Your has been posted!');
 

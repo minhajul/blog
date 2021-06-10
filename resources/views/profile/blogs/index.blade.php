@@ -8,7 +8,7 @@
         <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
             <div class="grid grid-cols-1 gap-4 lg:col-span-3">
 
-               <livewire:blogs-for-profile-component />
+               <livewire:blogs-for-profile />
 
             </div>
         </div>

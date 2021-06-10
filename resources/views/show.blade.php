@@ -31,14 +31,12 @@
                             </span>
                         </h1>
                     </div>
+
+                    <figure class="my-5">
+                        <img class="w-full rounded-lg pb-3" src="{{ $blog->bannerUrl() }}" alt="{{ $blog->title }}" width="1310" height="873">
+                    </figure>
+
                     <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
-
-                        {!! $blog->details !!}
-
-                        <figure class="my-5">
-                            <img class="w-full rounded-lg pb-3" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&amp;auto=format&amp;fit=facearea&amp;w=1310&amp;h=873&amp;q=80&amp;facepad=3" alt="" width="1310" height="873">
-                            <figcaption>Sagittis scelerisque nulla cursus in enim consectetur quam.</figcaption>
-                        </figure>
 
                         {!! $blog->details !!}
 

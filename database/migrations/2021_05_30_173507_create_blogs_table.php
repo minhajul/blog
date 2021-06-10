@@ -20,6 +20,7 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->enum('status', $status)->default($status[0]);
+            $table->string('banner_path')->nullable();
             $table->longText('details');
             $table->unsignedBigInteger('hit_count')->default(0);
             $table->timestamps();
