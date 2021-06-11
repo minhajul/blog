@@ -20,7 +20,6 @@
                     </div>
                 </div>
 
-
                 @include('errors.success')
                 @include('errors.message')
 
