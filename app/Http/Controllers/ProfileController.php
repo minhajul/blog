@@ -54,6 +54,27 @@ class ProfileController extends Controller
         return view('profile.blogs.update', compact('blog'));
     }
 
+    public function update(Request $request, Blog $blog): RedirectResponse
+    {
+        $this->validate($request, [
+            'title' => 'required|string|min:2',
+            'banner' => 'required|max:2048',
+            'details' => 'required|string',
+        ]);
+
+        $fileName = Str::random(5) . '.' . $request->banner->extension();
+        $bannerPath = $request->banner->storeAs('blog', $fileName);
+
+        $blog->update([
+            'title' => $request->title,
+            'details' => $request->details,
+            'banner_path' => $bannerPath,
+        ]);
+
+        session()->flash('success', 'Your has been updated!');
+        return redirect()->back();
+    }
+
     protected function getAnalytics(): array
     {
         $blogs = Blog::all();
