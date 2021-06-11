@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class ProfileController extends Controller
 {
@@ -23,6 +26,27 @@ class ProfileController extends Controller
     public function create()
     {
         return view('profile.blogs.create');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $this->validate($request, [
+            'title' => 'required|string|min:2',
+            'banner' => 'required|max:2048',
+            'details' => 'required|string',
+        ]);
+
+        $fileName = Str::random(5) . '.' . $request->banner->extension();
+        $bannerPath = $request->banner->storeAs('blog', $fileName);
+
+        Blog::create([
+            'title' => $request->title,
+            'details' => $request->details,
+            'banner_path' => $bannerPath,
+        ]);
+
+        session()->flash('success', 'Your has been posted!');
+        return redirect()->back();
     }
 
     public function show(Blog $blog)
