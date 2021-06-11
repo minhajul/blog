@@ -7,12 +7,6 @@
     <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
             <div class="grid grid-cols-1 gap-4 lg:col-span-3">
-{{--                @include('errors.error')--}}
-{{--                @include('errors.success')--}}
-{{--                @include('errors.message')--}}
-
-{{--                <livewire:create-blog />--}}
-
 
                 <div class="border-b-2 border-gray-100  flex items-center justify-between flex-wrap sm:flex-nowrap">
                     <div class="mt-2">
@@ -29,6 +23,7 @@
 
                 <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md">
 
+                    @include('errors.success')
                     @include('errors.message')
 
                     <form action="{{ route('profile.blog.store') }}" method="POST" enctype="multipart/form-data">
