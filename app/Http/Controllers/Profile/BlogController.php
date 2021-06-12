@@ -1,24 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Profile;
 
 use App\Models\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
-class ProfileController extends Controller
+class BlogController extends Controller
 {
     public function index()
-    {
-        $user = auth()->user();
-
-        $analytics = $this->getAnalytics();
-
-        return view('profile.index', compact('user', 'analytics'));
-    }
-
-    public function blogs()
     {
         return view('profile.blogs.index');
     }
@@ -73,16 +65,5 @@ class ProfileController extends Controller
 
         session()->flash('success', 'Your has been updated!');
         return redirect()->back();
-    }
-
-    protected function getAnalytics(): array
-    {
-        $blogs = Blog::all();
-
-        return [
-            'posted_blog' => $blogs->count(),
-            'total_hit_count' => $blogs->sum('hit_count'),
-            'total_published_blog' => $blogs->where('status', 'published')->count(),
-        ];
     }
 }
