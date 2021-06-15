@@ -14,7 +14,6 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', [InfoController::class, 'index'])->name('profile.index');
-
     Route::get('blogs', [BlogController::class, 'index'])->name('profile.blogs');
     Route::get('blogs/create', [BlogController::class, 'create'])->name('profile.blog.create');
     Route::post('blog/store', [BlogController::class, 'store'])->name('profile.blog.store');

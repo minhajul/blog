@@ -21,7 +21,8 @@
                 </div>
                 <div class="flex-1 bg-white p-6 flex flex-col justify-between">
                     <div class="flex-1">
-                        <a href="{{ route('blog.show', $blog) }}" class="block mt-2">
+{{--                        <a href="{{ route('blog.show', $blog) }}" class="block mt-2">--}}
+                        <a href="{{ route('home', ['slug' => $blog->slug]) }}" class="block mt-2">
                             <p class="text-xl font-semibold text-gray-900">
                                 {{ $blog->title }}
                             </p>
