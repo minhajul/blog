@@ -66,4 +66,27 @@ class BlogController extends Controller
         session()->flash('success', 'Your has been updated!');
         return redirect()->back();
     }
+
+    public function upload(Request $request): ?string
+    {
+        if (!$request->hasFile('file')) {
+            return null;
+        }
+
+        $fileNameWithExtension = $request->file('file')->getClientOriginalName();
+
+        $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
+
+        $extension = $request->file('file')->getClientOriginalExtension();
+
+        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+        $request->file('file')->storeAs('blog/', $fileNameToStore);
+
+        $path = asset('blog/'.$fileNameToStore);
+
+        echo $path;
+
+        exit;
+    }
 }
