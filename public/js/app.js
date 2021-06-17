@@ -1857,7 +1857,7 @@ try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
   window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
   window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-  window.trix = __webpack_require__(/*! trix */ "./node_modules/trix/dist/trix.js");
+  __webpack_require__.g.Trix = __webpack_require__(/*! trix */ "./node_modules/trix/dist/trix.js");
 } catch (e) {}
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

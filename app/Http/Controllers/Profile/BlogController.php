@@ -73,18 +73,19 @@ class BlogController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string|min:2',
-            'banner' => 'required|max:2048',
             'details' => 'required|string',
         ]);
 
-        $fileName = Str::random(5) . '.' . $request->banner->extension();
-        $bannerPath = $request->banner->storeAs('blog', $fileName);
+        if ($request->input('banner')) {
+            $fileName = Str::random(5) . '.' . $request->banner->extension();
+            $bannerPath = $request->banner->storeAs('blog', $fileName);
 
-        $blog->update([
-            'title' => $request->title,
-            'details' => $request->details,
-            'banner_path' => $bannerPath,
-        ]);
+            $blog->banner = $bannerPath;
+        }
+
+        $blog->title = $request->input('title');
+        $blog->details = $request->input('details');
+        $blog->save();
 
         session()->flash('success', 'Your has been updated!');
         return redirect()->back();

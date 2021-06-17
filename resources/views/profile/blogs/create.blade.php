@@ -73,13 +73,12 @@
     </div>
 @endsection
 
-
 @push('scripts')
     <script>
-        (function() {
+        (function () {
             let HOST = "{{ route('upload.file') }}";
 
-            addEventListener("trix-attachment-add", function(event) {
+            addEventListener("trix-attachment-add", function (event) {
                 if (event.attachment.file) {
                     uploadFileAttachment(event.attachment)
                 }
@@ -102,14 +101,14 @@
                 let xhr = new XMLHttpRequest();
 
                 xhr.open("POST", HOST, true);
-                xhr.setRequestHeader( 'X-CSRF-TOKEN', getMeta( 'csrf-token' ) );
+                xhr.setRequestHeader('X-CSRF-TOKEN', getMeta('csrf-token'));
 
-                xhr.upload.addEventListener("progress", function(event) {
+                xhr.upload.addEventListener("progress", function (event) {
                     let progress = event.loaded / event.total * 100;
                     progressCallback(progress)
                 })
 
-                xhr.addEventListener("load", function(event) {
+                xhr.addEventListener("load", function (event) {
                     let attributes = {
                         url: xhr.responseText,
                         href: xhr.responseText + "?content-disposition=attachment"

@@ -24,8 +24,6 @@
                 @include('errors.message')
 
                 <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md">
-                    @include('errors.message')
-
                     <form method="post" action="{{ route('profile.blog.update', $blog) }}" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
@@ -42,8 +40,10 @@
 
                             <div class="col-span-6">
                                 <label class="block font-medium text-sm text-gray-700" for="name">
-                                    Upload Banner <span class="text-red-500">*</span>
+                                    Upload Banner
                                 </label>
+
+                                <small class="italic">{{ $blog->bannerUrl() }}</small>
 
                                 <input type="file" name="banner" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
                                 @error('banner') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
@@ -72,3 +72,71 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        (function () {
+            let HOST = "{{ route('upload.file') }}";
+
+            addEventListener("trix-attachment-add", function (event) {
+                if (event.attachment.file) {
+                    uploadFileAttachment(event.attachment)
+                }
+            })
+
+            function uploadFileAttachment(attachment) {
+                uploadFile(attachment.file, setProgress, setAttributes)
+
+                function setProgress(progress) {
+                    attachment.setUploadProgress(progress)
+                }
+
+                function setAttributes(attributes) {
+                    attachment.setAttributes(attributes)
+                }
+            }
+
+            function uploadFile(file, progressCallback, successCallback) {
+                let formData = createFormData(file);
+                let xhr = new XMLHttpRequest();
+
+                xhr.open("POST", HOST, true);
+                xhr.setRequestHeader('X-CSRF-TOKEN', getMeta('csrf-token'));
+
+                xhr.upload.addEventListener("progress", function (event) {
+                    let progress = event.loaded / event.total * 100;
+                    progressCallback(progress)
+                })
+
+                xhr.addEventListener("load", function (event) {
+                    let attributes = {
+                        url: xhr.responseText,
+                        href: xhr.responseText + "?content-disposition=attachment"
+                    };
+                    successCallback(attributes)
+                })
+
+                xhr.send(formData)
+            }
+
+            function createFormData(file) {
+                let data = new FormData();
+                data.append("Content-Type", file.type)
+                data.append("file", file)
+                return data
+            }
+
+            function getMeta(metaName) {
+                const metas = document.getElementsByTagName('meta');
+
+                for (let i = 0; i < metas.length; i++) {
+                    if (metas[i].getAttribute('name') === metaName) {
+                        return metas[i].getAttribute('content');
+                    }
+                }
+
+                return '';
+            }
+        })();
+    </script>
+@endpush
