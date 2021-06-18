@@ -29,6 +29,6 @@ class Subscriber extends Model
 
     public function status(): string
     {
-        return $this->isVerified() ? 'verified' : 'not verified';
+        return $this->isVerified() ? 'Verified' : 'Not Verified';
     }
 }
