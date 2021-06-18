@@ -32,10 +32,6 @@
                         </h1>
                     </div>
 
-                    <figure class="my-5">
-                        <img class="w-full rounded-lg pb-3" src="{{ $blog->bannerUrl() }}" alt="{{ $blog->title }}" width="1310" height="873">
-                    </figure>
-
                     <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
 
                         {!! $blog->details !!}
