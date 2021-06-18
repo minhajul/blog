@@ -26,4 +26,9 @@ class Subscriber extends Model
     {
         return $this->verified_at != null;
     }
+
+    public function status(): string
+    {
+        return $this->isVerified() ? 'verified' : 'not verified';
+    }
 }

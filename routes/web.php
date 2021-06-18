@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Profile\SubscriberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
@@ -17,5 +18,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/blog/store', [BlogController::class, 'store'])->name('profile.blog.store');
     Route::get('/blogs/edit/{blog}', [BlogController::class, 'show'])->name('profile.blog.show');
     Route::post('/blogs/edit/{blog}', [BlogController::class, 'update'])->name('profile.blog.update');
+    Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
 });
 
