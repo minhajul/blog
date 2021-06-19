@@ -21,7 +21,10 @@
                     </div>
                 </div>
 
-                <div class="py-6">
+                @include('errors.success')
+                @include('errors.message')
+
+                <div class="py-2">
                     <div class="max-w-7xl mx-auto">
                         <div class="flex flex-col">
                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
