@@ -10,13 +10,20 @@
 
             <div class="mt-6 md:ml-6 md:mt-0">
                 <h1 class="text-5xl font-bold font-heading">
-                    {{ $user->name }}
+                    {{ $user->name ?? 'Set your name from panel' }}
                 </h1>
 
                 <div class="mt-6 max-w-2xl">
                     <div class="markdown">
                         <p class="mb-3">
-                           {!! $user->bio !!}
+                            @if($user->bio)
+                                {!! $user->bio !!}
+                            @else
+                                @foreach([1, 2, 3, 4] as $item)
+                                    What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?
+                                    <br><br>
+                                @endforeach
+                            @endif
                         </p>
                     </div>
                 </div>
