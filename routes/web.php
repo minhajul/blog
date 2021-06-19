@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/blogs/edit/{blog}', [BlogController::class, 'show'])->name('profile.blog.show');
     Route::post('/blogs/edit/{blog}', [BlogController::class, 'update'])->name('profile.blog.update');
     Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+    Route::delete('/subscribers/{subscriber}/delete', [SubscriberController::class, 'delete'])->name('subscribers.delete');
     Route::get('/subscribers/download', [SubscriberController::class, 'download'])->name('subscribers.download');
 });
 
