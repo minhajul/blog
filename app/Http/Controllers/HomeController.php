@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Subscriber;
+use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
 {
@@ -17,5 +19,16 @@ class HomeController extends Controller
         }
 
         return view('home');
+    }
+
+    public function verify($email): RedirectResponse
+    {
+        $subscriber = Subscriber::whereEmail($email)->firstOrFail();
+
+        if (!$subscriber->isVerified()) {
+            $subscriber->markAsVerified();
+        }
+
+        return redirect()->route('home');
     }
 }

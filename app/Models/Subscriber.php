@@ -31,4 +31,12 @@ class Subscriber extends Model
     {
         return $this->isVerified() ? 'Verified' : 'Not Verified';
     }
+
+    public function markAsVerified()
+    {
+        $this->update([
+            'verified_at' => now()
+        ]);
+    }
+
 }

@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\Profile\SubscriberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Profile\InfoController;
 use App\Http\Controllers\Profile\BlogController;
+use App\Http\Controllers\Profile\SubscriberController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->name('subscription.verify');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [InfoController::class, 'index'])->name('profile.index');
