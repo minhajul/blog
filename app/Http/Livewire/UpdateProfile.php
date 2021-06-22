@@ -41,7 +41,6 @@ class UpdateProfile extends Component
         ]);
 
         session()->flash('success', 'Profile updated.');
-        return redirect()->to(route('profile.index'));
     }
 
     public function render()
