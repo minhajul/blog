@@ -6,7 +6,7 @@
         <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6">
                 <label class="block font-medium text-sm text-gray-700" for="current_password">
-                    Current Password
+                    Current Password <span class="text-red-500">*</span>
                 </label>
 
                 <input type="password" wire:model="current_password" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none" autocomplete="current-password">
@@ -15,7 +15,7 @@
 
             <div class="col-span-6">
                 <label class="block font-medium text-sm text-gray-700" for="password">
-                    New Password
+                    New Password <span class="text-red-500">*</span>
                 </label>
 
                 <input type="password" wire:model="password" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none" autocomplete="new-password">
@@ -24,7 +24,7 @@
 
             <div class="col-span-6">
                 <label class="block font-medium text-sm text-gray-700" for="password_confirmation">
-                    Confirm Password
+                    Confirm Password <span class="text-red-500">*</span>
                 </label>
 
                 <input type="password" wire:model="password_confirmation" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none" autocomplete="new-password">

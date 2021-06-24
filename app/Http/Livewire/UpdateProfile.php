@@ -13,7 +13,6 @@ class UpdateProfile extends Component
     public $user, $avatar;
 
     protected $rules = [
-        'avatar' => 'max:2048',
         'user.name' => 'required|string|min:2',
         'user.bio' => 'required|string'
     ];
