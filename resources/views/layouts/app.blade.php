@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     @livewireStyles
 </head>
@@ -51,15 +52,34 @@
             </nav>
 
             <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                @auth
-                    <a href="{{ route('profile.index') }}" class="whitespace-nowrap text-base font-medium text-white hover:text-gray-300">
-                        {{ auth()->user()->name }}
-                    </a>
-                @else
-                    <a href="{{ route('login') }}" class="whitespace-nowrap text-base font-medium text-white hover:text-gray-300">
-                        Sign in
-                    </a>
-                @endauth
+                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                    <div>
+                        @auth
+                            <button  @click="open = !open" class="text-white hover:text-gray-300 font-normal py-2 px-4 rounded inline-flex items-center">
+                                <span class="mr-1">{{ auth()->user()->name }}</span>
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                </svg>
+                            </button>
+                        @else
+                            <a href="{{ route('login') }}" class="whitespace-nowrap text-base font-medium text-white hover:text-gray-300">
+                                Sign in
+                            </a>
+                        @endauth
+                    </div>
+
+                    <transition enter-active-class="transition ease-out duration-100" enter-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                        <div x-show="open" class="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" style="display: none;">
+                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profile</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit">Sign out</button>
+                                </form>
+                            </a>
+                        </div>
+                    </transition>
+                </div>
             </div>
         </div>
     </div>
