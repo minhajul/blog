@@ -24,10 +24,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
     // Mutator
     public function setPasswordAttribute($value)
     {
