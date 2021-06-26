@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Password;
 
@@ -38,6 +39,10 @@ class RecoverAdminAccess extends Command
     public function handle()
     {
         $email = $this->ask('Input Your Email:');
+
+        if (!User::whereEmail($email)->exists()) {
+            $this->error('No user found with the given email.');
+        }
 
         Password::sendResetLink([
             'email' => $email

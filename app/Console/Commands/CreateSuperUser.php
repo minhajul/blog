@@ -59,6 +59,6 @@ class CreateSuperUser extends Command
             'password' =>  $password
         ]);
 
-        $this->info('User has been created.');
+        $this->info('User has been created. Login using the given credentials.');
     }
 }
