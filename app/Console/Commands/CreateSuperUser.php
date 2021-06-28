@@ -12,7 +12,7 @@ class CreateSuperUser extends Command
      *
      * @var string
      */
-    protected $signature = 'create:super-user';
+    protected $signature = 'admin:create-user';
 
     /**
      * The console command description.
@@ -36,7 +36,7 @@ class CreateSuperUser extends Command
      */
     public function handle()
     {
-        if (User::first()->exists()) {
+        if (User::exists()) {
             $this->error('You have already been created a user, please login using that credentials.');
             return;
         }

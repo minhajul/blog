@@ -13,7 +13,7 @@ class RecoverAdminAccess extends Command
      *
      * @var string
      */
-    protected $signature = 'recover-access';
+    protected $signature = 'admin:recover-access';
 
     /**
      * The console command description.
