@@ -28,6 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/subscribers/{subscriber}/delete', [SubscriberController::class, 'delete'])->name('subscribers.delete');
     Route::get('/subscribers/download', [SubscriberController::class, 'download'])->name('subscribers.download');
 
-    Route::get('/contacts', [\App\Http\Controllers\Profile\ContactController::class, 'index'])->name('profile.contacts');
+    Route::get('/contacts', [InfoController::class, 'contacts'])->name('profile.contacts');
 });
 

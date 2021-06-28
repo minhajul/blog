@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Models\Blog;
+use App\Models\Contact;
 use App\Http\Controllers\Controller;
 
 class InfoController extends Controller
@@ -14,6 +15,13 @@ class InfoController extends Controller
         $analytics = $this->getAnalytics();
 
         return view('profile.index', compact('user', 'analytics'));
+    }
+
+    public function contacts()
+    {
+        $contacts = Contact::paginate(20);
+
+        return view('profile.contact.index', compact('contacts'));
     }
 
     protected function getAnalytics(): array
