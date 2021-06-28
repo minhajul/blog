@@ -34,7 +34,6 @@ class RecoverAdminAccess extends Command
 
     /**
      * Execute the console command.
-     *
      */
     public function handle()
     {
@@ -42,6 +41,7 @@ class RecoverAdminAccess extends Command
 
         if (!User::whereEmail($email)->exists()) {
             $this->error('No user found with the given email.');
+            return;
         }
 
         Password::sendResetLink([
