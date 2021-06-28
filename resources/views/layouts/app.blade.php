@@ -46,7 +46,7 @@
                     Profile
                 </a>
 
-                <a href="#" class="text-base font-medium text-white hover:text-gray-300">
+                <a href="{{ route('contact.index') }}" class="text-base font-medium text-white hover:text-gray-300">
                     Contact
                 </a>
             </nav>
@@ -122,7 +122,7 @@
                         Profile
                     </a>
 
-                    <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                    <a href="{{ route('contact.index') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
                         Contact
                     </a>
                 </div>
