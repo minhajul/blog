@@ -31,5 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/subscribers/download', [SubscriberController::class, 'download'])->name('subscribers.download');
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
 
