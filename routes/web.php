@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Profile\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
@@ -16,6 +17,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [InfoController::class, 'index'])->name('profile.index');
+    Route::get('/contacts', [InfoController::class, 'contacts'])->name('profile.contacts');
 
     Route::get('/blogs', [BlogController::class, 'index'])->name('profile.blogs');
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('profile.blog.create');
@@ -28,6 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/subscribers/{subscriber}/delete', [SubscriberController::class, 'delete'])->name('subscribers.delete');
     Route::get('/subscribers/download', [SubscriberController::class, 'download'])->name('subscribers.download');
 
-    Route::get('/contacts', [InfoController::class, 'contacts'])->name('profile.contacts');
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 });
 

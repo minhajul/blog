@@ -18,6 +18,9 @@ class CreateSubscribersTable extends Migration
             $table->string('email')->unique();
             $table->dateTime('verified_at')->nullable();
             $table->timestamps();
+
+            $table->index('email');
+            $table->index('verified_at');
         });
     }
 

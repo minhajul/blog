@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->longText('bio')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index('name');
+            $table->index('email');
         });
     }
 

@@ -24,6 +24,10 @@ class CreateBlogsTable extends Migration
             $table->longText('details');
             $table->unsignedBigInteger('hit_count')->default(0);
             $table->timestamps();
+
+            $table->index('title');
+            $table->index('slug');
+            $table->index('status');
         });
     }
 

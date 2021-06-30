@@ -15,6 +15,13 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('site_title')->nullable();
+            $table->longText('site_description')->nullable();
+            $table->string('logo_path')->nullable();
+            $table->string('favicon_path')->nullable();
+            $table->string('google_site_verification_code')->nullable();
+            $table->string('google_analytics_tracking_id')->nullable();
+            $table->string('google_analytics_view_id')->nullable();
             $table->timestamps();
         });
     }
