@@ -49,6 +49,9 @@
                                     <label class="block text-sm font-medium text-gray-700">
                                         Logo
                                     </label>
+                                    <small class="italic">
+                                        <a target="_blank" href="{{ $setting->logoUrl() }}">{{ $setting->logoUrl() }}</a>
+                                    </small>
                                     <div class="mt-1 rounded-md shadow-sm flex">
                                         <input type="file" name="logo" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
                                     </div>
@@ -58,6 +61,9 @@
                                     <label class="block text-sm font-medium text-gray-700">
                                         Favicon
                                     </label>
+                                    <small class="italic">
+                                        <a target="_blank" href="{{ $setting->faviconUrl() }}">{{ $setting->faviconUrl() }}</a>
+                                    </small>
                                     <div class="mt-1 rounded-md shadow-sm flex">
                                         <input type="file" name="favicon" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
                                     </div>
