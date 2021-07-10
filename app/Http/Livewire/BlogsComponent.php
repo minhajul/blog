@@ -10,7 +10,14 @@ class BlogsComponent extends Component
 {
     use WithPagination;
 
+    public $viewStyle = 'grid';
+
     public string $keywords = '';
+
+    public function mount($viewStyle)
+    {
+        $this->viewStyle = $viewStyle;
+    }
 
     public function render()
     {
@@ -22,7 +29,7 @@ class BlogsComponent extends Component
           ->orderByDesc('created_at')
           ->paginate(12);
 
-        return view('livewire.blogs-component')->with([
+        return view("livewire.blogs-component-{$this->viewStyle}")->with([
             'blogs' => $blogs
         ]);
     }

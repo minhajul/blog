@@ -18,7 +18,9 @@ class HomeController extends Controller
             return view('show', compact('blog'));
         }
 
-        return view('home');
+        $viewStyle = $this->getViewStyle(request('type'));
+
+        return view('home', compact('viewStyle'));
     }
 
     public function verify($email): RedirectResponse
@@ -30,5 +32,14 @@ class HomeController extends Controller
         }
 
         return redirect()->route('home');
+    }
+
+    private function getViewStyle($type): string
+    {
+        if (in_array($type, ['grid', 'list'])) {
+            return $type;
+        }
+
+        return 'grid';
     }
 }
