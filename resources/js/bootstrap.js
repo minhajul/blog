@@ -1,3 +1,5 @@
+import Alpine from 'alpinejs'
+
 window._ = require('lodash');
 
 window.axios = require('axios');
@@ -7,6 +9,8 @@ try {
     window.$ = require('jquery');
     window.jQuery = require('jquery');
     window.trix =  require('trix');
+
+    window.Alpine = Alpine
 } catch (e) {
 
 }
