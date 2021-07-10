@@ -14,6 +14,7 @@ class Setting extends Model
         "site_description",
         "logo_path",
         "favicon_path",
+        "view",
         "google_site_verification_code",
         "google_analytics_tracking_id",
         "google_analytics_view_id"

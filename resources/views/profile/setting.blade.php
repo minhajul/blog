@@ -50,7 +50,11 @@
                                         Logo
                                     </label>
                                     <small class="italic">
-                                        <a target="_blank" href="{{ $setting->logoUrl() }}">{{ $setting->logoUrl() }}</a>
+                                        @if($setting)
+                                            <a target="_blank" href="{{ $setting->logoUrl() }}">{{ $setting->logoUrl() }}</a>
+                                        @else
+                                            <a target="_blank" href="#">Not set yet</a>
+                                        @endif
                                     </small>
                                     <div class="mt-1 rounded-md shadow-sm flex">
                                         <input type="file" name="logo" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
@@ -62,10 +66,26 @@
                                         Favicon
                                     </label>
                                     <small class="italic">
-                                        <a target="_blank" href="{{ $setting->faviconUrl() }}">{{ $setting->faviconUrl() }}</a>
+                                        @if($setting)
+                                            <a target="_blank" href="{{ $setting->faviconUrl() }}">{{ $setting->faviconUrl() }}</a>
+                                        @else
+                                            <a target="_blank" href="#">Not set yet</a>
+                                        @endif
                                     </small>
                                     <div class="mt-1 rounded-md shadow-sm flex">
                                         <input type="file" name="favicon" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">
+                                        Blog View
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm flex">
+                                        <select name="view" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option {{ $setting && $setting->view == 'grid' ? 'selected' : '' }} value="grid">Grid</option>
+                                            <option {{ $setting && $setting->view == 'list' ? 'selected' : '' }} value="list">List</option>
+                                        </select>
                                     </div>
                                 </div>
 

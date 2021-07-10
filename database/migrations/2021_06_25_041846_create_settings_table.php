@@ -19,6 +19,7 @@ class CreateSettingsTable extends Migration
             $table->longText('site_description')->nullable();
             $table->string('logo_path')->nullable();
             $table->string('favicon_path')->nullable();
+            $table->enum('view', ['grid', 'list'])->default('grid');
             $table->string('google_site_verification_code')->nullable();
             $table->string('google_analytics_tracking_id')->nullable();
             $table->string('google_analytics_view_id')->nullable();

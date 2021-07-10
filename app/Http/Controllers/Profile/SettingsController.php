@@ -39,6 +39,7 @@ class SettingsController extends Controller
             'favicon_path',
             'site_title',
             'site_description',
+            'view',
             'google_analytics_tracking_id',
             'google_analytics_view_id',
             'google_site_verification_code',
