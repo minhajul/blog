@@ -35,10 +35,11 @@ class SettingsController extends Controller
         }
 
         $inputs = $request->only(
-            'logo_path',
-            'favicon_path',
+            'site_name',
             'site_title',
             'site_description',
+            'logo_path',
+            'favicon_path',
             'view',
             'google_analytics_tracking_id',
             'google_analytics_view_id',

@@ -29,10 +29,19 @@
 
                                 <div>
                                     <label for="username" class="block text-sm font-medium text-gray-700">
+                                        Site Name
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm flex">
+                                        <input type="text" name="site_name" value="{{ old( 'site_name', $setting->site_name ?? '') }}" placeholder="Minimal Blog" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="username" class="block text-sm font-medium text-gray-700">
                                         Site Title
                                     </label>
                                     <div class="mt-1 rounded-md shadow-sm flex">
-                                        <input type="text" name="site_title" value="{{ old( 'site_title', $setting->site_title ?? '') }}" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
+                                        <input type="text" name="site_title" value="{{ old( 'site_title', $setting->site_title ?? '') }}" placeholder="Example Title" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
                                     </div>
                                 </div>
 
@@ -41,7 +50,7 @@
                                         Site Description
                                     </label>
                                     <div class="mt-1 rounded-md shadow-sm flex">
-                                        <input type="text" name="site_description" value="{{ old('site_description', $setting->site_description ?? '') }}" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
+                                        <input type="text" name="site_description" value="{{ old('site_description', $setting->site_description ?? '') }}" placeholder="Example Description" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
                                     </div>
                                 </div>
 
@@ -95,21 +104,21 @@
                                         <label class="block text-sm font-medium text-gray-700">
                                             Google Site Verification Code
                                         </label>
-                                        <input type="text" name="google_site_verification_code" value="{{ old('google_site_verification_code', $setting->google_site_verification_code ?? '') }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm">
+                                        <input type="text" name="google_site_verification_code" value="{{ old('google_site_verification_code', $setting->google_site_verification_code ?? '') }}" placeholder="1111111111" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm">
                                     </div>
 
                                     <div class="col-span-12 sm:col-span-6">
                                         <label class="block text-sm font-medium text-gray-700">
                                             Google Analytics - Tracking ID
                                         </label>
-                                        <input type="text" name="google_analytics_tracking_id" value="{{ old( 'google_analytics_tracking_id', $setting->google_analytics_tracking_id ?? '') }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm">
+                                        <input type="text" name="google_analytics_tracking_id" value="{{ old( 'google_analytics_tracking_id', $setting->google_analytics_tracking_id ?? '') }}" placeholder="1111111111" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm">
                                     </div>
 
                                     <div class="col-span-12 sm:col-span-6">
                                         <label class="block text-sm font-medium text-gray-700">
                                             Google Analytics - View ID
                                         </label>
-                                        <input type="text" name="google_analytics_view_id" value="{{ old( 'google_analytics_view_id', $setting->google_analytics_view_id ?? '') }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm">
+                                        <input type="text" name="google_analytics_view_id" value="{{ old( 'google_analytics_view_id', $setting->google_analytics_view_id ?? '') }}" placeholder="1111111111" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm">
                                     </div>
                                 </div>
                             </div>

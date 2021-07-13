@@ -188,7 +188,7 @@
                 </a>
             </div>
             <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-                ©{{ date('Y') }} {{ env('APP_NAME') }}. All rights reserved.
+                ©{{ date('Y') }}. All rights reserved.
             </p>
         </div>
     </div>

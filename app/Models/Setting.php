@@ -10,6 +10,7 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [
+        "site_name",
         "site_title",
         "site_description",
         "logo_path",

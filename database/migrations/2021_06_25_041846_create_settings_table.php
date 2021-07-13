@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateSettingsTable extends Migration
 {
@@ -15,6 +15,7 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('site_name')->nullable();
             $table->string('site_title')->nullable();
             $table->longText('site_description')->nullable();
             $table->string('logo_path')->nullable();
