@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Setting;
 use App\Models\Subscriber;
 use Illuminate\Http\RedirectResponse;
 
@@ -18,7 +19,7 @@ class HomeController extends Controller
             return view('show', compact('blog'));
         }
 
-        $viewStyle = $this->getViewStyle(request('type'));
+        $viewStyle = $this->getViewStyle();
 
         return view('home', compact('viewStyle'));
     }
@@ -34,10 +35,12 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    private function getViewStyle($type): string
+    private function getViewStyle(): string
     {
-        if (in_array($type, ['grid', 'list'])) {
-            return $type;
+        $setting = Setting::first();
+
+        if ($setting) {
+            return $setting->view;
         }
 
         return 'grid';
