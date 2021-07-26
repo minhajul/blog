@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Profile\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\Profile\InfoController;
 use App\Http\Controllers\Profile\BlogController;
+use App\Http\Controllers\Profile\InfoController;
+use App\Http\Controllers\Profile\SettingsController;
 use App\Http\Controllers\Profile\SubscriberController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
