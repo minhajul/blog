@@ -11,7 +11,7 @@ class HomeControllerTest extends TestCase
 
     public function test_home_page_is_visible()
     {
-        $response = $this->get('/');
+        $response = $this->get(route('home'));
 
         $response->assertStatus(200);
     }
