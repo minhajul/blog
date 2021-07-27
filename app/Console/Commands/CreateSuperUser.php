@@ -34,11 +34,11 @@ class CreateSuperUser extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
         if (User::exists()) {
             $this->error('You have already been created a user, please login using that credentials.');
-            return;
+            return self::FAILURE;
         }
 
         $name = $this->ask('Input Your Name:');
@@ -50,7 +50,7 @@ class CreateSuperUser extends Command
 
         if ($password !== $password_confirmation) {
             $this->error('Password mismatch');
-            return;
+            return self::FAILURE;
         }
 
         User::create([
@@ -60,5 +60,6 @@ class CreateSuperUser extends Command
         ]);
 
         $this->info('User has been created. Login using the given credentials.');
+        return self::SUCCESS;
     }
 }

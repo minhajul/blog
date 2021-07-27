@@ -35,13 +35,13 @@ class RecoverAdminAccess extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
         $email = $this->ask('Input Your Email:');
 
         if (!User::whereEmail($email)->exists()) {
             $this->error('No user found with the given email.');
-            return;
+            return self::FAILURE;
         }
 
         Password::sendResetLink([
@@ -49,5 +49,6 @@ class RecoverAdminAccess extends Command
         ]);
 
         $this->info('Password reset link has been sent to your given email.');
+        return self::SUCCESS;
     }
 }
