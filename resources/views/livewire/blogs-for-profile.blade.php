@@ -31,11 +31,11 @@
         @forelse($blogs as $blog)
             <div class="mb-5 flex flex-col rounded-lg shadow-lg overflow-hidden">
                 <div class="flex-shrink-0">
-                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
+                    <img class="h-48 w-full object-cover" src="{{ $blog->bannerUrl() }}" alt="Banner">
                 </div>
-                <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                <div class="flex-1 bg-white p-5 flex flex-col justify-between">
                     <div class="flex-1">
-                        <a href="{{ route('profile.blog.show', $blog) }}" class="block mt-2">
+                        <a href="{{ route('profile.blog.show', $blog) }}" class="block">
                             <p class="text-xl font-semibold text-gray-900">
                                 {{ $blog->title }}
                             </p>

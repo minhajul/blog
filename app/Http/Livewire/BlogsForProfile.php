@@ -36,6 +36,6 @@ class BlogsForProfile extends Component
             return $query->whereLike(['title'], $keywords);
         })->where('status', $this->status)
             ->orderByDesc('created_at')
-            ->paginate(10);
+            ->paginate(12);
     }
 }

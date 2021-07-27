@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="col-span-6">
-                    <label class="block font-medium text-sm text-gray-700" for="email">
+                    <label class="block font-medium text-sm text-gray-700 mb-2" for="bio">
                         Bio <span class="text-red-500">*</span>
                     </label>
 
