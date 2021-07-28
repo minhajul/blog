@@ -24,10 +24,10 @@ class BlogsComponent extends Component
         $keywords = $this->keywords;
 
         $blogs = Blog::when($keywords, function ($query) use ($keywords) {
-            return $query->whereLike(['title'], $keywords);
+            return $query->whereLike(['title', 'status', 'details'], $keywords);
         })->published()
-          ->orderByDesc('created_at')
-          ->paginate(12);
+            ->orderByDesc('updated_at')
+            ->paginate(12);
 
         return view("livewire.blogs-component-{$this->viewStyle}")->with([
             'blogs' => $blogs
