@@ -13,16 +13,16 @@
                             Blogs
                         </a>
 
-                        <a href="{{ route('profile.contacts') }}" class="{{ request()->routeIs('profile.contacts') ? 'bg-gray-700 text-white' : 'text-gray-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
-                            Contacts
-                        </a>
-
                         <a href="{{ route('subscribers.index') }}" class="{{ request()->routeIs('subscribers.index') ? 'bg-gray-700 text-white' : 'text-gray-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
                             Subscribers
                         </a>
 
                         <a href="{{ route('settings.index') }}" class="{{ request()->routeIs('settings.index') ? 'bg-gray-700 text-white' : 'text-gray-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
                             Settings
+                        </a>
+
+                        <a href="{{ route('profile.contacts') }}" class="{{ request()->routeIs('profile.contacts') ? 'bg-gray-700 text-white' : 'text-gray-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
+                            Contacts
                         </a>
                     </nav>
                 </div>

@@ -37,7 +37,7 @@
                     <div class="flex-1">
                         <a href="{{ route('profile.blog.show', $blog) }}" class="block">
                             <p class="text-xl font-semibold text-gray-900">
-                                {{ $blog->title }}
+                                {{ $blog->title }} <span class="text-xs text-white bg-green-500 p-1 rounded-md">{{ $blog->status }}</span>
                             </p>
                             <p class="mt-3 text-base text-gray-500">
                                 {{ $blog->short_details }}
