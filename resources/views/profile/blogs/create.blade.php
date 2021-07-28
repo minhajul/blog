@@ -36,7 +36,7 @@
                                         Title <span class="text-red-500">*</span>
                                     </label>
 
-                                    <input type="text" name="title" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                                    <input type="text" name="title" value="{{ old('title') }}" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
                                     @error('title') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
                                 </div>
 
@@ -54,15 +54,19 @@
                                         Details <span class="text-red-500">*</span>
                                     </label>
 
-                                    <input id="x" type="hidden" name="details">
+                                    <input id="x" type="hidden" name="details" value="{{ old('details') }}">
                                     <trix-editor name="details" input="x"></trix-editor>
                                     @error('details') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
-                            <div class="flex items-center justify-end text-right mt-5">
-                                <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-xs-gray disabled:opacity-25 transition ease-in-out duration-150">
-                                    Post Blog
+                            <div class="mt-5">
+                                <button type="submit" name="status" value="drafted" class="mb-5 float-left inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Save as Draft
+                                </button>
+
+                                <button type="submit" name="status" value="published" class="mb-5 float-right inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Publish Blog
                                 </button>
                             </div>
                         </form>

@@ -44,12 +44,17 @@
                             </p>
                         </a>
                     </div>
-                    <div class="mt-5 flex items-center">
-                        <div class="flex space-x-1 text-sm text-gray-500">
+
+                    <div class="mt-5 flex justify-between  text-sm text-gray-500">
+                        <div>
                             <time datetime="2020-03-16">
                                 Posted {{ $blog->created_at->diffForHumans() }}
                             </time>
                         </div>
+
+                        @if(!$blog->isArchived())
+                            <a onclick="return confirm('Are you sure?')" href="{{ route('profile.blog.archived', $blog) }}" class="order-last text-xs bg-red-500 text-white p-1 rounded-md">Mark as Archive</a>
+                        @endif
                     </div>
                 </div>
             </div>

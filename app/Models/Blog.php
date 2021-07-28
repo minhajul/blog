@@ -14,6 +14,7 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'slug',
+        'status',
         'details',
         'banner_path',
         'hit_count'
@@ -73,5 +74,25 @@ class Blog extends Model
         }
 
         return "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80";
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status == 'published';
+    }
+
+    public function isDrafted(): bool
+    {
+        return $this->status == 'drafted';
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->status == 'archived';
+    }
+
+    public function markAsArchived()
+    {
+        $this->update(['status' => 'archived']);
     }
 }

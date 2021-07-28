@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profile;
 use App\Models\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\BlogRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
@@ -43,20 +44,19 @@ class BlogController extends Controller
         exit;
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(BlogRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'title' => 'required|string|min:2',
-            'banner' => 'required|max:2048',
-            'details' => 'required|string',
-        ]);
+        $bannerPath = null;
 
-        $fileName = Str::random(5) . '.' . $request->banner->extension();
-        $bannerPath = $request->banner->storeAs('blog', $fileName);
+        if ($request->input('banner')) {
+            $fileName = Str::random(5) . '.' . $request->input('banner')->extension();
+            $bannerPath = $request->input('banner')->storeAs('blog', $fileName);
+        }
 
         Blog::create([
-            'title' => $request->title,
-            'details' => $request->details,
+            'title' => $request->input('title'),
+            'status' => $request->input('status'),
+            'details' => $request->input('details'),
             'banner_path' => $bannerPath,
         ]);
 
@@ -69,13 +69,16 @@ class BlogController extends Controller
         return view('profile.blogs.update', compact('blog'));
     }
 
-    public function update(Request $request, Blog $blog): RedirectResponse
+    public function markAsArchived(Blog $blog): RedirectResponse
     {
-        $this->validate($request, [
-            'title' => 'required|string|min:2',
-            'details' => 'required|string',
-        ]);
+        $blog->markAsArchived();
 
+        session()->flash('success', 'Your has been posted!');
+        return redirect()->back();
+    }
+
+    public function update(BlogRequest $request, Blog $blog): RedirectResponse
+    {
         if ($request->input('banner')) {
             $fileName = Str::random(5) . '.' . $request->banner->extension();
             $bannerPath = $request->banner->storeAs('blog', $fileName);
@@ -84,6 +87,7 @@ class BlogController extends Controller
         }
 
         $blog->title = $request->input('title');
+        $blog->status = $request->input('status');
         $blog->details = $request->input('details');
         $blog->save();
 

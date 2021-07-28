@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/blog/store', [BlogController::class, 'store'])->name('profile.blog.store');
     Route::get('/blogs/edit/{blog}', [BlogController::class, 'show'])->name('profile.blog.show');
     Route::post('/blogs/edit/{blog}', [BlogController::class, 'update'])->name('profile.blog.update');
+    Route::get('/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('profile.blog.archived');
 
     Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
     Route::delete('/subscribers/{subscriber}/delete', [SubscriberController::class, 'delete'])->name('subscribers.delete');
