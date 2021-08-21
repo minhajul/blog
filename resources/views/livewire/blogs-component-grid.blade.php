@@ -12,7 +12,7 @@
                     <div class="flex-1 bg-white p-5 flex flex-col justify-between">
                         <div class="flex-1">
                             <a href="{{ route('home', ['slug' => $blog->slug]) }}" class="block">
-                                <p class="text-xl font-semibold text-gray-900">
+                                <p class="text-xl font-semibold text-gray-900 hover:text-green-500">
                                     {{ $blog->title }}
                                 </p>
                                 <p class="mt-3 text-base text-gray-500">
