@@ -16,9 +16,11 @@
                                 <div class="sm:flex sm:items-center sm:justify-between">
                                     <div class="sm:flex sm:space-x-5">
                                         <div class="flex-shrink-0">
-                                            <img class="mx-auto h-20 w-20 rounded-full" src="{{ $user->avatarUrl() }}" alt="Avatar">
+                                            <div class="bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
+                                                <img src="{{ $user->avatarUrl() }}" alt="Admin Account" class="h-20 w-20 flex-shrink-0 rounded-full md:h-32 md:w-32 p-2">
+                                            </div>
                                         </div>
-                                        <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
+                                        <div class="mt-8 text-center sm:pt-1 sm:text-left">
                                             <p class="text-xl font-bold text-gray-900 sm:text-2xl">
                                                 {{ $user->name }}
                                             </p>
