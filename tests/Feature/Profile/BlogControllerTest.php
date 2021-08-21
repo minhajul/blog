@@ -44,6 +44,7 @@ class BlogControllerTest extends TestCase
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,
+                'status' => $this->faker->randomElement(config('enums.blog_status')),
             ]);
 
         $response->assertRedirect();
@@ -75,6 +76,7 @@ class BlogControllerTest extends TestCase
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,
+                'status' => $this->faker->randomElement(config('enums.blog_status')),
             ]);
 
         $response->assertRedirect();

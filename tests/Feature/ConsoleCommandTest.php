@@ -16,7 +16,7 @@ class ConsoleCommandTest extends TestCase
         $this->artisan('admin:recover-access')
             ->expectsQuestion('Input Your Email:', 'test@email.com')
             ->expectsOutput('No user found with the given email.')
-            ->assertExitCode(0);
+            ->assertExitCode(1);
     }
 
     public function test_admin_user_can_ask_for_password_reset_email()
@@ -37,7 +37,7 @@ class ConsoleCommandTest extends TestCase
 
         $this->artisan('admin:create-user')
             ->expectsOutput('You have already been created a user, please login using that credentials.')
-            ->assertExitCode(0);
+            ->assertExitCode(1);
     }
 
     public function test_admin_user_can_not_be_created_with_wrong_password()
@@ -48,7 +48,7 @@ class ConsoleCommandTest extends TestCase
             ->expectsQuestion('Set Password:', 'password')
             ->expectsQuestion('Write your password again:', 'another_password')
             ->expectsOutput('Password mismatch')
-            ->assertExitCode(0);
+            ->assertExitCode(1);
     }
 
     public function test_admin_user_can_be_created()

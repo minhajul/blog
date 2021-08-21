@@ -23,6 +23,7 @@ class BlogFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
+            'status' => $this->faker->randomElement(config('enums.blog_status')),
             'details' => $this->faker->paragraph(20),
         ];
     }
