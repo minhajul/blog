@@ -19,7 +19,6 @@
             <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="{{ route('home') }}">
                     <span class="sr-only">{{ config('app.name') }}</span>
-
                     @if($setting = \App\Models\Setting::first())
                         <img class="h-8 w-auto sm:h-10" src="{{ $setting->logoUrl() }}" alt="Logo">
                     @else
@@ -83,16 +82,6 @@
         </div>
     </div>
 
-    <!--
-      Mobile menu, show/hide based on mobile menu state.
-
-      Entering: "duration-200 ease-out"
-        From: "opacity-0 scale-95"
-        To: "opacity-100 scale-100"
-      Leaving: "duration-100 ease-in"
-        From: "opacity-100 scale-100"
-        To: "opacity-0 scale-95"
-    -->
     <div x-show="mobileMenuOpen" class="z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
         <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div class="pt-5 pb-6 px-5">

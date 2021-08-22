@@ -37,9 +37,7 @@ class HomeController extends Controller
 
     private function getViewStyle(): string
     {
-        $setting = Setting::first();
-
-        if ($setting) {
+        if ($setting = Setting::first()) {
             return $setting->view;
         }
 
