@@ -22,7 +22,7 @@
                     @if($setting = \App\Models\Setting::first())
                         <img class="h-8 w-auto sm:h-10" src="{{ $setting->logoUrl() }}" alt="Logo">
                     @else
-                        <h2 class="text-2xl font-medium text-white hover:text-gray-300">{{ config('app.name') }}</h2>
+                        <h2 class="text-2xl font-medium text-white hover:text-gray-300 italic">{{ config('app.name') }}</h2>
                     @endif
                 </a>
             </div>
