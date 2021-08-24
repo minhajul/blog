@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="sm:col-span-2">
-                        <button type="submit" class="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">
+                        <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-blue-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white focus:outline-none">
                             Submit
                         </button>
                     </div>
