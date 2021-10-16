@@ -4,15 +4,11 @@ window._ = require('lodash');
 
 window.axios = require('axios');
 
-try {
-    window.Popper = require('popper.js').default;
-    window.$ = require('jquery');
-    window.jQuery = require('jquery');
-    window.trix =  require('trix');
+window.Popper = require('popper.js').default;
+window.$ = require('jquery');
+window.jQuery = require('jquery');
 
-    window.Alpine = Alpine
-} catch (e) {
-
-}
+window.Alpine = Alpine
+Alpine.start();
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
