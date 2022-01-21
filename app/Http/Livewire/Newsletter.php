@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\Subscriber;
 use App\Mail\SubscriberConfirmation;
 
-class NewsletterComponent extends Component
+class Newsletter extends Component
 {
     public $email;
 
@@ -48,6 +48,6 @@ class NewsletterComponent extends Component
 
     public function render()
     {
-        return view('livewire.newsletter-component');
+        return view('livewire.newsletter');
     }
 }

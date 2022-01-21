@@ -57,7 +57,7 @@
                     @include('errors.success')
                     @include('errors.message')
 
-                    <livewire:update-profile />
+                    <livewire:profile.index />
 
                     <div class="hidden sm:block">
                         <div class="py-6">
@@ -67,7 +67,7 @@
 
                     <div class="mt-10 sm:mt-0">
                         <div class="xsm:p-4 md:col-span-2">
-                            <livewire:update-password />
+                            <livewire:profile.password />
                         </div>
                     </div>
 

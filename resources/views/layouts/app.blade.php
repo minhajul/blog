@@ -147,7 +147,7 @@
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-10 lg:px-8">
 
         <div>
-            <livewire:newsletter-component />
+            <livewire:newsletter />
         </div>
 
         <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">

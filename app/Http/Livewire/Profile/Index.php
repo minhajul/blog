@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Profile;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
-class UpdateProfile extends Component
+class Index extends Component
 {
     use WithFileUploads;
 
@@ -44,6 +44,6 @@ class UpdateProfile extends Component
 
     public function render()
     {
-        return view('livewire.update-profile');
+        return view('livewire.profile.index');
     }
 }

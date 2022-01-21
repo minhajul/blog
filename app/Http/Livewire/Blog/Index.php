@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Blog;
 
 use App\Models\Blog;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class BlogsComponent extends Component
+class Index extends Component
 {
     use WithPagination;
 
     public $viewStyle = 'grid';
 
-    public string $keywords = '';
+    public $keywords = '';
 
     public function mount($viewStyle)
     {
@@ -29,7 +29,7 @@ class BlogsComponent extends Component
             ->orderByDesc('updated_at')
             ->paginate(12);
 
-        return view("livewire.blogs-component-{$this->viewStyle}")->with([
+        return view("livewire.blog.index")->with([
             'blogs' => $blogs
         ]);
     }

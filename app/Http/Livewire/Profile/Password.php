@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Profile;
 
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Http\RedirectResponse;
 
-class UpdatePassword extends Component
+class Password extends Component
 {
-    public string $current_password, $password, $password_confirmation;
+    public $current_password, $password, $password_confirmation;
 
     public function mount()
     {
@@ -17,7 +17,7 @@ class UpdatePassword extends Component
         $this->password_confirmation = '';
     }
 
-    protected array $rules = [
+    protected $rules = [
         'current_password' => 'required',
         'password' => 'required|confirmed|min:6',
     ];
@@ -46,6 +46,6 @@ class UpdatePassword extends Component
 
     public function render()
     {
-        return view('livewire.update-password');
+        return view('livewire.profile.password');
     }
 }
