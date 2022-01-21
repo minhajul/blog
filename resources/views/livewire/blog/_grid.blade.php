@@ -2,7 +2,7 @@
 
     @forelse($blogs as $blog)
         <div class="mb-5 flex flex-col rounded-lg shadow-lg overflow-hidden">
-            <div class="flex-shrink-0">
+            <div class="shrink-0">
                 <img class="h-48 w-full object-cover" src="{{ $blog->bannerUrl() }}" alt="Banner">
             </div>
             <div class="flex-1 bg-white p-5 flex flex-col justify-between">

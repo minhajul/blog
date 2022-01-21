@@ -15,9 +15,9 @@
                             <div class="bg-white p-6">
                                 <div class="sm:flex sm:items-center sm:justify-between">
                                     <div class="sm:flex sm:space-x-5">
-                                        <div class="flex-shrink-0">
+                                        <div class="shrink-0">
                                             <div class="bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
-                                                <img src="{{ $user->avatarUrl() }}" alt="Admin Account" class="h-20 w-20 flex-shrink-0 rounded-full md:h-32 md:w-32 p-2">
+                                                <img src="{{ $user->avatarUrl() }}" alt="Admin Account" class="h-20 w-20 shrink-0 rounded-full md:h-32 md:w-32 p-2">
                                             </div>
                                         </div>
                                         <div class="mt-8 text-center sm:pt-1 sm:text-left">

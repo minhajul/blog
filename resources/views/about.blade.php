@@ -6,16 +6,18 @@
         <div class="md:flex">
             <div class="h-24 md:h-32 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
                 @if($user)
-                    <img src="{{ $user->avatarUrl() }}" alt="{{ $user->name }}" class="h-24 w-24 flex-shrink-0 rounded-full md:h-32 md:w-32 p-2">
+                    <img src="{{ $user->avatarUrl() }}" alt="{{ $user->name }}" class="h-24 w-24 shrink-0 rounded-full md:h-32 md:w-32 p-2">
                 @else
-                    <img src="https://via.placeholder.com/150x150" alt="Avatar" class="h-24 w-24 flex-shrink-0 rounded-full md:h-32 md:w-32 p-2">
+                    <img src="https://via.placeholder.com/150x150" alt="Avatar" class="h-24 w-24 shrink-0 rounded-full md:h-32 md:w-32 p-2">
                 @endif
             </div>
 
             <div class="mt-6 md:ml-6 md:mt-0">
-                <h1 class="text-5xl font-bold font-heading">
-                    {{ $user->name ?? 'Set your name from panel' }}
-                </h1>
+                <div class="text-5xl font-bold">
+                  <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                  {{ $user->name ?? 'Set your name from panel' }}
+                  </span>
+                </div>
 
                 <div class="mt-6 max-w-2xl">
                     <div class="markdown">

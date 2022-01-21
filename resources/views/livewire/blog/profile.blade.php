@@ -6,7 +6,7 @@
                 Posted Blogs
             </h3>
         </div>
-        <div class="ml-4 mt-2 flex-shrink-0">
+        <div class="ml-4 mt-2 shrink-0">
             <a href="{{ route('profile.blog.create') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Create New Blog
             </a>
@@ -30,7 +30,7 @@
     <div class="mt-10 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         @forelse($blogs as $blog)
             <div class="mb-5 flex flex-col rounded-lg shadow-lg overflow-hidden">
-                <div class="flex-shrink-0">
+                <div class="shrink-0">
                     <img class="h-48 w-full object-cover" src="{{ $blog->bannerUrl() }}" alt="Banner">
                 </div>
                 <div class="flex-1 bg-white p-5 flex flex-col justify-between">

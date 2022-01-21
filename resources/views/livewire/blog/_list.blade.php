@@ -3,7 +3,7 @@
     <div class="max-w-3xl mx-auto md:max-w-3xl">
         @forelse($blogs as $blog)
             <div class="md:flex mb-5 bg-white rounded-xl shadow-md overflow-hidden">
-                <div class="md:flex-shrink-0">
+                <div class="md:shrink-0">
                     <img class="h-52 w-full object-cover md:w-48" src="{{ $blog->bannerUrl() }}" alt="Banner">
                 </div>
                 <div class="p-4">
