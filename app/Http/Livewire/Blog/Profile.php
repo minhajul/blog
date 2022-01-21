@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Blog;
 
 use App\Models\Blog;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class BlogsForProfile extends Component
+class Profile extends Component
 {
     use WithPagination;
 
-    public string $keywords = '';
+    public $keywords = '';
 
-    public string $status = 'published';
+    public $status = 'published';
 
     public function filterByStatus($status)
     {
@@ -23,7 +23,7 @@ class BlogsForProfile extends Component
     {
         $blogs = $this->getBlogs();
 
-        return view('livewire.blogs-for-profile')->with([
+        return view('livewire.blog.profile')->with([
             'blogs' => $blogs
         ]);
     }

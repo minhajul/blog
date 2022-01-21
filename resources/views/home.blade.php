@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <livewire:blogs-component :viewStyle="$viewStyle"/>
+    <livewire:blog.index :viewStyle="$viewStyle"/>
 
 @endsection

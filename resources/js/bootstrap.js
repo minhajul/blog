@@ -8,6 +8,8 @@ window.Popper = require('popper.js').default;
 window.$ = require('jquery');
 window.jQuery = require('jquery');
 
+window.trix = require('trix');
+
 window.Alpine = Alpine
 Alpine.start();
 

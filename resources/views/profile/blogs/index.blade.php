@@ -9,7 +9,7 @@
             <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
                 <div class="grid grid-cols-1 lg:col-span-3">
 
-                   <livewire:blogs-for-profile />
+                   <livewire:blog.profile />
 
                 </div>
             </div>

@@ -25,14 +25,14 @@
                             {{ csrf_field() }}
 
                             <div class="flex flex-col lg:flex-row">
-                                <div class="flex-grow space-y-6">
+                                <div class="grow space-y-6">
 
                                     <div>
                                         <label for="username" class="block text-sm font-medium text-gray-700">
                                             Site Name
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm flex">
-                                            <input type="text" name="site_name" value="{{ old( 'site_name', $setting->site_name ?? '') }}" placeholder="Minimal Blog" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
+                                            <input type="text" name="site_name" value="{{ old( 'site_name', $setting->site_name ?? '') }}" placeholder="Minimal Blog" class="focus:ring-light-blue-500 focus:border-light-blue-500 grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -41,7 +41,7 @@
                                             Site Title
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm flex">
-                                            <input type="text" name="site_title" value="{{ old( 'site_title', $setting->site_title ?? '') }}" placeholder="Example Title" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
+                                            <input type="text" name="site_title" value="{{ old( 'site_title', $setting->site_title ?? '') }}" placeholder="Example Title" class="focus:ring-light-blue-500 focus:border-light-blue-500 grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -50,7 +50,7 @@
                                             Site Description
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm flex">
-                                            <input type="text" name="site_description" value="{{ old('site_description', $setting->site_description ?? '') }}" placeholder="Example Description" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
+                                            <input type="text" name="site_description" value="{{ old('site_description', $setting->site_description ?? '') }}" placeholder="Example Description" class="focus:ring-light-blue-500 focus:border-light-blue-500 grow block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
