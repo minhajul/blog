@@ -1,7 +1,7 @@
-## Minimal Blog 
+### Minimal Blog 
 Minimal blogging platform for personal use.
 
-## Technologies Used:
+### Technologies Used
 1. Laravel
 2. Livewire
 3. Tailwind CSS
@@ -19,5 +19,5 @@ Minimal blogging platform for personal use.
    `php artisan serve`
 9. Now visit the url shown on your terminal, something like `127.0.0.1:8000`. It's running!
 
-##### License
+### License
 MIT
