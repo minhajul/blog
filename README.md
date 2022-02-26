@@ -1,10 +1,11 @@
 ## Minimal Blog 
-Minimal blogging platform mostly for personal use.
+Minimal blogging platform for personal use.
 
 ## Technologies Used:
-1. Laravel 8.0
-2. Laravel Livewire
+1. Laravel
+2. Livewire
 3. Tailwind CSS
+4. MySQL
 
 ### Installation Process
 1. Clone or Download this project
