@@ -13,8 +13,6 @@ class GalleryController extends Controller
     {
         $galleries = Gallery::orderByDesc('created_at')->paginate(20);
 
-//        dd($galleries->first()->image_url);
-
         return view('profile.gallery.index', compact('galleries'));
     }
 
@@ -38,25 +36,6 @@ class GalleryController extends Controller
 
         session()->flash('success', 'You have added new image to the gallery.');
         return redirect()->back();
-    }
-
-    public function show(Gallery $gallery)
-    {
-        return $gallery;
-    }
-
-    public function update(Request $request, Gallery $gallery)
-    {
-        $this->validate($request, [
-            'image' => 'required|image'
-        ]);
-
-        $fileName = Str::random(5) . '.' . $request->file('image')->extension();
-        $imagePath = $request->file('image')->storeAs('gallery', $fileName);
-
-        $gallery->update([
-            'image_path' => $imagePath
-        ]);
     }
 
     public function destroy(Gallery $gallery)
