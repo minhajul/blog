@@ -35,6 +35,11 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    public function gallery()
+    {
+        return view('gallery');
+    }
+
     private function getViewStyle(): string
     {
         if ($setting = Setting::first()) {
