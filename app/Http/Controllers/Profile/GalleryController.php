@@ -13,6 +13,8 @@ class GalleryController extends Controller
     {
         $galleries = Gallery::orderByDesc('created_at')->paginate(20);
 
+//        dd($galleries->first()->image_url);
+
         return view('profile.gallery.index', compact('galleries'));
     }
 

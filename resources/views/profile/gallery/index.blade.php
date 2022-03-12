@@ -25,7 +25,16 @@
                 @foreach($galleries as $gallery)
                     <li class="relative">
                         <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                            <img src="{{ asset($gallery->image_path) }}" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                            <img src="{{ $gallery->image_url }}" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                            <button type="button" class="absolute inset-0 focus:outline-none">
+                                <span class="sr-only">View details</span>
+                            </button>
+                        </div>
+
+                        <div class="py-4 float-right">
+                            <a onclick="return confirm('Are you sure?')" href="{{ route('profile.gallery.destroy', $gallery) }}" class="focus:outline-none text-red-500 font-normal py-2">
+                                Delete
+                            </a>
                         </div>
                     </li>
                 @endforeach

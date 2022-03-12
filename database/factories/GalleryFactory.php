@@ -4,9 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Gallery>
- */
 class GalleryFactory extends Factory
 {
     /**
@@ -14,10 +11,10 @@ class GalleryFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            'image_path' => $this->faker->imageUrl('public/storage/images', 640, 480)
         ];
     }
 }
