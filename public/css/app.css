@@ -1792,6 +1792,11 @@ select{
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(22 163 74 / 0));
 }
 
+.from-blue-600{
+  --tw-gradient-from: #2563eb;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(37 99 235 / 0));
+}
+
 .to-purple-600{
   --tw-gradient-to: #9333ea;
 }
@@ -1802,6 +1807,10 @@ select{
 
 .to-blue-500{
   --tw-gradient-to: #3b82f6;
+}
+
+.to-indigo-500{
+  --tw-gradient-to: #6366f1;
 }
 
 .bg-clip-text{
