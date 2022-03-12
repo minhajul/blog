@@ -1572,6 +1572,10 @@ select{
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
 }
 
+.overflow-auto{
+  overflow: auto;
+}
+
 .overflow-hidden{
   overflow: hidden;
 }
@@ -2759,6 +2763,10 @@ select{
     border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
   }
 
+  .sm\:overflow-x-auto{
+    overflow-x: auto;
+  }
+
   .sm\:rounded-lg{
     border-radius: 0.5rem;
   }
@@ -2949,6 +2957,10 @@ select{
 
   .lg\:gap-8{
     gap: 2rem;
+  }
+
+  .lg\:overflow-auto{
+    overflow: auto;
   }
 
   .lg\:border-t{

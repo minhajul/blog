@@ -43,6 +43,10 @@
                     About Me
                 </a>
 
+                <a href="{{ route('gallery') }}" class="text-base font-medium text-white hover:text-gray-300">
+                    Gallery
+                </a>
+
                 <a href="{{ route('contact.index') }}" class="text-base font-medium text-white hover:text-gray-300">
                     Contact
                 </a>
@@ -82,11 +86,16 @@
     </div>
 
     <div x-show="mobileMenuOpen" class="z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-800 divide-y-2 divide-gray-50">
             <div class="pt-5 pb-6 px-5">
                 <div class="flex items-center justify-between">
                     <div>
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+                        <span class="sr-only">{{ config('app.name') }}</span>
+                        @if($setting = \App\Models\Setting::first())
+                            <img class="h-8 w-auto sm:h-10" src="{{ $setting->logoUrl() }}" alt="Logo">
+                        @else
+                            <h2 class="text-2xl font-medium text-white hover:text-gray-300 italic">{{ config('app.name') }}</h2>
+                        @endif
                     </div>
                     <div class="-mr-2">
                         <button @click="mobileMenuOpen = false" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -101,33 +110,37 @@
 
             <div class="py-6 px-5 space-y-6">
                 <div class="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a href="{{ route('home') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                    <a href="{{ route('home') }}" class="text-base font-medium text-gray-300">
                         Home
                     </a>
 
-                    <a href="{{ route('about') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                        Profile
+                    <a href="{{ route('about') }}" class="text-base font-medium text-gray-300">
+                        About Me
                     </a>
 
-                    <a href="{{ route('contact.index') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                    <a href="{{ route('gallery') }}" class="text-base font-medium text-gray-300">
+                        Gallery
+                    </a>
+
+                    <a href="{{ route('contact.index') }}" class="text-base font-medium text-gray-300">
                         Contact
                     </a>
                 </div>
 
-                <div class="mt-6 text-base font-medium text-gray-500">
+                <div class="mt-6 border-t border-gray-400 pt-4 text-base font-medium text-gray-300">
                     @auth
-                        <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('profile.index') }}" class="block py-2 text-sm text-gray-300">
                             {{ auth()->user()->name }}
                         </a>
 
-                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a class="block py-2 text-sm text-gray-300">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit">Sign out</button>
                             </form>
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-500">
+                        <a href="{{ route('login') }}" class="block py-2 text-sm text-gray-300">
                             Sign in
                         </a>
                     @endauth
