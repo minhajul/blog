@@ -138,7 +138,7 @@
     </div>
 </div>
 
-<main>
+<main class="bg-gray-100">
     @yield('content')
 </main>
 
