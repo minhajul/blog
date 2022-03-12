@@ -40,7 +40,7 @@
                 </a>
 
                 <a href="{{ route('about') }}" class="text-base font-medium text-white hover:text-gray-300">
-                    Profile
+                    About Me
                 </a>
 
                 <a href="{{ route('contact.index') }}" class="text-base font-medium text-white hover:text-gray-300">
