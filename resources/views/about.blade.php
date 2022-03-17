@@ -7,7 +7,7 @@
             <svg class="absolute left-full transform translate-x-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
                 <defs>
                     <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <rect x="0" y="0" width="4" height="4" class="text-gray-600" fill="currentColor"></rect>
+                        <rect x="0" y="0" width="4" height="4" class="text-gray-200 dark:text-gray-600" fill="currentColor"></rect>
                     </pattern>
                 </defs>
                 <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"></rect>
@@ -16,7 +16,7 @@
             <svg class="absolute right-full bottom-0 transform -translate-x-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
                 <defs>
                     <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <rect x="0" y="0" width="4" height="4" class="text-gray-600" fill="currentColor"></rect>
+                        <rect x="0" y="0" width="4" height="4" class="text-gray-200 dark:text-gray-600" fill="currentColor"></rect>
                     </pattern>
                 </defs>
                 <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"></rect>
@@ -34,14 +34,14 @@
 
                     <div class="mt-6 md:ml-6 md:mt-0">
                         <div class="text-5xl font-bold">
-                              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-                                    {{ $user->name ?? 'Set your name from panel' }}
-                              </span>
+                          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                                {{ $user->name ?? 'Set your name from panel' }}
+                          </span>
                         </div>
 
                         <div class="mt-6 max-w-2xl">
                             <div class="markdown">
-                                <div class="mb-3 text-gray-400">
+                                <div class="mb-3 text-gray-900 dark:text-gray-400">
                                     @if($user)
                                         {!! $user->bio !!}
                                     @else
