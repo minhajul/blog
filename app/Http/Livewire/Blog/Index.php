@@ -27,7 +27,7 @@ class Index extends Component
             return $query->whereLike(['title', 'status', 'details'], $keywords);
         })->published()
             ->orderByDesc('updated_at')
-            ->paginate(12);
+            ->paginate(9);
 
         return view("livewire.blog.index")->with([
             'blogs' => $blogs
