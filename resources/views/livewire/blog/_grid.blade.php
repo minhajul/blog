@@ -29,7 +29,7 @@
         @empty
             <p>No blog found</p>
         @endforelse
-    
+
     </div>
 
     <div class="py-5">
