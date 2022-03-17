@@ -1968,6 +1968,11 @@ select{
   line-height: 1.75rem;
 }
 
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .font-bold{
   font-weight: 700;
 }
@@ -2280,6 +2285,11 @@ select{
 .hover\:border-gray-300:hover{
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.hover\:border-gray-500:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
 .hover\:bg-gray-700:hover{
