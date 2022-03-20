@@ -26,7 +26,7 @@
                         @include('errors.success')
                         @include('errors.message')
 
-                        <form action="{{ route('profile.blog.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('profile.blogs.store') }}" method="POST" enctype="multipart/form-data">
 
                             {{ csrf_field() }}
 
@@ -80,7 +80,7 @@
 @push('scripts')
     <script>
         (function () {
-            let HOST = "{{ route('upload.file') }}";
+            let HOST = "{{ route('profile.blogs.upload.file') }}";
 
             addEventListener("trix-attachment-add", function (event) {
                 if (event.attachment.file) {

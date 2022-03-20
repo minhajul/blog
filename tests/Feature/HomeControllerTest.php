@@ -16,6 +16,13 @@ class HomeControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_about_page_is_visible()
+    {
+        $response = $this->get(route('about'));
+
+        $response->assertStatus(200);
+    }
+
     public function test_gallery_page_is_visible()
     {
         $response = $this->get(route('gallery'));

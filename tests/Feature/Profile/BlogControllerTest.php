@@ -18,7 +18,7 @@ class BlogControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.blogs'));
+            ->get(route('profile.blogs.index'));
 
         $response->assertStatus(200);
     }
@@ -28,7 +28,7 @@ class BlogControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.blog.create'));
+            ->get(route('profile.blogs.create'));
 
         $response->assertStatus(200);
     }
@@ -40,7 +40,7 @@ class BlogControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->post(route('profile.blog.store'), [
+            ->post(route('profile.blogs.store'), [
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,
@@ -58,7 +58,7 @@ class BlogControllerTest extends TestCase
         $blog = Blog::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.blog.show', $blog));
+            ->get(route('profile.blogs.show', $blog));
 
         $response->assertStatus(200);
     }
@@ -72,7 +72,7 @@ class BlogControllerTest extends TestCase
         $blog = Blog::factory()->create();
 
         $response = $this->actingAs($user)
-            ->post(route('profile.blog.store', $blog), [
+            ->post(route('profile.blogs.store', $blog), [
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,

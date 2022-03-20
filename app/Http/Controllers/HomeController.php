@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Setting;
 use App\Models\Subscriber;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
@@ -34,6 +35,13 @@ class HomeController extends Controller
         }
 
         return redirect()->route('home');
+    }
+
+    public function about()
+    {
+        $user = User::first();
+
+        return view('about', compact('user'));
     }
 
     public function gallery()
