@@ -26,7 +26,7 @@ class BlogRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:2'],
-            'banner' => ['nullable', 'max:10'],
+            'banner' => ['nullable', 'max:1024'],
             'status' => ['required', Rule::in(config('enums.blog_status'))],
             'details' => ['required', 'string'],
         ];

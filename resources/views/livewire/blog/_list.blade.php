@@ -1,5 +1,4 @@
 <div class="py-6 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10">
-
     <div class="max-w-3xl mx-auto md:max-w-3xl">
         @forelse($blogs as $blog)
             <div class="md:flex mb-5 bg-white dark:bg-slate-700 rounded-xl shadow-md overflow-hidden">

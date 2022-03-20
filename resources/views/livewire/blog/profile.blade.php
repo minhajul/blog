@@ -1,5 +1,4 @@
 <div>
-
     <div class="border-b-2 border-gray-100  flex items-center justify-between flex-wrap sm:flex-nowrap">
         <div class="mt-2">
             <h3 class="text-3xl my-5 tracking-tight font-extrabold text-gray-900 sm:text-4xl">

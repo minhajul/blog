@@ -79,19 +79,16 @@ class BlogController extends Controller
 
     public function update(BlogRequest $request, Blog $blog): RedirectResponse
     {
-        if ($request->input('banner')) {
-            $fileName = Str::random(5) . '.' . $request->banner->extension();
-            $bannerPath = $request->banner->storeAs('blog', $fileName);
+        if ($request->file('banner')) {
+            $fileName = Str::random(5) . '.' . $request->file('banner')->extension();
+            $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
 
-            $blog->banner = $bannerPath;
+            $request['banner_path'] = $bannerPath;
         }
 
-        $blog->title = $request->input('title');
-        $blog->status = $request->input('status');
-        $blog->details = $request->input('details');
-        $blog->save();
+        $blog->update($request->all());
 
-        session()->flash('success', 'Your has been updated!');
+        session()->flash('success', 'Your blog has been updated!');
         return redirect()->back();
     }
 }

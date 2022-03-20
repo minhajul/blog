@@ -2,7 +2,7 @@
     <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
         <div class="ml-4 mt-2">
             <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                Subscribe to our newsletter
+                Subscribe to the newsletter
             </h3>
             <p class="mt-2 text-base text-gray-300">
                 The latest news, articles, and resources, sent to your inbox weekly.
