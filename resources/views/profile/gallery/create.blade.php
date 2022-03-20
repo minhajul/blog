@@ -11,7 +11,7 @@
                     <div class="flex items-center justify-between flex-wrap sm:flex-nowrap">
                         <div class="mt-2">
                             <h3 class="text-3xl my-5 tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-                                Add Image
+                                Add Gallery
                             </h3>
                         </div>
                         <div class="ml-4 mt-2 shrink-0">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
 
-                    <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md">
+                    <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md mb-5">
 
                         @include('errors.success')
                         @include('errors.message')
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="mt-5">
-                                <button type="submit" class="mb-5 float-right inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <button type="submit" class="float-right inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Create
                                 </button>
                             </div>

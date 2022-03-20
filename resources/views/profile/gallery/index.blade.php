@@ -22,7 +22,7 @@
 
             <ul role="list" class="py-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-6 xl:gap-x-8">
 
-                @foreach($galleries as $gallery)
+                @forelse($galleries as $gallery)
                     <li class="relative">
                         <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
                             <img src="{{ $gallery->image_url }}" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
@@ -31,13 +31,17 @@
                             </button>
                         </div>
 
-                        <div class="py-4 float-right">
+                        <div class="py-2 float-right">
                             <a onclick="return confirm('Are you sure?')" href="{{ route('profile.gallery.destroy', $gallery) }}" class="focus:outline-none text-red-500 font-normal py-2">
                                 Delete
                             </a>
                         </div>
                     </li>
-                @endforeach
+                @empty
+                    <li class="relative">
+                        No gallery added
+                    </li>
+                @endforelse
 
             </ul>
 

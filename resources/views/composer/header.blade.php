@@ -20,5 +20,5 @@
 
 <meta property="description" content="{{ $setting && $setting->site_description ? $setting->site_description : "Minimal Blog For Personal Use"  }}">
 <title>
-    {{ $setting && $setting->site_title ? $setting->site_title : "Minimal Blog"  }} - {{ config('app.name') }}
+    {{ $setting && $setting->site_title ? $setting->site_title : "Minimal Blog For Personal Use"  }} - {{ config('app.name') }}
 </title>
