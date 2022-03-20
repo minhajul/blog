@@ -6,7 +6,7 @@
                 <div class="shrink-0">
                     <img class="h-48 w-full object-cover" src="{{ $blog->bannerUrl() }}" alt="Banner">
                 </div>
-                <div class="flex-1 bg-white dark:bg-slate-800 p-5 flex flex-col justify-between">
+                <div class="flex-1 bg-white dark:bg-slate-700 p-5 flex flex-col justify-between">
                     <div class="flex-1">
                         <a href="{{ route('home', ['slug' => $blog->slug]) }}" class="block">
                             <p class="transition ease-in-out duration-150 text-xl font-semibold text-slate-900 dark:text-white">
