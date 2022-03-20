@@ -9,7 +9,7 @@
                             Profile
                         </a>
 
-                        <a href="{{ route('profile.blogs.index') }}" class="{{ request()->routeIs('profile.blogs') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
+                        <a href="{{ route('profile.blogs.index') }}" class="{{ request()->routeIs('profile.blogs.index') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
                             Blogs
                         </a>
 

@@ -15,7 +15,7 @@
                             </h3>
                         </div>
                         <div class="ml-4 mt-2 shrink-0">
-                            <a href="{{ route('profile.blogs') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <a href="{{ route('profile.blogs.index') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 View Posted Blogs
                             </a>
                         </div>
