@@ -23,10 +23,10 @@
             </svg>
 
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-800 dark:text-gray-400 sm:text-4xl">
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
                     Gallery
                 </h2>
-                <p class="mt-4 text-lg leading-6 text-gray-500">
+                <p class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">
                     Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.
                 </p>
             </div>
@@ -41,10 +41,10 @@
                                     <span class="sr-only">View details for IMG_4985.HEIC</span>
                                 </button>
                             </div>
-                            <p class="mt-2 block text-sm font-medium text-gray-500 truncate pointer-events-none">
+                            <p class="mt-2 block text-sm font-medium text-slate-500 truncate pointer-events-none">
                                 IMG_4985.HEIC
                             </p>
-                            <p class="block text-sm font-medium text-gray-500 pointer-events-none">
+                            <p class="block text-sm font-medium text-slate-500 pointer-events-none">
                                 3.9 MB
                             </p>
                         </li>

@@ -41,7 +41,7 @@
 
                         <div class="mt-6 max-w-2xl">
                             <div class="markdown">
-                                <div class="mb-3 text-gray-900 dark:text-gray-400">
+                                <div class="mb-3 text-slate-800 dark:text-slate-400">
                                     @if($user)
                                         {!! $user->bio !!}
                                     @else

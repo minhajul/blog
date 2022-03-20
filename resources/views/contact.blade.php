@@ -23,10 +23,10 @@
             </svg>
 
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-800 dark:text-gray-400 sm:text-4xl">
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
                     Contact Us
                 </h2>
-                <p class="mt-4 text-lg leading-6 text-gray-500">
+                <p class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">
                     Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.
                 </p>
             </div>
@@ -40,25 +40,25 @@
                     {{ csrf_field() }}
 
                     <div class="sm:col-span-2">
-                        <label for="name" class="block text-sm font-medium text-gray-500">Name</label>
+                        <label for="name" class="block text-sm font-medium text-slate-400">Name</label>
                         <div class="mt-1">
-                            <input type="text" name="name" id="name" value="{{ old('name') }}" autocomplete="name" class="py-2 px-4 block w-full text-sm shadow-sm bg-transparent focus:ring-gray-500 focus:border-gray-500 border-gray-500 rounded-md">
+                            <input type="text" name="name" id="name" value="{{ old('name') }}" autocomplete="name" class="py-2 px-4 block w-full text-sm text-slate-500 shadow-sm bg-transparent focus:ring-gray-500 focus:border-gray-500 border-gray-500 rounded-md">
                             @error('name')<span class="text-red-500 text-sm italic">{{ $message }}</span>@enderror
                         </div>
                     </div>
 
                     <div class="sm:col-span-2">
-                        <label for="email" class="block text-sm font-medium text-gray-500">Email</label>
+                        <label for="email" class="block text-sm font-medium text-slate-400">Email</label>
                         <div class="mt-1">
-                            <input id="email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" class="py-2 px-4 block w-full text-sm shadow-sm bg-transparent focus:ring-gray-500 focus:border-gray-500 border-gray-500 rounded-md">
+                            <input id="email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" class="py-2 px-4 block w-full text-sm text-slate-500 shadow-sm bg-transparent focus:ring-gray-500 focus:border-gray-500 border-gray-500 rounded-md">
                             @error('email')<span class="text-red-500 text-sm italic">{{ $message }}</span>@enderror
                         </div>
                     </div>
 
                     <div class="sm:col-span-2">
-                        <label for="message" class="block text-sm font-medium text-gray-500">Message</label>
+                        <label for="message" class="block text-sm font-medium text-slate-400">Message</label>
                         <div class="mt-1">
-                            <textarea id="message" name="message" rows="4" class="py-1 px-4 block w-full text-sm shadow-sm bg-transparent focus:ring-gray-500 focus:border-gray-500 border-gray-500 rounded-md">{{ old('email') }}</textarea>
+                            <textarea id="message" name="message" rows="4" class="py-1 px-4 block w-full text-sm text-slate-500 shadow-sm bg-transparent focus:ring-gray-500 focus:border-gray-500 border-gray-500 rounded-md">{{ old('email') }}</textarea>
                             @error('message')<span class="text-red-500 text-sm italic">{{ $message }}</span>@enderror
                         </div>
                     </div>
