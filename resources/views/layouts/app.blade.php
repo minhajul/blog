@@ -12,7 +12,7 @@
 
 <body class="antialiased">
 
-<div class="relative bg-gray-800" @click.away="mobileMenuOpen = false" x-data="{ mobileMenuOpen: false }">
+<div class="relative bg-slate-900" @click.away="mobileMenuOpen = false" x-data="{ mobileMenuOpen: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div class="flex justify-start lg:w-0 lg:flex-1">
@@ -160,11 +160,11 @@
     </div>
 </div>
 
-<main class="bg-gray-100 dark:bg-gray-900">
+<main class="bg-slate-100 dark:bg-slate-800">
     @yield('content')
 </main>
 
-<footer class="bg-gray-800" aria-labelledby="footerHeading">
+<footer class="bg-slate-900" aria-labelledby="footerHeading">
     <h2 id="footerHeading" class="sr-only">Footer</h2>
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-10">
 

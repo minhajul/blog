@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Gallery;
 use App\Models\Setting;
 use App\Models\Subscriber;
 use Illuminate\Http\RedirectResponse;
@@ -37,7 +38,9 @@ class HomeController extends Controller
 
     public function gallery()
     {
-        return view('gallery');
+        $galleries = Gallery::orderByDesc('created_at')->paginate(20);
+
+        return view('gallery', compact('galleries'));
     }
 
     private function getViewStyle(): string
