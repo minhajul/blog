@@ -14,6 +14,13 @@ class Index extends Component
 
     public $keywords = '';
 
+    public $perPage = 9;
+
+    public function loadMore()
+    {
+        $this->perPage = $this->perPage + 9;
+    }
+
     public function mount($viewStyle)
     {
         $this->viewStyle = $viewStyle;
@@ -27,7 +34,7 @@ class Index extends Component
             return $query->whereLike(['title', 'status', 'details'], $keywords);
         })->published()
             ->orderByDesc('updated_at')
-            ->paginate(9);
+            ->paginate($this->perPage);
 
         return view("livewire.blog.index")->with([
             'blogs' => $blogs

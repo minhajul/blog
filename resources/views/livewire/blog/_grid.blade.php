@@ -31,10 +31,5 @@
                 No blog found
             </p>
         @endforelse
-
-    </div>
-
-    <div class="py-5 text-gray-500">
-        {{ $blogs->links() }}
     </div>
 </div>

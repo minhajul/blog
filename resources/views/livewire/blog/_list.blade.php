@@ -28,9 +28,5 @@
                 No blog found
             </p>
         @endforelse
-
-        <div class="py-5">
-            {{ $blogs->links() }}
-        </div>
     </div>
 </div>
