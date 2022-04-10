@@ -57,6 +57,6 @@ class HomeController extends Controller
             return $setting->view;
         }
 
-        return 'list';
+        return 'grid';
     }
 }
