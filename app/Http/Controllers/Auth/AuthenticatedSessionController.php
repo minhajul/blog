@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('home');
+        return redirect()->route('profile.index');
     }
 
     public function destroy(Request $request)
