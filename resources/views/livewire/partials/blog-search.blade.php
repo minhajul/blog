@@ -1,6 +1,6 @@
-<div class="bg-gradient-to-r from-blue-600 to-indigo-500 shadow-md rounded-md mb-10">
+<div class="bg-slate-100 dark:bg-slate-800 mb-10">
     <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-        <h2 class="mb-5 text-3xl font-extrabold text-white sm:text-4xl">
+        <h2 class="mb-5 text-3xl font-extrabold text-slate-500 dark:text-slate-400 sm:text-4xl">
             <span class="block">Search from blog now.</span>
         </h2>
 

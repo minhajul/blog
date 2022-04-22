@@ -14,7 +14,6 @@
       x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
       $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
 >
-
 <div :class="{ 'dark': darkMode === true }">
     <div class="relative bg-slate-900" @click.away="mobileMenuOpen = false">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
