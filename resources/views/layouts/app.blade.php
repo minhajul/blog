@@ -1,167 +1,144 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('composer.header')
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     @livewireStyles
 </head>
 
-<body class="antialiased">
+<body class="antialiased"
+      x-data="{'darkMode': false, mobileMenuOpen: false}"
+      x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
+      $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+>
 
-<div class="relative bg-slate-900" @click.away="mobileMenuOpen = false" x-data="{ mobileMenuOpen: false }">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-            <div class="flex justify-start lg:w-0 lg:flex-1">
-                <a href="{{ route('home') }}">
-                    <span class="sr-only">{{ config('app.name') }}</span>
-                    @if($setting = \App\Models\Setting::first())
-                        <img class="h-8 w-auto sm:h-10" src="{{ $setting->logoUrl() }}" alt="Logo">
-                    @else
-                        <h2 class="text-2xl font-medium text-white hover:text-gray-300 italic">{{ config('app.name') }}</h2>
-                    @endif
-                </a>
-            </div>
-            <div class="-mr-2 -my-2 md:hidden">
-                <button @click="mobileMenuOpen = true" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
-                    <span class="sr-only">Open menu</span>
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
-
-            <nav class="hidden md:flex space-x-10">
-                <a href="{{ route('home') }}" class="text-base font-medium text-white hover:text-gray-300">
-                    Home
-                </a>
-
-                <a href="{{ route('about') }}" class="text-base font-medium text-white hover:text-gray-300">
-                    About Me
-                </a>
-
-                <a href="{{ route('gallery') }}" class="text-base font-medium text-white hover:text-gray-300">
-                    Gallery
-                </a>
-
-                <a href="{{ route('contact.index') }}" class="text-base font-medium text-white hover:text-gray-300">
-                    Contact
-                </a>
-            </nav>
-
-            <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 focus:outline-none rounded-lg text-sm p-2.5">
-                    <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                    </svg>
-                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-
-{{--                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">--}}
-{{--                    <div>--}}
-{{--                        @auth--}}
-{{--                            <button  @click="open = !open" class="text-white hover:text-gray-300 font-normal py-2 px-4 rounded inline-flex items-center">--}}
-{{--                                <span class="mr-1">{{ auth()->user()->name }}</span>--}}
-{{--                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">--}}
-{{--                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>--}}
-{{--                                </svg>--}}
-{{--                            </button>--}}
-{{--                        @else--}}
-{{--                            <a href="{{ route('login') }}" class="whitespace-nowrap text-base font-medium text-white hover:text-gray-300">--}}
-{{--                                Sign in--}}
-{{--                            </a>--}}
-{{--                        @endauth--}}
-{{--                    </div>--}}
-
-{{--                    <transition enter-active-class="transition ease-out duration-100" enter-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">--}}
-{{--                        <div x-show="open" class="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" style="display: none;">--}}
-{{--                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profile</a>--}}
-{{--                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">--}}
-{{--                                <form method="POST" action="{{ route('logout') }}">--}}
-{{--                                    @csrf--}}
-{{--                                    <button type="submit">Sign out</button>--}}
-{{--                                </form>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </transition>--}}
-{{--                </div>--}}
-            </div>
-        </div>
-    </div>
-
-    <div x-show="mobileMenuOpen" class="z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-800 divide-y-2 divide-gray-50">
-            <div class="pt-5 pb-6 px-5">
-                <div class="flex items-center justify-between">
-                    <div>
+<div :class="{ 'dark': darkMode === true }">
+    <div class="relative bg-slate-900" @click.away="mobileMenuOpen = false">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="{{ route('home') }}">
                         <span class="sr-only">{{ config('app.name') }}</span>
                         @if($setting = \App\Models\Setting::first())
                             <img class="h-8 w-auto sm:h-10" src="{{ $setting->logoUrl() }}" alt="Logo">
                         @else
                             <h2 class="text-2xl font-medium text-white hover:text-gray-300 italic">{{ config('app.name') }}</h2>
                         @endif
-                    </div>
-                    <div class="-mr-2">
-                        <button @click="mobileMenuOpen = false" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                            <span class="sr-only">Close menu</span>
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
+                    </a>
                 </div>
-            </div>
 
-            <div class="py-6 px-5 space-y-6">
-                <div class="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a href="{{ route('home') }}" class="text-base font-medium text-gray-300">
+                <div class="-mr-2 -my-2 md:hidden">
+                    <button @click="mobileMenuOpen = true" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                        <span class="sr-only">Open menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+                <nav class="hidden md:flex space-x-10">
+                    <a href="{{ route('home') }}" class="text-base font-medium text-white hover:text-gray-300">
                         Home
                     </a>
 
-                    <a href="{{ route('about') }}" class="text-base font-medium text-gray-300">
+                    <a href="{{ route('about') }}" class="text-base font-medium text-white hover:text-gray-300">
                         About Me
                     </a>
 
-                    <a href="{{ route('gallery') }}" class="text-base font-medium text-gray-300">
+                    <a href="{{ route('gallery') }}" class="text-base font-medium text-white hover:text-gray-300">
                         Gallery
                     </a>
 
-                    <a href="{{ route('contact.index') }}" class="text-base font-medium text-gray-300">
+                    <a href="{{ route('contact.index') }}" class="text-base font-medium text-white hover:text-gray-300">
                         Contact
                     </a>
+                </nav>
+
+                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <div class="flex justify-end items-center space-x-2">
+                        <span class="text-sm text-white dark:text-gray-500">Light</span>
+                        <label for="toggle" class="w-9 h-5 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer duration-300 ease-in-out dark:bg-gray-600">
+                            <div class="toggle-dot bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ease-in-out dark:translate-x-3"></div>
+                        </label>
+                        <span class="text-sm text-gray-400 dark:text-white">Dark</span>
+                        <input id="toggle" type="checkbox" class="hidden" :value="darkMode" @click="darkMode = !darkMode" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" class="z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-800 divide-y-2 divide-gray-50">
+                <div class="pt-5 pb-6 px-5">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="sr-only">{{ config('app.name') }}</span>
+                            @if($setting = \App\Models\Setting::first())
+                                <img class="h-8 w-auto sm:h-10" src="{{ $setting->logoUrl() }}" alt="Logo">
+                            @else
+                                <h2 class="text-2xl font-medium text-white hover:text-gray-300 italic">{{ config('app.name') }}</h2>
+                            @endif
+                        </div>
+                        <div class="-mr-2">
+                            <button @click="mobileMenuOpen = false" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                <span class="sr-only">Close menu</span>
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-6 border-t border-gray-400 pt-4 text-base font-medium text-gray-300">
-                    @auth
-                        <a href="{{ route('profile.index') }}" class="block py-2 text-sm text-gray-300">
-                            {{ auth()->user()->name }}
+                <div class="py-6 px-5 space-y-6">
+                    <div class="grid grid-cols-2 gap-y-4 gap-x-8">
+                        <a href="{{ route('home') }}" class="text-base font-medium text-gray-300">
+                            Home
                         </a>
 
-                        <a class="block py-2 text-sm text-gray-300">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit">Sign out</button>
-                            </form>
+                        <a href="{{ route('about') }}" class="text-base font-medium text-gray-300">
+                            About Me
                         </a>
-                    @else
-                        <a href="{{ route('login') }}" class="block py-2 text-sm text-gray-300">
-                            Sign in
+
+                        <a href="{{ route('gallery') }}" class="text-base font-medium text-gray-300">
+                            Gallery
                         </a>
-                    @endauth
+
+                        <a href="{{ route('contact.index') }}" class="text-base font-medium text-gray-300">
+                            Contact
+                        </a>
+                    </div>
+
+                    <div class="mt-6 border-t border-gray-400 pt-4 text-base font-medium text-gray-300">
+                        @auth
+                            <a href="{{ route('profile.index') }}" class="block py-2 text-sm text-gray-300">
+                                {{ auth()->user()->name }}
+                            </a>
+
+                            <a class="block py-2 text-sm text-gray-300">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit">Sign out</button>
+                                </form>
+                            </a>
+                        @else
+                            <a href="{{ route('login') }}" class="block py-2 text-sm text-gray-300">
+                                Sign in
+                            </a>
+                        @endauth
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<main class="bg-slate-100 dark:bg-slate-800">
-    @yield('content')
-</main>
+    <main class="bg-slate-100 dark:bg-slate-800">
+        @yield('content')
+    </main>
+</div>
 
 <footer class="bg-slate-900" aria-labelledby="footerHeading">
     <h2 id="footerHeading" class="sr-only">Footer</h2>
@@ -212,43 +189,6 @@
 @livewireScripts
 
 @stack('scripts')
-
-<script>
-    let themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    let themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-    // Change the icons inside the button based on previous settings
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        themeToggleLightIcon.classList.remove('hidden');
-    } else {
-        themeToggleDarkIcon.classList.remove('hidden');
-    }
-
-    let themeToggleBtn = document.getElementById('theme-toggle');
-
-    themeToggleBtn.addEventListener('click', function() {
-        themeToggleDarkIcon.classList.toggle('hidden');
-        themeToggleLightIcon.classList.toggle('hidden');
-
-        if (localStorage.getItem('color-theme')) {
-            if (localStorage.getItem('color-theme') === 'light') {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            }
-        } else {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-            }
-        }
-    });
-</script>
 
 </body>
 </html>
