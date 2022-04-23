@@ -1160,10 +1160,6 @@ select{
   margin-right: -0.5rem;
 }
 
-.mr-1{
-  margin-right: 0.25rem;
-}
-
 .mt-8{
   margin-top: 2rem;
 }
@@ -1288,16 +1284,16 @@ select{
   width: 1.5rem;
 }
 
-.w-5{
-  width: 1.25rem;
-}
-
 .w-9{
   width: 2.25rem;
 }
 
 .w-4{
   width: 1rem;
+}
+
+.w-5{
+  width: 1.25rem;
 }
 
 .min-w-0{
@@ -1813,10 +1809,6 @@ select{
   padding: 0.5rem;
 }
 
-.p-2\.5{
-  padding: 0.625rem;
-}
-
 .p-1{
   padding: 0.25rem;
 }
@@ -2298,10 +2290,6 @@ select{
   transition-duration: 300ms;
 }
 
-.duration-100{
-  transition-duration: 100ms;
-}
-
 .ease-in-out{
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -2576,11 +2564,6 @@ select{
 .dark .dark\:text-slate-400{
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
-}
-
-.dark .dark\:text-gray-400{
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .dark .dark\:text-gray-500{
