@@ -26,22 +26,22 @@
                 <div class="md:flex">
                     <div class="h-24 md:h-32 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
                         @if($user)
-                            <img src="{{ $user->avatarUrl() }}" alt="{{ $user->name }}" class="h-24 w-24 shrink-0 rounded-full md:h-32 md:w-32 p-2">
+                            <img x-intersect="$el.classList.add('scale')" src="{{ $user->avatarUrl() }}" alt="{{ $user->name }}" class="h-24 w-24 shrink-0 rounded-full md:h-32 md:w-32 p-2">
                         @else
-                            <img src="https://via.placeholder.com/150x150" alt="Avatar" class="h-24 w-24 shrink-0 rounded-full md:h-32 md:w-32 p-2">
+                            <img x-intersect="$el.classList.add('scale')" src="https://via.placeholder.com/150x150" alt="Avatar" class="h-24 w-24 shrink-0 rounded-full md:h-32 md:w-32 p-2">
                         @endif
                     </div>
 
                     <div class="mt-6 md:ml-6 md:mt-0">
                         <div class="text-5xl font-bold">
-                          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                          <span x-intersect="$el.classList.add('fadeInUp')" class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
                                 {{ $user->name ?? 'Set your name from panel' }}
                           </span>
                         </div>
 
                         <div class="mt-6 max-w-2xl">
                             <div class="markdown">
-                                <div class="mb-3 text-slate-800 dark:text-slate-400">
+                                <div class="mb-3 text-slate-800 dark:text-slate-400" x-intersect="$el.classList.add('fadeInUp')">
                                     @if($user)
                                         {!! $user->bio !!}
                                     @else

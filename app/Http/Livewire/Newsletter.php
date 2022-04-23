@@ -8,42 +8,42 @@ use App\Mail\SubscriberConfirmation;
 
 class Newsletter extends Component
 {
-    public $email;
+    public $email_address;
 
     protected $rules = [
-        'email' => 'required|email'
+        'email_address' => 'required|email'
     ];
 
     public function subscribe()
     {
         $this->validate();
 
-        $subscriber = Subscriber::whereEmail($this->email)->first();
+        $subscriber = Subscriber::whereEmail($this->email_address)->first();
 
         if (!$subscriber) {
             $subscriber = Subscriber::create([
-                'email' => $this->email
+                'email' => $this->email_address
             ]);
 
             \Mail::to($subscriber->email)
                 ->send(new SubscriberConfirmation($subscriber));
 
             $this->reset();
-            session()->flash('success', 'Please check the email to verify.');
+            session()->flash('message', 'Please check the email to verify.');
             return;
         }
 
         $this->reset();
 
         if ($subscriber->isVerified()) {
-            session()->flash('success', 'You are already subscribed to our newsletter.');
+            session()->flash('message', 'You are already subscribed to our newsletter.');
             return;
         }
 
         \Mail::to($subscriber->email)
             ->send(new SubscriberConfirmation($subscriber));
 
-        session()->flash('success', 'You are already subscribed please verify your email.');
+        session()->flash('message', 'You are already subscribed please verify your email.');
     }
 
     public function render()

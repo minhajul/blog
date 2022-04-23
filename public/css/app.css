@@ -2302,6 +2302,68 @@ select{
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
+@-webkit-keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+@keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+.fadeInUp {
+        -webkit-animation: fadeInUp 1s;
+                animation: fadeInUp 1s;
+    }
+
+@-webkit-keyframes scale {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+@keyframes scale {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+.scale {
+        -webkit-animation: scale 1s;
+                animation: scale 1s;
+    }
+
+@media (prefers-reduced-motion) {
+        .fadeInUp,
+        .scale {
+            -webkit-animation: none;
+                    animation: none;
+        }
+    }
+
 .focus-within\:ring-2:focus-within{
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);

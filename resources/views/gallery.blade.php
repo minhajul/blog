@@ -23,10 +23,10 @@
             </svg>
 
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
+                <h2 x-intersect="$el.classList.add('fadeInUp')" class="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
                     Gallery
                 </h2>
-                <p class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">
+                <p x-intersect="$el.classList.add('fadeInUp')" class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">
                     Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.
                 </p>
             </div>
@@ -36,14 +36,14 @@
                 @forelse($galleries as $gallery)
                     <li class="relative">
                         <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                            <img src="{{ $gallery->image_url }}" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                            <img class="object-cover pointer-events-none group-hover:opacity-75" x-intersect="$el.classList.add('scale')" src="{{ $gallery->image_url }}" alt="">
                             <button type="button" class="absolute inset-0 focus:outline-none">
                                 <span class="sr-only">{{ $gallery->id }}</span>
                             </button>
                         </div>
                     </li>
                 @empty
-                    <li class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">No gallery added</li>
+                    <li x-intersect="$el.classList.add('fadeInUp')"  class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">No gallery added</li>
                 @endforelse
 
             </ul>

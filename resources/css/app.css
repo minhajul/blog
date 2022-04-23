@@ -5,3 +5,42 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer utilities {
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fadeInUp {
+        animation: fadeInUp 1s;
+    }
+
+    @keyframes scale {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .scale {
+        animation: scale 1s;
+    }
+
+    @media (prefers-reduced-motion) {
+        .fadeInUp,
+        .scale {
+            animation: none;
+        }
+    }
+}

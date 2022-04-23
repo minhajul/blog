@@ -23,15 +23,15 @@
             </svg>
 
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
+                <h2 x-intersect="$el.classList.add('fadeInUp')" class="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
                     Contact Us
                 </h2>
-                <p class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">
+                <p x-intersect="$el.classList.add('fadeInUp')" class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">
                     Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.
                 </p>
             </div>
 
-            <div class="mt-12">
+            <div class="mt-12"  x-intersect="$el.classList.add('fadeInUp')">
 
                 @include('errors.success')
 
