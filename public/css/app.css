@@ -1040,6 +1040,14 @@ select{
   bottom: 0px;
 }
 
+.-bottom-20{
+  bottom: -5rem;
+}
+
+.-top-20{
+  top: -5rem;
+}
+
 .left-0{
   left: 0px;
 }
@@ -1050,6 +1058,14 @@ select{
 
 .top-0{
   top: 0px;
+}
+
+.bottom-20{
+  bottom: 5rem;
+}
+
+.top-20{
+  top: 5rem;
 }
 
 .z-50{
@@ -1248,6 +1264,10 @@ select{
   height: 13rem;
 }
 
+.h-1\/2{
+  height: 50%;
+}
+
 .min-h-screen{
   min-height: 100vh;
 }
@@ -1330,6 +1350,10 @@ select{
 
 .max-w-lg{
   max-width: 32rem;
+}
+
+.max-w-full{
+  max-width: 100%;
 }
 
 .flex-1{
@@ -2302,6 +2326,45 @@ select{
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
+/*.background-gradient {*/
+
+/*    background-image: linear-gradient(90deg, rgba(var(--color-blue-400), 1), rgba(var(--color-seafoam-400), 1));*/
+
+/*    filter: hue-rotate(0deg);*/
+
+/*    height: 1000px;*/
+
+/*    left: 80%;*/
+
+/*    -webkit-mask-image: radial-gradient(farthest-side at 50% 50%, #000, transparent);*/
+
+/*    mask-image: radial-gradient(farthest-side at 50% 50%, #000, transparent);*/
+
+/*    opacity: .4;*/
+
+/*    position: absolute;*/
+
+/*    top: 50%;*/
+
+/*    transform: translate3d(-50%, -50%, 0);*/
+
+/*    width: 150vw;*/
+
+/*}*/
+
+.background-gradient-pattern {
+        background-image: url(/images/bg-pattern.svg);
+        background-position: 100% 0;
+        background-repeat: repeat;
+        background-size: 20px, 20px;
+        bottom: 0;
+        left: 0;
+        mix-blend-mode: overlay;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
 @-webkit-keyframes fadeInUp {
         0% {
             opacity: 0;
@@ -2741,6 +2804,10 @@ select{
     border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
   }
 
+  .sm\:overflow-hidden{
+    overflow: hidden;
+  }
+
   .sm\:rounded-lg{
     border-radius: 0.5rem;
   }
@@ -2757,6 +2824,11 @@ select{
   .sm\:py-20{
     padding-top: 5rem;
     padding-bottom: 5rem;
+  }
+
+  .sm\:py-24{
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
   .sm\:pt-0{
@@ -2946,6 +3018,11 @@ select{
   .lg\:py-10{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+  }
+
+  .lg\:py-40{
+    padding-top: 10rem;
+    padding-bottom: 10rem;
   }
 }
 

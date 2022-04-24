@@ -7,6 +7,34 @@
 @tailwind utilities;
 
 @layer utilities {
+
+    /*.background-gradient {*/
+    /*    background-image: linear-gradient(90deg, rgba(var(--color-blue-400), 1), rgba(var(--color-seafoam-400), 1));*/
+    /*    filter: hue-rotate(0deg);*/
+    /*    height: 1000px;*/
+    /*    left: 80%;*/
+    /*    -webkit-mask-image: radial-gradient(farthest-side at 50% 50%, #000, transparent);*/
+    /*    mask-image: radial-gradient(farthest-side at 50% 50%, #000, transparent);*/
+    /*    opacity: .4;*/
+    /*    position: absolute;*/
+    /*    top: 50%;*/
+    /*    transform: translate3d(-50%, -50%, 0);*/
+    /*    width: 150vw;*/
+    /*}*/
+
+    .background-gradient-pattern {
+        background-image: url(/images/bg-pattern.svg);
+        background-position: 100% 0;
+        background-repeat: repeat;
+        background-size: 20px, 20px;
+        bottom: 0;
+        left: 0;
+        mix-blend-mode: overlay;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
     @keyframes fadeInUp {
         0% {
             opacity: 0;
