@@ -48,9 +48,9 @@ class BlogController extends Controller
     {
         $bannerPath = null;
 
-        if ($request->input('banner')) {
-            $fileName = Str::random(5) . '.' . $request->input('banner')->extension();
-            $bannerPath = $request->input('banner')->storeAs('blog', $fileName);
+        if ($request->file('banner')) {
+            $fileName = Str::random(5) . '.' . $request->file('banner')->extension();
+            $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
         }
 
         Blog::create([
