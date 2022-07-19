@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Blog extends Model
 {
@@ -17,7 +17,7 @@ class Blog extends Model
         'status',
         'details',
         'banner_path',
-        'hit_count'
+        'hit_count',
     ];
 
     protected $appends = ['short_details'];
@@ -34,7 +34,7 @@ class Blog extends Model
                 $count = 2;
 
                 while (static::whereSlug($slug)->exists()) {
-                    $slug = "{$original}-" . $count++;
+                    $slug = "{$original}-".$count++;
                 }
             }
 
@@ -69,11 +69,11 @@ class Blog extends Model
     {
         $banner = $this->banner_path;
 
-        if (!empty($banner)) {
+        if (! empty($banner)) {
             return asset($banner);
         }
 
-        return "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80";
+        return 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80';
     }
 
     public function isPublished(): bool

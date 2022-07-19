@@ -1,13 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Profile\BlogController;
-use App\Http\Controllers\Profile\InfoController;
 use App\Http\Controllers\Profile\GalleryController;
+use App\Http\Controllers\Profile\InfoController;
 use App\Http\Controllers\Profile\SettingsController;
 use App\Http\Controllers\Profile\SubscriberController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
@@ -33,4 +33,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
-

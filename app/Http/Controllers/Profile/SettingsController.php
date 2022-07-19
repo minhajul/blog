@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Profile;
 
-use App\Models\Setting;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SettingsController extends Controller
 {
@@ -25,12 +25,12 @@ class SettingsController extends Controller
         $request['favicon_path'] = $setting->favicon_path ?? null;
 
         if ($request->file('logo')) {
-            $logoFileName = Str::random(5) . '.' . $request->file('logo')->extension();
+            $logoFileName = Str::random(5).'.'.$request->file('logo')->extension();
             $request['logo_path'] = $request->file('logo')->storeAs('images', $logoFileName);
         }
 
         if ($request->file('favicon')) {
-            $faviconFileName = Str::random(5) . '.' . $request->file('favicon')->extension();
+            $faviconFileName = Str::random(5).'.'.$request->file('favicon')->extension();
             $request['favicon_path'] = $request->file('favicon')->storeAs('images', $faviconFileName);
         }
 
@@ -53,6 +53,7 @@ class SettingsController extends Controller
         }
 
         session()->flash('success', 'Setting updated.');
+
         return redirect()->back();
     }
 }

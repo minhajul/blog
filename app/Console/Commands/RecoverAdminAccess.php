@@ -39,16 +39,18 @@ class RecoverAdminAccess extends Command
     {
         $email = $this->ask('Input Your Email:');
 
-        if (!User::whereEmail($email)->exists()) {
+        if (! User::whereEmail($email)->exists()) {
             $this->error('No user found with the given email.');
+
             return self::FAILURE;
         }
 
         Password::sendResetLink([
-            'email' => $email
+            'email' => $email,
         ]);
 
         $this->info('Password reset link has been sent to your given email.');
+
         return self::SUCCESS;
     }
 }

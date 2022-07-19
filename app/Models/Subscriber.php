@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Subscriber extends Model
 {
@@ -12,7 +12,7 @@ class Subscriber extends Model
 
     protected $fillable = [
         'email',
-        'verified_at'
+        'verified_at',
     ];
 
     // Scope
@@ -35,8 +35,7 @@ class Subscriber extends Model
     public function markAsVerified()
     {
         $this->update([
-            'verified_at' => now()
+            'verified_at' => now(),
         ]);
     }
-
 }

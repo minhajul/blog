@@ -36,8 +36,8 @@ class Index extends Component
             ->orderByDesc('updated_at')
             ->paginate($this->perPage);
 
-        return view("livewire.blog.index")->with([
-            'blogs' => $blogs
+        return view('livewire.blog.index')->with([
+            'blogs' => $blogs,
         ]);
     }
 }

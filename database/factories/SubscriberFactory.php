@@ -23,7 +23,7 @@ class SubscriberFactory extends Factory
     {
         return [
             'email' => $this->faker->safeEmail,
-            'verified_at' => now()
+            'verified_at' => now(),
         ];
     }
 }

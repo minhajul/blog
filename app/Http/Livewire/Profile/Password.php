@@ -3,12 +3,16 @@
 namespace App\Http\Livewire\Profile;
 
 use App\Models\User;
-use Livewire\Component;
 use Illuminate\Http\RedirectResponse;
+use Livewire\Component;
 
 class Password extends Component
 {
-    public $current_password, $password, $password_confirmation;
+    public $current_password;
+
+    public $password;
+
+    public $password_confirmation;
 
     public function mount()
     {
@@ -28,19 +32,21 @@ class Password extends Component
 
         $user = User::find(auth()->id());
 
-        if (!\Hash::check($this->current_password, $user->password)) {
+        if (! \Hash::check($this->current_password, $user->password)) {
             $this->reset();
             session()->flash('error', 'Your current password is wrong!');
+
             return redirect()->back();
         }
 
         $user->update([
-            'password' => $this->password
+            'password' => $this->password,
         ]);
 
         $this->reset();
 
         session()->flash('success', 'You have changed your password!');
+
         return redirect()->back();
     }
 

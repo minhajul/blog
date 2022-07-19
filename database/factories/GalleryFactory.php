@@ -14,7 +14,7 @@ class GalleryFactory extends Factory
     public function definition(): array
     {
         return [
-            'image_path' => $this->faker->imageUrl('public/storage/images', 640, 480)
+            'image_path' => $this->faker->imageUrl('public/storage/images', 640, 480),
         ];
     }
 }

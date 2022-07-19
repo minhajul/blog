@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Contact;
-use App\Http\Controllers\Controller;
 
 class InfoController extends Controller
 {

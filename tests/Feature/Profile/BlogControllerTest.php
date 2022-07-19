@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Profile;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Blog;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
+use Tests\TestCase;
 
 class BlogControllerTest extends TestCase
 {

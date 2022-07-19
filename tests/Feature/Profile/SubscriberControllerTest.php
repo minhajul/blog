@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Profile;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Subscriber;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SubscriberControllerTest extends TestCase
 {

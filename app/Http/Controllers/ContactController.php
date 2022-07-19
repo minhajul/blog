@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -18,12 +18,13 @@ class ContactController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
-            'message' => 'required|string'
+            'message' => 'required|string',
         ]);
 
         Contact::create($validatedData);
 
         session()->flash('success', 'We have received your message. We shall contact you very soon.');
+
         return redirect()->back();
     }
 }

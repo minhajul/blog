@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Profile;
 
-use App\Models\Subscriber;
 use App\Exports\SubscriberExport;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Subscriber;
 use Illuminate\Http\RedirectResponse;
+use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class SubscriberController extends Controller
@@ -23,6 +23,7 @@ class SubscriberController extends Controller
         $subscriber->delete();
 
         session()->flash('success', 'The subscriber has been deleted');
+
         return redirect()->back();
     }
 

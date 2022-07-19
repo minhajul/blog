@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Profile;
 
-use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class InfoControllerTest extends TestCase
 {

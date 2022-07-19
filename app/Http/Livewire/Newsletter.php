@@ -2,16 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use App\Models\Subscriber;
 use App\Mail\SubscriberConfirmation;
+use App\Models\Subscriber;
+use Livewire\Component;
 
 class Newsletter extends Component
 {
     public $email_address;
 
     protected $rules = [
-        'email_address' => 'required|email'
+        'email_address' => 'required|email',
     ];
 
     public function subscribe()
@@ -20,9 +20,9 @@ class Newsletter extends Component
 
         $subscriber = Subscriber::whereEmail($this->email_address)->first();
 
-        if (!$subscriber) {
+        if (! $subscriber) {
             $subscriber = Subscriber::create([
-                'email' => $this->email_address
+                'email' => $this->email_address,
             ]);
 
             \Mail::to($subscriber->email)
@@ -30,6 +30,7 @@ class Newsletter extends Component
 
             $this->reset();
             session()->flash('message', 'Please check the email to verify.');
+
             return;
         }
 
@@ -37,6 +38,7 @@ class Newsletter extends Component
 
         if ($subscriber->isVerified()) {
             session()->flash('message', 'You are already subscribed to our newsletter.');
+
             return;
         }
 

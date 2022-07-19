@@ -38,6 +38,7 @@ class CreateSuperUser extends Command
     {
         if (User::exists()) {
             $this->error('You have already been created a user, please login using that credentials.');
+
             return self::FAILURE;
         }
 
@@ -50,16 +51,18 @@ class CreateSuperUser extends Command
 
         if ($password !== $password_confirmation) {
             $this->error('Password mismatch');
+
             return self::FAILURE;
         }
 
         User::create([
             'name' => $name,
             'email' => $email,
-            'password' =>  $password
+            'password' => $password,
         ]);
 
         $this->info('User has been created. Login using the given credentials.');
+
         return self::SUCCESS;
     }
 }

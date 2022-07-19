@@ -4,6 +4,6 @@ return [
     'blog_status' => [
         'published',
         'drafted',
-        'archived'
+        'archived',
     ],
 ];

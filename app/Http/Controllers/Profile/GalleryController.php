@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
 class GalleryController extends Controller
@@ -24,17 +24,18 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required|image'
+            'image' => 'required|image',
         ]);
 
-        $fileName = Str::random(5) . '.' . $request->file('image')->extension();
+        $fileName = Str::random(5).'.'.$request->file('image')->extension();
         $imagePath = $request->file('image')->storeAs('gallery', $fileName);
 
         Gallery::create([
-            'image_path' => $imagePath
+            'image_path' => $imagePath,
         ]);
 
         session()->flash('success', 'You have added new image to the gallery.');
+
         return redirect()->back();
     }
 
@@ -43,6 +44,7 @@ class GalleryController extends Controller
         $gallery->delete();
 
         session()->flash('success', 'You have deleted gallery.');
+
         return redirect()->back();
     }
 }

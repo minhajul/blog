@@ -3,8 +3,8 @@
 namespace App\Exports;
 
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class SubscriberExport implements FromCollection, WithHeadings
 {
@@ -25,7 +25,7 @@ class SubscriberExport implements FromCollection, WithHeadings
                 'ID' => $subscriber->id,
                 'Email' => $subscriber->email,
                 'Status' => $subscriber->status(),
-                'Created At' => $subscriber->created_at
+                'Created At' => $subscriber->created_at,
             ];
         });
     }
@@ -36,7 +36,7 @@ class SubscriberExport implements FromCollection, WithHeadings
             'ID',
             'Email',
             'Status',
-            'Created At'
+            'Created At',
         ];
     }
 }

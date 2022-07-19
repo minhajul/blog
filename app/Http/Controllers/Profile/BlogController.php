@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Profile;
 
-use App\Models\Blog;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Http\Requests\BlogRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BlogRequest;
+use App\Models\Blog;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -23,7 +23,7 @@ class BlogController extends Controller
 
     public function upload(Request $request): ?string
     {
-        if (!$request->hasFile('file')) {
+        if (! $request->hasFile('file')) {
             return null;
         }
 
@@ -33,11 +33,11 @@ class BlogController extends Controller
 
         $extension = $request->file('file')->getClientOriginalExtension();
 
-        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
         $request->file('file')->storeAs('blog/', $fileNameToStore);
 
-        $path = asset('blog/' . $fileNameToStore);
+        $path = asset('blog/'.$fileNameToStore);
 
         echo $path;
 
@@ -49,7 +49,7 @@ class BlogController extends Controller
         $bannerPath = null;
 
         if ($request->file('banner')) {
-            $fileName = Str::random(5) . '.' . $request->file('banner')->extension();
+            $fileName = Str::random(5).'.'.$request->file('banner')->extension();
             $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
         }
 
@@ -61,6 +61,7 @@ class BlogController extends Controller
         ]);
 
         session()->flash('success', 'Your has been posted!');
+
         return redirect()->back();
     }
 
@@ -74,13 +75,14 @@ class BlogController extends Controller
         $blog->markAsArchived();
 
         session()->flash('success', 'Your has been posted!');
+
         return redirect()->back();
     }
 
     public function update(BlogRequest $request, Blog $blog): RedirectResponse
     {
         if ($request->file('banner')) {
-            $fileName = Str::random(5) . '.' . $request->file('banner')->extension();
+            $fileName = Str::random(5).'.'.$request->file('banner')->extension();
             $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
 
             $request['banner_path'] = $bannerPath;
@@ -89,6 +91,7 @@ class BlogController extends Controller
         $blog->update($request->all());
 
         session()->flash('success', 'Your blog has been updated!');
+
         return redirect()->back();
     }
 }

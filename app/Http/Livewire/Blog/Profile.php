@@ -24,7 +24,7 @@ class Profile extends Component
         $blogs = $this->getBlogs();
 
         return view('livewire.blog.profile')->with([
-            'blogs' => $blogs
+            'blogs' => $blogs,
         ]);
     }
 

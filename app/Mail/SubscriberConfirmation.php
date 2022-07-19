@@ -3,8 +3,8 @@
 namespace App\Mail;
 
 use App\Models\Subscriber;
-use Illuminate\Mail\Mailable;
 use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class SubscriberConfirmation extends Mailable
@@ -33,7 +33,7 @@ class SubscriberConfirmation extends Mailable
         $url = route('subscription.verify', $this->subscriber->email);
 
         return $this->markdown('emails.subscriber.confirmation', [
-            'url' => $url
+            'url' => $url,
         ]);
     }
 }
