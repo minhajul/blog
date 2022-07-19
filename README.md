@@ -4,8 +4,9 @@ Minimal blogging platform for personal use.
 ### Technologies Used
 1. Laravel
 2. Livewire
-3. Tailwind CSS
-4. MySQL
+3. Alpine.js
+4. Tailwind CSS
+5. MySQL
 
 ### Installation Process
 1. Clone or Download this project
