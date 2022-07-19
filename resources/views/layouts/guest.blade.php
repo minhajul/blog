@@ -5,9 +5,8 @@
 
         @include('composer.header')
 
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
         <div class="font-sans antialiased">

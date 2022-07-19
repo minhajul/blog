@@ -1,15 +1,15 @@
 import Alpine from 'alpinejs'
 import intersect from '@alpinejs/intersect'
 
-window._ = require('lodash');
+window._ = import('lodash');
 
-window.axios = require('axios');
+window.axios = import('axios');
 
-window.Popper = require('popper.js').default;
-window.$ = require('jquery');
-window.jQuery = require('jquery');
+window.Popper = import('popper.js').default;
+window.$ = import('jquery');
+window.jQuery = import('jquery');
 
-window.trix = require('trix');
+window.trix = import('trix');
 
 window.Alpine = Alpine
 Alpine.plugin(intersect)

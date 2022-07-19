@@ -1,0 +1,55 @@
+{
+  "resources/js/app.js": {
+    "file": "assets/app.a101d299.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "_lodash.79e12a03.js",
+      "_index.ce36772a.js",
+      "node_modules/popper.js/dist/esm/popper.js",
+      "_jquery.b7aaa879.js",
+      "_trix.ffc24543.js"
+    ]
+  },
+  "_lodash.79e12a03.js": {
+    "file": "assets/lodash.79e12a03.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__commonjsHelpers.b8add541.js"
+    ]
+  },
+  "__commonjsHelpers.b8add541.js": {
+    "file": "assets/_commonjsHelpers.b8add541.js"
+  },
+  "_index.ce36772a.js": {
+    "file": "assets/index.ce36772a.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__commonjsHelpers.b8add541.js"
+    ]
+  },
+  "node_modules/popper.js/dist/esm/popper.js": {
+    "file": "assets/popper.64ade8cd.js",
+    "src": "node_modules/popper.js/dist/esm/popper.js",
+    "isDynamicEntry": true
+  },
+  "_jquery.b7aaa879.js": {
+    "file": "assets/jquery.b7aaa879.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__commonjsHelpers.b8add541.js"
+    ]
+  },
+  "_trix.ffc24543.js": {
+    "file": "assets/trix.ffc24543.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__commonjsHelpers.b8add541.js"
+    ]
+  },
+  "resources/css/app.css": {
+    "file": "assets/app.e5b27f3a.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  }
+}
