@@ -8,7 +8,7 @@
                 <div class="flex-1">
                     <a href="{{ route('home', ['slug' => $blog->slug]) }}" class="block">
                         <p class="transition ease-in-out duration-150 text-xl font-semibold text-slate-900 dark:text-white">
-                            {{ $blog->title }}
+                            {{ $blog->title }} {{ $blog->id }}
                         </p>
                         <p class="mt-3 text-base text-slate-500 dark:text-slate-400">
                             {{ $blog->short_details }}
