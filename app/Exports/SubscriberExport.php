@@ -15,9 +15,6 @@ class SubscriberExport implements FromCollection, WithHeadings
         $this->subscribers = $subscribers;
     }
 
-    /**
-     * @return Collection
-     */
     public function collection(): Collection
     {
         return $this->subscribers->map(function ($subscriber) {
