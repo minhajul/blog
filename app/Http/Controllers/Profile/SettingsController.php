@@ -7,10 +7,11 @@ use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class SettingsController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $setting = Setting::first();
 

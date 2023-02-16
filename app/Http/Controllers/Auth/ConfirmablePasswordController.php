@@ -8,10 +8,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class ConfirmablePasswordController extends Controller
 {
-    public function show(Request $request)
+    public function show(Request $request): View
     {
         return view('auth.confirm-password');
     }

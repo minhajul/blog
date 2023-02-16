@@ -4,24 +4,26 @@ namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class GalleryController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $galleries = Gallery::orderByDesc('created_at')->paginate(20);
 
         return view('profile.gallery.index', compact('galleries'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('profile.gallery.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'image' => 'required|image',
@@ -39,7 +41,7 @@ class GalleryController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(Gallery $gallery)
+    public function destroy(Gallery $gallery): RedirectResponse
     {
         $gallery->delete();
 

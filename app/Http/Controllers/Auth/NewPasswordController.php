@@ -8,10 +8,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class NewPasswordController extends Controller
 {
-    public function create(Request $request)
+    public function create(Request $request): View
     {
         return view('auth.reset-password', ['request' => $request]);
     }

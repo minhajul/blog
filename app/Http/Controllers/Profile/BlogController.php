@@ -8,15 +8,16 @@ use App\Models\Blog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('profile.blogs.index');
     }
 
-    public function create()
+    public function create(): View
     {
         return view('profile.blogs.create');
     }
@@ -65,7 +66,7 @@ class BlogController extends Controller
         return redirect()->back();
     }
 
-    public function show(Blog $blog)
+    public function show(Blog $blog): View
     {
         return view('profile.blogs.update', compact('blog'));
     }

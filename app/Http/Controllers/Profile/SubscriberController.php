@@ -6,12 +6,13 @@ use App\Exports\SubscriberExport;
 use App\Http\Controllers\Controller;
 use App\Models\Subscriber;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class SubscriberController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $subscribers = Subscriber::paginate(30);
 

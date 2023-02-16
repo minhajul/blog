@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Profile;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Contact;
+use Illuminate\View\View;
 
 class InfoController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $user = auth()->user();
 
@@ -17,7 +18,7 @@ class InfoController extends Controller
         return view('profile.index', compact('user', 'analytics'));
     }
 
-    public function contacts()
+    public function contacts(): View
     {
         $contacts = Contact::paginate(20);
 

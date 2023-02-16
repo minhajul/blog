@@ -8,10 +8,11 @@ use App\Models\Setting;
 use App\Models\Subscriber;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         if ($slug = request('slug')) {
             $blog = Blog::whereSlug($slug)->firstOrFail();
@@ -37,14 +38,14 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    public function about()
+    public function about(): View
     {
         $user = User::first();
 
         return view('about', compact('user'));
     }
 
-    public function gallery()
+    public function gallery(): View
     {
         $galleries = Gallery::orderByDesc('created_at')->paginate(20);
 
