@@ -6,6 +6,6 @@
             </h2>
         </div>
 
-        <input type="text" wire:model="keywords" class="w-full block appearance-none bg-white border border-gray-400 px-5 py-3 text-sm rounded shadow leading-tight focus:outline-none" placeholder="Search blog">
+        <input type="text" wire:model.live="keywords" class="w-full block appearance-none bg-white border border-gray-400 px-5 py-3 text-sm rounded shadow leading-tight focus:outline-none" placeholder="Search blog">
     </div>
 </div>
