@@ -3,8 +3,6 @@
     <head>
         <title>Minimal Blog For Personal Use - {{ config('app.name') }}</title>
 
-        @include('composer.header')
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
