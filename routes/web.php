@@ -13,8 +13,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->name('subscription.verify');
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [InfoController::class, 'index'])->name('profile.index');
@@ -33,3 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

@@ -1,4 +1,7 @@
-module.exports = {
+import forms from "@tailwindcss/forms";
+import aspectRatio from "@tailwindcss/aspect-ratio";
+
+export default {
     darkMode: 'class',
     content: [
         "./resources/**/*.blade.php",
@@ -19,7 +22,7 @@ module.exports = {
         },
     },
     plugins: [
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/aspect-ratio')
+        forms,
+        aspectRatio
     ],
 };

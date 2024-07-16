@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Blog;
+namespace App\Livewire\Blog;
 
 use App\Models\Blog;
 use Livewire\Component;
@@ -30,9 +30,11 @@ class Index extends Component
     {
         $keywords = $this->keywords;
 
-        $blogs = Blog::when($keywords, function ($query) use ($keywords) {
-            return $query->whereLike(['title', 'status', 'details'], $keywords);
-        })->published()
+        $blogs = Blog::query()
+            ->when($keywords, function ($query) use ($keywords) {
+                return $query->whereLike(['title', 'status', 'details'], $keywords);
+            })
+            ->published()
             ->orderByDesc('updated_at')
             ->paginate($this->perPage);
 
