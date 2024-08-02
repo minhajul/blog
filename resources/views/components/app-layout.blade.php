@@ -159,7 +159,7 @@
     </div>
 
     <main class="bg-slate-100 dark:bg-slate-800">
-        @yield('content')
+        {{ $slot }}
     </main>
 </div>
 

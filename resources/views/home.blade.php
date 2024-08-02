@@ -1,10 +1,6 @@
-@extends('layouts.app')
-
-@section('content')
-
+<x-app-layout>
     <livewire:blog.index :viewStyle="$viewStyle"/>
-
-@endsection
+</x-app-layout>
 
 @push('scripts')
     <script type="text/javascript">

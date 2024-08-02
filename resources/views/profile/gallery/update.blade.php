@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
-
-    @include('profile._nav')
+    <x-profile.nav/>
 
     <div class="bg-gray-100">
         <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -15,7 +13,8 @@
                             </h3>
                         </div>
                         <div class="ml-4 mt-2 shrink-0">
-                            <a href="{{ route('profile.blogs') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <a href="{{ route('profile.blogs') }}"
+                               class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 View Posted Blogs
                             </a>
                         </div>
@@ -25,7 +24,8 @@
                     @include('errors.message')
 
                     <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md">
-                        <form method="post" action="{{ route('profile.blog.update', $blog) }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('profile.blog.update', $blog) }}"
+                              enctype="multipart/form-data">
 
                             {{ csrf_field() }}
 
@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
 
 @push('scripts')
     <script>

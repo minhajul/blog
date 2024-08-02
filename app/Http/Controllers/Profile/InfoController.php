@@ -20,19 +20,23 @@ class InfoController extends Controller
 
     public function contacts(): View
     {
-        $contacts = Contact::paginate(20);
+        $contacts = Contact::query()->paginate(20);
 
         return view('profile.contact.index', compact('contacts'));
     }
 
     protected function getAnalytics(): array
     {
-        $blogs = Blog::all();
+        $blogStatistics = Blog::selectRaw('
+                COUNT(*) as total_blogs,
+                SUM(case when status = "published" then 1 else 0 end) as published_blogs,
+                SUM(hit_count) as total_hits')
+            ->first();
 
         return [
-            'posted_blog' => $blogs->count(),
-            'total_hit_count' => $blogs->sum('hit_count'),
-            'total_published_blog' => $blogs->where('status', 'published')->count(),
+            'posted_blog' => $blogStatistics->total_blogs,
+            'total_hit_count' => $blogStatistics->total_hits,
+            'total_published_blog' => $blogStatistics->published_blogs,
         ];
     }
 }

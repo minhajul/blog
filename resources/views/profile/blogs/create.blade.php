@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
-
-    @include('profile._nav')
+    <x-profile.nav/>
 
     <div class="bg-gray-100">
         <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -15,7 +13,8 @@
                             </h3>
                         </div>
                         <div class="ml-4 mt-2 shrink-0">
-                            <a href="{{ route('profile.blogs.index') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <a href="{{ route('profile.blogs.index') }}"
+                               class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 View Posted Blogs
                             </a>
                         </div>
@@ -36,8 +35,10 @@
                                         Title <span class="text-red-500">*</span>
                                     </label>
 
-                                    <input type="text" name="title" value="{{ old('title') }}" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
-                                    @error('title') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
+                                    <input type="text" name="title" value="{{ old('title') }}"
+                                           class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                                    @error('title') <span
+                                        class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="col-span-6">
@@ -45,8 +46,10 @@
                                         Upload Banner <span class="text-red-500">*</span>
                                     </label>
 
-                                    <input type="file" name="banner" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
-                                    @error('banner') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
+                                    <input type="file" name="banner"
+                                           class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                                    @error('banner') <span
+                                        class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="col-span-6">
@@ -56,16 +59,19 @@
 
                                     <input id="x" type="hidden" name="details" value="{{ old('details') }}">
                                     <trix-editor name="details" input="x"></trix-editor>
-                                    @error('details') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
+                                    @error('details') <span
+                                        class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="mt-5">
-                                <button type="submit" name="status" value="drafted" class="mb-5 float-left inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <button type="submit" name="status" value="drafted"
+                                        class="mb-5 float-left inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Save as Draft
                                 </button>
 
-                                <button type="submit" name="status" value="published" class="mb-5 float-right inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <button type="submit" name="status" value="published"
+                                        class="mb-5 float-right inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Publish Blog
                                 </button>
                             </div>
@@ -75,7 +81,7 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
 
 @push('scripts')
     <script>

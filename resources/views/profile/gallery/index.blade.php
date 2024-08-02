@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
-
-    @include('profile._nav')
+    <x-profile.nav/>
 
     <div class="bg-gray-100">
         <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -44,7 +42,6 @@
                 @endforelse
 
             </ul>
-
         </div>
     </div>
-@endsection
+</x-app-layout>

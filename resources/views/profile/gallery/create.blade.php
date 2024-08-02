@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
-
-    @include('profile._nav')
+    <x-profile.nav/>
 
     <div class="bg-gray-100">
         <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -15,7 +13,8 @@
                             </h3>
                         </div>
                         <div class="ml-4 mt-2 shrink-0">
-                            <a href="{{ route('profile.gallery.index') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <a href="{{ route('profile.gallery.index') }}"
+                               class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 View Gallery
                             </a>
                         </div>
@@ -36,14 +35,17 @@
                                         Upload Image <span class="text-red-500">*</span>
                                     </label>
 
-                                    <input type="file" name="image" class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
-                                    @error('image') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
+                                    <input type="file" name="image"
+                                           class="mt-2 shadow-sm appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none">
+                                    @error('image') <span
+                                        class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
                                 </div>
 
                             </div>
 
                             <div class="mt-5">
-                                <button type="submit" class="float-right inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <button type="submit"
+                                        class="float-right inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Create
                                 </button>
                             </div>
@@ -53,4 +55,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
