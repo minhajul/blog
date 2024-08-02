@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\BlogStatus;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 
 class BlogRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class BlogRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:2'],
             'banner' => ['nullable', 'max:1024'],
-            'status' => ['required', Rule::in(config('enums.blog_status'))],
+            'status' => ['required', new Enum(BlogStatus::class)],
             'details' => ['required', 'string'],
         ];
     }
