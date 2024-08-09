@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use JsonException;
 use Tests\TestCase;
 
 class BlogControllerTest extends TestCase
@@ -33,9 +35,12 @@ class BlogControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * @throws JsonException
+     */
     public function test_authenticated_user_can_create_blog()
     {
-        \Storage::fake('blog');
+        Storage::fake('blog');
 
         $user = User::factory()->create();
 
@@ -63,9 +68,12 @@ class BlogControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * @throws JsonException
+     */
     public function test_authenticated_user_can_update_blog()
     {
-        \Storage::fake('blog');
+        Storage::fake('blog');
 
         $user = User::factory()->create();
 

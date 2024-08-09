@@ -5,6 +5,7 @@ namespace Tests\Feature\Profile;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use JsonException;
 use Tests\TestCase;
 
 class SettingsControllerTest extends TestCase
@@ -21,6 +22,9 @@ class SettingsControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * @throws JsonException
+     */
     public function test_authenticated_user_can_update_setting()
     {
         $user = User::factory()->create();

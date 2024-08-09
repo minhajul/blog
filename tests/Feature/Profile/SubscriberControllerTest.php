@@ -5,6 +5,7 @@ namespace Tests\Feature\Profile;
 use App\Models\Subscriber;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use JsonException;
 use Tests\TestCase;
 
 class SubscriberControllerTest extends TestCase
@@ -21,6 +22,9 @@ class SubscriberControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * @throws JsonException
+     */
     public function test_authenticated_user_can_delete_specific_subscriber()
     {
         $user = User::factory()->create();

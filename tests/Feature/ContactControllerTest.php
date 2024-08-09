@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use JsonException;
 use Tests\TestCase;
 
 class ContactControllerTest extends TestCase
@@ -16,6 +17,9 @@ class ContactControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * @throws JsonException
+     */
     public function test_user_can_submit_contact()
     {
         $response = $this->post(route('contact.store'), [
