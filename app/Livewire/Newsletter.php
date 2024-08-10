@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Mail\SubscriberConfirmation;
 use App\Models\Subscriber;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Newsletter extends Component
@@ -20,12 +21,12 @@ class Newsletter extends Component
 
         $subscriber = Subscriber::whereEmail($this->email_address)->first();
 
-        if (! $subscriber) {
+        if (!$subscriber) {
             $subscriber = Subscriber::create([
                 'email' => $this->email_address,
             ]);
 
-            \Mail::to($subscriber->email)
+            Mail::to($subscriber->email)
                 ->send(new SubscriberConfirmation($subscriber));
 
             $this->reset();
@@ -42,7 +43,7 @@ class Newsletter extends Component
             return;
         }
 
-        \Mail::to($subscriber->email)
+        Mail::to($subscriber->email)
             ->send(new SubscriberConfirmation($subscriber));
 
         session()->flash('message', 'You are already subscribed please verify your email.');
