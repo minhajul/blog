@@ -15,7 +15,7 @@ class Subscriber extends Model
         'verified_at',
     ];
 
-    // Scope
+    // Scopes
     public function scopeVerified(Builder $builder): Builder
     {
         return $builder->where('verified_at', '!=', null);

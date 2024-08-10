@@ -20,7 +20,7 @@ class Gallery extends Model
     {
         $imagePath = $this->image_path;
 
-        if (! empty($imagePath)) {
+        if (!empty($imagePath)) {
             return asset($imagePath);
         }
 

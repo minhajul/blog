@@ -30,10 +30,8 @@ class SubscriberConfirmation extends Mailable
      */
     public function build(): SubscriberConfirmation
     {
-        $url = route('subscription.verify', $this->subscriber->email);
-
         return $this->markdown('emails.subscriber.confirmation', [
-            'url' => $url,
+            'url' => route('subscription.verify', $this->subscriber->email),
         ]);
     }
 }

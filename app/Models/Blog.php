@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -34,7 +35,7 @@ class Blog extends Model
                 $count = 2;
 
                 while (static::whereSlug($slug)->exists()) {
-                    $slug = "{$original}-".$count++;
+                    $slug = "{$original}-" . $count++;
                 }
             }
 
@@ -59,9 +60,11 @@ class Blog extends Model
     }
 
     // Accessor
-    public function getShortDetailsAttribute(): string
+    public function shortDetails()
     {
-        return Str::limit(strip_tags($this->details), 200);
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => Str::limit(strip_tags($attributes['details']), 200)
+        );
     }
 
     // Methods
@@ -69,7 +72,7 @@ class Blog extends Model
     {
         $banner = $this->banner_path;
 
-        if (! empty($banner)) {
+        if (!empty($banner)) {
             return asset($banner);
         }
 
