@@ -27,10 +27,9 @@
         Minimal Blog For Personal Use - {{ config('app.name') }}
     </title>
 
+    @livewireStyles
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    @livewireStyles
 </head>
 
 <body class="antialiased"

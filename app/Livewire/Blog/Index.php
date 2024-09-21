@@ -14,11 +14,11 @@ class Index extends Component
 
     public $keywords = '';
 
-    public $perPage = 9;
+    public $perPage = 3;
 
     public function loadMore()
     {
-        $this->perPage = $this->perPage + 9;
+        $this->perPage = $this->perPage + 3;
     }
 
     public function mount($viewStyle)
@@ -29,6 +29,8 @@ class Index extends Component
     public function render()
     {
         $keywords = $this->keywords;
+
+        sleep(1);
 
         $blogs = Blog::query()
             ->when($keywords, function ($query) use ($keywords) {
