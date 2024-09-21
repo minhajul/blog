@@ -14,11 +14,11 @@ class Index extends Component
 
     public $keywords = '';
 
-    public $perPage = 3;
+    public $perPage = 9;
 
     public function loadMore()
     {
-        $this->perPage = $this->perPage + 3;
+        $this->perPage = $this->perPage + 9;
     }
 
     public function mount($viewStyle)
