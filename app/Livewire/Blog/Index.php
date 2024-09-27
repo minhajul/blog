@@ -28,20 +28,25 @@ class Index extends Component
 
     public function render()
     {
-        $keywords = $this->keywords;
-
-        sleep(1);
-
-        $blogs = Blog::query()
-            ->when($keywords, function ($query) use ($keywords) {
-                return $query->whereLike(['title', 'status', 'details'], $keywords);
-            })
-            ->published()
-            ->orderByDesc('updated_at')
-            ->paginate($this->perPage);
+        $blogs = $this->getFilteredBlogs();
 
         return view('livewire.blog.index')->with([
             'blogs' => $blogs,
         ]);
+    }
+
+    private function getFilteredBlogs()
+    {
+        $keywords = $this->keywords;
+
+        sleep(1);
+
+        return Blog::query()
+            ->when($keywords, fn($query) =>
+            $query->whereLike(['title', 'status', 'details'], $keywords)
+            )
+            ->published()
+            ->orderByDesc('updated_at')
+            ->paginate($this->perPage);
     }
 }
