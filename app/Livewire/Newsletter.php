@@ -19,38 +19,36 @@ class Newsletter extends Component
     {
         $this->validate();
 
-        $subscriber = Subscriber::whereEmail($this->email_address)->first();
-
-        if (!$subscriber) {
-            $subscriber = Subscriber::create([
-                'email' => $this->email_address,
-            ]);
-
-            Mail::to($subscriber->email)
-                ->send(new SubscriberConfirmation($subscriber));
-
-            $this->reset();
-            session()->flash('message', 'Please check the email to verify.');
-
-            return;
-        }
+        $subscriber = Subscriber::firstOrCreate(
+            ['email' => $this->email_address],
+            ['email' => $this->email_address]
+        );
 
         $this->reset();
 
-        if ($subscriber->isVerified()) {
-            session()->flash('message', 'You are already subscribed to our newsletter.');
-
+        if ($subscriber->wasRecentlyCreated) {
+            $this->sendConfirmationEmail($subscriber);
+            session()->flash('message', 'Please check the email to verify.');
             return;
         }
 
-        Mail::to($subscriber->email)
-            ->send(new SubscriberConfirmation($subscriber));
+        if ($subscriber->isVerified()) {
+            session()->flash('message', 'You are already subscribed to our newsletter.');
+            return;
+        }
 
-        session()->flash('message', 'You are already subscribed please verify your email.');
+        $this->sendConfirmationEmail($subscriber);
+        session()->flash('message', 'You are already subscribed, please verify your email.');
     }
 
     public function render()
     {
         return view('livewire.newsletter');
+    }
+
+    protected function sendConfirmationEmail($subscriber)
+    {
+        Mail::to($subscriber->email)
+            ->send(new SubscriberConfirmation($subscriber));
     }
 }
