@@ -42,9 +42,7 @@ class Index extends Component
         sleep(1);
 
         return Blog::query()
-            ->when($keywords, fn($query) =>
-            $query->whereLike(['title', 'status', 'details'], $keywords)
-            )
+            ->when($keywords, fn($query) => $query->whereLike(['title', 'status', 'details'], $keywords))
             ->published()
             ->orderByDesc('updated_at')
             ->paginate($this->perPage);
