@@ -47,14 +47,9 @@ class SettingsController extends Controller
             'google_site_verification_code',
         );
 
-        if ($setting) {
-            $setting->update($inputs);
-        } else {
-            Setting::create($inputs);
-        }
+        $setting ? $setting->update($inputs) : Setting::create($inputs);
 
         session()->flash('success', 'Setting updated.');
-
         return redirect()->back();
     }
 }

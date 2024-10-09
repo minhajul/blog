@@ -25,7 +25,6 @@ class ContactController extends Controller
         Contact::create($validatedData);
 
         session()->flash('success', 'We have received your message. We shall contact you very soon.');
-
         return redirect()->back();
     }
 }

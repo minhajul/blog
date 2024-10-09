@@ -62,7 +62,6 @@ class BlogController extends Controller
         ]);
 
         session()->flash('success', 'Your has been posted!');
-
         return redirect()->back();
     }
 
@@ -92,7 +91,6 @@ class BlogController extends Controller
         $blog->update($request->all());
 
         session()->flash('success', 'Your blog has been updated!');
-
         return redirect()->back();
     }
 }

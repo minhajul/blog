@@ -24,7 +24,6 @@ class SubscriberController extends Controller
         $subscriber->delete();
 
         session()->flash('success', 'The subscriber has been deleted');
-
         return redirect()->back();
     }
 

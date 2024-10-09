@@ -29,7 +29,7 @@ class InfoController extends Controller
     {
         $blogStatistics = Blog::selectRaw('
                 COUNT(*) as total_blogs,
-                SUM(case when status = "published" then 1 else 0 end) as published_blogs,
+                SUM(CASE WHEN status = "published" THEN 1 ELSE 0 END) as published_blogs,
                 SUM(hit_count) as total_hits')
             ->first();
 
