@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,9 +25,11 @@ class User extends Authenticatable
     ];
 
     // Mutator
-    public function setPasswordAttribute($value)
+    protected function password(): Attribute
     {
-        $this->attributes['password'] = bcrypt($value);
+        return Attribute::make(
+            set: fn($value) => bcrypt($value)
+        );
     }
 
     // Methods
