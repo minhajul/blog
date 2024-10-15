@@ -30,8 +30,8 @@ class Index extends Component
 
         $avatar_url = $this->user->avatar_url;
 
-        if (! is_null($this->avatar)) {
-            $file_name = $this->user->name.'-'.Str::random(5).'.'.$this->avatar->extension();
+        if (!is_null($this->avatar)) {
+            $file_name = $this->user->name . '-' . Str::random(5) . '.' . $this->avatar->extension();
             $avatar_url = $this->avatar->storeAs('avatar', $file_name);
         }
 
