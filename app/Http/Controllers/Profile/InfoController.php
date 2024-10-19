@@ -27,6 +27,13 @@ class InfoController extends Controller
 
     protected function getAnalytics(): array
     {
+        /**
+         * @var object{
+         *     total_blogs: int,
+         *     published_blogs: int,
+         *     total_hits: int
+         * } $blogStatistics
+         */
         $blogStatistics = Blog::selectRaw('
                 COUNT(*) as total_blogs,
                 SUM(CASE WHEN status = "published" THEN 1 ELSE 0 END) as published_blogs,
