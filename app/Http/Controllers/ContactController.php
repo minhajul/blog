@@ -14,14 +14,17 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function store(Request $request): RedirectResponse {
+    public function store(Request $request): RedirectResponse
+    {
         $validatedData = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
             'message' => 'required|string',
-        ]); Contact::create($validatedData);
+        ]);
+        Contact::create($validatedData);
 
         session()->flash('success', 'We have received your message. We shall contact you very soon.');
+
         return redirect()->back();
     }
 }

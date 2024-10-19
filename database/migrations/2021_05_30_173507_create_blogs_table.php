@@ -18,7 +18,7 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->enum('status', array_map(fn($status) => $status->value, BlogStatus::cases()))
+            $table->enum('status', array_map(fn ($status) => $status->value, BlogStatus::cases()))
                 ->default(BlogStatus::PUBLISHED->value);
             $table->string('banner_path')->nullable();
             $table->longText('details');

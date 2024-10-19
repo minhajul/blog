@@ -29,11 +29,13 @@ class Newsletter extends Component
         if ($subscriber->wasRecentlyCreated) {
             $this->sendConfirmationEmail($subscriber);
             session()->flash('message', 'Please check the email to verify.');
+
             return;
         }
 
         if ($subscriber->isVerified()) {
             session()->flash('message', 'You are already subscribed to our newsletter.');
+
             return;
         }
 
