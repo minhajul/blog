@@ -1,0 +1,27 @@
+name: No Plans to Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  no-plans-to-merge:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == false
+
+    steps:
+      - name: Output Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo $GITHUB_CONTEXT
+      - name: Create a Comment on the PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'No plans to merge 👍'
+            })
