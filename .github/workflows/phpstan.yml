@@ -26,4 +26,4 @@ jobs:
           composer update --prefer-dist --no-interaction
 
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan --memory-limit=-1
+        run: ./vendor/bin/phpstan --error-format=github
