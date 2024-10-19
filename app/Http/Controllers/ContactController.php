@@ -19,9 +19,7 @@ class ContactController extends Controller
             'name' => 'required|string',
             'email' => 'required|email',
             'message' => 'required|string',
-        ]);
-
-        Contact::create($validatedData);
+        ]); Contact::create($validatedData);
 
         session()->flash('success', 'We have received your message. We shall contact you very soon.');
         return redirect()->back();
