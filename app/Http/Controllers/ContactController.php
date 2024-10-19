@@ -14,7 +14,8 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function store(Request $request): RedirectResponse {
+    public function store(Request $request): RedirectResponse
+    {
         $validatedData = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
