@@ -33,7 +33,7 @@ class Password extends Component
 
         $user = User::find(auth()->id());
 
-        if (!Hash::check($this->current_password, $user->password)) {
+        if (! Hash::check($this->current_password, $user->password)) {
             $this->reset();
             session()->flash('error', 'Your current password is wrong!');
 
@@ -47,6 +47,7 @@ class Password extends Component
         $this->reset();
 
         session()->flash('success', 'You have changed your password!');
+
         return redirect()->back();
     }
 

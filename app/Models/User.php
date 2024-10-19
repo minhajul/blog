@@ -28,14 +28,14 @@ class User extends Authenticatable
     protected function password(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => bcrypt($value)
+            set: fn ($value) => bcrypt($value)
         );
     }
 
     // Methods
     public function avatarUrl(): string
     {
-        if (!empty($this->avatar_url)) {
+        if (! empty($this->avatar_url)) {
             return asset($this->avatar_url);
         }
 

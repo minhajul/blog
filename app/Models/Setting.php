@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
@@ -22,7 +21,7 @@ class Setting extends Model
     // Methods
     public function logoUrl(): string
     {
-        if (!empty($this->logo_path)) {
+        if (! empty($this->logo_path)) {
             return asset($this->logo_path);
         }
 
@@ -32,7 +31,7 @@ class Setting extends Model
     // Methods
     public function faviconUrl(): string
     {
-        if (!empty($this->favicon_path)) {
+        if (! empty($this->favicon_path)) {
             return asset($this->favicon_path);
         }
 

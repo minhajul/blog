@@ -50,6 +50,7 @@ class SettingsController extends Controller
         $setting ? $setting->update($inputs) : Setting::create($inputs);
 
         session()->flash('success', 'Setting updated.');
+
         return redirect()->back();
     }
 }
