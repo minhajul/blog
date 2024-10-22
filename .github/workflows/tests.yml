@@ -15,7 +15,7 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_DATABASE: blog
+          MYSQL_DATABASE: laravel
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     steps:
