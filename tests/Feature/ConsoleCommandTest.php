@@ -3,14 +3,11 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class ConsoleCommandTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_anonymous_user_can_not_ask_for_password_reset_email()
     {
         $this->artisan('admin:recover-access')

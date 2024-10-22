@@ -2,14 +2,11 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use JsonException;
 use Tests\TestCase;
 
 class ContactControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_contact_screen_can_be_rendered()
     {
         $response = $this->get(route('contact.index'));
