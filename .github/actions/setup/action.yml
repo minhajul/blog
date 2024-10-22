@@ -9,7 +9,7 @@ inputs:
   php-extensions:
     description: The PHP extensions you want to install.
     required: false
-    default: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, redis, igbinary, msgpack, lzf, zstd, lz4, memcached, gmp, :php-psr
+    default: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, igbinary, msgpack, lzf, zstd, lz4, memcached, gmp, :php-psr
   coverage:
     description: The coverage driver to use.
     required: false
