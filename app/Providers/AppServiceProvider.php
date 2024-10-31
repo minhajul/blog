@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,19 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
+    {
+        $this->configureCommands();
+        $this->configureMacros();
+    }
+
+    protected function configureCommands(): void
+    {
+        DB::prohibitDestructiveCommands(
+            $this->app->isProduction()
+        );
+    }
+
+    protected function configureMacros(): void
     {
         Builder::macro('whereLike', function ($attributes, string $searchTerm) {
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {
