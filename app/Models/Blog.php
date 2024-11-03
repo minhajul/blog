@@ -21,7 +21,9 @@ class Blog extends Model
         'hit_count',
     ];
 
-    protected $appends = ['short_details'];
+    protected $appends = [
+        'short_details'
+    ];
 
     protected static function boot()
     {
@@ -35,7 +37,7 @@ class Blog extends Model
                 $count = 2;
 
                 while (static::whereSlug($slug)->exists()) {
-                    $slug = "{$original}-".$count++;
+                    $slug = "$original-" . $count++;
                 }
             }
 
@@ -63,7 +65,7 @@ class Blog extends Model
     public function shortDetails()
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes) => Str::limit(strip_tags($attributes['details']), 200)
+            get: fn(mixed $value, array $attributes) => Str::limit(strip_tags($attributes['details']), 200)
         );
     }
 
@@ -72,7 +74,7 @@ class Blog extends Model
     {
         $banner = $this->banner_path;
 
-        if (! empty($banner)) {
+        if (!empty($banner)) {
             return asset($banner);
         }
 
