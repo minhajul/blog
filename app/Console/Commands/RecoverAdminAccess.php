@@ -39,7 +39,7 @@ class RecoverAdminAccess extends Command
     {
         $email = $this->ask('Input Your Email:');
 
-        if (!User::whereEmail($email)->exists()) {
+        if (! User::whereEmail($email)->exists()) {
             $this->error('No user found with the given email.');
 
             return self::FAILURE;
