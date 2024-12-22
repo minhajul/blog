@@ -22,7 +22,6 @@ class HomeController extends Controller
             return view('show', compact('blog'));
         }
 
-        
         $viewStyle = $this->getViewStyle();
 
         return view('home', compact('viewStyle'));
