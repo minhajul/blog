@@ -41,7 +41,7 @@ class CreateSuperUser extends Command
 
             return self::FAILURE;
         }
-
+        
         $name = $this->ask('Input Your Name:');
 
         $email = $this->ask('Input Your Email:');
