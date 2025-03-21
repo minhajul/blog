@@ -62,6 +62,5 @@ Ensure you have the following installed on your system:
 
    The application will be accessible at `http://127.0.0.1:8000`.
 
-## License
+### License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-```
