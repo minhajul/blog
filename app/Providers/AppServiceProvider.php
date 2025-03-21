@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureCommands();
         $this->configureMacros();
+
+        if (config('app.debug')) {
+            RequestException::dontTruncate();
+        }
     }
 
     protected function configureCommands(): void
