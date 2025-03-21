@@ -6,8 +6,10 @@ import aspectRatio from "@tailwindcss/aspect-ratio";
 export default {
     darkMode: 'class',
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
     ],
     theme: {
         extend: {

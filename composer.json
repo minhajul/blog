@@ -6,14 +6,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.9",
+        "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "laravel/sanctum": "^4.0.0",
         "livewire/livewire": "^3.4.9"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.23",
         "larastan/larastan": "^2.9",
+        "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
@@ -36,8 +36,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -52,7 +51,7 @@
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail\" \"npm run dev\" --names=server,queue,logs,vite"
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
         "analyse" : "vendor/bin/phpstan analyse"
     },
