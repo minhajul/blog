@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\BlogStatus;
 use App\Models\Blog;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,7 +22,7 @@ class BlogFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'status' => $this->faker->randomElement(config('enums.blog_status')),
+            'status' => $this->faker->randomElement(array_map(fn($case) => $case->value, BlogStatus::cases())),
             'details' => $this->faker->paragraph(20),
         ];
     }
