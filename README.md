@@ -1,24 +1,67 @@
-### Minimal Blog 
-Minimal blogging platform for personal use.
+## Minimal Blog
+
+Minimal Blog is a lightweight blogging platform designed for personal use.
 
 ### Technologies Used
-1. Laravel
-2. Livewire
-3. Alpine.js
-4. Tailwind CSS
-5. MySQL
+- **Backend:** Laravel
+- **Frontend:** Livewire, Alpine.js, Tailwind CSS
+- **Database:** MySQL
 
-### Installation Process
-1. Clone or Download this project
-2. Go to the project root directory and execute `composer install` to install all PHP dependencies of the project
-3. `npm install or yarn install` to install javascript dependencies
-4. `cp .env.example .env ` To copy the content of `.env.example` file to newly created `.env` file 
-5. Then execute `php artisan key:generate` on your terminal to generate environment key
-6. Then create a Database for this project and edit the .env file to authorise this project on your database
-7. Execute `php artisan migrate` terminal on your terminal.
-8. Now you are ready to go, If you don't want to create any virtual host for this project then execute
-   `php artisan serve`
-9. Now visit the url shown on your terminal, something like `127.0.0.1:8000`. It's running!
+### Installation Guide
 
-### License
-MIT
+### Prerequisites
+Ensure you have the following installed on your system:
+- PHP (latest stable version recommended)
+- Composer
+- Node.js & npm (or Yarn)
+- MySQL (or a compatible database system)
+
+### Installation Steps
+
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/minhajul/blog.git
+   cd blog
+   ```
+
+2. **Install Dependencies**
+   ```sh
+   composer install
+   npm install  # or yarn install
+   ```
+
+3. **Configure Environment**
+   ```sh
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Set Up the Database**
+    - Create a new database for the project.
+    - Update the `.env` file with your database credentials:
+      ```env
+      DB_DATABASE=your_database_name
+      DB_USERNAME=your_database_user
+      DB_PASSWORD=your_database_password
+      ```
+
+5. **Run Migrations**
+   ```sh
+   php artisan migrate
+   ```
+
+6. **Serve the Application**
+   ```sh
+   php artisan serve
+   ```
+   or 
+    
+    ```sh
+   composer run dev
+   ```
+
+   The application will be accessible at `http://127.0.0.1:8000`.
+
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+```
