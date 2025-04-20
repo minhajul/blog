@@ -33,7 +33,7 @@ runs:
         key: php-extensions-${{ steps.get-cache-hash.outputs.hash }}
 
     - name: Cache extensions
-      uses: actions/cache@v4
+      uses: actions/cache@v4.0.1
       if: inputs.php-extensions == true
       with:
         path: ${{ steps.extcache.outputs.dir }}
