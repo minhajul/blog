@@ -8,6 +8,8 @@
 @source '../**/*.js';
 
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer utilities {
     .background-gradient-pattern {
         background-image: url(/images/bg-pattern.svg);
