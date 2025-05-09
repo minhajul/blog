@@ -13,7 +13,7 @@
         "autoprefixer": "^10.4.20",
         "jquery": "^3.6.0",
         "laravel-vite-plugin": "^1.2.0",
-        "trix": "^2.1.9",
+        "trix": "^2.1.15",
         "@tailwindcss/vite": "^4.0.0",
         "axios": "^1.8.2",
         "concurrently": "^9.0.1",
