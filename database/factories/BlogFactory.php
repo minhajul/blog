@@ -22,7 +22,7 @@ class BlogFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'status' => $this->faker->randomElement(array_map(fn($case) => $case->value, BlogStatus::cases())),
+            'status' => $this->faker->randomElement(array_map(fn ($case) => $case->value, BlogStatus::cases())),
             'details' => $this->faker->paragraph(20),
         ];
     }
