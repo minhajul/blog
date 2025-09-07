@@ -14,9 +14,9 @@
 
     <div class="border-b border-gray-200">
         <nav class="-mb-px flex content-center space-x-8" aria-label="Tabs">
-            @foreach(config('enums.blog_status') as $item)
+            @foreach(\App\Enums\BlogStatus::cases() as $item)
                 <p wire:click="filterByStatus('{{ $item }}')" class="cursor-pointer border-transparent text-gray-500 {{ $status == $item ? "border-indigo-500 text-indigo-600" : "hover:text-gray-700 hover:border-gray-300" }} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                    {{ ucfirst($item) }}
+                    {{ ucfirst($item->value) }}
                 </p>
             @endforeach
         </nav>
