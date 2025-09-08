@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Profile;
 
+use App\Enums\BlogStatus;
 use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -49,7 +50,7 @@ class BlogControllerTest extends TestCase
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,
-                'status' => $this->faker->randomElement(config('enums.blog_status')),
+                'status' => $this->faker->randomElement(BlogStatus::values()),
             ]);
 
         $response->assertRedirect();
@@ -84,7 +85,7 @@ class BlogControllerTest extends TestCase
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,
-                'status' => $this->faker->randomElement(config('enums.blog_status')),
+                'status' => $this->faker->randomElement(BlogStatus::values()),
             ]);
 
         $response->assertRedirect();
