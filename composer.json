@@ -1,4 +1,5 @@
 {
+    "$schema": "https://getcomposer.org/schema.json",
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
@@ -6,20 +7,20 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.44",
-        "laravel/tinker": "^2.10",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10.1",
         "laravel/sanctum": "^4.0.8",
         "livewire/livewire": "^3.6.2"
     },
     "require-dev": {
-        "larastan/larastan": "^2.10",
         "fakerphp/faker": "^1.23",
-        "laravel/pail": "^1.2",
-        "laravel/pint": "^1.21",
+        "larastan/larastan": "^3.7",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.24",
         "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.7",
-        "phpunit/phpunit": "^11.5.15"
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^11.5.3"
     },
     "autoload": {
         "psr-4": {
@@ -51,7 +52,11 @@
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
         ],
         "analyse" : "vendor/bin/phpstan analyse"
     },

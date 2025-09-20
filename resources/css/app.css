@@ -7,7 +7,6 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer utilities {

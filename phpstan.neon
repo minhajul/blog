@@ -1,24 +1,12 @@
 includes:
     - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
 
 parameters:
-
     paths:
         - app/
-
-    # Level 9 is the highest level
     level: 5
-
     tmpDir: build/phpstan
-    checkModelProperties: true
+
     parallel:
-          processTimeout: 300.0
-
-
-#    ignoreErrors:
-#        - '#PHPDoc tag @var#'
-#
-#    excludePaths:
-#        - ./*/*/FileToBeExcluded.php
-#
-#    checkMissingIterableValueType: false
+        processTimeout: 300.0

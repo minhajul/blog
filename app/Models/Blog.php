@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+/**
+ * @property-read string $short_details
+ */
 class Blog extends Model
 {
     use HasFactory;
@@ -62,7 +65,7 @@ class Blog extends Model
     }
 
     // Accessor
-    public function shortDetails()
+    protected function shortDetails(): Attribute
     {
         return Attribute::make(
             get: fn (mixed $value, array $attributes) => Str::limit(strip_tags($attributes['details']), 200)
