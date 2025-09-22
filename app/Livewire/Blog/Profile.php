@@ -33,7 +33,7 @@ class Profile extends Component
         $keywords = $this->keywords;
 
         return Blog::when($keywords, function ($query) use ($keywords) {
-            return $query->whereLike(['title', 'status', 'details'], $keywords);
+            return $query->whereLikes(['title', 'status', 'details'], $keywords);
         })->where('status', $this->status)
             ->orderByDesc('updated_at')
             ->paginate(12);
