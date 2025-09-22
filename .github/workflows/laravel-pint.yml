@@ -24,13 +24,13 @@ jobs:
       - name: Install Laravel Pint
         run: composer global require laravel/pint
 
-      - name: Run Pint
+      - name: Run Pint(Laravel Code style)
         run: pint
 
-      - name: Push Changes Back to Repo
+      - name: Commit Code Style Changes
         run: |
-          git config user.name "gh-actions"
-          git config user.email "gh@example.com"
+          git config user.name "github-actions"
+          git config user.email "actions@robot.com"
           git add .
-          git commit -m "Laravel Pint" || exit 0
+          git commit -m "Code style fixed automatically by Laravel Pint" || exit 0
           git push
