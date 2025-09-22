@@ -90,4 +90,4 @@ jobs:
         run: npm run build
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: php artisan test --parallel --coverage
+        run: php artisan test --parallel
