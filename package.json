@@ -2,8 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "bun run vite",
+        "build": "bun run vite build"
     },
     "devDependencies": {
         "@alpinejs/intersect": "^3.10.3",
@@ -18,7 +18,7 @@
         "vite": "^7.0.7",
         "autoprefixer": "^10.4.20",
         "jquery": "^3.6.0",
-        "trix": "^2.1.15",
+        "trix": "^2.1.15"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
