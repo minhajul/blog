@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Profile;
 
 use App\Enums\BlogStatus;
@@ -12,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use JsonException;
 use Tests\TestCase;
 
-class BlogControllerTest extends TestCase
+final class BlogControllerTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 

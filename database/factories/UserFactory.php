@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+final class UserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -29,7 +31,7 @@ class UserFactory extends Factory
         ];
     }
 
-    public function unverified(): UserFactory
+    public function unverified(): self
     {
         return $this->state(function (array $attributes) {
             return [

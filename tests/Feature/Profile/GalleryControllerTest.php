@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Profile;
 
 use App\Models\User;
@@ -7,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class GalleryControllerTest extends TestCase
+final class GalleryControllerTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 

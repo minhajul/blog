@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +13,7 @@ use Illuminate\Support\Str;
 /**
  * @property-read string $short_details
  */
-class Blog extends Model
+final class Blog extends Model
 {
     use HasFactory;
 
@@ -27,26 +29,6 @@ class Blog extends Model
     protected $appends = [
         'short_details',
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($table) {
-            $slug = Str::slug($table->title);
-
-            if (static::whereSlug($slug)->exists()) {
-                $original = $slug;
-                $count = 2;
-
-                while (static::whereSlug($slug)->exists()) {
-                    $slug = "$original-".$count++;
-                }
-            }
-
-            $table->slug = $slug;
-        });
-    }
 
     // Scopes
     public function scopePublished(Builder $builder): Builder
@@ -64,14 +46,6 @@ class Blog extends Model
         return $builder->where('status', 'archived');
     }
 
-    // Accessor
-    protected function shortDetails(): Attribute
-    {
-        return Attribute::make(
-            get: fn (mixed $value, array $attributes) => Str::limit(strip_tags($attributes['details']), 200)
-        );
-    }
-
     // Methods
     public function bannerUrl(): string
     {
@@ -86,21 +60,49 @@ class Blog extends Model
 
     public function isPublished(): bool
     {
-        return $this->status == 'published';
+        return $this->status === 'published';
     }
 
     public function isDrafted(): bool
     {
-        return $this->status == 'drafted';
+        return $this->status === 'drafted';
     }
 
     public function isArchived(): bool
     {
-        return $this->status == 'archived';
+        return $this->status === 'archived';
     }
 
     public function markAsArchived()
     {
         $this->update(['status' => 'archived']);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($table) {
+            $slug = Str::slug($table->title);
+
+            if (static::whereSlug($slug)->exists()) {
+                $original = $slug;
+                $count = 2;
+
+                while (static::whereSlug($slug)->exists()) {
+                    $slug = "$original-".$count++;
+                }
+            }
+
+            $table->slug = $slug;
+        });
+    }
+
+    // Accessor
+    protected function shortDetails(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => Str::limit(strip_tags($attributes['details']), 200)
+        );
     }
 }

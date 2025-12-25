@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use App\Enums\BlogStatus;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
-class BlogRequest extends FormRequest
+final class BlogRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

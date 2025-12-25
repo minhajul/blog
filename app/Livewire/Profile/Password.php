@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Profile;
 
 use App\Models\User;
@@ -7,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-class Password extends Component
+final class Password extends Component
 {
     public $current_password;
 
@@ -15,17 +17,17 @@ class Password extends Component
 
     public $password_confirmation;
 
+    protected $rules = [
+        'current_password' => 'required',
+        'password' => 'required|confirmed|min:6',
+    ];
+
     public function mount()
     {
         $this->current_password = '';
         $this->password = '';
         $this->password_confirmation = '';
     }
-
-    protected $rules = [
-        'current_password' => 'required',
-        'password' => 'required|confirmed|min:6',
-    ];
 
     public function update(): RedirectResponse
     {

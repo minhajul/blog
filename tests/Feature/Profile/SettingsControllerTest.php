@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Profile;
 
 use App\Models\User;
@@ -8,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use JsonException;
 use Tests\TestCase;
 
-class SettingsControllerTest extends TestCase
+final class SettingsControllerTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 

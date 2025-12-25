@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Profile;
 
 use App\Models\Subscriber;
@@ -8,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use JsonException;
 use Tests\TestCase;
 
-class SubscriberControllerTest extends TestCase
+final class SubscriberControllerTest extends TestCase
 {
     use RefreshDatabase;
 

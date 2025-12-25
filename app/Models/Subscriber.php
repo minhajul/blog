@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subscriber extends Model
+final class Subscriber extends Model
 {
     use HasFactory;
 
@@ -24,7 +26,7 @@ class Subscriber extends Model
     // Methods
     public function isVerified(): bool
     {
-        return $this->verified_at != null;
+        return $this->verified_at !== null;
     }
 
     public function status(): string

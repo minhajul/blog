@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\Subscriber;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SubscriberFactory extends Factory
+final class SubscriberFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.

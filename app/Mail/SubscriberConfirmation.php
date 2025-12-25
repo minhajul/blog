@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Mail;
 
 use App\Models\Subscriber;
@@ -7,7 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SubscriberConfirmation extends Mailable
+final class SubscriberConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +30,7 @@ class SubscriberConfirmation extends Mailable
      *
      * @return $this
      */
-    public function build(): SubscriberConfirmation
+    public function build(): self
     {
         return $this->markdown('emails.subscriber.confirmation', [
             'url' => route('subscription.verify', $this->subscriber->email),

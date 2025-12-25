@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Blog;
 
 use App\Models\Blog;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Profile extends Component
+final class Profile extends Component
 {
     use WithPagination;
 

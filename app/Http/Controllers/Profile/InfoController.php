@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
@@ -7,7 +9,7 @@ use App\Models\Blog;
 use App\Models\Contact;
 use Illuminate\View\View;
 
-class InfoController extends Controller
+final class InfoController extends Controller
 {
     public function index(): View
     {

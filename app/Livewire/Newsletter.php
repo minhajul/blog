@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use App\Mail\SubscriberConfirmation;
@@ -7,7 +9,7 @@ use App\Models\Subscriber;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
-class Newsletter extends Component
+final class Newsletter extends Component
 {
     public $email_address;
 

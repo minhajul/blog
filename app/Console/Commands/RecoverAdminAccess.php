@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Password;
 
-class RecoverAdminAccess extends Command
+final class RecoverAdminAccess extends Command
 {
     /**
      * The name and signature of the console command.

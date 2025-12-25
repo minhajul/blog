@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Gallery;
 use Illuminate\Database\Seeder;
 
-class GallerySeeder extends Seeder
+final class GallerySeeder extends Seeder
 {
     /**
      * Run the database seeds.

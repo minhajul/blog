@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
-class ConsoleCommandTest extends TestCase
+final class ConsoleCommandTest extends TestCase
 {
     public function test_anonymous_user_can_not_ask_for_password_reset_email()
     {

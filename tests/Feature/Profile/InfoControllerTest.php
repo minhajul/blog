@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Profile;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class InfoControllerTest extends TestCase
+final class InfoControllerTest extends TestCase
 {
     use RefreshDatabase;
 

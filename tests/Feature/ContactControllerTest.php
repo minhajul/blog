@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use JsonException;
 use Tests\TestCase;
 
-class ContactControllerTest extends TestCase
+final class ContactControllerTest extends TestCase
 {
     public function test_contact_screen_can_be_rendered()
     {
