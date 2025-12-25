@@ -24,7 +24,7 @@ final class BlogController extends Controller
         return view('profile.blogs.create');
     }
 
-    public function upload(Request $request): ?string
+    public function upload(Request $request)
     {
         if (! $request->hasFile('file')) {
             return null;
