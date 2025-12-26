@@ -60,13 +60,14 @@
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-1 py-4">
                         <flux:navbar>
-                            <flux:navbar.item href="{{ route('home') }}" wire:navigate >Home</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
                             <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
                             <flux:navbar.item href="{{ route('gallery') }}" wire:navigate>Gallery</flux:navbar.item>
                             <flux:navbar.item href="{{ route('contact.index') }}" wire:navigate>Contact</flux:navbar.item>
                         </flux:navbar>
                     </div>
                     <div class="py-4">
+                        <x-theme-toggle />
                         @auth
                             <a href="{{ route('profile.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Dashboard</a>
                         @else

@@ -12,8 +12,9 @@ final class Index extends Component
 {
     use WithFileUploads;
 
-    public $user;
-
+    public string $name = '';
+    public string $email = '';
+    public string $bio = '';
     public $avatar;
 
     protected $rules = [
@@ -21,27 +22,32 @@ final class Index extends Component
         'user.bio' => 'required|string',
     ];
 
-    public function mount()
+    public function mount(): void
     {
-        $this->user = auth()->user();
+        $user = auth()->user();
+
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->bio = $user->bio;
     }
 
     public function save()
     {
-        $this->validate();
+        $user = auth()->user();
 
-        $avatar_url = $this->user->avatar_url;
+        $validated = $this->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'bio' => ['required', 'string']
+        ]);
+
+        $validated['avatar_url'] = $user->avatar_url;
 
         if (! is_null($this->avatar)) {
-            $file_name = $this->user->name.'-'.Str::random(5).'.'.$this->avatar->extension();
-            $avatar_url = $this->avatar->storeAs('avatar', $file_name);
+            $file_name = $user->name.'-'.Str::random(5).'.'.$this->avatar->extension();
+            $validated['avatar_url'] = $this->avatar->storeAs('avatar', $file_name);
         }
 
-        $this->user->update([
-            'name' => $this->user->name,
-            'bio' => $this->user->bio,
-            'avatar_url' => $avatar_url,
-        ]);
+        $user->fill($validated);
 
         session()->flash('success', 'Profile updated.');
     }

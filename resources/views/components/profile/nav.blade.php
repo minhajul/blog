@@ -5,29 +5,14 @@
                 <div class="mx-auto">
                     <nav class="flex space-x-4 lg:overflow-auto overflow-x-auto">
 
-                        <a href="{{ route('profile.index') }}" class="{{ request()->routeIs('profile.index') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
-                            Profile
-                        </a>
-
-                        <a href="{{ route('profile.blogs.index') }}" class="{{ request()->routeIs('profile.blogs.index') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
-                            Blogs
-                        </a>
-
-                        <a href="{{ route('profile.gallery.index') }}" class="{{ request()->routeIs('profile.gallery.index') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
-                            Gallery
-                        </a>
-
-                        <a href="{{ route('subscribers.index') }}" class="{{ request()->routeIs('subscribers.index') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
-                            Subscribers
-                        </a>
-
-                        <a href="{{ route('settings.index') }}" class="{{ request()->routeIs('settings.index') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
-                            Settings
-                        </a>
-
-                        <a href="{{ route('profile.contacts') }}" class="{{ request()->routeIs('profile.contacts') ? 'bg-slate-900 text-white' : 'text-slate-300' }} px-3 py-2 rounded-md text-sm font-medium" aria-current="false">
-                            Contacts
-                        </a>
+                        <flux:navbar>
+                            <flux:navbar.item href="{{ route('profile.index') }}" wire:navigate>Profile</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('profile.blogs.index') }}" wire:navigate>Blogs</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('profile.gallery.index') }}" wire:navigate>Gallery</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('subscribers.index') }}" wire:navigate>Subscribers</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('settings.index') }}" wire:navigate>Settings</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('profile.contacts') }}" wire:navigate>Contacts</flux:navbar.item>
+                        </flux:navbar>
                     </nav>
                 </div>
             </div>
