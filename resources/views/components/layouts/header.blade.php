@@ -23,15 +23,16 @@
             <a href="{{ route('about') }}" class="text-sm/6 font-semibold text-surface">About</a>
             <a href="{{ route('gallery') }}" class="text-sm/6 font-semibold text-surface">Gallery</a>
             <a href="{{ route('contact.index') }}" class="text-sm/6 font-semibold text-surface">Contact</a>
+            <x-theme-toggle />
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div class="lg:flex lg:flex-1 lg:justify-end">
             <x-theme-toggle />
 
-            @auth
-                <a href="{{ route('profile.index') }}" class="ml-2 text-sm/6 font-semibold text-surface">Dashboard <span aria-hidden="true">&rarr;</span></a>
-            @else
-                <a href="{{ route('login') }}" class="ml-2 text-sm/6 font-semibold text-surface">Log in <span aria-hidden="true">&rarr;</span></a>
-            @endauth
+{{--            @auth--}}
+{{--                <a href="{{ route('profile.index') }}" class="ml-2 text-sm/6 font-semibold text-surface">Dashboard <span aria-hidden="true">&rarr;</span></a>--}}
+{{--            @else--}}
+{{--                <a href="{{ route('login') }}" class="ml-2 text-sm/6 font-semibold text-surface">Log in <span aria-hidden="true">&rarr;</span></a>--}}
+{{--            @endauth--}}
         </div>
     </nav>
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@tailwindcss">
+    <meta name="twitter:site" content="@minahjcse">
     <meta name="twitter:creator" content="@">
     <meta property="og:url" content="{{ route('home') }}">
     <meta property="og:type" content="blog">
