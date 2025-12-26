@@ -3,7 +3,7 @@
     x-data="{ mobileMenu: false }"
     class="sticky top-0 z-50 bg-surface"
 >
-    <nav class="flex items-center justify-between py-4 max-w-7xl mx-auto" aria-label="Global">
+    <nav class="flex items-center justify-between py-4 max-w-7xl px-4 sm:px-6 mx-auto" aria-label="Global">
         <div class="flex lg:flex-1 items-center">
             <a href="{{ route('home') }}">
                 <x-application-logo />
@@ -20,7 +20,6 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <flux:navbar>
-                <x-theme-toggle />
                 <flux:navbar.item href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
                 <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
                 <flux:navbar.item href="{{ route('gallery') }}" wire:navigate>Gallery</flux:navbar.item>
