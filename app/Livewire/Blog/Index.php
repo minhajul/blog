@@ -13,7 +13,7 @@ final class Index extends Component
     use WithPagination;
 
     public $keywords = '';
-    
+
     public function render()
     {
         $blogs = $this->getFilteredBlogs();
