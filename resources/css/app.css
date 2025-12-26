@@ -68,7 +68,7 @@ select:focus[data-flux-control] {
 } */
 
 .text-color {
-    @apply text-zinc-600 hover:text-zinc-800 dark:hover:text-white dark:text-white/70;
+    @apply text-zinc-600 dark:text-white/70;
 }
 
 .bg-color {
