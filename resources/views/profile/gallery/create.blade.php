@@ -1,31 +1,20 @@
 <x-layouts.app>
-
-    <x-profile.nav/>
-
-    <div class="bg-gray-100">
+    <x-layouts.dashboard>
         <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
                 <div class="grid grid-cols-1 lg:col-span-3">
-                    <div class="flex items-center justify-between flex-wrap sm:flex-nowrap">
-                        <div class="mt-2">
-                            <h3 class="text-3xl my-5 tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-                                Add Gallery
-                            </h3>
-                        </div>
-                        <div class="ml-4 mt-2 shrink-0">
-                            <a href="{{ route('profile.gallery.index') }}"
-                               class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                View Gallery
-                            </a>
-                        </div>
+                    <div class="flex justify-between">
+                        <flux:heading size="xl">Add Gallery</flux:heading>
+
+                        <flux:button href="{{ route('dashboard.gallery.index') }}" variant="primary">View Gallery</flux:button>
                     </div>
 
-                    <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md mb-5">
+                    <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md my-5">
 
                         @include('errors.success')
                         @include('errors.message')
 
-                        <form action="{{ route('profile.gallery.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('dashboard.gallery.store') }}" method="POST" enctype="multipart/form-data">
 
                             @csrf
 
@@ -54,5 +43,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-layouts.dashboard>
 </x-layouts.app>

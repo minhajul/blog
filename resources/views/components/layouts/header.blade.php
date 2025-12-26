@@ -23,7 +23,7 @@
                 <flux:navbar.item href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
                 <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
                 <flux:navbar.item href="{{ route('gallery') }}" wire:navigate>Gallery</flux:navbar.item>
-                <flux:navbar.item href="{{ route('contact.index') }}" wire:navigate>Contact</flux:navbar.item>
+                <flux:navbar.item href="{{ route('contact') }}" wire:navigate>Contact</flux:navbar.item>
             </flux:navbar>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -63,7 +63,7 @@
                             <flux:navbar.item href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
                             <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
                             <flux:navbar.item href="{{ route('gallery') }}" wire:navigate>Gallery</flux:navbar.item>
-                            <flux:navbar.item href="{{ route('contact.index') }}" wire:navigate>Contact</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('contact') }}" wire:navigate>Contact</flux:navbar.item>
                         </flux:navbar>
                     </div>
                     <div class="py-4">

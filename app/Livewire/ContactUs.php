@@ -27,7 +27,7 @@ final class ContactUs extends Component
 
         session()->flash('success', 'We have received your message. We shall contact you very soon.');
 
-        return $this->redirect(route('contact.index'));
+        return $this->redirect(route('contact'));
     }
 
     public function render()

@@ -3,39 +3,38 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Profile\BlogController;
-use App\Http\Controllers\Profile\GalleryController;
-use App\Http\Controllers\Profile\InfoController;
-use App\Http\Controllers\Profile\SettingsController;
-use App\Http\Controllers\Profile\SubscriberController;
+use App\Http\Controllers\Dashboard\BlogController;
+use App\Http\Controllers\Dashboard\GalleryController;
+use App\Http\Controllers\Dashboard\InfoController;
+use App\Http\Controllers\Dashboard\SettingsController;
+use App\Http\Controllers\Dashboard\SubscriberController;
 use App\Livewire\ContactUs;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Livewire\Blog\Index::class)->name('home');
 Route::get('/details/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
-
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('/contact', ContactUs::class)->name('contact');
+
 Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->name('subscription.verify');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', App\Livewire\Dashboard::class)->name('dashboard');
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
+    Route::get('/', App\Livewire\Dashboard::class)->name('dashboard');
 
-    Route::get('/contacts', [InfoController::class, 'contacts'])->name('profile.contacts');
+    Route::get('/contacts', [InfoController::class, 'contacts'])->name('contacts.index');
 
-    Route::name('profile')->resource('/profile/blogs', BlogController::class);
-    Route::post('profile/upload/file', [BlogController::class, 'upload'])->name('profile.blogs.upload.file');
-    Route::get('profile/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('profile.blogs.archived');
+    Route::resource('/blogs', BlogController::class)
+        ->names('dashboard.blogs');
+    Route::post('/upload/file', [BlogController::class, 'upload'])->name('profile.blogs.upload.file');
+    Route::get('/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('profile.blogs.archived');
 
-    Route::name('profile')->resource('/profile/gallery', GalleryController::class);
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+    Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('/gallery/create', [GalleryController::class, 'store'])->name('gallery.store');
+    Route::get('/gallery/delete/{gallery}', [GalleryController::class, 'destroy'])->name('gallery.store');
 
-    Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
-    Route::delete('/subscribers/{subscriber}/delete', [SubscriberController::class, 'delete'])->name('subscribers.delete');
-
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    Route::get('/subscribers', \App\Livewire\Subscribers::class)->name('subscribers.index');
 });
-
-Route::get('/contact', ContactUs::class)->name('contact.index');
 
 require __DIR__.'/auth.php';
