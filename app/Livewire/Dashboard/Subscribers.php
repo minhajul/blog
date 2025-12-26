@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Dashboard;
 
 use App\Models\Subscriber;
 use Livewire\Component;
@@ -20,6 +20,6 @@ class Subscribers extends Component
     {
         $subscribers = Subscriber::paginate(30);
 
-        return view('livewire.subscribers', compact('subscribers'));
+        return view('livewire.dashboard.subscribers', compact('subscribers'));
     }
 }

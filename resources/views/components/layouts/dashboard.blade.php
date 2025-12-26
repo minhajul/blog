@@ -12,7 +12,7 @@
     <flux:separator class="md:hidden" />
 
     <div class="flex-1 self-stretch max-md:pt-6 min-w-0">
-        <div class="w-full overflow-hidden bg-gray-100 py-6 px-6">
+        <div class="w-full overflow-hidden rounded-md shadow-md bg-gray-100 px-6">
             {{ $slot }}
         </div>
     </div>
