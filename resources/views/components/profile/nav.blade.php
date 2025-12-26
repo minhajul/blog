@@ -4,7 +4,6 @@
             <div class="w-full py-5">
                 <div class="mx-auto">
                     <nav class="flex space-x-4 lg:overflow-auto overflow-x-auto">
-
                         <flux:navbar>
                             <flux:navbar.item href="{{ route('profile.index') }}" wire:navigate>Profile</flux:navbar.item>
                             <flux:navbar.item href="{{ route('profile.blogs.index') }}" wire:navigate>Blogs</flux:navbar.item>
