@@ -1,5 +1,5 @@
-import Alpine from 'alpinejs'
-import intersect from '@alpinejs/intersect'
+// import Alpine from 'alpinejs'
+// import intersect from '@alpinejs/intersect'
 
 window.axios = import('axios');
 
@@ -8,4 +8,6 @@ window.jQuery = import('jquery');
 
 window.trix = import('trix');
 
-Alpine.plugin(intersect)
+// Alpine.start();
+//
+// Alpine.plugin(intersect)

@@ -2,7 +2,7 @@
     <livewire:blog.index :viewStyle="$viewStyle"/>
 </x-layouts.app>
 
-@push('scripts')
+{{--@push('scripts')
     <script type="text/javascript">
         window.onscroll = function (event) {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -10,4 +10,4 @@
             }
         };
     </script>
-@endpush
+@endpush--}}

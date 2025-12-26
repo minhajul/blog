@@ -19,20 +19,26 @@
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
-            <a href="{{ route('home') }}" class="text-sm/6 font-semibold text-surface">Home</a>
-            <a href="{{ route('about') }}" class="text-sm/6 font-semibold text-surface">About</a>
-            <a href="{{ route('gallery') }}" class="text-sm/6 font-semibold text-surface">Gallery</a>
-            <a href="{{ route('contact.index') }}" class="text-sm/6 font-semibold text-surface">Contact</a>
-            <x-theme-toggle />
+            <flux:navbar>
+                <x-theme-toggle />
+                <flux:navbar.item href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
+                <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
+                <flux:navbar.item href="{{ route('gallery') }}" wire:navigate>Gallery</flux:navbar.item>
+                <flux:navbar.item href="{{ route('contact.index') }}" wire:navigate>Contact</flux:navbar.item>
+            </flux:navbar>
         </div>
-        <div class="lg:flex lg:flex-1 lg:justify-end">
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <x-theme-toggle />
 
-{{--            @auth--}}
-{{--                <a href="{{ route('profile.index') }}" class="ml-2 text-sm/6 font-semibold text-surface">Dashboard <span aria-hidden="true">&rarr;</span></a>--}}
-{{--            @else--}}
-{{--                <a href="{{ route('login') }}" class="ml-2 text-sm/6 font-semibold text-surface">Log in <span aria-hidden="true">&rarr;</span></a>--}}
-{{--            @endauth--}}
+            @auth
+                <a href="{{ route('profile.index') }}" class="ml-2 text-sm/6 font-semibold text-surface">
+                    Dashboard →
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="ml-2 text-sm/6 font-semibold text-surface">
+                    Log in →
+                </a>
+            @endauth
         </div>
     </nav>
 
@@ -54,14 +60,14 @@
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-1 py-4">
-                        <a href="{{ route('home') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Features</a>
-                        <a href="{{ route('about') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">About</a>
-                        <a href="{{ route('gallery') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Gallery</a>
-                        <a href="{{ route('contact.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Contact</a>
+                        <flux:navbar>
+                            <flux:navbar.item href="{{ route('home') }}" wire:navigate >Home</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('gallery') }}" wire:navigate>Gallery</flux:navbar.item>
+                            <flux:navbar.item href="{{ route('contact.index') }}" wire:navigate>Contact</flux:navbar.item>
+                        </flux:navbar>
                     </div>
                     <div class="py-4">
-                        <x-theme-toggle />
-
                         @auth
                             <a href="{{ route('profile.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Dashboard</a>
                         @else
