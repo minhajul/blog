@@ -19,13 +19,13 @@
 </head>
 <body class="min-h-screen antialiased bg-surface">
 <div class="bg-muted">
-    <x-layouts.header />
+    <x-layouts.header/>
 
-    <div class="w-full mx-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
         {{ $slot }}
     </div>
 
-    <x-layouts.footer />
+    <x-layouts.footer/>
 
     @livewireScripts
     @fluxScripts

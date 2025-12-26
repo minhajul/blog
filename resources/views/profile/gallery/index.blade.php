@@ -1,10 +1,7 @@
 <x-layouts.app>
-
-    <x-profile.nav/>
-
+    <x-layouts.dashboard>
     <div class="bg-gray-100">
         <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-
             <div class="border-b-2 border-gray-100  flex items-center justify-between flex-wrap sm:flex-nowrap">
                 <div class="mt-2">
                     <h3 class="text-3xl my-5 tracking-tight font-extrabold text-gray-900 sm:text-4xl">
@@ -19,7 +16,6 @@
             </div>
 
             <ul role="list" class="py-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-6 xl:gap-x-8">
-
                 @forelse($galleries as $gallery)
                     <li class="relative">
                         <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
@@ -40,8 +36,8 @@
                         No gallery added
                     </li>
                 @endforelse
-
             </ul>
         </div>
     </div>
+    </x-layouts.dashboard>
 </x-layouts.app>

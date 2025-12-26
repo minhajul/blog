@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <x-profile.nav/>
+    <x-layouts.dashboard>
 
     <div class="bg-gray-100">
         <div class="py-5 max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -28,7 +28,8 @@
                                 </div>
                             </div>
 
-                            <div class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
+                            <div
+                                class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
                                 <div class="px-6 py-5 text-sm font-medium text-center">
                                     <span class="text-gray-900">{{ $analytics['posted_blog'] }}</span>
                                     <span class="text-gray-600">Blogs posted</span>
@@ -69,4 +70,5 @@
             </div>
         </div>
     </div>
+    </x-layouts.dashboard>
 </x-layouts.app>
