@@ -30,7 +30,7 @@
             <x-theme-toggle />
 
             @auth
-                <a href="{{ route('profile.index') }}" class="ml-2 text-sm/6 font-semibold text-surface">
+                <a href="{{ route('dashboard') }}" class="ml-2 text-sm/6 font-semibold text-surface">
                     Dashboard →
                 </a>
             @else
@@ -69,7 +69,7 @@
                     <div class="py-4">
                         <x-theme-toggle />
                         @auth
-                            <a href="{{ route('profile.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Dashboard</a>
+                            <a href="{{ route('dashboard') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Dashboard</a>
                         @else
                             <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Log in</a>
                         @endauth
