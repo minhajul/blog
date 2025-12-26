@@ -28,7 +28,7 @@
 
     <div class="mt-10 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         @forelse($blogs as $blog)
-            <div class="mb-5 flex flex-col rounded-lg shadow-lg overflow-hidden">
+            <div class="mb-5 flex flex-col rounded-md shadow-md overflow-hidden">
                 <div class="shrink-0">
                     <img class="h-48 w-full object-cover" src="{{ $blog->bannerUrl() }}" alt="Banner">
                 </div>

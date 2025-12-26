@@ -1,7 +1,7 @@
 <section class="bg-gradient-to-r bg-slate-800">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl">
         <div class="relative flex flex-wrap items-center justify-center lg:justify-between">
-            <div class="w-full py-5 lg:border-t lg:border-white lg:border-opacity-20">
+            <div class="w-full py-5">
                 <div class="mx-auto">
                     <nav class="flex space-x-4 lg:overflow-auto overflow-x-auto">
 

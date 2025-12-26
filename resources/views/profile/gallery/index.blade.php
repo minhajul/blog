@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
 
     <x-profile.nav/>
 
@@ -44,4 +44,4 @@
             </ul>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.app>

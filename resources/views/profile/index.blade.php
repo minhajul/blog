@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     <x-profile.nav/>
 
     <div class="bg-gray-100">
@@ -71,4 +71,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.app>
