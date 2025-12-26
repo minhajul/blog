@@ -19,7 +19,7 @@
 
             <div class="col-span-6">
                 <label class="block font-medium text-sm text-gray-700 mb-2" for="bio">
-                    Bio <span class="text-red-500">*</span>
+                    Bio
                 </label>
 
                 <x-trix-editor wire:model="bio"></x-trix-editor>
