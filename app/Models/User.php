@@ -35,7 +35,7 @@ final class User extends Authenticatable implements MustVerifyEmail
             return asset($this->avatar_url);
         }
 
-        return 'https://via.placeholder.com/150x150';
+        return 'https://placehold.co/150x150';
     }
 
     protected function casts(): array

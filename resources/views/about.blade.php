@@ -1,13 +1,13 @@
-<x-app-layout>
+<x-layouts.app>
     <div class="py-6 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10">
         <div class="relative max-w-4xl mx-auto">
             <div class="p-6 flex items-center justify-center min-h-screen">
                 <div class="md:flex">
                     <div class="h-24 md:h-32 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
                         <img x-intersect="$el.classList.add('scale')"
-                             src="{{ $user->avatarUrl() ?? "https://via.placeholder.com/150x150" }}"
+                             src="{{ $user->avatarUrl() ?? "https://placehold.co/150x150" }}"
                              alt="Avatar" class="h-24 w-24 shrink-0 rounded-full md:h-32 md:w-32 p-2"
-                             onerror="this.src='/images/default-avatar.png'"
+                             onerror="this.src='https://placehold.co/150x150'"
                         >
                     </div>
 
@@ -52,4 +52,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.app>

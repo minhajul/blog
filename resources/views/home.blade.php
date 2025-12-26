@@ -1,6 +1,6 @@
-<x-app-layout>
+<x-layouts.app>
     <livewire:blog.index :viewStyle="$viewStyle"/>
-</x-app-layout>
+</x-layouts.app>
 
 @push('scripts')
     <script type="text/javascript">

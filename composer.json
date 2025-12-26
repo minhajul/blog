@@ -8,8 +8,9 @@
     "require": {
         "php": "^8.4",
         "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1",
         "laravel/sanctum": "^4.0.8",
+        "laravel/tinker": "^2.10.1",
+        "livewire/flux": "^2.10",
         "livewire/livewire": "^3.6.2"
     },
     "require-dev": {
