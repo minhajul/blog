@@ -11,10 +11,8 @@ use App\Http\Controllers\Profile\SettingsController;
 use App\Http\Controllers\Profile\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/', \App\Livewire\Blog\Index::class)->name('home');
-Route::get('/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
-
+Route::get('/details/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
 
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
@@ -37,7 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
 
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contact', \App\Livewire\ContactUs::class)->name('contact.index');
 
 require __DIR__.'/auth.php';
