@@ -19,7 +19,7 @@ Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->name('subscription.verify');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', \App\Livewire\Dashboard::class)->name('dashboard');
+    Route::get('/dashboard', App\Livewire\Dashboard::class)->name('dashboard');
 
     Route::get('/contacts', [InfoController::class, 'contacts'])->name('profile.contacts');
 

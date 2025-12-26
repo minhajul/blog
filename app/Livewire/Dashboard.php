@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use App\Models\Blog;
 use Livewire\Component;
 
-class Dashboard extends Component
+final class Dashboard extends Component
 {
     public function render()
     {
