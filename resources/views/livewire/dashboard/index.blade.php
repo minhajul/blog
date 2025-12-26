@@ -8,10 +8,8 @@
                             <div class="sm:flex sm:items-center sm:justify-between">
                                 <div class="sm:flex sm:space-x-5">
                                     <div class="shrink-0">
-                                        <div
-                                            class="bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
-                                            <img src="{{ $user->avatarUrl() }}" alt="Admin Account"
-                                                 class="h-20 w-20 shrink-0 rounded-full md:h-32 md:w-32 p-2">
+                                        <div class="bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
+                                            <img src="{{ $user->avatarUrl() }}" alt="Admin Account" class="h-20 w-20 shrink-0 rounded-full md:h-32 md:w-32 p-2">
                                         </div>
                                     </div>
                                     <div class="mt-8 text-center sm:pt-1 sm:text-left">
@@ -26,8 +24,7 @@
                             </div>
                         </div>
 
-                        <div
-                            class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
+                        <div class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
                             <div class="px-6 py-5 text-sm font-medium text-center">
                                 <span class="text-gray-900">{{ $analytics['posted_blog'] }}</span>
                                 <span class="text-gray-600">Blogs posted</span>
@@ -52,10 +49,8 @@
 
                 <livewire:profile.index/>
 
-                <div class="hidden sm:block">
-                    <div class="py-6">
-                        <div class="border-t border-gray-200"></div>
-                    </div>
+                <div class="py-4">
+                    <flux:separator />
                 </div>
 
                 <div class="mt-10 sm:mt-0">

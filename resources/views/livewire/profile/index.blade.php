@@ -22,9 +22,7 @@
                     Bio <span class="text-red-500">*</span>
                 </label>
 
-                <input id="x" type="hidden" name="bio">
-                <trix-editor wire:model.defer="bio" input="x"></trix-editor>
-                @error('bio') <span class="text-red-500 text-sm italic">{{ $message }}</span> @enderror
+                <x-trix-editor wire:model="bio"></x-trix-editor>
             </div>
         </div>
 

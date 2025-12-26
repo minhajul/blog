@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Profile;
 
 use Illuminate\Support\Str;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,18 +13,16 @@ final class Index extends Component
 {
     use WithFileUploads;
 
+    #[Validate('required|string')]
     public string $name = '';
 
+    #[Validate('required|email')]
     public string $email = '';
 
+    #[Validate('required|string')]
     public string $bio = '';
 
     public $avatar;
-
-    protected $rules = [
-        'user.name' => 'required|string|min:2',
-        'user.bio' => 'required|string',
-    ];
 
     public function mount(): void
     {
@@ -50,7 +49,7 @@ final class Index extends Component
             $validated['avatar_url'] = $this->avatar->storeAs('avatar', $file_name);
         }
 
-        $user->fill($validated);
+        $user->update($validated);
 
         session()->flash('success', 'Profile updated.');
     }
