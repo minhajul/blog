@@ -12,7 +12,10 @@
     <title>Minimal Blog For Personal Use - {{ config('app.name') }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
     @fluxAppearance
+
+    @stack('styles')
 </head>
 <body class="min-h-screen antialiased bg-surface">
 <div class="bg-muted">
@@ -24,6 +27,7 @@
 
     <x-layouts.footer />
 
+    @livewireScripts
     @fluxScripts
 </div>
 </body>

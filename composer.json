@@ -11,7 +11,8 @@
         "laravel/sanctum": "^4.0.8",
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.10",
-        "livewire/livewire": "^3.6.2"
+        "livewire/livewire": "^3.6.2",
+        "livewire/volt": "^1.10"
     },
     "require-dev": {
         "brianium/paratest": "^7.8",
