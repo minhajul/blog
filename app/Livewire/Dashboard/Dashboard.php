@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire;
+namespace App\Livewire\Dashboard;
 
 use App\Models\Blog;
 use Livewire\Component;

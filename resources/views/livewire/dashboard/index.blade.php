@@ -46,7 +46,7 @@
             @include('errors.success')
             @include('errors.message')
 
-            <livewire:profile.index/>
+            <livewire:dashboard.profile.index/>
 
             <div class="py-4">
                 <flux:separator />
@@ -54,7 +54,7 @@
 
             <div class="mt-10 sm:mt-0">
                 <div class="xsm:p-4 md:col-span-2">
-                    <livewire:profile.password/>
+                    <livewire:dashboard.profile.password/>
                 </div>
             </div>
         </div>

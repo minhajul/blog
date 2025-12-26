@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire\Profile;
+namespace App\Livewire\Dashboard\Profile;
 
 use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
@@ -56,6 +56,6 @@ final class Index extends Component
 
     public function render()
     {
-        return view('livewire.profile.index');
+        return view('livewire.dashboard.profile.index');
     }
 }

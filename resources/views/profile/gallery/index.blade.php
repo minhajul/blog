@@ -1,10 +1,10 @@
 <x-layouts.app>
     <x-layouts.dashboard>
-        <div class="py-5 max-w-3xl mx-auto px-4 lg:max-w-7xl">
+        <div class="py-5 max-w-3xl mx-auto lg:max-w-7xl">
             <div class="flex justify-between">
                 <flux:heading size="xl">Gallery</flux:heading>
 
-                <flux:button href="{{ route('dashboard.gallery.create') }}" variant="primary">Create New</flux:button>
+                <flux:button href="{{ route('gallery.create') }}">Create New</flux:button>
             </div>
 
             <ul role="list" class="py-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-6 xl:gap-x-8">
@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="py-2 float-right">
-                            <a onclick="return confirm('Are you sure?')" href="{{ route('dashboard.gallery.destroy', $gallery) }}" class="focus:outline-none text-red-500 font-normal py-2">
+                            <a onclick="return confirm('Are you sure?')" href="{{ route('gallery.destroy', $gallery) }}" class="focus:outline-none text-red-500 font-normal py-2">
                                 Delete
                             </a>
                         </div>
