@@ -13,14 +13,14 @@ final class Index extends Component
 {
     use WithPagination;
 
-//    public $viewStyle = 'grid';
+    //    public $viewStyle = 'grid';
 
     public $keywords = '';
 
-//    public function mount($viewStyle)
-//    {
-//        $this->viewStyle = $viewStyle;
-//    }
+    //    public function mount($viewStyle)
+    //    {
+    //        $this->viewStyle = $viewStyle;
+    //    }
 
     public function render()
     {

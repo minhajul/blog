@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Gallery;
-use App\Models\Setting;
 use App\Models\Subscriber;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -25,7 +24,7 @@ final class HomeController extends Controller
     {
         $subscriber = Subscriber::whereEmail($email)->firstOrFail();
 
-        if (!$subscriber->isVerified()) {
+        if (! $subscriber->isVerified()) {
             $subscriber->markAsVerified();
         }
 

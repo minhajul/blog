@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use Livewire\Component;
 
-class TestLivewire extends Component
+final class TestLivewire extends Component
 {
     public int $count = 0;
 

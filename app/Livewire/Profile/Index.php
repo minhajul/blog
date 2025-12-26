@@ -13,8 +13,11 @@ final class Index extends Component
     use WithFileUploads;
 
     public string $name = '';
+
     public string $email = '';
+
     public string $bio = '';
+
     public $avatar;
 
     protected $rules = [
@@ -37,7 +40,7 @@ final class Index extends Component
 
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'bio' => ['required', 'string']
+            'bio' => ['required', 'string'],
         ]);
 
         $validated['avatar_url'] = $user->avatar_url;
