@@ -20,7 +20,7 @@
 
                         <div class="mt-6 max-w-2xl">
                             <div class="markdown">
-                                <div x-intersect="$el.classList.add('fadeInUp')" class="mb-3 text-slate-800 dark:text-slate-400">
+                                <div x-intersect="$el.classList.add('fadeInUp')" class="mb-3 text-color">
                                     @if($user)
                                         {!! $user->bio !!}
                                     @else
