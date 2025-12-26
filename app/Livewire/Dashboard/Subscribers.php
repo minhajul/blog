@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Dashboard;
 
 use App\Models\Subscriber;
 use Livewire\Component;
 
-class Subscribers extends Component
+final class Subscribers extends Component
 {
     public function delete(Subscriber $subscriber)
     {

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Dashboard\BlogController;
 use App\Http\Controllers\Dashboard\GalleryController;
-use App\Http\Controllers\Dashboard\InfoController;
-use App\Http\Controllers\Dashboard\SettingsController;
-use App\Http\Controllers\Dashboard\SubscriberController;
 use App\Http\Controllers\HomeController;
 use App\Livewire\ContactUs;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +30,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::post('/gallery/create', [GalleryController::class, 'store'])->name('gallery.store');
     Route::get('/gallery/delete/{gallery}', [GalleryController::class, 'destroy'])->name('gallery.store');
 
-    Route::get('/subscribers', \App\Livewire\Dashboard\Subscribers::class)->name('subscribers.index');
+    Route::get('/subscribers', App\Livewire\Dashboard\Subscribers::class)->name('subscribers.index');
 });
 
 require __DIR__.'/auth.php';
