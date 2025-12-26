@@ -7,7 +7,7 @@
                 </div>
                 <div class="p-4">
                     <div class="flex-1">
-                        <a href="{{ route('home', ['slug' => $blog->slug]) }}" class="block">
+                        <a href="{{ route('blog.show', $blog->slug) }}" class="block">
                             <p class="transition ease-in-out duration-150 text-xl font-semibold text-color">
                                 {{ $blog->title }}
                             </p>
@@ -28,5 +28,9 @@
                 No blog found
             </p>
         @endforelse
+
+        <div class="py-5">
+            {!! $blogs->links() !!}
+        </div>
     </div>
 </div>

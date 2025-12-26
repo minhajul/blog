@@ -14,26 +14,18 @@ use Illuminate\View\View;
 
 final class HomeController extends Controller
 {
-    public function index(): View
+    public function show(Blog $blog): View
     {
-        if ($slug = request('slug')) {
-            $blog = Blog::whereSlug($slug)->firstOrFail();
+        $blog->increment('hit_count');
 
-            $blog->increment('hit_count');
-
-            return view('show', compact('blog'));
-        }
-
-        $viewStyle = $this->getViewStyle();
-
-        return view('home', compact('viewStyle'));
+        return view('show', compact('blog'));
     }
 
     public function verify($email): RedirectResponse
     {
         $subscriber = Subscriber::whereEmail($email)->firstOrFail();
 
-        if (! $subscriber->isVerified()) {
+        if (!$subscriber->isVerified()) {
             $subscriber->markAsVerified();
         }
 
@@ -52,14 +44,5 @@ final class HomeController extends Controller
         $galleries = Gallery::orderByDesc('created_at')->paginate(20);
 
         return view('gallery', compact('galleries'));
-    }
-
-    private function getViewStyle(): string
-    {
-        if ($setting = Setting::first()) {
-            return $setting->view;
-        }
-
-        return 'grid';
     }
 }

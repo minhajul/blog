@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Blog;
 
 use App\Models\Blog;
+use App\Models\Setting;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,21 +13,14 @@ final class Index extends Component
 {
     use WithPagination;
 
-    public $viewStyle = 'grid';
+//    public $viewStyle = 'grid';
 
     public $keywords = '';
 
-    public $perPage = 9;
-
-    public function loadMore()
-    {
-        $this->perPage = $this->perPage + 9;
-    }
-
-    public function mount($viewStyle)
-    {
-        $this->viewStyle = $viewStyle;
-    }
+//    public function mount($viewStyle)
+//    {
+//        $this->viewStyle = $viewStyle;
+//    }
 
     public function render()
     {
@@ -34,6 +28,7 @@ final class Index extends Component
 
         return view('livewire.blog.index')->with([
             'blogs' => $blogs,
+            'viewStyle' => $this->getViewStyle(),
         ]);
     }
 
@@ -47,6 +42,15 @@ final class Index extends Component
             ->when($keywords, fn ($query) => $query->whereLikes(['title', 'status', 'details'], $keywords))
             ->published()
             ->orderByDesc('updated_at')
-            ->paginate($this->perPage);
+            ->paginate(10);
+    }
+
+    private function getViewStyle(): string
+    {
+        if ($setting = Setting::first()) {
+            return $setting->view;
+        }
+
+        return 'grid';
     }
 }

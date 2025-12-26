@@ -11,7 +11,11 @@ use App\Http\Controllers\Profile\SettingsController;
 use App\Http\Controllers\Profile\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+//Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', \App\Livewire\Blog\Index::class)->name('home');
+Route::get('/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
+
+
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->name('subscription.verify');
