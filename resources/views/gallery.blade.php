@@ -5,8 +5,7 @@
                 <h2 x-intersect="$el.classList.add('fadeInUp')" class="text-3xl font-extrabold tracking-tight text-color sm:text-4xl">
                     Gallery
                 </h2>
-                <p x-intersect="$el.classList.add('fadeInUp')"
-                   class="mt-4 text-lg leading-6 text-color">
+                <p x-intersect="$el.classList.add('fadeInUp')" class="mt-4 text-lg leading-6 text-color">
                     Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor
                     lacus arcu.
                 </p>

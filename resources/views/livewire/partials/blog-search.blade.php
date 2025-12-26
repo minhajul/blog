@@ -5,5 +5,14 @@
         </h2>
     </div>
 
-    <flux:input type="text" wire:model="keywords" placeholder="Search blog"/>
+    <input type="text" wire:model.live.debounce.300ms="keywords"
+           class="w-full block appearance-none bg-color border border-gray-400 px-5 py-3 text-sm rounded shadow leading-tight focus:outline-none"
+           placeholder="Search blog">
+
+{{--    <flux:input--}}
+{{--        type="search"--}}
+{{--        wire:model.live.debounce.300ms="keywords"--}}
+{{--        placeholder="Search blog"--}}
+{{--        loading="false"--}}
+{{--    />--}}
 </div>

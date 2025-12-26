@@ -41,8 +41,6 @@ final class Index extends Component
     {
         $keywords = $this->keywords;
 
-        sleep(1);
-
         return Blog::query()
             ->when($keywords, fn ($query) => $query->whereLikes(['title', 'status', 'details'], $keywords))
             ->published()
