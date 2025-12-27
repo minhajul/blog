@@ -43,7 +43,7 @@
         <form wire:submit="save">
             <div class="space-y-6">
                 <div>
-                    <flux:heading size="lg">{{ $form->project ? 'Edit' : 'Create' }} project</flux:heading>
+                    <flux:heading size="lg">{{ $form->project ? 'Edit' : 'Create' }} Project</flux:heading>
                     <flux:text class="mt-2">{{ $form->project ? 'Update existing project details.' : 'Add your next project.' }}</flux:text>
                 </div>
                 <flux:input label="Title" wire:model="form.title" placeholder="Project title" />

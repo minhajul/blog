@@ -46,13 +46,13 @@ final class Projects extends Component
     {
         $this->form->save();
 
-        Flux::modals()->close();
-
         $this->dispatch(
             'show-message',
             message: $this->form->project ? 'Project updated.' : 'Project created.',
             type: 'success'
         );
+
+        Flux::modals()->close();
 
         $this->loadProjects();
     }

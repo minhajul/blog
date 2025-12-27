@@ -47,6 +47,6 @@ final class ProjectForm extends Form
             Project::create($validatedData);
         }
 
-        $this->reset();
+        $this->reset('title', 'url', 'technologies', 'description');
     }
 }
