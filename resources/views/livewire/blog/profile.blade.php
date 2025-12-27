@@ -6,7 +6,7 @@
             </h3>
         </div>
         <div class="ml-4 mt-2 shrink-0">
-            <a href="{{ route('profile.blogs.create') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <a href="{{ route('dashboard.blogs.create') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Create New Blog
             </a>
         </div>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex-1 bg-white p-5 flex flex-col justify-between">
                     <div class="flex-1">
-                        <a href="{{ route('profile.blogs.show', $blog) }}" class="block">
+                        <a href="{{ route('dashboard.blogs.show', $blog) }}" class="block">
                             <p class="text-xl font-semibold text-gray-900">
                                 {{ $blog->title }} <span class="text-xs text-white bg-green-500 p-1 rounded-md">{{ $blog->status }}</span>
                             </p>
@@ -52,7 +52,7 @@
                         </div>
 
                         @if(!$blog->isArchived())
-                            <a onclick="return confirm('Are you sure?')" href="{{ route('profile.blogs.archived', $blog) }}" class="order-last text-xs bg-red-500 text-white p-1 rounded-md">Mark as Archive</a>
+                            <a onclick="return confirm('Are you sure?')" href="{{ route('dashboard.blogs.archived', $blog) }}" class="order-last text-xs bg-red-500 text-white p-1 rounded-md">Mark as Archive</a>
                         @endif
                     </div>
                 </div>

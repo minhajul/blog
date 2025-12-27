@@ -1,63 +1,53 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Tests\Feature;
-
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-final class ConsoleCommandTest extends TestCase
-{
-    public function test_anonymous_user_can_not_ask_for_password_reset_email()
-    {
-        $this->artisan('admin:recover-access')
-            ->expectsQuestion('Input Your Email:', 'test@email.com')
-            ->expectsOutput('No user found with the given email.')
-            ->assertExitCode(1);
-    }
+uses(RefreshDatabase::class);
 
-    public function test_admin_user_can_ask_for_password_reset_email()
-    {
-        Mail::fake();
+it('does not allow anonymous user to request password reset email', function () {
+    $this->artisan('admin:recover-access')
+        ->expectsQuestion('Input Your Email:', 'test@email.com')
+        ->expectsOutput('No user found with the given email.')
+        ->assertExitCode(1);
+});
 
-        $user = User::factory()->create();
+it('allows admin user to request password reset email', function () {
+    Mail::fake();
 
-        $this->artisan('admin:recover-access')
-            ->expectsQuestion('Input Your Email:', $user->email)
-            ->expectsOutput('Password reset link has been sent to your given email.')
-            ->assertExitCode(0);
-    }
+    $user = User::factory()->create();
 
-    public function test_admin_user_can_not_be_created_if_user_exists()
-    {
-        User::factory()->create();
+    $this->artisan('admin:recover-access')
+        ->expectsQuestion('Input Your Email:', $user->email)
+        ->expectsOutput('Password reset link has been sent to your given email.')
+        ->assertExitCode(0);
+});
 
-        $this->artisan('admin:create-user')
-            ->expectsOutput('You have already been created a user, please login using that credentials.')
-            ->assertExitCode(1);
-    }
+it('does not allow admin user creation if user already exists', function () {
+    User::factory()->create();
 
-    public function test_admin_user_can_not_be_created_with_wrong_password()
-    {
-        $this->artisan('admin:create-user')
-            ->expectsQuestion('Input Your Name:', 'Admin User')
-            ->expectsQuestion('Input Your Email:', 'admin@gmail.com')
-            ->expectsQuestion('Set Password:', 'password')
-            ->expectsQuestion('Write your password again:', 'another_password')
-            ->expectsOutput('Password mismatch')
-            ->assertExitCode(1);
-    }
+    $this->artisan('admin:create-user')
+        ->expectsOutput('You have already been created a user, please login using that credentials.')
+        ->assertExitCode(1);
+});
 
-    public function test_admin_user_can_be_created()
-    {
-        $this->artisan('admin:create-user')
-            ->expectsQuestion('Input Your Name:', 'Admin User')
-            ->expectsQuestion('Input Your Email:', 'admin@gmail.com')
-            ->expectsQuestion('Set Password:', 'password')
-            ->expectsQuestion('Write your password again:', 'password')
-            ->expectsOutput('User has been created. Login using the given credentials.')
-            ->assertExitCode(0);
-    }
-}
+it('does not allow admin user creation when passwords do not match', function () {
+    $this->artisan('admin:create-user')
+        ->expectsQuestion('Input Your Name:', 'Admin User')
+        ->expectsQuestion('Input Your Email:', 'admin@gmail.com')
+        ->expectsQuestion('Set Password:', 'password')
+        ->expectsQuestion('Write your password again:', 'another_password')
+        ->expectsOutput('Password mismatch')
+        ->assertExitCode(1);
+});
+
+it('allows admin user to be created', function () {
+    $this->artisan('admin:create-user')
+        ->expectsQuestion('Input Your Name:', 'Admin User')
+        ->expectsQuestion('Input Your Email:', 'admin@gmail.com')
+        ->expectsQuestion('Set Password:', 'password')
+        ->expectsQuestion('Write your password again:', 'password')
+        ->expectsOutput('User has been created. Login using the given credentials.')
+        ->assertExitCode(0);
+});

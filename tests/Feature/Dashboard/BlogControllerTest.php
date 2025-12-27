@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Profile;
+namespace Tests\Feature\Dashboard;
 
 use App\Enums\BlogStatus;
 use App\Models\Blog;
@@ -23,7 +23,7 @@ final class BlogControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.blogs.index'));
+            ->get(route('dashboard.blogs.index'));
 
         $response->assertStatus(200);
     }
@@ -33,7 +33,7 @@ final class BlogControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.blogs.create'));
+            ->get(route('dashboard.blogs.create'));
 
         $response->assertStatus(200);
     }
@@ -48,7 +48,7 @@ final class BlogControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->post(route('profile.blogs.store'), [
+            ->post(route('dashboard.blogs.store'), [
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,
@@ -66,7 +66,7 @@ final class BlogControllerTest extends TestCase
         $blog = Blog::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.blogs.show', $blog));
+            ->get(route('dashboard.blogs.show', $blog));
 
         $response->assertStatus(200);
     }
@@ -83,7 +83,7 @@ final class BlogControllerTest extends TestCase
         $blog = Blog::factory()->create();
 
         $response = $this->actingAs($user)
-            ->post(route('profile.blogs.store', $blog), [
+            ->post(route('dashboard.blogs.store', $blog), [
                 'title' => $this->faker->title,
                 'banner' => UploadedFile::fake()->image('avatar.jpg'),
                 'details' => $this->faker->sentence,

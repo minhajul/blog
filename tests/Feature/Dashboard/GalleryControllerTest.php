@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Profile;
+namespace Tests\Feature\Dashboard;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -18,7 +18,7 @@ final class GalleryControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.gallery.index'));
+            ->get(route('gallery.index'));
 
         $response->assertStatus(200);
     }
@@ -28,7 +28,7 @@ final class GalleryControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.gallery.create'));
+            ->get(route('gallery.create'));
 
         $response->assertStatus(200);
     }

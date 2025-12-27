@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Profile;
+namespace Tests\Feature\Dashboard;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,7 +14,7 @@ final class InfoControllerTest extends TestCase
 
     public function test_unauthenticated_user_can_not_view_profile()
     {
-        $response = $this->get(route('profile.index'));
+        $response = $this->get(route('dashboard'));
 
         $response->assertRedirect();
     }
@@ -24,7 +24,7 @@ final class InfoControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.index'));
+            ->get(route('dashboard'));
 
         $response->assertStatus(200);
     }
@@ -34,7 +34,7 @@ final class InfoControllerTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-            ->get(route('profile.contacts'));
+            ->get(route('contacts.index'));
 
         $response->assertStatus(200);
     }

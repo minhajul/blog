@@ -25,8 +25,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/contacts', ContactList::class)->name('contacts.index');
 
     Route::resource('/blogs', BlogController::class)->names('dashboard.blogs');
-    Route::post('/upload/file', [BlogController::class, 'upload'])->name('profile.blogs.upload.file');
-    Route::get('/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('profile.blogs.archived');
+    Route::post('/upload/file', [BlogController::class, 'upload'])->name('dashboard.blogs.upload.file');
+    Route::get('/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('dashboard.blogs.archived');
 
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
     Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
