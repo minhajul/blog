@@ -19,7 +19,7 @@ final class Home extends Component
         $blogs = $this->getFilteredBlogs();
 
         return view('livewire.home')->with([
-            'blogs' => $blogs
+            'blogs' => $blogs,
         ]);
     }
 
