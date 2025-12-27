@@ -30,18 +30,4 @@ final class HomeController extends Controller
 
         return redirect()->route('home');
     }
-
-    public function about(): View
-    {
-        $user = User::first();
-
-        return view('about', compact('user'));
-    }
-
-    public function gallery(): View
-    {
-        $galleries = Gallery::orderByDesc('created_at')->paginate(20);
-
-        return view('gallery', compact('galleries'));
-    }
 }

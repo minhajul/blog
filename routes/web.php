@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Dashboard\BlogController;
 use App\Http\Controllers\Dashboard\GalleryController;
 use App\Http\Controllers\HomeController;
@@ -13,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Livewire\Blog\Index::class)->name('home');
 Route::get('/details/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('/about', AboutController::class)->name('about');
+Route::get('/gallery', \App\Http\Controllers\GalleryController::class)->name('gallery');
 Route::get('/contact', ContactUs::class)->name('contact');
 
 Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->name('subscription.verify');

@@ -34,7 +34,7 @@ final class Index extends Component
             ->when($keywords, fn ($query) => $query->whereLikes(['title', 'status', 'details'], $keywords))
             ->published()
             ->orderByDesc('updated_at')
-            ->paginate(10);
+            ->paginate(12);
     }
 
     private function getViewStyle(): string
