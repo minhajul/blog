@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Gallery;
 use App\Models\Subscriber;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', App\Livewire\Blog\Index::class)->name('home');
 Route::get('/details/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
 Route::get('/about', AboutController::class)->name('about');
-Route::get('/gallery', \App\Http\Controllers\GalleryController::class)->name('gallery');
+Route::get('/gallery', App\Http\Controllers\GalleryController::class)->name('gallery');
 Route::get('/contact', ContactUs::class)->name('contact');
 
 Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->name('subscription.verify');

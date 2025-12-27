@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\View\View;
 
-class GalleryController extends Controller
+final class GalleryController extends Controller
 {
     public function __invoke(): View
     {
