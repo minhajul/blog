@@ -18,9 +18,9 @@ final class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             BlogSeeder::class,
+            ProjectSeeder::class,
             SubscriberSeeder::class,
-            ContactSeeder::class,
-            // GallerySeeder::class
+            ContactSeeder::class
         ]);
     }
 }
