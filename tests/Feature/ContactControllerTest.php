@@ -10,4 +10,3 @@ it('contact page is visible', function () {
     $this->get(route('contact'))
         ->assertOk();
 });
-
