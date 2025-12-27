@@ -14,10 +14,13 @@ final class ProjectForm extends Form
 
     #[Validate('required|string')]
     public $title;
+
     #[Validate('required|url')]
     public $url;
+
     #[Validate('required|string')]
     public $technologies;
+
     #[Validate('required|string')]
     public $description;
 
