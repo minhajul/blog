@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire\Blog;
+namespace App\Livewire\Dashboard;
 
 use App\Enums\BlogStatus;
 use App\Models\Blog;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-final class Profile extends Component
+final class BlogList extends Component
 {
     use WithPagination;
 
@@ -32,7 +32,7 @@ final class Profile extends Component
             ->orderByDesc('updated_at')
             ->paginate(12);
 
-        return view('livewire.blog.profile')->with([
+        return view('livewire.dashboard.blogs')->with([
             'blogs' => $blogs,
             'statuses' => BlogStatus::cases(),
         ]);
