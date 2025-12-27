@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Gallery;
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 
-final class GallerySeeder extends Seeder
+final class ProjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-        Gallery::factory(20)->create();
+        Project::factory()->count(10)->create();
     }
 }

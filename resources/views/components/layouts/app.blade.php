@@ -27,6 +27,8 @@
 
     <x-layouts.footer/>
 
+    <x-toast-message />
+
     @livewireScripts
     @fluxScripts
 </div>
