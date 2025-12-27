@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Project;
 
-class ProjectController extends Controller
+final class ProjectController extends Controller
 {
     public function __invoke()
     {
