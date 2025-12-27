@@ -1,8 +1,8 @@
 <div class="flex flex-col gap-6">
     <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
 
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+    @include('errors.error')
+    @include('errors.message')
 
     <form wire:submit="register" class="flex flex-col gap-6">
         <!-- Name -->
@@ -10,8 +10,7 @@
             wire:model="name"
             :label="__('Name')"
             type="text"
-            required
-            autofocus
+            required="true"
             autocomplete="name"
             :placeholder="__('Full name')"
         />
@@ -21,7 +20,7 @@
             wire:model="email"
             :label="__('Email address')"
             type="email"
-            required
+            required="true"
             autocomplete="email"
             placeholder="email@example.com"
         />
@@ -31,7 +30,7 @@
             wire:model="password"
             :label="__('Password')"
             type="password"
-            required
+            required="true"
             autocomplete="new-password"
             :placeholder="__('Password')"
             viewable
@@ -42,7 +41,7 @@
             wire:model="password_confirmation"
             :label="__('Confirm password')"
             type="password"
-            required
+            required="true"
             autocomplete="new-password"
             :placeholder="__('Confirm password')"
             viewable

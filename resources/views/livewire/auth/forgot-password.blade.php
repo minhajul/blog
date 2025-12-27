@@ -1,8 +1,8 @@
  <div class="flex flex-col gap-6">
     <x-auth-header :title="__('Forgot password')" :description="__('Enter your email to receive a password reset link')" />
 
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+     @include('errors.error')
+     @include('errors.message')
 
     <form wire:submit="sendPasswordResetLink" class="flex flex-col gap-6">
         <!-- Email Address -->
@@ -10,10 +10,9 @@
             wire:model="email"
             :label="__('Email Address')"
             type="email"
-            required
-            autofocus
+            required="true"
             placeholder="email@example.com"
-            viewable
+            viewable="true"
         />
 
         <flux:button variant="primary" type="submit" class="w-full">{{ __('Email password reset link') }}</flux:button>
