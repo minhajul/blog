@@ -6,9 +6,8 @@
                     <flux:heading size="xl">Projects</flux:heading>
                     <flux:subheading>Our Future Plans, One Feature at a Time</flux:subheading>
                 </div>
-                <flux:modal.trigger name="create-project">
-                    <flux:button>Create New</flux:button>
-                </flux:modal.trigger>
+
+                <flux:button wire:click="create">Create New</flux:button>
             </div>
 
             <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
@@ -19,12 +18,15 @@
                                 {{ $project->title }}
                             </p>
 
-                            <flux:modal.trigger name="update-project">
-                                <flux:icon.pencil-square variant="micro" />
-                            </flux:modal.trigger>
+                            <flux:button
+                                wire:click="edit({{ $project->id }})"
+                                icon="pencil-square"
+                                variant="ghost"
+                                size="sm"
+                            />
                         </div>
 
-                        <p class="text-sm text-color">{{ $project->description }}</p>
+                        <p class="text-sm text-color">{{ $project->short_description }}</p>
                     </div>
                 @empty
                     <div class="bg-color rounded-md p-4">
@@ -37,12 +39,12 @@
         </div>
     </div>
 
-    <flux:modal name="create-project" class="w-9/12 md:w-1/2">
-        <form wire:submit="create">
+    <flux:modal name="project-modal" class="w-9/12 md:w-1/2">
+        <form wire:submit="save">
             <div class="space-y-6">
                 <div>
-                    <flux:heading size="lg">Create project</flux:heading>
-                    <flux:text class="mt-2">Add your next project.</flux:text>
+                    <flux:heading size="lg">{{ $form->project ? 'Edit' : 'Create' }} project</flux:heading>
+                    <flux:text class="mt-2">{{ $form->project ? 'Update existing project details.' : 'Add your next project.' }}</flux:text>
                 </div>
                 <flux:input label="Title" wire:model="form.title" placeholder="Project title" />
 
@@ -54,7 +56,9 @@
 
                 <div class="flex">
                     <flux:spacer />
-                    <flux:button type="submit" variant="primary">Create</flux:button>
+                    <flux:button type="submit" variant="primary">
+                        {{ $form->project ? 'Update' : 'Create' }}
+                    </flux:button>
                 </div>
             </div>
         </form>

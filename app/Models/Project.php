@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Database\Factories\ProjectFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,6 +28,10 @@ final class Project extends Model
         'technologies' => 'array',
     ];
 
+    protected $appends = [
+        'short_description',
+    ];
+
     protected static function boot()
     {
         parent::boot();
@@ -45,5 +50,13 @@ final class Project extends Model
 
             $table->slug = $slug;
         });
+    }
+
+    // Accessor
+    protected function shortDescription(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => Str::limit(strip_tags($attributes['description']), 200)
+        );
     }
 }

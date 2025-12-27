@@ -30,11 +30,29 @@ final class Projects extends Component
 
     public function create()
     {
+        $this->form->reset();
+
+        Flux::modal('project-modal')->show();
+    }
+
+    public function edit(Project $project)
+    {
+        $this->form->setProject($project);
+
+        Flux::modal('project-modal')->show();
+    }
+
+    public function save()
+    {
         $this->form->save();
 
         Flux::modals()->close();
 
-        $this->dispatch('show-message', message: 'Project has been created.', type: 'success');
+        $this->dispatch(
+            'show-message',
+            message: $this->form->project ? 'Project updated.' : 'Project created.',
+            type: 'success'
+        );
 
         $this->loadProjects();
     }
