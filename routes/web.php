@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Livewire\ContactUs;
 use App\Livewire\Dashboard\ContactList;
 use App\Livewire\Dashboard\Dashboard;
+use App\Livewire\Dashboard\Projects;
 use App\Livewire\Dashboard\Subscribers;
 use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,8 @@ Route::get('/verify/subscription/{email}', [HomeController::class, 'verify'])->n
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/contacts', ContactList::class)->name('contacts.index');
+
+    Route::get('/projects', Projects::class)->name('projects.index');
 
     Route::resource('/blogs', BlogController::class)->names('dashboard.blogs');
     Route::post('/upload/file', [BlogController::class, 'upload'])->name('dashboard.blogs.upload.file');
