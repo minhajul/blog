@@ -3,8 +3,7 @@
         <flux:navlist>
             <flux:navlist.item :href="route('dashboard')" icon="home" wire:navigate>{{ __('Home') }}</flux:navlist.item>
             <flux:navlist.item :href="route('dashboard.blogs.index')" icon="pencil-square" wire:navigate>{{ __('Blogs') }}</flux:navlist.item>
-            <flux:navlist.item :href="route('projects.index')" icon="pencil-square" wire:navigate>{{ __('Project') }}</flux:navlist.item>
-            <flux:navlist.item :href="route('gallery.index')" icon="photo" wire:navigate>{{ __('Gallery') }}</flux:navlist.item>
+            <flux:navlist.item :href="route('dashboard.projects.index')" icon="pencil-square" wire:navigate>{{ __('Project') }}</flux:navlist.item>
             <flux:navlist.item :href="route('subscribers.index')" icon="chart-bar-square" wire:navigate>{{ __('Subscribers') }}</flux:navlist.item>
             <flux:navlist.item :href="route('contacts.index')" icon="users" wire:navigate>{{ __('Contacts') }}</flux:navlist.item>
         </flux:navlist>
