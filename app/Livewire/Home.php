@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire\Blog;
+namespace App\Livewire;
 
 use App\Models\Blog;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-final class Index extends Component
+final class Home extends Component
 {
     use WithPagination;
 
@@ -18,9 +18,8 @@ final class Index extends Component
     {
         $blogs = $this->getFilteredBlogs();
 
-        return view('livewire.blog.index')->with([
-            'blogs' => $blogs,
-            'viewStyle' => $this->getViewStyle(),
+        return view('livewire.home')->with([
+            'blogs' => $blogs
         ]);
     }
 
@@ -35,10 +34,5 @@ final class Index extends Component
             ->published()
             ->orderByDesc('updated_at')
             ->paginate(12);
-    }
-
-    private function getViewStyle(): string
-    {
-        return 'grid';
     }
 }

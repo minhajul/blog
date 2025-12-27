@@ -10,9 +10,10 @@ use App\Livewire\ContactUs;
 use App\Livewire\Dashboard\ContactList;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Dashboard\Subscribers;
+use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', App\Livewire\Blog\Index::class)->name('home');
+Route::get('/', Home::class)->name('home');
 Route::get('/details/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/gallery', App\Http\Controllers\GalleryController::class)->name('gallery');

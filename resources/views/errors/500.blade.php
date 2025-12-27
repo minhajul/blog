@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     <div class="py-6 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden pb-6">
@@ -18,4 +18,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.app>
