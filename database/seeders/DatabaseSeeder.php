@@ -20,7 +20,7 @@ final class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             ProjectSeeder::class,
             SubscriberSeeder::class,
-            ContactSeeder::class
+            ContactSeeder::class,
         ]);
     }
 }

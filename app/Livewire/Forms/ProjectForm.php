@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Forms;
 
 use App\Models\Project;
 use Livewire\Form;
 
-class ProjectForm extends Form
+final class ProjectForm extends Form
 {
     public $title;
 

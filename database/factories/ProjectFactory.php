@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\Project;
@@ -8,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<Project>
  */
-class ProjectFactory extends Factory
+final class ProjectFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -33,7 +35,7 @@ class ProjectFactory extends Factory
                 'React',
                 'Next.js',
             ], rand(2, 5)),
-            'description' => fake()->paragraphs(3, true)
+            'description' => fake()->paragraphs(3, true),
         ];
     }
 }
