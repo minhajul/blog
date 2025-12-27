@@ -1,5 +1,5 @@
 <form wire:submit.prevent="update">
-    <div class="px-4 py-5 bg-white sm:p-6 shadow rounded-md">
+    <div class="p-4 bg-color shadow-md rounded-md">
 
         @include('errors.message')
 

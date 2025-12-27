@@ -1,5 +1,5 @@
 <div class="flex items-start max-md:flex-col">
-    <div class="me-10 w-full pb-4 md:w-[220px] flex-shrink-0">
+    <div class="me-10 w-full pb-4 md:w-[220px] flex-shrink-0 pt-6">
         <flux:navlist>
             <flux:navlist.item :href="route('dashboard')" icon="home" wire:navigate>{{ __('Home') }}</flux:navlist.item>
             <flux:navlist.item :href="route('dashboard.blogs.index')" icon="pencil-square" wire:navigate>{{ __('Blogs') }}</flux:navlist.item>
@@ -11,7 +11,7 @@
 
     <flux:separator class="md:hidden" />
 
-    <div class="flex-1 self-stretch max-md:pt-6 min-w-0">
+    <div class="flex-1 self-stretch max-md:pt-6 min-w-0 pt-6">
         <div class="w-full overflow-hidden rounded-md shadow-md bg-color px-4">
             {{ $slot }}
         </div>
