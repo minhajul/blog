@@ -12,25 +12,21 @@
                             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                     <table class="min-w-full divide-y divide-gray-200">
-                                        <thead class="bg-gray-50">
+                                        <thead class="bg-color">
                                         <tr>
-                                            <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
                                                 ID
                                             </th>
 
-                                            <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
                                                 Name
                                             </th>
 
-                                            <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
                                                 Email
                                             </th>
 
-                                            <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
                                                 Message
                                             </th>
 
@@ -40,23 +36,23 @@
                                         </tr>
                                         </thead>
 
-                                        <tbody class="bg-white divide-y divide-gray-200" x-max="1">
+                                        <tbody class="bg-color divide-y divide-gray-200" x-max="1">
 
                                         @foreach($contacts as $contact)
                                             <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-color">
                                                     {{ $contact->id }}
                                                 </td>
 
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-color">
                                                     {{ $contact->name }}
                                                 </td>
 
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-color">
                                                     {{ $contact->email }}
                                                 </td>
 
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-color">
                                                     {{ $contact->message }}
                                                 </td>
 

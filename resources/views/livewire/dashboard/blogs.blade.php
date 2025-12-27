@@ -1,12 +1,10 @@
 <div>
-    <div class="border-b border-gray-200">
-        <nav class="-mb-px flex content-center space-x-8" aria-label="Tabs">
+    <div class="border-b border-gray-200 dark:border-slate-500">
+        <flux:navbar>
             @foreach($statuses as $item)
-                <p wire:click="filterByStatus('{{ $item }}')" class="cursor-pointer border-transparent text-gray-500 {{ $status == $item ? "border-indigo-500 text-indigo-600" : "hover:text-gray-700 hover:border-gray-300" }} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                    {{ ucfirst($item->value) }}
-                </p>
+                <flux:navbar.item wire:click="filterByStatus('{{ $item }}')">{{ ucfirst($item->value) }}</flux:navbar.item>
             @endforeach
-        </nav>
+        </flux:navbar>
     </div>
 
     <div class="my-6">
@@ -23,19 +21,19 @@
                 <div class="shrink-0">
                     <img class="h-48 w-full object-cover" src="{{ $blog->bannerUrl() }}" alt="Banner">
                 </div>
-                <div class="flex-1 bg-white p-4 flex flex-col justify-between">
+                <div class="flex-1 bg-color p-4 flex flex-col justify-between">
                     <div class="flex-1">
                         <a href="{{ route('dashboard.blogs.show', $blog) }}" class="block">
-                            <p class="text-xl font-semibold text-gray-900">
+                            <p class="font-semibold text-color">
                                 {{ $blog->title }} <span class="text-xs text-white bg-green-500 p-1 rounded-md">{{ $blog->status }}</span>
                             </p>
-                            <p class="mt-3 text-base text-gray-500">
+                            <p class="mt-3 text-sm text-color">
                                 {{ $blog->short_details }}
                             </p>
                         </a>
                     </div>
 
-                    <div class="mt-4 flex justify-between  text-sm text-gray-500">
+                    <div class="mt-4 flex justify-between text-sm text-color">
                         <time datetime="{{ $blog->created_at }}">
                             Posted {{ $blog->created_at->diffForHumans() }}
                         </time>

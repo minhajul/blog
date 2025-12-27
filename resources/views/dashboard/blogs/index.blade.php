@@ -4,7 +4,7 @@
             <div class="flex justify-between">
                 <flux:heading size="xl">Posted Blogs</flux:heading>
 
-                <flux:button href="{{ route('dashboard.blogs.create') }}">Create New</flux:button>
+                <flux:button href="{{ route('dashboard.blogs.create') }}">Create</flux:button>
             </div>
             <livewire:dashboard.blog-list/>
         </div>

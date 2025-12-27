@@ -2,12 +2,12 @@
     <x-layouts.dashboard>
         <div class="py-5 max-w-3xl mx-auto lg:max-w-7xl">
             <div class="flex justify-between">
-                <flux:heading size="xl">Update Blogs</flux:heading>
+                <flux:heading size="xl">Update</flux:heading>
 
-                <flux:button href="{{ route('dashboard.blogs.index') }}"> View Posted Blogs</flux:button>
+                <flux:button href="{{ route('dashboard.blogs.index') }}"> View Blogs</flux:button>
             </div>
 
-            <div class="mt-5 p-4 bg-white shadow-md rounded-md">
+            <div class="mt-5 p-4 bg-color shadow-md rounded-md">
                 @include('errors.success')
                 @include('errors.message')
 
