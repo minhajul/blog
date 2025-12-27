@@ -1,13 +1,11 @@
-<x-app-layout>
+<x-layouts.app>
     <div class="py-6 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10">
         <div class="relative max-w-4xl mx-auto">
             <div class="text-center">
-                <h2 x-intersect="$el.classList.add('fadeInUp')"
-                    class="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
+                <h2 x-intersect="$el.classList.add('fadeInUp')" class="text-3xl font-extrabold tracking-tight text-color sm:text-4xl">
                     Gallery
                 </h2>
-                <p x-intersect="$el.classList.add('fadeInUp')"
-                   class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">
+                <p x-intersect="$el.classList.add('fadeInUp')" class="mt-4 text-lg leading-6 text-color">
                     Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor
                     lacus arcu.
                 </p>
@@ -29,13 +27,13 @@
                     </li>
                 @empty
                     <li x-intersect="$el.classList.add('fadeInUp')"
-                        class="mt-4 text-lg leading-6 text-slate-500 dark:text-slate-400">No gallery added
+                        class="mt-4 text-lg leading-6 text-color">No gallery added
                     </li>
                 @endforelse
             </ul>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.app>
 
 
 

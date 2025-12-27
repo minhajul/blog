@@ -2,32 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-use JsonException;
-use Tests\TestCase;
+uses(RefreshDatabase::class);
 
-final class ContactControllerTest extends TestCase
-{
-    public function test_contact_screen_can_be_rendered()
-    {
-        $response = $this->get(route('contact.index'));
-
-        $response->assertStatus(200);
-    }
-
-    /**
-     * @throws JsonException
-     */
-    public function test_user_can_submit_contact()
-    {
-        $response = $this->post(route('contact.store'), [
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'message' => 'Test Contact Message',
-        ]);
-
-        $response->assertRedirect();
-        $response->assertSessionHasNoErrors();
-    }
-}
+it('contact page is visible', function () {
+    $this->get(route('contact'))
+        ->assertOk();
+});

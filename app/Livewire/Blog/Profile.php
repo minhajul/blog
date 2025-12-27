@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Blog;
 
+use App\Enums\BlogStatus;
 use App\Models\Blog;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -23,21 +24,17 @@ final class Profile extends Component
 
     public function render()
     {
-        $blogs = $this->getBlogs();
-
-        return view('livewire.blog.profile')->with([
-            'blogs' => $blogs,
-        ]);
-    }
-
-    protected function getBlogs()
-    {
         $keywords = $this->keywords;
 
-        return Blog::when($keywords, function ($query) use ($keywords) {
+        $blogs = Blog::when($keywords, function ($query) use ($keywords) {
             return $query->whereLikes(['title', 'status', 'details'], $keywords);
         })->where('status', $this->status)
             ->orderByDesc('updated_at')
             ->paginate(12);
+
+        return view('livewire.blog.profile')->with([
+            'blogs' => $blogs,
+            'statuses' => BlogStatus::cases(),
+        ]);
     }
 }

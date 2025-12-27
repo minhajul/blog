@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Livewire\Dashboard;
+
+use App\Models\Subscriber;
+use Livewire\Component;
+
+final class Subscribers extends Component
+{
+    public function delete(Subscriber $subscriber)
+    {
+        $subscriber->delete();
+
+        session()->flash('success', 'The subscriber has been deleted');
+
+        return redirect()->back();
+    }
+
+    public function render()
+    {
+        $subscribers = Subscriber::paginate(30);
+
+        return view('livewire.dashboard.subscribers', compact('subscribers'));
+    }
+}

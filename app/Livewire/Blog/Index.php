@@ -12,21 +12,7 @@ final class Index extends Component
 {
     use WithPagination;
 
-    public $viewStyle = 'grid';
-
     public $keywords = '';
-
-    public $perPage = 9;
-
-    public function loadMore()
-    {
-        $this->perPage = $this->perPage + 9;
-    }
-
-    public function mount($viewStyle)
-    {
-        $this->viewStyle = $viewStyle;
-    }
 
     public function render()
     {
@@ -34,6 +20,7 @@ final class Index extends Component
 
         return view('livewire.blog.index')->with([
             'blogs' => $blogs,
+            'viewStyle' => $this->getViewStyle(),
         ]);
     }
 
@@ -47,6 +34,11 @@ final class Index extends Component
             ->when($keywords, fn ($query) => $query->whereLikes(['title', 'status', 'details'], $keywords))
             ->published()
             ->orderByDesc('updated_at')
-            ->paginate($this->perPage);
+            ->paginate(12);
+    }
+
+    private function getViewStyle(): string
+    {
+        return 'grid';
     }
 }
