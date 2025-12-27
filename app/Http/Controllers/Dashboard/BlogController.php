@@ -16,12 +16,12 @@ final class BlogController extends Controller
 {
     public function index(): View
     {
-        return view('profile.blogs.index');
+        return view('dashboard.blogs.index');
     }
 
     public function create(): View
     {
-        return view('profile.blogs.create');
+        return view('dashboard.blogs.create');
     }
 
     public function upload(Request $request)
@@ -70,7 +70,7 @@ final class BlogController extends Controller
 
     public function show(Blog $blog): View
     {
-        return view('profile.blogs.update', compact('blog'));
+        return view('dashboard.blogs.update', compact('blog'));
     }
 
     public function markAsArchived(Blog $blog): RedirectResponse

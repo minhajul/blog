@@ -17,12 +17,12 @@ final class GalleryController extends Controller
     {
         $galleries = Gallery::orderByDesc('created_at')->paginate(20);
 
-        return view('profile.gallery.index', compact('galleries'));
+        return view('dashboard.gallery.index', compact('galleries'));
     }
 
     public function create(): View
     {
-        return view('profile.gallery.create');
+        return view('dashboard.gallery.create');
     }
 
     public function store(Request $request): RedirectResponse

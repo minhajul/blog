@@ -1,17 +1,4 @@
 <div>
-    <div class="border-b-2 border-gray-100  flex items-center justify-between flex-wrap sm:flex-nowrap">
-        <div class="mt-2">
-            <h3 class="text-3xl my-5 tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-                Posted Blogs
-            </h3>
-        </div>
-        <div class="ml-4 mt-2 shrink-0">
-            <a href="{{ route('dashboard.blogs.create') }}" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Create New Blog
-            </a>
-        </div>
-    </div>
-
     <div class="border-b border-gray-200">
         <nav class="-mb-px flex content-center space-x-8" aria-label="Tabs">
             @foreach(\App\Enums\BlogStatus::cases() as $item)
@@ -22,11 +9,11 @@
         </nav>
     </div>
 
-    <div class="mt-6">
-        <input type="text" wire:model="keywords" class="w-full block appearance-none bg-white border border-gray-400 px-4 py-2 text-sm rounded shadow leading-tight focus:outline-none" placeholder="Search">
+    <div class="my-6">
+        <flux:input type="text" wire:model.live.debounce.300ms="keywords" placeholder="Search blogs" />
     </div>
 
-    <div class="mt-10 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+    <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         @forelse($blogs as $blog)
             <div class="mb-5 flex flex-col rounded-md shadow-md overflow-hidden">
                 <div class="shrink-0">
