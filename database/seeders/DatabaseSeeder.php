@@ -19,6 +19,7 @@ final class DatabaseSeeder extends Seeder
             UserSeeder::class,
             BlogSeeder::class,
             ProjectSeeder::class,
+            ExperienceSeeder::class,
             SubscriberSeeder::class,
             ContactSeeder::class,
         ]);

@@ -13,6 +13,6 @@ final class AboutController extends Controller
     {
         $user = User::first();
 
-        return view('about', compact('user'));
+        return view('frontend.about', compact('user'));
     }
 }

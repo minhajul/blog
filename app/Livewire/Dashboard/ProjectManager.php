@@ -10,7 +10,7 @@ use Flux\Flux;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-final class Projects extends Component
+final class ProjectManager extends Component
 {
     use WithPagination;
 
@@ -59,6 +59,6 @@ final class Projects extends Component
 
     public function render()
     {
-        return view('livewire.dashboard.projects');
+        return view('livewire.dashboard.project-manager');
     }
 }

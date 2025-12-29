@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 lg:py-10">
+    <div class="py-6 lg:py-10">
         <flux:heading size="xl">Projects</flux:heading>
         <flux:subheading size="lg">Highlighted projects demonstrating my expertise</flux:subheading>
 
