@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Dashboard;
 
 use App\Livewire\Forms\ExperienceForm;
@@ -8,7 +10,7 @@ use Flux\Flux;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ExperienceManager extends Component
+final class ExperienceManager extends Component
 {
     use WithPagination;
 

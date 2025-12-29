@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Forms;
 
 use App\Models\Experience;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class ExperienceForm extends Form
+final class ExperienceForm extends Form
 {
     public ?Experience $experience = null;
 
