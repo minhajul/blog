@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="min-h-screen flex items-center justify-center">
-        <div class="py-6 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10 w-full max-w-7xl">
+        <div class="py-6 overflow-hidden lg:py-10">
             <div class="grid grid-cols-1 lg:grid-cols-3 items-center gap-14">
                 <div class="col-span-1 lg:col-span-2">
                     <div class="text-center">
@@ -17,7 +17,6 @@
 
                 <div class="col-span-1">
                     <img
-                        x-intersect="$el.classList.add('scale')"
                         src="{{ $user->avatarUrl() ?? 'https://placehold.co/500x300' }}"
                         alt="Avatar"
                         class="shrink-0 mx-auto rounded-md"
