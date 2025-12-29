@@ -22,7 +22,7 @@
                                 wire:click="edit({{ $project->id }})"
                                 icon="pencil-square"
                                 variant="ghost"
-                                size="sm"
+                                size="xs"
                             />
                         </div>
 
