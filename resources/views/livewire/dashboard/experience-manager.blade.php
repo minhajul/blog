@@ -12,9 +12,9 @@
 
             <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                 @forelse($experiences as $experience)
-                    <div class="bg-color rounded-md p-4">
+                    <div class="bg-color rounded-md p-2">
                         <div class="flex justify-between items-center">
-                            <p class="text-lg font-medium tracking-tight text-color">
+                            <p class="text-xl font-medium tracking-tight text-color">
                                 {{ $experience->title }}
                             </p>
 
@@ -22,11 +22,19 @@
                                 wire:click="edit({{ $experience->id }})"
                                 icon="pencil-square"
                                 variant="ghost"
-                                size="sm"
+                                size="xs"
                             />
                         </div>
 
-                        <p class="text-sm text-color">{{ $experience->description }}</p>
+                        <div class="font-medium text-color mb-2">
+                            {{ $experience->company_name }}
+                        </div>
+
+                        <div class="mt-2 text-sm text-surface uppercase">
+                            {{ $experience->start_date->format('M Y') }}
+                            &mdash;
+                            {{ $experience->end_date ? $experience->end_date->format('M Y') : 'Running' }}
+                        </div>
                     </div>
                 @empty
                     <div class="bg-color rounded-md p-4">

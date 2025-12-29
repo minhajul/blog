@@ -12,6 +12,6 @@ final class ProjectController extends Controller
     {
         $projects = Project::query()->latest()->get();
 
-        return view('projects.index', compact('projects'));
+        return view('frontend.projects.index', compact('projects'));
     }
 }

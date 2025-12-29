@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Dashboard\BlogController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use App\Livewire\ContactUs;
@@ -19,6 +20,7 @@ Route::get('/', Home::class)->name('home');
 Route::get('/details/{blog:slug}', [HomeController::class, 'show'])->name('blog.show');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/projects', ProjectController::class)->name('projects');
+Route::get('/experiences', ExperienceController::class)->name('experiences');
 
 Route::get('/contact', ContactUs::class)->name('contact');
 
