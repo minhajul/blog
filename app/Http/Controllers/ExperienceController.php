@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
 
-class ExperienceController extends Controller
+final class ExperienceController extends Controller
 {
     public function __invoke()
     {
