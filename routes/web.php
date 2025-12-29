@@ -9,6 +9,7 @@ use App\Http\Controllers\ProjectController;
 use App\Livewire\ContactUs;
 use App\Livewire\Dashboard\ContactList;
 use App\Livewire\Dashboard\Dashboard;
+use App\Livewire\Dashboard\ExperienceManager;
 use App\Livewire\Dashboard\Projects;
 use App\Livewire\Dashboard\Subscribers;
 use App\Livewire\Home;
@@ -28,6 +29,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/contacts', ContactList::class)->name('contacts.index');
 
     Route::get('/projects', Projects::class)->name('dashboard.projects.index');
+    Route::get('/experiences', ExperienceManager::class)->name('dashboard.experiences.index');
 
     Route::resource('/blogs', BlogController::class)->names('dashboard.blogs');
     Route::post('/upload/file', [BlogController::class, 'upload'])->name('dashboard.blogs.upload.file');
