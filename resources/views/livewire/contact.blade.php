@@ -1,17 +1,13 @@
 <div class="py-6 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10">
     <div class="relative max-w-xl mx-auto">
         <div class="text-center">
-            <h2 x-intersect="$el.classList.add('fadeInUp')" class="text-3xl font-extrabold tracking-tight text-color sm:text-4xl">
-                Contact Us
-            </h2>
-            <p x-intersect="$el.classList.add('fadeInUp')"
-               class="mt-4 text-lg leading-6 text-color">
-                Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor
-                lacus arcu.
-            </p>
+            <flux:heading size="xl">Contact Us</flux:heading>
+            <flux:subheading size="lg">
+                Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.
+            </flux:subheading>
         </div>
 
-        <div class="mt-12" x-intersect="$el.classList.add('fadeInUp')">
+        <div class="mt-12">
             @include('errors.success')
 
             <form wire:submit="submit" class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">

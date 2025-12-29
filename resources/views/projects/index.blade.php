@@ -1,5 +1,8 @@
 <x-layouts.app>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 lg:py-10">
+        <flux:heading size="xl">Projects</flux:heading>
+        <flux:subheading size="lg">Highlighted projects demonstrating my expertise</flux:subheading>
+
         <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             @foreach($projects as $project)
                 <a href="{{ $project->url }}" target="_blank" class="bg-color rounded-md shadow-md p-4 mb-5">
