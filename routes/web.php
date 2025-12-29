@@ -11,7 +11,7 @@ use App\Livewire\ContactUs;
 use App\Livewire\Dashboard\ContactList;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Dashboard\ExperienceManager;
-use App\Livewire\Dashboard\Projects;
+use App\Livewire\Dashboard\ProjectManager;
 use App\Livewire\Dashboard\Subscribers;
 use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/contacts', ContactList::class)->name('contacts.index');
 
-    Route::get('/projects', Projects::class)->name('dashboard.projects.index');
+    Route::get('/projects', ProjectManager::class)->name('dashboard.projects.index');
     Route::get('/experiences', ExperienceManager::class)->name('dashboard.experiences.index');
 
     Route::resource('/blogs', BlogController::class)->names('dashboard.blogs');

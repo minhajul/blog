@@ -15,7 +15,7 @@ final class HomeController extends Controller
     {
         $blog->increment('hit_count');
 
-        return view('show', compact('blog'));
+        return view('frontend.show', compact('blog'));
     }
 
     public function verify($email): RedirectResponse
