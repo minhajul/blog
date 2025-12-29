@@ -68,7 +68,9 @@
                     wire:model.live="form.current"
                 />
 
-                <flux:input label="Description" wire:model="form.description" placeholder="Description" />
+                <div>
+                    <x-trix-editor label="Description" wire:model="form.description"></x-trix-editor>
+                </div>
 
                 <div class="flex">
                     <flux:spacer />
