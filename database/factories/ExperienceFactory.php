@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\Experience;
@@ -8,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<Experience>
  */
-class ExperienceFactory extends Factory
+final class ExperienceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -25,13 +27,13 @@ class ExperienceFactory extends Factory
             'company_website' => fake()->url(),
             'description' => fake()->paragraph(3),
             'start_date' => $startDate,
-            'end_date' => fake()->dateTimeBetween($startDate)
+            'end_date' => fake()->dateTimeBetween($startDate),
         ];
     }
 
     public function current(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'end_date' => null,
         ]);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Database\Factories\ExperienceFactory;
@@ -7,7 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Experience extends Model
+final class Experience extends Model
 {
     /** @use HasFactory<ExperienceFactory> */
     use HasFactory;
@@ -18,7 +20,7 @@ class Experience extends Model
         'company_website',
         'start_date',
         'end_date',
-        'description'
+        'description',
     ];
 
     protected $casts = [
@@ -29,7 +31,7 @@ class Experience extends Model
     public function workDuration(): Attribute
     {
         return new Attribute(
-            get: fn(mixed $value) => $this->calculateWorkDuration()
+            get: fn (mixed $value) => $this->calculateWorkDuration()
         );
     }
 
