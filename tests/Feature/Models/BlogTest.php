@@ -56,8 +56,8 @@ describe('Blog Model', function () {
         $blogs = Blog::published()->get();
 
         expect($blogs)->toHaveCount(2)
-            ->each(fn ($blog) => expect($blog->status)->toBe('published')
-            );
+            ->and($blogs->every(fn ($blog) => $blog->status === 'published'))
+            ->toBeTrue();
     });
 
     it('returns only drafted blogs using drafted scope', function () {
