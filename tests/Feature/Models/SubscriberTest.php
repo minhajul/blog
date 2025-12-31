@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Subscriber;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
@@ -60,6 +62,6 @@ describe('Subscriber Model', function () {
 
         expect($verifiedSubscribers)
             ->toHaveCount(2)
-            ->each(fn($subscriber) => expect($subscriber->verified_at)->not->toBeNull());
+            ->each(fn ($subscriber) => expect($subscriber->verified_at)->not->toBeNull());
     });
 });
