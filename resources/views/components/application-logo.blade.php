@@ -1,3 +1,3 @@
-<h2 class="text-4xl py-2 font-medium text-color">
+<h2 class="text-3xl lg:text-4xl py-2 font-medium text-color">
     {{ config('app.name') }}
 </h2>

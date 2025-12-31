@@ -44,7 +44,7 @@
 
     <div x-show="mobileMenu" class="lg:hidden" role="dialog" aria-modal="true">
         <div class="fixed inset-0 z-50"></div>
-        <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-neutral-100 antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
+        <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto py-4 px-4 sm:px-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-neutral-100 antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
             <div class="flex items-center justify-between">
                 <a href="{{ route('home') }}">
                     <x-application-logo />
