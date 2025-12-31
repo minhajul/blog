@@ -55,7 +55,7 @@ final class Blog extends Model
             return asset($banner);
         }
 
-        return 'https://placehold.co/1000x80';
+        return 'https://placehold.co/450x80';
     }
 
     public function isPublished(): bool
