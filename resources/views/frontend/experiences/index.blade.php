@@ -8,7 +8,7 @@
                 <div class="relative pl-6 md:pl-8">
                     <span class="absolute -left-[11px] top-0 h-5 w-5 rounded-full bg-blue-400"></span>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                        <h3 class="text-2xl font-bold text-color tracking-wide">
+                        <h3 class="text-xl lg:text-2xl font-bold text-color tracking-wide">
                             {{ $experience->title }}
                         </h3>
                     </div>
