@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Blog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -28,8 +30,8 @@ describe('Blog Model', function () {
 
     it('determines blog status correctly', function () {
         $published = Blog::factory()->make(['status' => 'published']);
-        $drafted   = Blog::factory()->make(['status' => 'drafted']);
-        $archived  = Blog::factory()->make(['status' => 'archived']);
+        $drafted = Blog::factory()->make(['status' => 'drafted']);
+        $archived = Blog::factory()->make(['status' => 'archived']);
 
         expect($published->isPublished())->toBeTrue()
             ->and($published->isDrafted())->toBeFalse()
@@ -54,8 +56,7 @@ describe('Blog Model', function () {
         $blogs = Blog::published()->get();
 
         expect($blogs)->toHaveCount(2)
-            ->each(fn ($blog) =>
-            expect($blog->status)->toBe('published')
+            ->each(fn ($blog) => expect($blog->status)->toBe('published')
             );
     });
 
