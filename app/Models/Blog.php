@@ -30,6 +30,26 @@ final class Blog extends Model
         'short_details',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($table) {
+            $slug = Str::slug($table->title);
+
+            if (Blog::whereSlug($slug)->exists()) {
+                $original = $slug;
+                $count = 2;
+
+                while (Blog::whereSlug($slug)->exists()) {
+                    $slug = "$original-".$count++;
+                }
+            }
+
+            $table->slug = $slug;
+        });
+    }
+
     // Scopes
     public function scopePublished(Builder $builder): Builder
     {
@@ -76,26 +96,6 @@ final class Blog extends Model
     public function markAsArchived()
     {
         $this->update(['status' => 'archived']);
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        self::creating(function ($table) {
-            $slug = Str::slug($table->title);
-
-            if (static::whereSlug($slug)->exists()) {
-                $original = $slug;
-                $count = 2;
-
-                while (static::whereSlug($slug)->exists()) {
-                    $slug = "$original-".$count++;
-                }
-            }
-
-            $table->slug = $slug;
-        });
     }
 
     // Accessor

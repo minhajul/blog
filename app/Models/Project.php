@@ -39,11 +39,11 @@ final class Project extends Model
         self::creating(function ($table) {
             $slug = Str::slug($table->title);
 
-            if (static::whereSlug($slug)->exists()) {
+            if (Project::whereSlug($slug)->exists()) {
                 $original = $slug;
                 $count = 2;
 
-                while (static::whereSlug($slug)->exists()) {
+                while (Project::whereSlug($slug)->exists()) {
                     $slug = "$original-".$count++;
                 }
             }
