@@ -30,26 +30,6 @@ final class Blog extends Model
         'short_details',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        self::creating(function ($table) {
-            $slug = Str::slug($table->title);
-
-            if (Blog::whereSlug($slug)->exists()) {
-                $original = $slug;
-                $count = 2;
-
-                while (Blog::whereSlug($slug)->exists()) {
-                    $slug = "$original-".$count++;
-                }
-            }
-
-            $table->slug = $slug;
-        });
-    }
-
     // Scopes
     public function scopePublished(Builder $builder): Builder
     {
@@ -75,7 +55,7 @@ final class Blog extends Model
             return asset($banner);
         }
 
-        return 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80';
+        return 'https://placehold.co/1000x80';
     }
 
     public function isPublished(): bool
@@ -96,6 +76,26 @@ final class Blog extends Model
     public function markAsArchived()
     {
         $this->update(['status' => 'archived']);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($table) {
+            $slug = Str::slug($table->title);
+
+            if (Blog::whereSlug($slug)->exists()) {
+                $original = $slug;
+                $count = 2;
+
+                while (Blog::whereSlug($slug)->exists()) {
+                    $slug = "$original-".$count++;
+                }
+            }
+
+            $table->slug = $slug;
+        });
     }
 
     // Accessor
