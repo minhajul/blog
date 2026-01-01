@@ -2,23 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Dashboard;
-
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
-final class SubscriberControllerTest extends TestCase
-{
-    use RefreshDatabase;
+uses(RefreshDatabase::class);
 
-    public function test_authenticated_user_can_view_setting()
-    {
-        $user = User::factory()->create();
+it('allows an authenticated user to view subscriber settings', function () {
+    $user = User::factory()->create();
 
-        $response = $this->actingAs($user)
-            ->get(route('subscribers.index'));
-
-        $response->assertStatus(200);
-    }
-}
+    $this->actingAs($user)
+        ->get(route('subscribers.index'))
+        ->assertOk();
+});
