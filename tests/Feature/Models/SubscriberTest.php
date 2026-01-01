@@ -45,7 +45,8 @@ describe('Subscriber Model', function () {
         $subscriber->markAsVerified();
 
         expect($subscriber->fresh()->verified_at)
-            ->not->toBeNull()
+            ->not
+            ->toBeNull()
             ->and($subscriber->verified_at)->toEqual(now());
     });
 

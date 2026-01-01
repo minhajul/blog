@@ -2,95 +2,59 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Dashboard;
-
 use App\Enums\BlogStatus;
 use App\Models\Blog;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use JsonException;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-final class BlogControllerTest extends TestCase
-{
-    use RefreshDatabase, WithFaker;
+uses(RefreshDatabase::class);
 
-    public function test_authenticated_user_can_view_blog()
-    {
-        $user = User::factory()->create();
+beforeEach(function () {
+    $user = User::factory()->create();
+    $this->actingAs($user);
+});
 
-        $response = $this->actingAs($user)
-            ->get(route('dashboard.blogs.index'));
+it('allows an authenticated user to view blogs', function () {
+    $this->get(route('dashboard.blogs.index'))
+        ->assertOk();
+});
 
-        $response->assertStatus(200);
-    }
+it('allows an authenticated user to view the blog create page', function () {
+    $this->get(route('dashboard.blogs.create'))
+        ->assertOk();
+});
 
-    public function test_authenticated_user_can_view_blog_create_page()
-    {
-        $user = User::factory()->create();
+it('allows an authenticated user to create a blog', function () {
+    Storage::fake('blog');
 
-        $response = $this->actingAs($user)
-            ->get(route('dashboard.blogs.create'));
+    $this->post(route('dashboard.blogs.store'), [
+        'title' => fake()->title(),
+        'banner' => UploadedFile::fake()->image('avatar.jpg'),
+        'details' => fake()->sentence(),
+        'status' => fake()->randomElement(BlogStatus::values()),
+    ])
+        ->assertRedirect()
+        ->assertSessionHasNoErrors();
+});
 
-        $response->assertStatus(200);
-    }
+it('allows an authenticated user to view a blog for editing', function () {
+    $blog = Blog::factory()->create();
 
-    /**
-     * @throws JsonException
-     */
-    public function test_authenticated_user_can_create_blog()
-    {
-        Storage::fake('blog');
+    $this->get(route('dashboard.blogs.show', $blog))
+        ->assertOk();
+});
 
-        $user = User::factory()->create();
+it('allows an authenticated user to update a blog', function () {
+    Storage::fake('blog');
 
-        $response = $this->actingAs($user)
-            ->post(route('dashboard.blogs.store'), [
-                'title' => $this->faker->title,
-                'banner' => UploadedFile::fake()->image('avatar.jpg'),
-                'details' => $this->faker->sentence,
-                'status' => $this->faker->randomElement(BlogStatus::values()),
-            ]);
+    $blog = Blog::factory()->create();
 
-        $response->assertRedirect();
-        $response->assertSessionHasNoErrors();
-    }
-
-    public function test_authenticated_user_can_view_blog_to_edit()
-    {
-        $user = User::factory()->create();
-
-        $blog = Blog::factory()->create();
-
-        $response = $this->actingAs($user)
-            ->get(route('dashboard.blogs.show', $blog));
-
-        $response->assertStatus(200);
-    }
-
-    /**
-     * @throws JsonException
-     */
-    public function test_authenticated_user_can_update_blog()
-    {
-        Storage::fake('blog');
-
-        $user = User::factory()->create();
-
-        $blog = Blog::factory()->create();
-
-        $response = $this->actingAs($user)
-            ->post(route('dashboard.blogs.store', $blog), [
-                'title' => $this->faker->title,
-                'banner' => UploadedFile::fake()->image('avatar.jpg'),
-                'details' => $this->faker->sentence,
-                'status' => $this->faker->randomElement(BlogStatus::values()),
-            ]);
-
-        $response->assertRedirect();
-        $response->assertSessionHasNoErrors();
-    }
-}
+    $this->post(route('dashboard.blogs.store', $blog), [
+        'title' => fake()->title(),
+        'banner' => UploadedFile::fake()->image('avatar.jpg'),
+        'details' => fake()->sentence(),
+        'status' => fake()->randomElement(BlogStatus::values()),
+    ])->assertRedirect()->assertSessionHasNoErrors();
+});
