@@ -2,40 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Dashboard;
-
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
-final class InfoControllerTest extends TestCase
-{
-    use RefreshDatabase;
+uses(RefreshDatabase::class)->group('dashboard', 'info');
 
-    public function test_unauthenticated_user_can_not_view_profile()
-    {
-        $response = $this->get(route('dashboard'));
+it('redirects unauthenticated users when accessing the dashboard', function () {
+    $this->get(route('dashboard'))
+        ->assertRedirect();
+});
 
-        $response->assertRedirect();
-    }
+it('allows an authenticated user to view the dashboard profile', function () {
+    $user = User::factory()->create();
 
-    public function test_authenticated_user_can_view_profile()
-    {
-        $user = User::factory()->create();
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk();
+});
 
-        $response = $this->actingAs($user)
-            ->get(route('dashboard'));
+it('allows an authenticated user to view the contact page', function () {
+    $user = User::factory()->create();
 
-        $response->assertStatus(200);
-    }
-
-    public function test_authenticated_user_can_view_contact_page()
-    {
-        $user = User::factory()->create();
-
-        $response = $this->actingAs($user)
-            ->get(route('contacts.index'));
-
-        $response->assertStatus(200);
-    }
-}
+    $this->actingAs($user)
+        ->get(route('contacts.index'))
+        ->assertOk();
+});
