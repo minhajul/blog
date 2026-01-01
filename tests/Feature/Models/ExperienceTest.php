@@ -21,11 +21,11 @@ describe('Experience Model', function () {
 
     it('determines current experience correctly', function () {
         $current = Experience::factory()->make([
-            'end_date' => null
+            'end_date' => null,
         ]);
 
         $past = Experience::factory()->make([
-            'end_date' => now()->subYear()
+            'end_date' => now()->subYear(),
         ]);
 
         expect($current->isCurrent())->toBeTrue()
@@ -37,7 +37,7 @@ describe('Experience Model', function () {
 
         $experience = Experience::factory()->make([
             'start_date' => Carbon::parse('2021-02-01'),
-            'end_date' => null
+            'end_date' => null,
         ]);
 
         expect($experience->calculateWorkDuration())
@@ -47,7 +47,7 @@ describe('Experience Model', function () {
     it('calculates work duration for completed experience', function () {
         $experience = Experience::factory()->make([
             'start_date' => Carbon::parse('2019-03-01'),
-            'end_date' => Carbon::parse('2022-08-01')
+            'end_date' => Carbon::parse('2022-08-01'),
         ]);
 
         expect($experience->calculateWorkDuration())
@@ -57,7 +57,7 @@ describe('Experience Model', function () {
     it('exposes work duration via accessor', function () {
         $experience = Experience::factory()->make([
             'start_date' => Carbon::parse('2020-01-01'),
-            'end_date' => Carbon::parse('2021-01-01')
+            'end_date' => Carbon::parse('2021-01-01'),
         ]);
 
         expect($experience->workDuration)
