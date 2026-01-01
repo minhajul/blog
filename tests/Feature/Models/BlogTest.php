@@ -51,7 +51,8 @@ describe('Blog Model', function () {
 
     it('returns only published blogs using published scope', function () {
         Blog::factory()->count(2)->create(['status' => 'published']);
-        Blog::factory()->count(3)->create(['status' => 'drafted']);
+
+        expect(Blog::published()->count())->toBe(2);
 
         $blogs = Blog::published()->get();
 
@@ -64,11 +65,23 @@ describe('Blog Model', function () {
         Blog::factory()->count(2)->create(['status' => 'drafted']);
 
         expect(Blog::drafted()->count())->toBe(2);
+
+        $blogs = Blog::drafted()->get();
+
+        expect($blogs)->toHaveCount(2)
+            ->and($blogs->every(fn ($blog) => $blog->status === 'drafted'))
+            ->toBeTrue();
     });
 
     it('returns only archived blogs using archived scope', function () {
-        Blog::factory()->count(3)->create(['status' => 'archived']);
+        Blog::factory()->count(2)->create(['status' => 'archived']);
 
-        expect(Blog::archived()->count())->toBe(3);
+        expect(Blog::archived()->count())->toBe(2);
+
+        $blogs = Blog::archived()->get();
+
+        expect($blogs)->toHaveCount(2)
+            ->and($blogs->every(fn ($blog) => $blog->status === 'archived'))
+            ->toBeTrue();
     });
 });
