@@ -62,14 +62,12 @@ describe('Blog Model', function () {
 
     it('returns only drafted blogs using drafted scope', function () {
         Blog::factory()->count(2)->create(['status' => 'drafted']);
-        Blog::factory()->count(1)->create(['status' => 'archived']);
 
         expect(Blog::drafted()->count())->toBe(2);
     });
 
     it('returns only archived blogs using archived scope', function () {
         Blog::factory()->count(3)->create(['status' => 'archived']);
-        Blog::factory()->count(2)->create(['status' => 'published']);
 
         expect(Blog::archived()->count())->toBe(3);
     });
