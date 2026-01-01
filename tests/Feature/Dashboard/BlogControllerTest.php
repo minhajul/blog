@@ -16,17 +16,17 @@ beforeEach(function () {
     $this->actingAs($user);
 });
 
-it('allows an authenticated user to view blogs', function () {
+it('authenticated user can view blogs', function () {
     $this->get(route('dashboard.blogs.index'))
         ->assertOk();
 });
 
-it('allows an authenticated user to view the blog create page', function () {
+it('authenticated user can view the blog create page', function () {
     $this->get(route('dashboard.blogs.create'))
         ->assertOk();
 });
 
-it('allows an authenticated user to create a blog', function () {
+it('authenticated user can create a blog', function () {
     Storage::fake('blog');
 
     $this->post(route('dashboard.blogs.store'), [
@@ -34,19 +34,17 @@ it('allows an authenticated user to create a blog', function () {
         'banner' => UploadedFile::fake()->image('avatar.jpg'),
         'details' => fake()->sentence(),
         'status' => fake()->randomElement(BlogStatus::values()),
-    ])
-        ->assertRedirect()
-        ->assertSessionHasNoErrors();
+    ])->assertRedirect()->assertSessionHasNoErrors();
 });
 
-it('allows an authenticated user to view a blog for editing', function () {
+it('authenticated user can view a blog for editing', function () {
     $blog = Blog::factory()->create();
 
     $this->get(route('dashboard.blogs.show', $blog))
         ->assertOk();
 });
 
-it('allows an authenticated user to update a blog', function () {
+it('authenticated user can update a blog', function () {
     Storage::fake('blog');
 
     $blog = Blog::factory()->create();

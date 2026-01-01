@@ -12,7 +12,7 @@ it('redirects unauthenticated users when accessing the dashboard', function () {
         ->assertRedirect();
 });
 
-it('allows an authenticated user to view the dashboard profile', function () {
+it('authenticated user can view the dashboard', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user)
@@ -20,7 +20,7 @@ it('allows an authenticated user to view the dashboard profile', function () {
         ->assertOk();
 });
 
-it('allows an authenticated user to view the contact page', function () {
+it('authenticated user can view the contact page', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user)

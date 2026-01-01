@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('allows an authenticated user to view subscriber settings', function () {
+it('authenticated user can view subscriber settings', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user)
