@@ -5,9 +5,9 @@ declare(strict_types=1);
 use App\Enums\BlogStatus;
 use App\Models\Blog;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
