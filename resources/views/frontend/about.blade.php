@@ -23,14 +23,57 @@
                         onerror="this.src='https://placehold.co/500x300'"
                     />
 
-{{--                    <div class="border text-normal font-bold text-color text-sm p-2 mt-5 text-center">--}}
-{{--                        Software & Application Lead at--}}
-{{--                        <a href="https://genofax.com" target="_blank" rel="noreferrer" class="text-blue-400 font-extrabold">--}}
-{{--                            Genofax--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
+                    <div class="border text-normal font-bold text-color text-sm p-2 mt-5 text-center">
+                        Software Engineer at
+                        <a href="" target="_blank" rel="noreferrer" class="text-blue-400 font-extrabold">
+                            XYZ Company
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <section class="py-10 lg:py-16 mt-10 lg:mt-24">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-20">
+                        <div class="inline-block">
+                            <h2 class="font-semibold text-color text-2xl lg:text-4xl mb-6">
+                                Skills & Expertise
+                            </h2>
+                            <div class="h-1 w-32 bg-gradient-to-r from-blue-400 to-teal-600 mx-auto rounded-full"></div>
+                        </div>
+                        <p class="text-xl text-surface max-w-3xl mx-auto mt-5">
+                            Technologies and tools I use to bring ideas to life
+                        </p>
+                    </div>
+
+                    <section class="mt-10">
+                        <div class="grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                            @foreach($skills as $skill)
+                                <div class="group will-reveal rounded-2xl p-4 bg-surface-muted ring-1 ring-white/10 backdrop-blur overflow-hidden">
+{{--                                    <div class="absolute top-0 left-1/2 h-0.5 bg-gradient-to-r from-blue-400 via-purple-500 to-teal-600" />--}}
+
+                                    <h3 class="text-lg font-semibold text-color">{{ $skill['title'] }}</h3>
+                                    <p class="text-xs text-surface">{{ $skill['description'] }}</p>
+
+                                    <div class="mt-5 flex flex-wrap gap-2">
+                                        @foreach($skill['technologies'] as $technology)
+                                        <span class="{{ $technology['colorCode'] }} px-2 py-1.5 rounded-full text-sm">
+                                            {{ $technology['name'] }}
+                                        </span>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </section>
+
+                    <div class="max-w-full lg:max-w-2xl mx-auto text-center mt-10">
+                        <p class="border border-blue-400 p-1 rounded-md text-surface">
+                            Always learning and exploring new technologies
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
