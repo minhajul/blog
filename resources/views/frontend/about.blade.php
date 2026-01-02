@@ -6,7 +6,7 @@
                     <div class="col-span-1 lg:col-span-2">
                         <div class="text-center">
                             <x-typewriter
-                                :phrases="['Hello, I am Minhaj 👋', 'A Full Stack Software Engineer!', 'DevOps Enthusiast!']"
+                                :phrases="$typewriterText"
                                 class="text-surface text-2xl md:text-3xl font-bold mb-3 leading-tight"
                             />
                         </div>
@@ -46,16 +46,15 @@
 
                     <div class="grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                         @foreach($skills as $skill)
-                            <div
-                                class="group will-reveal rounded-2xl p-4 bg-surface-muted ring-1 ring-white/10 backdrop-blur overflow-hidden">
+                            <div class="group will-reveal rounded-2xl p-4 bg-surface-muted ring-1 ring-white/10 backdrop-blur overflow-hidden">
                                 <h3 class="text-lg font-semibold text-color">{{ $skill['title'] }}</h3>
                                 <p class="text-xs text-surface">{{ $skill['description'] }}</p>
 
                                 <div class="mt-5 flex flex-wrap gap-2">
                                     @foreach($skill['technologies'] as $technology)
                                         <span class="{{ $technology['colorCode'] }} px-2 py-1.5 rounded-full text-sm">
-                                    {{ $technology['name'] }}
-                                </span>
+                                            {{ $technology['name'] }}
+                                        </span>
                                     @endforeach
                                 </div>
                             </div>
