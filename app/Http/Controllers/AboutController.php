@@ -18,7 +18,7 @@ final class AboutController extends Controller
         $typewriterText = [
             'Hello, I am Minhaj 👋',
             'A Full Stack Software Engineer!',
-            'DevOps Enthusiast!'
+            'DevOps Enthusiast!',
         ];
 
         return view('frontend.about', compact('user', 'typewriterText', 'skills'));
