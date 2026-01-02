@@ -37,7 +37,7 @@ final class AboutController extends Controller
                 'description' => 'APIs, services, and business logic',
                 'gradient' => 'from-blue-500/90 to-violet-500/90',
                 'technologies' => [
-                    ['name' => 'PHP', 'colorCode' => 'text-amber-300 bg-amber-500/10 ring-amber-500/20'],
+                    ['name' => 'PHP', 'colorCode' => 'text-amber-300 bg-amber-500 ring-amber-500/20'],
                     ['name' => 'Laravel', 'colorCode' => 'text-violet-300 bg-violet-500/10 ring-violet-500/20'],
                     ['name' => 'Python', 'colorCode' => 'text-rose-300 bg-rose-500/10 ring-rose-500/20'],
                     ['name' => 'Node.js', 'colorCode' => 'text-blue-300 bg-blue-500/10 ring-blue-500/20'],
@@ -71,7 +71,7 @@ final class AboutController extends Controller
                 'description' => 'Scalable infrastructure and services',
                 'gradient' => 'from-sky-500/90 to-indigo-500/90',
                 'technologies' => [
-                    ['name' => 'AWS', 'colorCode' => 'text-amber-300 bg-amber-500/10 ring-amber-500/20'],
+                    ['name' => 'AWS', 'colorCode' => 'text-amber-300 bg-amber-500 ring-amber-500/20'],
                 ],
             ],
         ];
