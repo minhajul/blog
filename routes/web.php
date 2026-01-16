@@ -43,4 +43,4 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/subscribers', Subscribers::class)->name('subscribers.index');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
