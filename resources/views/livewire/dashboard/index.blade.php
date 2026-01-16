@@ -52,7 +52,7 @@
                 <flux:separator />
             </div>
 
-            <div class="mt-10 sm:mt-0">
+            <div class="py-10 sm:py-4">
                 <div class="xsm:p-4 md:col-span-2">
                     <livewire:dashboard.profile.password/>
                 </div>
