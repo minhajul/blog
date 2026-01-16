@@ -19,7 +19,7 @@
 </head>
 <body class="min-h-screen antialiased bg-linear-115 from-[#fff7ed] from-10% via-[#ffedd5] via-40% to-[#ddd6fe]
             dark:from-[#0f172a] dark:via-[#1e1b4b] dark:to-[#312e81]">
-<div class="">
+<div>
     <x-layouts.header/>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
