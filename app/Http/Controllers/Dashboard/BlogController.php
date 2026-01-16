@@ -14,11 +14,6 @@ use Illuminate\View\View;
 
 final class BlogController extends Controller
 {
-    public function index(): View
-    {
-        return view('dashboard.blogs.index');
-    }
-
     public function create(): View
     {
         return view('dashboard.blogs.create');

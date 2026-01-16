@@ -8,6 +8,7 @@ use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use App\Livewire\ContactUs;
+use App\Livewire\Dashboard\BlogList;
 use App\Livewire\Dashboard\ContactList;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Dashboard\ExperienceManager;
@@ -33,10 +34,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/projects', ProjectManager::class)->name('dashboard.projects.index');
     Route::get('/experiences', ExperienceManager::class)->name('dashboard.experiences.index');
 
-    Route::resource('/blogs', BlogController::class)
-        ->names('dashboard.blogs')
-        ->except(['show', 'destroy']);
-
+    Route::get('/blogs', BlogList::class)->name('dashboard.blogs.index');
+    Route::get('/blogs/create', [BlogController::class, 'create'])->name('dashboard.blogs.create');
+    Route::post('/blogs/create', [BlogController::class, 'store'])->name('dashboard.blogs.store');
+    Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('dashboard.blogs.edit');
+    Route::put('/blogs/{blog}/edit', [BlogController::class, 'upload'])->name('dashboard.blogs.update');
     Route::post('/upload/file', [BlogController::class, 'upload'])->name('dashboard.blogs.upload.file');
     Route::get('/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('dashboard.blogs.archived');
 
