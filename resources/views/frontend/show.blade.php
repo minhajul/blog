@@ -4,7 +4,7 @@
             <div class="mt-5">
                 <div class="relative px-4 sm:px-6 lg:px-8">
                     <div class="text-lg max-w-prose mx-auto">
-                        <h2 class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
+                        <h2 class="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight text-slate-800 dark:text-slate-400 sm:text-4xl">
                             {{ $blog->title }}
                         </h2>
                     </div>
@@ -13,10 +13,10 @@
                         {!! $blog->details !!}
                     </div>
 
-                    <div class="mt-10">
-                        <a href="{{ route('home') }}" class="bg-gradient-to-r from-blue-600 to-indigo-500 rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2">
+                    <div class="mt-10 flex items-center justify-center">
+                        <flux:button href="{{ route('home') }}" variant="primary">
                             Back to Blog
-                        </a>
+                        </flux:button>
                     </div>
                 </div>
             </div>

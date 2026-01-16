@@ -5,7 +5,7 @@
 
         <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             @foreach($projects as $project)
-                <a href="{{ $project->url }}" target="_blank" class="bg-color rounded-md shadow-md p-4 mb-5">
+                <a href="{{ $project->url }}" target="_blank" class="bg-surface rounded-md shadow-md p-4 mb-5">
                     <div class="flex justify-between items-center">
                         <p class="text-xl font-medium tracking-tight text-color">
                             {{ $project->title }}
