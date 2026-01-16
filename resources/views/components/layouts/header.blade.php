@@ -1,7 +1,7 @@
 <header
     x-cloak
     x-data="{ mobileMenu: false }"
-    class="sticky top-0 z-50 bg-surface"
+    class="sticky top-0 z-50"
 >
     <nav class="flex items-center justify-between py-4 max-w-7xl px-4 sm:px-6 mx-auto" aria-label="Global">
         <div class="flex lg:flex-1 items-center">
