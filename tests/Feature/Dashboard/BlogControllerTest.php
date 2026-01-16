@@ -40,7 +40,7 @@ it('authenticated user can create a blog', function () {
 it('authenticated user can view a blog for editing', function () {
     $blog = Blog::factory()->create();
 
-    $this->get(route('dashboard.blogs.show', $blog))
+    $this->get(route('dashboard.blogs.edit', $blog))
         ->assertOk();
 });
 
