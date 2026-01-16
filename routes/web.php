@@ -33,11 +33,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/projects', ProjectManager::class)->name('dashboard.projects.index');
     Route::get('/experiences', ExperienceManager::class)->name('dashboard.experiences.index');
 
-    Route::resource('/blogs', BlogController::class)->names('dashboard.blogs');
+    Route::resource('/blogs', BlogController::class)
+        ->names('dashboard.blogs')
+        ->except(['show', 'destroy']);
+
     Route::post('/upload/file', [BlogController::class, 'upload'])->name('dashboard.blogs.upload.file');
     Route::get('/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('dashboard.blogs.archived');
 
     Route::get('/subscribers', Subscribers::class)->name('subscribers.index');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -24,6 +24,48 @@ final class BlogController extends Controller
         return view('dashboard.blogs.create');
     }
 
+    public function store(BlogRequest $request): RedirectResponse
+    {
+        $bannerPath = null;
+
+        if ($request->file('banner')) {
+            $fileName = Str::random(5).'.'.$request->file('banner')->extension();
+            $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
+        }
+
+        Blog::create([
+            'title' => $request->input('title'),
+            'status' => $request->input('status'),
+            'details' => $request->input('details'),
+            'banner_path' => $bannerPath,
+        ]);
+
+        session()->flash('success', 'Your has been posted!');
+
+        return redirect()->back();
+    }
+
+    public function edit(Blog $blog): View
+    {
+        return view('dashboard.blogs.edit', compact('blog'));
+    }
+
+    public function update(BlogRequest $request, Blog $blog): RedirectResponse
+    {
+        if ($request->file('banner')) {
+            $fileName = Str::random(5).'.'.$request->file('banner')->extension();
+            $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
+
+            $request['banner_path'] = $bannerPath;
+        }
+
+        $blog->update($request->all());
+
+        session()->flash('success', 'Your blog has been updated!');
+
+        return redirect()->back();
+    }
+
     public function upload(Request $request)
     {
         if (! $request->hasFile('file')) {
@@ -47,53 +89,11 @@ final class BlogController extends Controller
         exit;
     }
 
-    public function store(BlogRequest $request): RedirectResponse
-    {
-        $bannerPath = null;
-
-        if ($request->file('banner')) {
-            $fileName = Str::random(5).'.'.$request->file('banner')->extension();
-            $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
-        }
-
-        Blog::create([
-            'title' => $request->input('title'),
-            'status' => $request->input('status'),
-            'details' => $request->input('details'),
-            'banner_path' => $bannerPath,
-        ]);
-
-        session()->flash('success', 'Your has been posted!');
-
-        return redirect()->back();
-    }
-
-    public function show(Blog $blog): View
-    {
-        return view('dashboard.blogs.update', compact('blog'));
-    }
-
     public function markAsArchived(Blog $blog): RedirectResponse
     {
         $blog->markAsArchived();
 
         session()->flash('success', 'Your has been posted!');
-
-        return redirect()->back();
-    }
-
-    public function update(BlogRequest $request, Blog $blog): RedirectResponse
-    {
-        if ($request->file('banner')) {
-            $fileName = Str::random(5).'.'.$request->file('banner')->extension();
-            $bannerPath = $request->file('banner')->storeAs('blog', $fileName);
-
-            $request['banner_path'] = $bannerPath;
-        }
-
-        $blog->update($request->all());
-
-        session()->flash('success', 'Your blog has been updated!');
 
         return redirect()->back();
     }

@@ -2,7 +2,7 @@
     <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8 py-4">
         <div class="grid grid-cols-1 gap-4 lg:col-span-3">
             <section aria-labelledby="profile-overview-title">
-                <div class="rounded-md bg-color overflow-hidden shadow">
+                <div class="rounded-md bg-surface overflow-hidden shadow">
                     <div class="bg-color p-6">
                         <div class="sm:flex sm:items-center sm:justify-between">
                             <div class="sm:flex sm:space-x-5">

@@ -23,7 +23,7 @@
                 </div>
                 <div class="flex-1 bg-color p-4 flex flex-col justify-between">
                     <div class="flex-1">
-                        <a href="{{ route('dashboard.blogs.show', $blog) }}" class="block">
+                        <a href="{{ route('dashboard.blogs.edit', $blog) }}" class="block">
                             <p class="font-semibold text-color">
                                 {{ $blog->title }} <span class="text-xs text-white bg-green-500 p-1 rounded-md">{{ $blog->status }}</span>
                             </p>

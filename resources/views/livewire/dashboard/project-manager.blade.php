@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <flux:modal name="project-modal" class="w-9/12 md:w-1/2">
+    <flux:modal name="project-modal" class="w-9/12 md:w-1/2 bg-surface">
         <form wire:submit="save">
             <div class="space-y-6">
                 <div>
