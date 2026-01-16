@@ -76,10 +76,12 @@ select:focus[data-flux-control] {
 }
 
 /* For front end */
+.bg-with-gradiant {
+    @apply bg-linear-115 from-[#fff7ed] from-10% via-[#ffedd5] via-40% to-[#ddd6fe] dark:from-[#0f172a] dark:via-[#1e1b4b] dark:to-[#312e81]
+}
+
 .bg-surface {
     @apply bg-white/60 backdrop-blur-xl border border-white/40 dark:bg-[#0f172a]/60 dark:border-white/10 dark:shadow-none
-
-    /*bg-neutral-50 dark:bg-neutral-900/80;*/
 }
 
 .bg-surface-muted {

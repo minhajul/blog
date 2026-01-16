@@ -17,8 +17,7 @@
 
     @stack('styles')
 </head>
-<body class="min-h-screen antialiased bg-linear-115 from-[#fff7ed] from-10% via-[#ffedd5] via-40% to-[#ddd6fe]
-            dark:from-[#0f172a] dark:via-[#1e1b4b] dark:to-[#312e81]">
+<body class="min-h-screen antialiased bg-with-gradiant">
 <div>
     <x-layouts.header/>
 
