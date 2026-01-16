@@ -77,7 +77,9 @@ select:focus[data-flux-control] {
 
 /* For front end */
 .bg-surface {
-    @apply bg-neutral-50 dark:bg-neutral-900/80;
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 dark:bg-[#0f172a]/60 dark:border-white/10 dark:shadow-none
+
+    /*bg-neutral-50 dark:bg-neutral-900/80;*/
 }
 
 .bg-surface-muted {
@@ -89,19 +91,6 @@ select:focus[data-flux-control] {
 }
 
 @layer utilities {
-    .background-gradient-pattern {
-        background-image: url(/images/bg-pattern.svg);
-        background-position: 100% 0;
-        background-repeat: repeat;
-        background-size: 20px, 20px;
-        bottom: 0;
-        left: 0;
-        mix-blend-mode: overlay;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
     @keyframes fadeInUp {
         0% {
             opacity: 0;
