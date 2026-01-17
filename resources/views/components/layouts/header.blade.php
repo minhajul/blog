@@ -16,11 +16,11 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <flux:navbar>
-                <flux:navbar.item href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
-                <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
-                <flux:navbar.item href="{{ route('experiences') }}" wire:navigate>Experiences</flux:navbar.item>
-                <flux:navbar.item href="{{ route('projects') }}" wire:navigate>Projects</flux:navbar.item>
-                <flux:navbar.item href="{{ route('contact') }}" wire:navigate>Contact</flux:navbar.item>
+                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
+                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
+                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('experiences') }}" wire:navigate>Experiences</flux:navbar.item>
+                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('projects') }}" wire:navigate>Projects</flux:navbar.item>
+                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('contact') }}" wire:navigate>Contact</flux:navbar.item>
             </flux:navbar>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -40,7 +40,7 @@
 
     <div x-show="mobileMenu" class="lg:hidden" role="dialog" aria-modal="true">
         <div class="fixed inset-0 z-50"></div>
-        <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto py-4 px-4 sm:px-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-neutral-100 antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
+        <div class="fixed inset-y-0 right-0 z-50 bg-surface w-full overflow-y-auto py-4 px-4 sm:px-6 sm:max-w-sm">
             <div class="flex items-center justify-between">
                 <a href="{{ route('home') }}">
                     <x-application-logo />
@@ -57,19 +57,23 @@
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-1 py-4">
                         <flux:navbar>
-                            <flux:navbar.item href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
-                            <flux:navbar.item href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
-                            <flux:navbar.item href="{{ route('experiences') }}" wire:navigate>Experiences</flux:navbar.item>
-                            <flux:navbar.item href="{{ route('projects') }}" wire:navigate>Projects</flux:navbar.item>
-                            <flux:navbar.item href="{{ route('contact') }}" wire:navigate>Contact</flux:navbar.item>
+                            <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
+                            <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
+                            <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('experiences') }}" wire:navigate>Experiences</flux:navbar.item>
+                            <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('projects') }}" wire:navigate>Projects</flux:navbar.item>
+                            <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('contact') }}" wire:navigate>Contact</flux:navbar.item>
                         </flux:navbar>
                     </div>
                     <div class="py-4">
                         <x-theme-toggle />
                         @auth
-                            <a href="{{ route('dashboard') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Dashboard</a>
+                            <a href="{{ route('dashboard') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm/6 font-semibold text-surface">
+                                Dashboard →
+                            </a>
                         @else
-                            <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm text-surface">Log in</a>
+                            <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2 text-sm/6 font-semibold text-surface">
+                                Log in →
+                            </a>
                         @endauth
                     </div>
                 </div>
