@@ -32,7 +32,7 @@ final class BlogList extends Component
             ->orderByDesc('updated_at')
             ->paginate(12);
 
-        return view('livewire.dashboard.blogs')->with([
+        return view('livewire.dashboard.blog-list')->with([
             'blogs' => $blogs,
             'statuses' => BlogStatus::cases(),
         ]);
