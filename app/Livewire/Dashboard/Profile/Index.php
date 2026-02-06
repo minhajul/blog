@@ -36,13 +36,6 @@ final class Index extends Component
         $this->bio = $user->bio;
     }
 
-    protected function rules(): array
-    {
-        return [
-            'email' => ['required', 'email', Rule::unique('users')->ignore(auth()->id())],
-        ];
-    }
-
     public function save()
     {
         $user = auth()->user();
@@ -63,6 +56,18 @@ final class Index extends Component
         session()->flash('success', 'Profile updated.');
     }
 
+    public function render()
+    {
+        return view('livewire.dashboard.profile.index');
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'email' => ['required', 'email', Rule::unique('users')->ignore(auth()->id())],
+        ];
+    }
+
     private function generateAvatarFileName(string $userName, string $extension): string
     {
         $slug = Str::slug($userName);
@@ -70,10 +75,5 @@ final class Index extends Component
         $timestamp = now()->timestamp;
 
         return "{$slug}-{$timestamp}-{$randomString}.{$extension}";
-    }
-
-    public function render()
-    {
-        return view('livewire.dashboard.profile.index');
     }
 }
