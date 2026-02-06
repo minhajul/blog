@@ -38,12 +38,6 @@ final class CreateSuperUser extends Command
      */
     public function handle(): int
     {
-        if (User::exists()) {
-            $this->error('You have already been created a user, please login using that credentials.');
-
-            return self::FAILURE;
-        }
-
         $name = $this->ask('Input Your Name:');
 
         $email = $this->ask('Input Your Email:');
