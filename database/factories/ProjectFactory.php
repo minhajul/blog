@@ -21,7 +21,7 @@ final class ProjectFactory extends Factory
     {
         return [
             'title' => fake()->unique()->sentence(3),
-            'url' => fake()->optional()->url(),
+            'url' => fake()->url(),
             'technologies' => fake()->randomElements([
                 'Laravel',
                 'PHP',
