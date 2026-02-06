@@ -43,7 +43,7 @@ final class Experience extends Model
     public function calculateWorkDuration()
     {
         $start = $this->start_date->format('M Y');
-        $end = $this->end_date ? $this->end_date->format('M Y') : 'Present';
+        $end = $this->end_date ? $this->end_date->format('M Y') : 'Running';
 
         return "$start - $end";
     }

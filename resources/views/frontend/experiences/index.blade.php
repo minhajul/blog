@@ -18,9 +18,7 @@
                     </div>
 
                     <div class="text-sm font-mono text-surface uppercase tracking-wider mb-3">
-                        {{ $experience->start_date->format('M Y') }}
-                        &mdash;
-                        {{ $experience->end_date ? $experience->end_date->format('M Y') : 'Running' }}
+                        {{ $experience->workDuration  }}
                     </div>
 
                     <div class="space-y-3 text-surface leading-relaxed">
