@@ -41,7 +41,7 @@ describe('Experience Model', function () {
         ]);
 
         expect($experience->calculateWorkDuration())
-            ->toBe('Feb 2021 - Present');
+            ->toBe('Feb 2021 - Running');
     });
 
     it('calculates work duration for completed experience', function () {

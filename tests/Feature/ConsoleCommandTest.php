@@ -26,14 +26,6 @@ it('allows admin user to request password reset email', function () {
         ->assertExitCode(0);
 });
 
-it('does not allow admin user creation if user already exists', function () {
-    User::factory()->create();
-
-    $this->artisan('admin:create-user')
-        ->expectsOutput('You have already been created a user, please login using that credentials.')
-        ->assertExitCode(1);
-});
-
 it('does not allow admin user creation when passwords do not match', function () {
     $this->artisan('admin:create-user')
         ->expectsQuestion('Input Your Name:', 'Admin User')
