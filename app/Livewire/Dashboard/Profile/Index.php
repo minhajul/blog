@@ -19,8 +19,8 @@ final class Index extends Component
     #[Validate('required|email')]
     public string $email = '';
 
-    #[Validate('required|string')]
-    public string $bio = '';
+    #[Validate('nullable|string')]
+    public ?string $bio = null;
 
     public $avatar;
 
@@ -37,10 +37,7 @@ final class Index extends Component
     {
         $user = auth()->user();
 
-        $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'bio' => ['required', 'string'],
-        ]);
+        $validated = $this->validate();
 
         $validated['avatar_url'] = $user->avatar_url;
 
