@@ -4,25 +4,28 @@ declare(strict_types=1);
 
 namespace App\Livewire\Dashboard\Profile;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 final class Index extends Component
 {
     use WithFileUploads;
 
-    #[Validate('required|string')]
+    #[Validate('required|string|max:255')]
     public string $name = '';
 
-    #[Validate('required|email')]
     public string $email = '';
 
-    #[Validate('nullable|string')]
+    #[Validate('nullable|string|max:1000')]
     public ?string $bio = null;
 
-    public $avatar;
+    #[Validate('nullable|image|max:2048')]
+    public ?TemporaryUploadedFile $avatar = null;
 
     public function mount(): void
     {
@@ -33,22 +36,40 @@ final class Index extends Component
         $this->bio = $user->bio;
     }
 
+    protected function rules(): array
+    {
+        return [
+            'email' => ['required', 'email', Rule::unique('users')->ignore(auth()->id())],
+        ];
+    }
+
     public function save()
     {
         $user = auth()->user();
 
         $validated = $this->validate();
 
-        $validated['avatar_url'] = $user->avatar_url;
+        if ($this->avatar) {
+            if ($user->avatar_url && Storage::disk('public')->exists($user->avatar_url)) {
+                Storage::disk('public')->delete($user->avatar_url);
+            }
 
-        if (! is_null($this->avatar)) {
-            $file_name = $user->name.'-'.Str::random(5).'.'.$this->avatar->extension();
-            $validated['avatar_url'] = $this->avatar->storeAs('avatar', $file_name);
+            $fileName = $this->generateAvatarFileName($user->name, $this->avatar->extension());
+            $validated['avatar_url'] = $this->avatar->storeAs('avatars', $fileName, 'public');
         }
 
         $user->update($validated);
 
         session()->flash('success', 'Profile updated.');
+    }
+
+    private function generateAvatarFileName(string $userName, string $extension): string
+    {
+        $slug = Str::slug($userName);
+        $randomString = Str::random(8);
+        $timestamp = now()->timestamp;
+
+        return "{$slug}-{$timestamp}-{$randomString}.{$extension}";
     }
 
     public function render()
