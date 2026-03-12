@@ -14,13 +14,13 @@ A lightweight, open-source blogging platform built for personal use with Laravel
 
 ### Tech Stack
 
-| Layer     | Technology                                             |
-|-----------|--------------------------------------------------------|
-| Backend   | PHP 8.4, Laravel 12                                   |
-| Frontend  | Livewire 3, Volt, Alpine.js, Tailwind CSS 4, Flux UI  |
-| Database  | MySQL                                                  |
-| Testing   | Pest 4, PHPStan (Larastan)                             |
-| Tooling   | Vite 7, Bun, Laravel Pint, Laravel Sail                |
+| Layer    | Technology                                           |
+|----------|------------------------------------------------------|
+| Backend  | PHP 8.4, Laravel 12                                  |
+| Frontend | Livewire 3, Volt, Alpine.js, Tailwind CSS 4, Flux UI |
+| Database | MySQL                                                |
+| Testing  | Pest 4, PHPStan (Larastan)                           |
+| Tooling  | Vite 7, Bun, Laravel Pint, Laravel Sail              |
 
 ### Prerequisites
 
@@ -78,7 +78,8 @@ bun run build
 composer run dev
 ```
 
-This starts the web server, queue worker, log viewer, and Vite dev server concurrently. The application will be accessible at `http://127.0.0.1:8000`.
+This starts the web server, queue worker, log viewer, and Vite dev server concurrently. The application will be
+accessible at `http://127.0.0.1:8000`.
 
 Alternatively, run just the server:
 
