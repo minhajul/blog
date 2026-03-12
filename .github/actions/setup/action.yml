@@ -26,15 +26,15 @@ runs:
     - name: Setup cache environment
       id: extcache
       uses: shivammathur/cache-extensions@v1
-      if: inputs.php-extensions == true
+      if: inputs.php-extensions != ''
       with:
         php-version: ${{ inputs.php-version }}
         extensions: ${{ inputs.php-extensions }}
         key: php-extensions-${{ steps.get-cache-hash.outputs.hash }}
 
     - name: Cache extensions
-      uses: actions/cache@v4.2.0
-      if: inputs.php-extensions == true
+      uses: actions/cache@v4
+      if: inputs.php-extensions != ''
       with:
         path: ${{ steps.extcache.outputs.dir }}
         key: ${{ steps.extcache.outputs.key }}
@@ -54,7 +54,7 @@ runs:
       shell: bash
 
     - name: Cache dependencies
-      uses: actions/cache@v4.2.0
+      uses: actions/cache@v4
       with:
         key: composer-cache-${{ hashFiles('**/composer.lock') }}
         path: ${{ steps.composer-cache-dir.outputs.dir }}

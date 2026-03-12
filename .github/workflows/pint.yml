@@ -1,26 +1,24 @@
-name: PHPStan
+name: Pint
 
 on:
   push:
     paths:
       - '**.php'
-      - 'phpstan.neon'
-      - '.github/workflows/phpstan.yml'
+      - '.github/workflows/pint.yml'
   pull_request:
     paths:
       - '**.php'
-      - 'phpstan.neon'
-      - '.github/workflows/phpstan.yml'
+      - '.github/workflows/pint.yml'
 
 concurrency:
-  group: phpstan-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: pint-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  phpstan:
-    name: phpstan
+  pint:
+    name: pint
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v4
@@ -33,5 +31,5 @@ jobs:
       - name: Install composer dependencies
         run: composer install -q --no-interaction --no-progress
 
-      - name: Run PHPStan
-        run: ./vendor/bin/phpstan --error-format=github
+      - name: Run Pint
+        run: vendor/bin/pint --test
