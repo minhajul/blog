@@ -2,6 +2,8 @@ name: Pint
 
 on:
   push:
+    branches:
+      - main
     paths:
       - '**.php'
       - '.github/workflows/pint.yml'
