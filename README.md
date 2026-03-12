@@ -1,12 +1,8 @@
-# Minimal Blog
+## Minimal Blog
 
 A lightweight, open-source blogging platform built for personal use with Laravel 12 and Livewire 3.
 
-[![Run Tests](https://github.com/minhajul/blog/actions/workflows/tests.yml/badge.svg)](https://github.com/minhajul/blog/actions/workflows/tests.yml)
-[![PHPStan](https://github.com/minhajul/blog/actions/workflows/phpstan.yml/badge.svg)](https://github.com/minhajul/blog/actions/workflows/phpstan.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
-## Features
+### Features
 
 - **Blog management** — Create, edit, publish, draft, and archive blog posts with a rich text editor
 - **Newsletter** — Built-in subscriber management with email verification
@@ -16,7 +12,7 @@ A lightweight, open-source blogging platform built for personal use with Laravel
 - **Dashboard** — Admin panel to manage all content, contacts, and subscribers
 - **Authentication** — Full auth flow with login and registration
 
-## Tech Stack
+### Tech Stack
 
 | Layer     | Technology                                             |
 |-----------|--------------------------------------------------------|
@@ -26,30 +22,30 @@ A lightweight, open-source blogging platform built for personal use with Laravel
 | Testing   | Pest 4, PHPStan (Larastan)                             |
 | Tooling   | Vite 7, Bun, Laravel Pint, Laravel Sail                |
 
-## Prerequisites
+### Prerequisites
 
 - PHP 8.4+
 - Composer
 - Bun (or Node.js & npm)
 - MySQL
 
-## Getting Started
+### Getting Started
 
-### 1. Clone the repository
+#### 1. Clone the repository
 
 ```sh
 git clone https://github.com/minhajul/blog.git
 cd blog
 ```
 
-### 2. Install dependencies
+#### 2. Install dependencies
 
 ```sh
 composer install
 bun install
 ```
 
-### 3. Configure the environment
+#### 3. Configure the environment
 
 ```sh
 cp .env.example .env
@@ -64,19 +60,19 @@ DB_USERNAME=your_database_user
 DB_PASSWORD=your_database_password
 ```
 
-### 4. Run migrations and seed data
+#### 4. Run migrations and seed data
 
 ```sh
 php artisan migrate --seed
 ```
 
-### 5. Build frontend assets
+#### 5. Build frontend assets
 
 ```sh
 bun run build
 ```
 
-### 6. Start the application
+#### 6. Start the application
 
 ```sh
 composer run dev
@@ -90,7 +86,7 @@ Alternatively, run just the server:
 php artisan serve
 ```
 
-## Testing
+### Testing
 
 Run the full test suite:
 
@@ -104,7 +100,7 @@ Run a specific test:
 php artisan test --filter=HomeControllerTest
 ```
 
-## Code Quality
+### Code Quality
 
 **Linting** with Laravel Pint:
 
@@ -112,35 +108,13 @@ php artisan test --filter=HomeControllerTest
 vendor/bin/pint
 ```
 
-**Static analysis** with PHPStan (Larastan):
+**Static analysis** with PHPStan (`Larastan`):
 
 ```sh
 composer analyse
 ```
 
-## Project Structure
-
-```
-app/
-├── Console/         # Artisan commands
-├── Enums/           # Application enums (BlogStatus)
-├── Http/            # Controllers, requests, middleware
-├── Livewire/        # Livewire components (pages & dashboard)
-├── Mail/            # Mailable classes
-├── Models/          # Eloquent models (Blog, Contact, Experience, Project, Subscriber, User)
-└── Providers/       # Service providers
-resources/views/
-├── components/      # Reusable Blade components
-├── dashboard/       # Admin dashboard views
-├── frontend/        # Public-facing pages (about, projects, experiences)
-├── livewire/        # Livewire component views
-└── flux/            # Flux UI component overrides
-tests/
-├── Feature/         # Feature tests (controllers, auth, dashboard, models)
-└── Unit/            # Unit tests
-```
-
-## Contributing
+### Contributing
 
 Contributions are welcome! Please read the [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
@@ -150,10 +124,10 @@ Contributions are welcome! Please read the [Code of Conduct](CODE_OF_CONDUCT.md)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
+### License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-## Author
+### Author
 
 Made with ❤️ by [Minhajul](https://github.com/minhajul)
