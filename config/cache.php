@@ -107,4 +107,17 @@ return [
 
     'prefix' => env('CACHE_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-cache-'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Serializable Classes
+    |--------------------------------------------------------------------------
+    |
+    | When utilizing the "file", "database", and "redis" cache stores, the
+    | framework will serialize and unserialize data. By setting this option
+    | to false, the framework will only unserialize non-object data.
+    |
+    */
+
+    'serializable_classes' => false,
+
 ];
