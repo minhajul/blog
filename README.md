@@ -16,11 +16,11 @@ A lightweight, open-source blogging platform built for personal use with Laravel
 
 | Layer    | Technology                                           |
 |----------|------------------------------------------------------|
-| Backend  | PHP 8.4, Laravel 12                                  |
+| Backend  | PHP 8.4, Laravel 13                                  |
 | Frontend | Livewire 3, Volt, Alpine.js, Tailwind CSS 4, Flux UI |
 | Database | MySQL                                                |
 | Testing  | Pest 4, PHPStan (Larastan)                           |
-| Tooling  | Vite 7, Bun, Laravel Pint, Laravel Sail              |
+| Tooling  | Vite 8, Bun, Laravel Pint, Laravel Sail              |
 
 ### Prerequisites
 
@@ -106,7 +106,7 @@ php artisan test --filter=HomeControllerTest
 **Linting** with Laravel Pint:
 
 ```sh
-vendor/bin/pint
+./vendor/bin/pint
 ```
 
 **Static analysis** with PHPStan (`Larastan`):
