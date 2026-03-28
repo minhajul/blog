@@ -3,7 +3,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.4",
@@ -71,12 +74,12 @@
         "lint": [
             "pint --parallel"
         ],
+        "analyse": [
+            "vendor/bin/phpstan analyse"
+        ],
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test --parallel"
-        ],
-        "analyse" : [
-            "vendor/bin/phpstan analyse"
         ]
     },
     "extra": {
