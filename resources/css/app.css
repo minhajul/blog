@@ -130,3 +130,7 @@ select:focus[data-flux-control] {
         }
     }
 }
+
+[x-cloak] {
+    display: none !important;
+}
