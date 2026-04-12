@@ -1,10 +1,10 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 lg:py-10">
     <div class="max-w-4xl mx-auto text-center py-6 px-4 sm:py-10 sm:px-6 lg:px-8">
         <div class="grid place-items-center">
-            <h1 class="text-6xl font-extrabold tracking-tighter text-on-surface mb-6 leading-none">
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
                 Thoughts, Projects, and Ideas
             </h1>
-            <p class="text-xl text-on-surface-variant font-light leading-relaxed mb-10">
+            <p class="text-lg lg:text-xl text-on-surface-variant font-light leading-relaxed">
                 A curated archive of architectural logic, full-stack engineering discoveries, and the minimalist philosophy behind modern digital craftsmanship.
             </p>
         </div>
