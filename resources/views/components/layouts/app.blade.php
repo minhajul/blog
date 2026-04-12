@@ -17,13 +17,12 @@
 
     @stack('styles')
 </head>
-<body class="min-h-screen antialiased bg-surface-muted">
-<div>
+<body class="min-h-screen flex flex-col antialiased bg-surface-muted">
     <x-layouts.header/>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 w-full">
         {{ $slot }}
-    </div>
+    </main>
 
     <x-layouts.footer/>
 
@@ -31,5 +30,4 @@
 
     @livewireScripts
     @fluxScripts
-</div>
 </body>
