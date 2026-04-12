@@ -17,7 +17,7 @@
 
     @stack('styles')
 </head>
-<body class="min-h-screen antialiased bg-with-gradiant">
+<body class="min-h-screen antialiased bg-surface-muted">
 <div>
     <x-layouts.header/>
 

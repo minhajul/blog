@@ -1,7 +1,15 @@
 <x-layouts.app>
     <div class="py-6 lg:py-10">
-        <flux:heading size="xl">Projects</flux:heading>
-        <flux:subheading size="lg">Highlighted projects demonstrating my expertise</flux:subheading>
+        <div class="max-w-4xl mx-auto text-center py-6 px-4 sm:py-10 sm:px-6 lg:px-8">
+            <div class="grid place-items-center">
+                <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
+                    Curated Projects & Technical Prototypes.
+                </h1>
+                <p class="text-lg lg:text-xl text-on-surface-variant font-light leading-relaxed">
+                    Exploring the intersection of geometric structural design and performant software engineering.
+                </p>
+            </div>
+        </div>
 
         <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             @foreach($projects as $project)
