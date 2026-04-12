@@ -32,10 +32,10 @@ final class AboutController extends Controller
                 'description' => 'Interfaces that feel fast, fluid, and accessible',
                 'gradient' => 'from-indigo-500/90 to-fuchsia-500/90',
                 'technologies' => [
-                    ['name' => 'React', 'colorCode' => 'text-indigo-300 bg-indigo-500/10 ring-indigo-500/20'],
-                    ['name' => 'Next.js', 'colorCode' => 'text-blue-300 bg-blue-500/10 ring-blue-500/20'],
-                    ['name' => 'Tailwind CSS', 'colorCode' => 'text-cyan-300 bg-cyan-500/10 ring-cyan-500/20'],
-                    ['name' => 'Accessibility', 'colorCode' => 'text-emerald-300 bg-emerald-500/10 ring-emerald-500/20'],
+                    ['name' => 'React', 'colorCode' => 'text-indigo-700 bg-indigo-100 dark:text-indigo-300 dark:bg-indigo-500/20'],
+                    ['name' => 'Next.js', 'colorCode' => 'text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-500/20'],
+                    ['name' => 'Tailwind CSS', 'colorCode' => 'text-cyan-700 bg-cyan-100 dark:text-cyan-300 dark:bg-cyan-500/20'],
+                    ['name' => 'Accessibility', 'colorCode' => 'text-emerald-700 bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-500/20'],
                 ],
             ],
             [
@@ -43,12 +43,12 @@ final class AboutController extends Controller
                 'description' => 'APIs, services, and business logic',
                 'gradient' => 'from-blue-500/90 to-violet-500/90',
                 'technologies' => [
-                    ['name' => 'PHP', 'colorCode' => 'text-amber-300 bg-amber-500 ring-amber-500/20'],
-                    ['name' => 'Laravel', 'colorCode' => 'text-violet-300 bg-violet-500/10 ring-violet-500/20'],
-                    ['name' => 'Python', 'colorCode' => 'text-rose-300 bg-rose-500/10 ring-rose-500/20'],
-                    ['name' => 'Node.js', 'colorCode' => 'text-blue-300 bg-blue-500/10 ring-blue-500/20'],
-                    ['name' => 'Express', 'colorCode' => 'text-indigo-300 bg-indigo-500/10 ring-indigo-500/20'],
-                    ['name' => 'Golang', 'colorCode' => 'text-emerald-300 bg-emerald-500/10 ring-emerald-500/20'],
+                    ['name' => 'PHP', 'colorCode' => 'text-amber-700 bg-amber-100 dark:text-amber-300 dark:bg-amber-500/20'],
+                    ['name' => 'Laravel', 'colorCode' => 'text-violet-700 bg-violet-100 dark:text-violet-300 dark:bg-violet-500/20'],
+                    ['name' => 'Python', 'colorCode' => 'text-rose-700 bg-rose-100 dark:text-rose-300 dark:bg-rose-500/20'],
+                    ['name' => 'Node.js', 'colorCode' => 'text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-500/20'],
+                    ['name' => 'Express', 'colorCode' => 'text-indigo-700 bg-indigo-100 dark:text-indigo-300 dark:bg-indigo-500/20'],
+                    ['name' => 'Golang', 'colorCode' => 'text-emerald-700 bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-500/20'],
                 ],
             ],
             [
@@ -56,11 +56,11 @@ final class AboutController extends Controller
                 'description' => 'Automation, CI/CD, and reliability',
                 'gradient' => 'from-cyan-500/90 to-blue-600/90',
                 'technologies' => [
-                    ['name' => 'Docker', 'colorCode' => 'text-cyan-300 bg-cyan-500/10 ring-cyan-500/20'],
-                    ['name' => 'Kubernetes', 'colorCode' => 'text-blue-300 bg-blue-500/10 ring-blue-500/20'],
-                    ['name' => 'Terraform', 'colorCode' => 'text-slate-300 bg-slate-500/10 ring-slate-500/20'],
-                    ['name' => 'Pulumi', 'colorCode' => 'text-purple-300 bg-purple-500/10 ring-purple-500/20'],
-                    ['name' => 'GitHub Actions', 'colorCode' => 'text-rose-300 bg-rose-500/10 ring-rose-500/20'],
+                    ['name' => 'Docker', 'colorCode' => 'text-cyan-700 bg-cyan-100 dark:text-cyan-300 dark:bg-cyan-500/20'],
+                    ['name' => 'Kubernetes', 'colorCode' => 'text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-500/20'],
+                    ['name' => 'Terraform', 'colorCode' => 'text-slate-700 bg-slate-100 dark:text-slate-300 dark:bg-slate-500/20'],
+                    ['name' => 'Pulumi', 'colorCode' => 'text-purple-700 bg-purple-100 dark:text-purple-300 dark:bg-purple-500/20'],
+                    ['name' => 'GitHub Actions', 'colorCode' => 'text-rose-700 bg-rose-100 dark:text-rose-300 dark:bg-rose-500/20'],
                 ],
             ],
             [
@@ -68,8 +68,8 @@ final class AboutController extends Controller
                 'description' => 'Query design, optimization, and caching',
                 'gradient' => 'bg-gradient-to-br from-emerald-500/90',
                 'technologies' => [
-                    ['name' => 'MySQL', 'colorCode' => 'text-blue-300 bg-blue-500/10 ring-blue-500/20'],
-                    ['name' => 'PostgreSQL', 'colorCode' => 'text-emerald-300 bg-emerald-500/10 ring-emerald-500/20'],
+                    ['name' => 'MySQL', 'colorCode' => 'text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-500/20'],
+                    ['name' => 'PostgreSQL', 'colorCode' => 'text-emerald-700 bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-500/20'],
                 ],
             ],
             [
@@ -77,7 +77,7 @@ final class AboutController extends Controller
                 'description' => 'Scalable infrastructure and services',
                 'gradient' => 'from-sky-500/90 to-indigo-500/90',
                 'technologies' => [
-                    ['name' => 'AWS', 'colorCode' => 'text-amber-300 bg-amber-500 ring-amber-500/20'],
+                    ['name' => 'AWS', 'colorCode' => 'text-amber-700 bg-amber-100 dark:text-amber-300 dark:bg-amber-500/20'],
                 ],
             ],
         ];

@@ -57,7 +57,7 @@
 
                                 <div class="mt-5 flex flex-wrap gap-2">
                                     @foreach($skill['technologies'] as $technology)
-                                        <span class="{{ $technology['colorCode'] }} px-2 py-1.5 rounded-full text-sm">
+                                        <span class="{{ $technology['colorCode'] }} px-2 py-1.5 rounded-full text-sm text-nowrap">
                                             {{ $technology['name'] }}
                                         </span>
                                     @endforeach
