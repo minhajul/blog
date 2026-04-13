@@ -2,19 +2,20 @@
     <div class="max-w-4xl mx-auto text-center py-6 px-4 sm:py-10 sm:px-6 lg:px-8">
         <div class="grid place-items-center mb-5">
             <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
-                Thoughts, Projects, and Ideas
+                Thoughts, Projects & Ideas
             </h1>
             <p class="text-lg lg:text-xl text-on-surface-variant font-light leading-relaxed">
                 A curated archive of architectural logic, full-stack engineering discoveries, and the minimalist philosophy behind modern digital craftsmanship.
             </p>
         </div>
-
-        <flux:input
-            type="search"
-            wire:model.live.debounce.300ms="keywords"
-            placeholder="Search blog"
-            loading="false"
-        />
+        <div class="py-6">
+            <flux:input
+                type="search"
+                wire:model.live.debounce.300ms="keywords"
+                placeholder="Search blog"
+                loading="false"
+            />
+        </div>
     </div>
 
     <div class="max-w-lg mx-auto lg:max-w-none">
