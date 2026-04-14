@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('dashboard.blogs.create');
     Route::post('/blogs/create', [BlogController::class, 'store'])->name('dashboard.blogs.store');
     Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('dashboard.blogs.edit');
-    Route::put('/blogs/{blog}/edit', [BlogController::class, 'upload'])->name('dashboard.blogs.update');
+    Route::put('/blogs/{blog}/edit', [BlogController::class, 'update'])->name('dashboard.blogs.update');
     Route::post('/upload/file', [BlogController::class, 'upload'])->name('dashboard.blogs.upload.file');
     Route::get('/blogs/archived/{blog}', [BlogController::class, 'markAsArchived'])->name('dashboard.blogs.archived');
 
