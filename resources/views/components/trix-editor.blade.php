@@ -29,7 +29,7 @@
         <trix-editor
             input="{{ $inputId }}"
             wire:ignore
-            class="bg-surface-muted rounded-md p-2 trix-content"
+            class="bg-color rounded-md p-2 trix-content"
             x-data="{ value: @entangle($wireModel) }"
             x-init="
                 const trixEditor = $el;
@@ -57,7 +57,7 @@
     @else
         <trix-editor
             input="{{ $inputId }}"
-            class="bg-surface-muted rounded-md p-2 trix-content"
+            class="bg-color rounded-md p-2 trix-content"
         ></trix-editor>
     @endif
 
