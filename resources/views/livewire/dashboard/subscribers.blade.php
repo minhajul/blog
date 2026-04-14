@@ -13,8 +13,8 @@
                     <div class="flex flex-col">
                         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                <div class="shadow overflow-hidden border-b sm:rounded-lg">
-                                    <table class="bg-surface min-w-full divide-y divide-gray-200">
+                                <div class="mt-1 shadow-md overflow-hidden border-b rounded-md">
+                                    <table class="bg-surface-muted min-w-full divide-y divide-gray-900/10 dark:divide-white/10">
                                         <thead class="bg-color">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
@@ -35,7 +35,7 @@
                                         </tr>
                                         </thead>
 
-                                        <tbody class="bg-color divide-y divide-gray-200" x-max="1">
+                                        <tbody class="bg-color divide-y divide-gray-900/10 dark:divide-white/10" x-max="1">
 
                                         @foreach($subscribers as $subscriber)
                                             <tr>

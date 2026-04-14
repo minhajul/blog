@@ -1,5 +1,5 @@
 <form wire:submit.prevent="save">
-    <div class="p-4 bg-surface-muted shadow-md rounded-md">
+    <div class="p-4 bg-color shadow-md rounded-md">
 
         @include('errors.message')
         @include('errors.success')

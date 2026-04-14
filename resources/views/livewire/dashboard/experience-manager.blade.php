@@ -12,7 +12,7 @@
 
             <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                 @forelse($experiences as $experience)
-                    <div class="bg-surface rounded-md p-2">
+                    <div class="bg-color rounded-md p-2">
                         <div class="flex justify-between items-center">
                             <p class="text-lg font-medium tracking-tight text-color">
                                 {{ $experience->title }}
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <flux:modal name="experience-modal" class="w-9/12 md:w-1/2 bg-surface">
+    <flux:modal name="experience-modal" class="w-9/12 md:w-1/2 bg-surface-muted">
         <form wire:submit="save">
             <div class="space-y-6">
                 <div>
