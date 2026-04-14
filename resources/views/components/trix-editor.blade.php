@@ -13,7 +13,7 @@
 
 <div class="space-y-2">
     @if ($label)
-        <label for="{{ $inputId }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label for="{{ $inputId }}" class="block text-sm font-medium text-color">
             {{ $label }}
         </label>
     @endif
@@ -29,7 +29,7 @@
         <trix-editor
             input="{{ $inputId }}"
             wire:ignore
-            class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md p-2 trix-content"
+            class="bg-color rounded-md p-2 trix-content"
             x-data="{ value: @entangle($wireModel) }"
             x-init="
                 const trixEditor = $el;
@@ -57,12 +57,12 @@
     @else
         <trix-editor
             input="{{ $inputId }}"
-            class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md p-2 trix-content"
+            class="bg-color rounded-md p-2 trix-content"
         ></trix-editor>
     @endif
 
     @if ($description)
-        <p class="text-xs text-gray-500 dark:text-gray-400">{{ $description }}</p>
+        <p class="text-xs text-color">{{ $description }}</p>
     @endif
 
     @error($wireModel ?? $inputName)

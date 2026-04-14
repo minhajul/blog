@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 lg:py-10">
+<div class="max-w-7xl mx-auto py-6 lg:py-10">
     <div class="max-w-4xl mx-auto text-center py-6 px-4 sm:py-10 sm:px-6 lg:px-8">
         <div class="grid place-items-center mb-5">
             <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">

@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="py-6 lg:py-10">
-        <div class="max-w-4xl mx-auto text-center py-6 px-4 sm:py-10 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center py-6 sm:py-10">
             <div class="grid place-items-center">
                 <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
                     Curated Projects & Technical Prototypes.
@@ -11,9 +11,9 @@
             </div>
         </div>
 
-        <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+        <div class="mt-6 grid grid-cols-1 gap-6 sm:gap-7 md:gap-8 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             @foreach($projects as $project)
-                <a href="{{ $project->url }}" target="_blank" class="bg-surface rounded-md shadow-md p-4 mb-5">
+                <a href="{{ $project->url }}" target="_blank" class="bg-surface-muted ring-1 ring-white/5 rounded-2xl shadow-md p-4 mb-5">
                     <div class="flex justify-between items-center">
                         <p class="text-xl font-medium tracking-tight text-color">
                             {{ $project->title }}

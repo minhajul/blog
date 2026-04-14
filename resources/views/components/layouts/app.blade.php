@@ -20,7 +20,7 @@
 <body class="min-h-screen flex flex-col antialiased bg-surface-muted">
     <x-layouts.header/>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 w-full">
+    <main class="grow max-w-7xl mx-auto px-4 sm:px-6 w-full">
         {{ $slot }}
     </main>
 

@@ -2,12 +2,12 @@
     <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8 py-4">
         <div class="grid grid-cols-1 gap-4 lg:col-span-3">
             <section aria-labelledby="profile-overview-title">
-                <div class="rounded-md bg-surface overflow-hidden shadow">
+                <div class="rounded-md shadow-md bg-color overflow-hidden">
                     <div class="bg-color p-6">
                         <div class="sm:flex sm:items-center sm:justify-between">
                             <div class="sm:flex sm:space-x-5">
                                 <div class="shrink-0">
-                                    <div class="bg-gradient-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
+                                    <div class="bg-linear-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
                                         <img src="{{ $user->avatarUrl() }}" alt="Admin Account" class="h-20 w-20 shrink-0 rounded-full md:h-32 md:w-32 p-2">
                                     </div>
                                 </div>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
 
-                    <div class="border-t border-gray-200 bg-color grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
+                    <div class="bg-surface-muted grid grid-cols-1 divide-y divide-gray-900/10 dark:divide-white/10 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
                         <div class="px-6 py-5 text-sm font-medium text-center">
                             <span class="text-color">{{ $analytics['posted_blog'] }}</span>
                             <span class="text-color">Blogs posted</span>

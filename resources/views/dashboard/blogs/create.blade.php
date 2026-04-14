@@ -7,7 +7,7 @@
                 <flux:button href="{{ route('dashboard.blogs.index') }}"> View Blogs</flux:button>
             </div>
 
-            <div class="mt-5 p-4 bg-surface shadow-md rounded-md">
+            <div class="mt-5 p-4 bg-color shadow-md rounded-md">
 
                 @include('errors.success')
                 @include('errors.message')
