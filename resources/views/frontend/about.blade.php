@@ -51,7 +51,7 @@
 
                     <div class="grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                         @foreach($skills as $skill)
-                            <div class="group will-reveal rounded-2xl p-4 bg-surface ring-1 ring-white/10 overflow-hidden">
+                            <div class="group will-reveal rounded-2xl shadow-md p-4 bg-surface-muted ring-1 ring-white/5 overflow-hidden">
                                 <h3 class="text-lg font-semibold text-color">{{ $skill['title'] }}</h3>
                                 <p class="text-xs text-surface">{{ $skill['description'] }}</p>
 

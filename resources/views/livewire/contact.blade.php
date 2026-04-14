@@ -12,7 +12,7 @@
             </p>
         </div>
 
-        <div class="bg-surface-muted rounded-2xl p-6 sm:p-8 ring-1 ring-white/5">
+        <div class="bg-surface-muted rounded-2xl shadow-md p-6 sm:p-8 ring-1 ring-white/5">
             @include('errors.success')
             <form wire:submit="submit" class="space-y-5">
                 <div>
