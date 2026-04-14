@@ -1,5 +1,5 @@
 <form wire:submit.prevent="save">
-    <div class="p-4 bg-surface shadow-md rounded-md">
+    <div class="p-4 bg-surface-muted shadow-md rounded-md">
 
         @include('errors.message')
         @include('errors.success')
@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-span-6">
-                <label class="block font-medium text-sm text-gray-700 mb-2" for="bio">
+                <label class="block font-medium text-sm text-color mb-2" for="bio">
                     Bio
                 </label>
 
