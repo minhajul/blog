@@ -14,6 +14,7 @@
                 wire:model.live.debounce.300ms="keywords"
                 placeholder="Search blog"
                 loading="false"
+                input:class="py-6 text-base lg:text-lg"
             />
         </div>
     </div>
