@@ -7,15 +7,13 @@ namespace App\Livewire;
 use App\Mail\SubscriberConfirmation;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Mail;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 final class Newsletter extends Component
 {
+    #[Validate('required|email')]
     public $email_address;
-
-    protected $rules = [
-        'email_address' => 'required|email',
-    ];
 
     public function subscribe()
     {
@@ -53,6 +51,6 @@ final class Newsletter extends Component
     protected function sendConfirmationEmail($subscriber)
     {
         Mail::to($subscriber->email)
-            ->send(new SubscriberConfirmation($subscriber));
+            ->queue(new SubscriberConfirmation($subscriber));
     }
 }
