@@ -38,11 +38,11 @@ describe('Home Component', function () {
 
         Livewire::test(Home::class)
             ->assertOk()
-            ->assertViewHas('blogs', fn ($blogs) => $blogs->count() === 5);
+            ->assertViewHas('blogs', fn($blogs) => $blogs->count() === 5);
     });
 
     test('can filter blogs by keywords', function () {
-        $blog = Blog::factory()->create([
+        Blog::factory()->create([
             'title' => 'Laravel tutorial',
             'status' => 'published',
         ]);
@@ -53,7 +53,7 @@ describe('Home Component', function () {
     });
 
     test('keywords search works across multiple fields', function () {
-        $blog = Blog::factory()->create([
+        Blog::factory()->create([
             'title' => 'PHP Guide',
             'status' => 'published',
             'details' => '<p>Learn PHP programming</p>',
@@ -65,12 +65,12 @@ describe('Home Component', function () {
     });
 
     test('renders with blogs sorted by updated_at descending', function () {
-        $old = Blog::factory()->create([
+        Blog::factory()->create([
             'title' => 'Old Post',
             'status' => 'published',
         ]);
 
-        $new = Blog::factory()->create([
+        Blog::factory()->create([
             'title' => 'New Post',
             'status' => 'published',
             'updated_at' => now(),
@@ -89,7 +89,7 @@ describe('Home Component', function () {
     test('returns empty results when no blogs exist', function () {
         Livewire::test(Home::class)
             ->assertOk()
-            ->assertViewHas('blogs', fn ($blogs) => $blogs->total() === 0);
+            ->assertViewHas('blogs', fn($blogs) => $blogs->total() === 0);
     });
 
     test('handles special characters in keywords', function () {
