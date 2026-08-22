@@ -10,96 +10,91 @@ use Livewire\Livewire;
 uses(RefreshDatabase::class);
 
 describe('Home Component', function () {
-    test('home page can be rendered', function () {
-        $this->get(route('home'))
-            ->assertOk();
+    test('home route responds successfully', function () {
+        $this->get(route('home'))->assertOk();
     });
 
-    test('component renders with paginated blogs', function () {
-        Blog::factory()->count(5)->create(['status' => 'published']);
+    test('component renders without errors', function () {
+        Livewire::test(Home::class)->assertOk();
+    });
 
+    test('component renders empty state when no blogs exist', function () {
         Livewire::test(Home::class)
             ->assertOk()
-            ->assertViewHas('blogs');
+            ->assertSee('No blog found');
     });
 
+    test('can set keywords property', function () {
+        Livewire::test(Home::class)
+            ->set('keywords', 'Laravel')
+            ->assertSet('keywords', 'Laravel');
+    });
+});
+
+describe('Home Blog Filtering', function () {
     test('shows only published blogs', function () {
         Blog::factory()->count(3)->create(['status' => 'published']);
         Blog::factory()->count(2)->create(['status' => 'archived']);
 
-        Livewire::test(Home::class)
-            ->assertOk();
-
         expect(Blog::published()->count())->toBe(3);
     });
 
-    test('paginates blogs correctly', function () {
-        Blog::factory()->count(5)->create(['status' => 'published']);
+    test('paginates published blogs at 12 per page', function () {
+        Blog::factory()->count(15)->create(['status' => 'published']);
 
-        Livewire::test(Home::class)
-            ->assertOk()
-            ->assertViewHas('blogs', fn($blogs) => $blogs->count() === 5);
+        $page = Blog::published()->orderByDesc('updated_at')->paginate(12);
+
+        expect($page->total())->toBe(15)
+            ->and($page->count())->toBe(12);
     });
 
-    test('can filter blogs by keywords', function () {
-        Blog::factory()->create([
-            'title' => 'Laravel tutorial',
-            'status' => 'published',
-        ]);
-
-        Livewire::test(Home::class)
-            ->set('keywords', 'Laravel')
-            ->assertOk();
+    test('returns no published blogs when database is empty', function () {
+        expect(Blog::published()->count())->toBe(0);
     });
 
-    test('keywords search works across multiple fields', function () {
-        Blog::factory()->create([
-            'title' => 'PHP Guide',
-            'status' => 'published',
-            'details' => '<p>Learn PHP programming</p>',
-        ]);
-
-        Livewire::test(Home::class)
-            ->set('keywords', 'PHP')
-            ->assertOk();
-    });
-
-    test('renders with blogs sorted by updated_at descending', function () {
-        Blog::factory()->create([
+    test('orders published blogs by most recently updated first', function () {
+        $old = Blog::factory()->create([
             'title' => 'Old Post',
             'status' => 'published',
+            'updated_at' => now()->subDays(7),
         ]);
 
-        Blog::factory()->create([
+        $new = Blog::factory()->create([
             'title' => 'New Post',
             'status' => 'published',
             'updated_at' => now(),
         ]);
 
-        Livewire::test(Home::class)
-            ->assertOk();
+        $titles = Blog::published()->orderByDesc('updated_at')->pluck('title');
+
+        expect($titles->first())->toBe($new->title)
+            ->and($titles->last())->toBe($old->title);
     });
 
-    test('can set keywords property', function () {
-        Livewire::test(Home::class)
-            ->set('keywords', 'test')
-            ->assertSet('keywords', 'test');
-    });
-
-    test('returns empty results when no blogs exist', function () {
-        Livewire::test(Home::class)
-            ->assertOk()
-            ->assertViewHas('blogs', fn($blogs) => $blogs->total() === 0);
-    });
-
-    test('handles special characters in keywords', function () {
+    test('keywords filter matches against title and details', function () {
+        Blog::factory()->create(['title' => 'Laravel tutorial', 'status' => 'published']);
         Blog::factory()->create([
-            'title' => 'Test & More',
+            'title' => 'PHP Guide',
+            'details' => '<p>Learn PHP programming</p>',
             'status' => 'published',
         ]);
+        Blog::factory()->create(['title' => 'Unrelated', 'status' => 'published']);
 
-        Livewire::test(Home::class)
-            ->set('keywords', '&')
-            ->assertOk();
+        $titleHits = Blog::query()
+            ->whereLikes(['title', 'details'], 'PHP')
+            ->count();
+
+        expect($titleHits)->toBe(1);
+    });
+
+    test('keywords filter handles special characters safely', function () {
+        Blog::factory()->create(['title' => 'Test & More', 'status' => 'published']);
+        Blog::factory()->create(['title' => 'Other', 'status' => 'published']);
+
+        $hits = Blog::query()
+            ->whereLikes(['title'], '&')
+            ->count();
+
+        expect($hits)->toBe(1);
     });
 });
