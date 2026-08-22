@@ -29,6 +29,14 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --animate-move-bg: move-bg 8s infinite linear;
+}
+
+@keyframes move-bg {
+    to {
+        background-position: 400% 0;
+    }
 }
 
 @layer theme {
