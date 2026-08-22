@@ -16,15 +16,15 @@ A lightweight, open-source blogging platform built for personal use with Laravel
 
 | Layer    | Technology                                           |
 |----------|------------------------------------------------------|
-| Backend  | PHP 8.4, Laravel 13                                  |
-| Frontend | Livewire 3, Volt, Alpine.js, Tailwind CSS 4, Flux UI |
+| Backend  | PHP, Laravel                                         |
+| Frontend | Livewire, Volt, Alpine.js, Tailwind CSS, Flux UI     |
 | Database | MySQL                                                |
-| Testing  | Pest 4, PHPStan (Larastan)                           |
-| Tooling  | Vite 8, Bun, Laravel Pint, Laravel Sail              |
+| Testing  | Pest, PHPStan (Larastan)                             |
+| Tooling  | Vite, Bun, Laravel Pint, Laravel Sail                |
 
 ### Prerequisites
 
-- PHP 8.4+
+- PHP
 - Composer
 - Bun (or Node.js & npm)
 - MySQL
