@@ -14,13 +14,13 @@ A lightweight, open-source blogging platform built for personal use with Laravel
 
 ### Tech Stack
 
-| Layer    | Technology                                           |
-|----------|------------------------------------------------------|
-| Backend  | PHP, Laravel                                         |
-| Frontend | Livewire, Volt, Alpine.js, Tailwind CSS, Flux UI     |
-| Database | MySQL                                                |
-| Testing  | Pest, PHPStan (Larastan)                             |
-| Tooling  | Vite, Bun, Laravel Pint, Laravel Sail                |
+| Layer    | Technology                                       |
+|----------|--------------------------------------------------|
+| Backend  | PHP, Laravel                                     |
+| Frontend | Livewire, Volt, Alpine.js, Tailwind CSS, Flux UI |
+| Database | MySQL                                            |
+| Testing  | Pest, PHPStan (Larastan)                         |
+| Tooling  | Vite, Bun, Laravel Pint, Laravel Sail            |
 
 ### Prerequisites
 
