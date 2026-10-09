@@ -8,12 +8,12 @@
     "devDependencies": {
         "@tailwindcss/vite": "^4.3.3",
         "axios": "^1.20.0",
-        "concurrently": "^9.2.4",
+        "concurrently": "^9.2.5",
         "jquery": "^3.7.1",
         "laravel-vite-plugin": "^2.1.0",
         "tailwindcss": "^4.3.3",
         "trix": "^2.1.19",
-        "vite": "^8.3.3"
+        "vite": "^8.3.4"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
