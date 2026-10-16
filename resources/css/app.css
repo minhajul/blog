@@ -11,24 +11,61 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Design tokens
+ * -------------
+ * Typography: Geist (UI + body), Instrument Serif (editorial accents), Geist Mono (meta + code).
+ * Color: cool neutral canvas with a single indigo-violet brand accent.
+ * Semantic tokens (canvas, surface, ink, line, primary) flip in dark mode below.
+ */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Instrument Serif', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+    --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
     --color-zinc-50: #fafafa;
-    --color-zinc-100: #f5f5f5;
-    --color-zinc-200: #e5e5e5;
-    --color-zinc-300: #d4d4d4;
-    --color-zinc-400: #a3a3a3;
-    --color-zinc-500: #737373;
-    --color-zinc-600: #525252;
-    --color-zinc-700: #404040;
-    --color-zinc-800: #262626;
-    --color-zinc-900: #171717;
-    --color-zinc-950: #0a0a0a;
+    --color-zinc-100: #f4f4f5;
+    --color-zinc-200: #e4e4e7;
+    --color-zinc-300: #d4d4d8;
+    --color-zinc-400: #a1a1aa;
+    --color-zinc-500: #71717a;
+    --color-zinc-600: #52525b;
+    --color-zinc-700: #3f3f46;
+    --color-zinc-800: #27272a;
+    --color-zinc-900: #18181b;
+    --color-zinc-950: #09090b;
 
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
+    --color-brand-50: oklch(0.97 0.02 278);
+    --color-brand-100: oklch(0.94 0.04 278);
+    --color-brand-200: oklch(0.88 0.07 278);
+    --color-brand-300: oklch(0.80 0.11 278);
+    --color-brand-400: oklch(0.71 0.15 278);
+    --color-brand-500: oklch(0.62 0.19 278);
+    --color-brand-600: oklch(0.54 0.21 278);
+    --color-brand-700: oklch(0.47 0.19 278);
+    --color-brand-800: oklch(0.39 0.15 278);
+    --color-brand-900: oklch(0.32 0.11 278);
+    --color-brand-950: oklch(0.22 0.08 278);
+
+    /* Semantic tokens (light) */
+    --color-canvas: oklch(0.985 0.002 270);
+    --color-surface: oklch(1 0 0);
+    --color-surface-raised: oklch(0.97 0.003 270);
+    --color-ink: oklch(0.21 0.01 270);
+    --color-ink-muted: oklch(0.45 0.012 270);
+    --color-ink-subtle: oklch(0.6 0.01 270);
+    --color-line: oklch(0.92 0.004 270);
+    --color-line-strong: oklch(0.86 0.006 270);
+    --color-primary: var(--color-brand-600);
+    --color-primary-soft: var(--color-brand-50);
+    --color-primary-ink: var(--color-brand-700);
+
+    --color-accent: var(--color-brand-600);
+    --color-accent-content: var(--color-brand-600);
     --color-accent-foreground: var(--color-white);
+
+    --shadow-card: 0 1px 2px 0 rgb(15 15 30 / 0.04), 0 1px 3px 0 rgb(15 15 30 / 0.04);
+    --shadow-card-hover: 0 12px 32px -12px rgb(15 15 30 / 0.18), 0 2px 6px -2px rgb(15 15 30 / 0.06);
 
     --animate-move-bg: move-bg 8s infinite linear;
 }
@@ -41,9 +78,24 @@
 
 @layer theme {
     .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
+        --color-canvas: oklch(0.155 0.008 270);
+        --color-surface: oklch(0.195 0.009 270);
+        --color-surface-raised: oklch(0.235 0.01 270);
+        --color-ink: oklch(0.96 0.004 270);
+        --color-ink-muted: oklch(0.76 0.008 270);
+        --color-ink-subtle: oklch(0.6 0.01 270);
+        --color-line: oklch(1 0 0 / 0.08);
+        --color-line-strong: oklch(1 0 0 / 0.14);
+        --color-primary: var(--color-brand-400);
+        --color-primary-soft: oklch(0.62 0.19 278 / 0.14);
+        --color-primary-ink: var(--color-brand-300);
+
+        --color-accent: var(--color-brand-500);
+        --color-accent-content: var(--color-brand-400);
+        --color-accent-foreground: var(--color-white);
+
+        --shadow-card: 0 0 0 0 transparent;
+        --shadow-card-hover: 0 16px 40px -16px rgb(0 0 0 / 0.6);
     }
 }
 
@@ -53,7 +105,25 @@
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+        border-color: var(--color-line, currentColor);
+    }
+
+    html {
+        @apply scroll-smooth;
+        font-feature-settings: 'ss01', 'cv11';
+        text-rendering: optimizeLegibility;
+    }
+
+    body {
+        @apply bg-canvas text-ink;
+    }
+
+    ::selection {
+        @apply bg-brand-200 text-brand-950 dark:bg-brand-500/40 dark:text-white;
+    }
+
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-primary;
     }
 }
 
@@ -68,39 +138,145 @@
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+    @apply outline-hidden ring-2 ring-accent/40 ring-offset-0 border-accent;
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
-
+/* Legacy helpers (used across the dashboard), now mapped onto the semantic tokens */
 .text-color {
-    @apply text-zinc-600 dark:text-white/70;
+    @apply text-ink-muted;
 }
 
 .bg-color {
-    @apply bg-zinc-900/4 dark:bg-white/10;
-}
-
-/* For front end */
-.bg-surface {
-    @apply bg-white/60 backdrop-blur-xl border border-white/40 dark:bg-[#0f172a]/60 dark:border-white/10 dark:shadow-none
+    @apply bg-surface;
 }
 
 .bg-surface-muted {
-    @apply bg-neutral-100 dark:bg-neutral-800/90;
+    @apply bg-surface-raised;
 }
 
 .text-surface {
-    @apply text-zinc-600 dark:text-white/90;
+    @apply text-ink-muted;
+}
+
+/* Reusable frontend building blocks */
+@utility container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility card {
+    @apply rounded-2xl border border-line bg-surface shadow-card;
+}
+
+@utility card-interactive {
+    @apply card transition duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-card-hover;
+}
+
+@utility eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs font-medium tracking-wider text-primary uppercase;
+}
+
+@utility chip {
+    @apply inline-flex items-center rounded-full border border-line bg-surface-raised px-2.5 py-0.5 font-mono text-xs text-ink-muted;
+}
+
+@utility page-title {
+    @apply text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl lg:text-6xl;
+    line-height: 1.05;
+}
+
+@utility page-lead {
+    @apply text-lg leading-relaxed text-pretty text-ink-muted sm:text-xl;
+}
+
+/*
+ * Long-form article typography.
+ * Styles the Trix-generated HTML for blog posts and rich text descriptions.
+ */
+@utility article-content {
+    @apply text-[1.0625rem] leading-[1.8] text-ink-muted sm:text-lg;
+
+    & > * + * {
+        @apply mt-6;
+    }
+
+    & h1,
+    & h2 {
+        @apply mt-12 mb-4 text-2xl font-semibold tracking-tight text-ink sm:text-3xl;
+        line-height: 1.25;
+    }
+
+    & h3,
+    & h4 {
+        @apply mt-10 mb-3 text-xl font-semibold tracking-tight text-ink;
+    }
+
+    & strong {
+        @apply font-semibold text-ink;
+    }
+
+    & a {
+        @apply font-medium text-primary underline decoration-primary/30 decoration-2 underline-offset-4 transition-colors hover:decoration-primary;
+    }
+
+    & ul,
+    & ol {
+        @apply space-y-2 pl-6;
+    }
+
+    & ul {
+        @apply list-disc marker:text-ink-subtle;
+    }
+
+    & ol {
+        @apply list-decimal marker:font-mono marker:text-sm marker:text-ink-subtle;
+    }
+
+    & blockquote {
+        @apply border-l-2 border-primary pl-6 font-serif text-2xl leading-snug text-ink italic;
+    }
+
+    & code {
+        @apply rounded-md border border-line bg-surface-raised px-1.5 py-0.5 font-mono text-[0.875em] text-ink;
+    }
+
+    & pre {
+        @apply overflow-x-auto rounded-xl border border-line bg-zinc-950 p-5 font-mono text-sm leading-relaxed text-zinc-100 dark:bg-black/40;
+    }
+
+    & pre code {
+        @apply border-0 bg-transparent p-0 text-inherit;
+    }
+
+    & img {
+        @apply h-auto max-w-full rounded-xl;
+    }
+
+    & figure {
+        @apply my-10;
+    }
+
+    & figcaption {
+        @apply mt-3 text-center text-sm text-ink-subtle;
+    }
+
+    & hr {
+        @apply my-12 border-line;
+    }
+
+    & .attachment {
+        @apply block w-full;
+    }
+
+    & .attachment__caption {
+        @apply hidden;
+    }
 }
 
 @layer utilities {
     @keyframes fadeInUp {
         0% {
             opacity: 0;
-            transform: translateY(50%);
+            transform: translateY(12px);
         }
         100% {
             opacity: 1;
@@ -109,13 +285,13 @@ select:focus[data-flux-control] {
     }
 
     .fadeInUp {
-        animation: fadeInUp 1s;
+        animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     @keyframes scale {
         0% {
             opacity: 0;
-            transform: scale(0.5);
+            transform: scale(0.96);
         }
         100% {
             opacity: 1;
@@ -124,13 +300,13 @@ select:focus[data-flux-control] {
     }
 
     .scale {
-        animation: scale 1s;
+        animation: scale 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     @media (prefers-reduced-motion) {
         .fadeInUp,
         .scale {
-            animation: scale 0s;
+            animation: none;
         }
     }
 }
