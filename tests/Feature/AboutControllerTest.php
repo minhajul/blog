@@ -12,17 +12,15 @@ it('renders about page successfully', function () {
 
     $this->get(route('about'))
         ->assertOk()
-        ->assertViewHasAll(['user', 'typewriterText', 'skills']);
+        ->assertViewHasAll(['user', 'skills']);
 });
 
-it('displays typewriter phrases', function () {
+it('displays the static headline', function () {
     User::factory()->create();
 
     $this->get(route('about'))
-        ->assertOk()
         ->assertSee('Hello, I am Minhaj')
-        ->assertSee('A Full Stack Software Engineer')
-        ->assertSee('DevOps Enthusiast');
+        ->assertSee('Full Stack Software Engineer');
 });
 
 it('displays job title', function () {
@@ -54,5 +52,5 @@ it('returns 200 and renders with user present', function () {
 
     $this->get(route('about'))
         ->assertOk()
-        ->assertViewHasAll(['user', 'typewriterText', 'skills']);
+        ->assertViewHasAll(['user', 'skills']);
 });

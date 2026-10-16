@@ -15,13 +15,7 @@ final class AboutController extends Controller
 
         $skills = $this->getSkills();
 
-        $typewriterText = [
-            'Hello, I am Minhaj 👋',
-            'A Full Stack Software Engineer!',
-            'DevOps Enthusiast!',
-        ];
-
-        return view('frontend.about', compact('user', 'typewriterText', 'skills'));
+        return view('frontend.about', compact('user', 'skills'));
     }
 
     public function getSkills()

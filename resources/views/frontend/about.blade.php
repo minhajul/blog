@@ -17,14 +17,12 @@
                 Available for work
             </p>
 
-            <x-typewriter
-                as="h1"
-                :phrases="$typewriterText"
-                class="mt-5 text-3xl leading-tight font-semibold tracking-tight text-balance text-ink sm:text-4xl lg:text-5xl"
-            />
+            <h1 class="mt-5 text-3xl leading-tight font-semibold tracking-tight text-balance text-ink sm:text-4xl lg:text-5xl">
+                Hello, I am Minhaj 👋
+            </h1>
 
             <p class="mt-2 font-serif text-xl italic text-primary sm:text-2xl">
-                Software Engineer &amp; Technical Architect
+                Full Stack Software Engineer &amp; Technical Architect
             </p>
 
             <div class="mt-6 max-w-2xl space-y-3 text-base leading-relaxed text-ink-muted">
