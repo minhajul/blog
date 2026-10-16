@@ -193,7 +193,7 @@ select:focus[data-flux-control] {
  * Styles the Trix-generated HTML for blog posts and rich text descriptions.
  */
 @utility article-content {
-    @apply text-[1.0625rem] leading-[1.8] text-ink-muted sm:text-lg;
+    @apply text-[1.0625rem] leading-[1.8] text-ink/80 sm:text-lg;
 
     & > * + * {
         @apply mt-6;
