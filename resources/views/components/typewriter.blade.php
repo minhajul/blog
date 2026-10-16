@@ -1,132 +1,91 @@
 @props([
     'phrases' => [],
-    'typingSpeed' => 100,
-    'pauseAfterComplete' => 1500,
-    'class' => '',
+    'typingSpeed' => 90,
+    'pauseAfterComplete' => 1800,
+    'as' => 'div',
 ])
 
-<div
+{{--
+    Every phrase is rendered invisibly in the same grid cell as the animated text,
+    so the element always reserves the height of the longest phrase and never
+    shifts the surrounding layout while typing.
+--}}
+<{{ $as }}
     x-data="{
-        phrases: {{ Js::from($phrases) }},
-        typingSpeed: {{ $typingSpeed }},
-        pauseAfterComplete: {{ $pauseAfterComplete }},
+        phrases: {{ Js::from(array_values($phrases)) }},
+        typingSpeed: {{ (int) $typingSpeed }},
+        pauseAfterComplete: {{ (int) $pauseAfterComplete }},
         currentIndex: 0,
-        displayText: '',
+        characters: [],
         charIndex: 0,
-        isAnimating: false,
+        displayText: '',
+        isFading: false,
+        timer: null,
 
         init() {
-            if (this.phrases.length > 0) {
-                this.$nextTick(() => {
-                    this.typeCurrentSentence();
-                });
+            if (this.phrases.length === 0) {
+                return;
             }
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                this.displayText = this.phrases[0];
+
+                return;
+            }
+
+            this.startPhrase();
         },
 
-        typeCurrentSentence() {
-            const currentSentence = this.phrases[this.currentIndex];
+        destroy() {
+            clearTimeout(this.timer);
+        },
 
-            if (this.charIndex < currentSentence.length) {
-                this.displayText = currentSentence.slice(0, this.charIndex + 1);
+        splitIntoCharacters(text) {
+            if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+                return Array.from(new Intl.Segmenter().segment(text), (part) => part.segment);
+            }
+
+            return Array.from(text);
+        },
+
+        startPhrase() {
+            this.characters = this.splitIntoCharacters(this.phrases[this.currentIndex]);
+            this.charIndex = 0;
+            this.displayText = '';
+            this.typeNextCharacter();
+        },
+
+        typeNextCharacter() {
+            if (this.charIndex < this.characters.length) {
                 this.charIndex++;
+                this.displayText = this.characters.slice(0, this.charIndex).join('');
+                this.timer = setTimeout(() => this.typeNextCharacter(), this.typingSpeed);
 
-                setTimeout(() => {
-                    this.typeCurrentSentence();
-                }, this.typingSpeed);
-            } else {
-                setTimeout(() => {
-                    this.fadeOutAndNext();
-                }, this.pauseAfterComplete);
+                return;
             }
+
+            this.timer = setTimeout(() => this.fadeToNextPhrase(), this.pauseAfterComplete);
         },
 
-        fadeOutAndNext() {
-            this.isAnimating = true;
-            const textElement = this.$refs.text;
+        fadeToNextPhrase() {
+            this.isFading = true;
 
-            textElement.classList.add('typewriter-fade-out');
-
-            setTimeout(() => {
+            this.timer = setTimeout(() => {
                 this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
-                this.displayText = '';
-                this.charIndex = 0;
-
-                textElement.classList.remove('typewriter-fade-out');
-                textElement.classList.add('typewriter-fade-in');
-
-                this.$nextTick(() => {
-                    this.typeCurrentSentence();
-                });
-
-                setTimeout(() => {
-                    textElement.classList.remove('typewriter-fade-in');
-                    this.isAnimating = false;
-                }, 300);
+                this.isFading = false;
+                this.startPhrase();
             }, 300);
-        }
+        },
     }"
-    {{ $attributes->merge(['class' => $class]) }}
+    {{ $attributes->class('grid') }}
 >
-    <span x-ref="text" x-text="displayText" class="typewriter-text"></span>
-    <span class="typewriter-cursor"></span>
-</div>
+    <span class="sr-only">{{ implode('. ', $phrases) }}</span>
 
-@once
-    @push('styles')
-        <style>
-            .typewriter-text {
-                display: inline-block;
-                opacity: 1;
-                transition: opacity 0.3s ease-in-out;
-            }
+    @foreach($phrases as $phrase)
+        <span class="invisible col-start-1 row-start-1" aria-hidden="true">{{ $phrase }}<span class="typewriter-cursor"></span></span>
+    @endforeach
 
-            .typewriter-fade-out {
-                opacity: 0;
-                animation: fadeOut 0.3s ease-in-out forwards;
-            }
-
-            .typewriter-fade-in {
-                opacity: 0;
-                animation: fadeIn 0.3s ease-in-out forwards;
-            }
-
-            @keyframes fadeOut {
-                from {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                to {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-            }
-
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .typewriter-cursor {
-                display: inline-block;
-                width: 3px;
-                height: 0.9em;
-                border-radius: 2px;
-                background-color: var(--color-primary);
-                margin-left: 0.25rem;
-                vertical-align: middle;
-                animation: blink 1s step-end infinite;
-            }
-
-            @keyframes blink {
-                0%, 49% { opacity: 1; }
-                50%, 100% { opacity: 0; }
-            }
-        </style>
-    @endpush
-@endonce
+    <span class="col-start-1 row-start-1" aria-hidden="true">
+        <span x-text="displayText" class="typewriter-text" :class="{ 'typewriter-text-fading': isFading }"></span><span class="typewriter-cursor"></span>
+    </span>
+</{{ $as }}>

@@ -272,6 +272,39 @@ select:focus[data-flux-control] {
     }
 }
 
+/* Typewriter headline (see components/typewriter.blade.php) */
+.typewriter-text {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.typewriter-text-fading {
+    opacity: 0;
+    transform: translateY(-0.15em);
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.85em;
+    margin-left: 0.08em;
+    border-radius: 2px;
+    vertical-align: -0.05em;
+    background-color: var(--color-primary);
+    animation: typewriter-blink 1s step-end infinite;
+}
+
+@keyframes typewriter-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .typewriter-cursor {
+        animation: none;
+    }
+}
+
 /* Trix rich text editor (dashboard) */
 trix-toolbar .trix-button-group {
     @apply rounded-lg border-line bg-surface;
