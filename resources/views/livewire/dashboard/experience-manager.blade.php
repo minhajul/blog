@@ -37,11 +37,7 @@
                 </div>
             </div>
         @empty
-            <div class="card col-span-full flex flex-col items-center px-6 py-16 text-center">
-                <flux:icon.briefcase class="text-ink-subtle" />
-                <p class="mt-3 font-medium text-ink">No experience added</p>
-                <p class="mt-1 text-sm text-ink-muted">Add a role to start your career timeline.</p>
-            </div>
+            <x-empty-state class="col-span-full" icon="briefcase" title="No experience added" description="Add a role to start your career timeline." />
         @endforelse
     </div>
 

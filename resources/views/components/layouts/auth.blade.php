@@ -5,10 +5,8 @@
 
     @fluxAppearance
 </head>
-<body class="relative isolate min-h-screen bg-canvas font-sans text-ink antialiased">
-    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div class="absolute left-1/2 top-[-10rem] h-[30rem] w-[50rem] -translate-x-1/2 rounded-full bg-brand-400/20 blur-3xl dark:bg-brand-500/10"></div>
-    </div>
+<body class="relative isolate min-h-screen antialiased">
+    <x-backdrop-glow />
 
     <div class="flex min-h-svh flex-col items-center justify-center gap-8 p-6 md:p-10">
         <div class="flex w-full max-w-sm flex-col gap-8">

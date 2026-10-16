@@ -11,6 +11,7 @@
 <title>{{ $title ? $title.' · '.config('app.name') : config('app.name').' · Thoughts, projects & ideas' }}</title>
 
 <link rel="preconnect" href="https://fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=geist:400,500,600,700|geist-mono:400,500|instrument-serif:400,400i&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css?family=geist:400,500,600|geist-mono:400,500|instrument-serif:400i&display=swap" rel="stylesheet" />
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])

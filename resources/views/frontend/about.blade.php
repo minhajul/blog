@@ -1,11 +1,3 @@
-@php($skillIcons = [
-    'Frontend' => 'computer-desktop',
-    'Backend' => 'server-stack',
-    'DevOps' => 'arrow-path',
-    'Databases' => 'circle-stack',
-    'Cloud' => 'cloud',
-])
-
 <x-layouts.app title="About">
     <section class="grid items-start gap-8 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-12">
         <div class="order-2 lg:order-1 lg:col-span-7 fadeInUp">
@@ -17,7 +9,7 @@
                 Available for work
             </p>
 
-            <h1 class="mt-5 text-3xl leading-tight font-semibold tracking-tight text-balance text-ink sm:text-4xl lg:text-5xl">
+            <h1 class="page-title mt-5">
                 Hello, I am Minhaj 👋
             </h1>
 
@@ -30,11 +22,11 @@
             </div>
 
             <div class="mt-8 flex flex-wrap items-center gap-3">
-                <a href="#" class="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition hover:opacity-90">
+                <a href="#" class="btn-primary">
                     <flux:icon.arrow-down-tray variant="micro" />
                     Download CV
                 </a>
-                <a href="{{ route('contact') }}" wire:navigate class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium text-ink shadow-card transition hover:border-line-strong">
+                <a href="{{ route('contact') }}" wire:navigate class="btn-secondary">
                     Get in touch
                     <flux:icon.arrow-right variant="micro" />
                 </a>
@@ -56,7 +48,6 @@
     <section class="border-t border-line pt-16">
         <div class="max-w-2xl">
             <p class="eyebrow">
-                <span class="h-px w-6 bg-primary/50" aria-hidden="true"></span>
                 Toolbox
             </p>
             <h2 class="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
@@ -71,8 +62,8 @@
             @foreach($skills as $skill)
                 <div class="card p-5">
                     <div class="flex items-start gap-3.5">
-                        <div class="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
-                            <flux:icon :icon="$skillIcons[$skill['title']] ?? 'sparkles'" variant="mini" />
+                        <div class="icon-tile">
+                            <flux:icon :icon="$skill['icon']" variant="mini" />
                         </div>
                         <div>
                             <h3 class="font-semibold text-ink">{{ $skill['title'] }}</h3>
@@ -82,7 +73,7 @@
 
                     <ul class="mt-5 flex flex-wrap gap-1.5">
                         @foreach($skill['technologies'] as $technology)
-                            <li class="chip">{{ $technology['name'] }}</li>
+                            <li class="chip">{{ $technology }}</li>
                         @endforeach
                     </ul>
                 </div>

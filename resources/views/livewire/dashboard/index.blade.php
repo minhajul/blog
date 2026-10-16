@@ -8,7 +8,7 @@
     <div class="card flex flex-col gap-5 p-5 sm:flex-row sm:items-center">
         <img src="{{ $user->avatarUrl() }}" alt="" class="size-16 shrink-0 rounded-xl border border-line object-cover">
         <div>
-            <p class="font-mono text-xs tracking-wider text-ink-subtle uppercase">Welcome back</p>
+            <p class="label-mono">Welcome back</p>
             <h1 class="mt-1 text-xl font-semibold tracking-tight text-ink">{{ $user->name }}</h1>
             <p class="mt-0.5 text-sm text-ink-muted">Logged in as {{ $user->email }}</p>
         </div>

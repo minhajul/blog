@@ -1,7 +1,6 @@
-<div class="my-auto grid w-full gap-10 py-12 sm:py-16 lg:pt-36 lg:grid-cols-12 lg:items-center lg:gap-12">
+<div class="grid w-full gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
     <div class="lg:col-span-5 fadeInUp">
         <p class="eyebrow mb-4">
-            <span class="h-px w-6 bg-primary/50" aria-hidden="true"></span>
             Let's collaborate
         </p>
         <h1 class="text-3xl font-semibold tracking-tight text-balance text-ink sm:text-4xl sm:leading-[1.1]">
@@ -13,7 +12,7 @@
 
         <ul class="mt-8 space-y-4">
             <li class="flex items-start gap-4">
-                <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
+                <span class="icon-tile">
                     <flux:icon.chat-bubble-left-right variant="mini" />
                 </span>
                 <div>
@@ -22,7 +21,7 @@
                 </div>
             </li>
             <li class="flex items-start gap-4">
-                <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
+                <span class="icon-tile">
                     <flux:icon.clock variant="mini" />
                 </span>
                 <div>

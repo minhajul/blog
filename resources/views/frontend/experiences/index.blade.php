@@ -6,35 +6,26 @@
     />
 
     @if($experiences->isEmpty())
-        <div class="card flex flex-col items-center px-6 py-16 text-center">
-            <div class="grid size-12 place-items-center rounded-full bg-surface-raised text-ink-subtle">
-                <flux:icon.briefcase />
-            </div>
-            <p class="mt-4 text-lg font-medium text-ink">Nothing here yet</p>
-            <p class="mt-1 text-sm text-ink-muted">Work experience will be listed here soon.</p>
-        </div>
+        <x-empty-state icon="briefcase" title="Nothing here yet" description="Work experience will be listed here soon." />
     @else
-        <ol class="relative max-w-4xl">
+        <ol class="relative max-w-4xl [--col-gap:2.5rem] [--date-col:11rem]">
             @foreach($experiences as $experience)
-                <li class="relative grid gap-3 pb-8 last:pb-0 sm:grid-cols-[11rem_1fr] sm:gap-10">
+                <li class="relative grid gap-3 pb-8 last:pb-0 sm:grid-cols-[var(--date-col)_1fr] sm:gap-(--col-gap)">
                     @unless($loop->last)
-                        <span class="absolute top-0 bottom-0 left-[5px] w-px bg-line-strong sm:top-8 sm:left-[calc(13.5rem+5px)] sm:-bottom-8" aria-hidden="true"></span>
+                        <span class="absolute top-0 bottom-0 left-[5px] w-px bg-line-strong sm:top-8 sm:left-[calc(var(--date-col)+var(--col-gap)+5px)] sm:-bottom-8" aria-hidden="true"></span>
                     @endunless
                     <div class="pl-8 sm:pt-6 sm:pl-0 sm:text-right">
-                        <p class="font-mono text-xs tracking-wide text-ink-subtle uppercase">
+                        <p class="label-mono">
                             {{ $experience->workDuration }}
                         </p>
                         @if($experience->isCurrent())
-                            <span class="mt-2 inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-                                <span class="size-1.5 rounded-full bg-emerald-500"></span>
-                                Current
-                            </span>
+                            <flux:badge size="sm" color="green" class="mt-2">Current</flux:badge>
                         @endif
                     </div>
 
                     <div class="relative pl-8 sm:pl-10">
                         <span @class([
-                            'absolute top-1 left-0 grid size-2.75 place-items-center rounded-full ring-4 ring-canvas sm:top-7',
+                            'absolute top-1 left-0 size-2.75 rounded-full ring-4 ring-canvas sm:top-7',
                             'bg-primary' => $experience->isCurrent(),
                             'bg-line-strong' => ! $experience->isCurrent(),
                         ]) aria-hidden="true"></span>
@@ -54,7 +45,7 @@
                                 @endif
                             </p>
 
-                            <div class="article-content mt-4 !text-sm !leading-relaxed [&>*+*]:!mt-2.5">
+                            <div class="article-content article-content-compact mt-4">
                                 {!! $experience->description !!}
                             </div>
                         </div>

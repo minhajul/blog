@@ -61,19 +61,11 @@
     --color-primary-ink: var(--color-brand-700);
 
     --color-accent: var(--color-brand-600);
-    --color-accent-content: var(--color-brand-600);
+    --color-accent-content: var(--color-primary);
     --color-accent-foreground: var(--color-white);
 
     --shadow-card: 0 1px 2px 0 rgb(15 15 30 / 0.04), 0 1px 3px 0 rgb(15 15 30 / 0.04);
     --shadow-card-hover: 0 12px 32px -12px rgb(15 15 30 / 0.18), 0 2px 6px -2px rgb(15 15 30 / 0.06);
-
-    --animate-move-bg: move-bg 8s infinite linear;
-}
-
-@keyframes move-bg {
-    to {
-        background-position: 400% 0;
-    }
 }
 
 @layer theme {
@@ -83,7 +75,6 @@
         --color-surface-raised: oklch(0.235 0.01 270);
         --color-ink: oklch(0.96 0.004 270);
         --color-ink-muted: oklch(0.76 0.008 270);
-        --color-ink-subtle: oklch(0.6 0.01 270);
         --color-line: oklch(1 0 0 / 0.08);
         --color-line-strong: oklch(1 0 0 / 0.14);
         --color-primary: var(--color-brand-400);
@@ -91,8 +82,6 @@
         --color-primary-ink: var(--color-brand-300);
 
         --color-accent: var(--color-brand-500);
-        --color-accent-content: var(--color-brand-400);
-        --color-accent-foreground: var(--color-white);
 
         --shadow-card: 0 0 0 0 transparent;
         --shadow-card-hover: 0 16px 40px -16px rgb(0 0 0 / 0.6);
@@ -141,23 +130,6 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent/40 ring-offset-0 border-accent;
 }
 
-/* Legacy helpers (used across the dashboard), now mapped onto the semantic tokens */
-.text-color {
-    @apply text-ink-muted;
-}
-
-.bg-color {
-    @apply bg-surface;
-}
-
-.bg-surface-muted {
-    @apply bg-surface-raised;
-}
-
-.text-surface {
-    @apply text-ink-muted;
-}
-
 /* Reusable frontend building blocks */
 @utility container-page {
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
@@ -173,6 +145,39 @@ select:focus[data-flux-control] {
 
 @utility eyebrow {
     @apply inline-flex items-center gap-2 font-mono text-xs font-medium tracking-wider text-primary uppercase;
+
+    &::before {
+        content: '';
+        @apply h-px w-6 bg-primary/50;
+    }
+}
+
+@utility label-mono {
+    @apply font-mono text-xs tracking-wider text-ink-subtle uppercase;
+}
+
+@utility btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition hover:opacity-90;
+}
+
+@utility btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium text-ink shadow-card transition hover:border-line-strong;
+}
+
+@utility icon-button {
+    @apply inline-grid size-9 cursor-pointer place-items-center rounded-full text-ink-muted transition hover:bg-surface-raised hover:text-ink;
+}
+
+@utility backdrop-glow {
+    background: radial-gradient(56rem 26rem at 50% -6rem, color-mix(in oklab, var(--color-brand-400) 22%, transparent), transparent 70%);
+
+    @variant dark {
+        background: radial-gradient(56rem 26rem at 50% -6rem, color-mix(in oklab, var(--color-brand-500) 14%, transparent), transparent 70%);
+    }
+}
+
+@utility icon-tile {
+    @apply grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary;
 }
 
 @utility chip {
@@ -193,10 +198,16 @@ select:focus[data-flux-control] {
  * Styles the Trix-generated HTML for blog posts and rich text descriptions.
  */
 @utility article-content {
-    @apply text-base leading-[1.75] text-ink/80 sm:text-[1.0625rem];
+    @apply text-ink/80;
+    font-size: var(--article-font-size, var(--text-base));
+    line-height: var(--article-line-height, 1.75);
+
+    @variant sm {
+        font-size: var(--article-font-size, 1.0625rem);
+    }
 
     & > * + * {
-        @apply mt-5;
+        margin-top: var(--article-flow, calc(var(--spacing) * 5));
     }
 
     & h1,
@@ -272,6 +283,12 @@ select:focus[data-flux-control] {
     }
 }
 
+@utility article-content-compact {
+    --article-font-size: var(--text-sm);
+    --article-line-height: var(--leading-relaxed);
+    --article-flow: calc(var(--spacing) * 2.5);
+}
+
 /* Trix rich text editor (dashboard) */
 trix-toolbar .trix-button-group {
     @apply rounded-lg border-line bg-surface;
@@ -298,7 +315,7 @@ trix-editor {
     @apply min-h-56 rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink shadow-card transition;
 
     &:focus {
-        @apply border-primary ring-4 ring-primary/15 outline-none;
+        @apply border-accent ring-2 ring-accent/40 outline-hidden;
     }
 }
 

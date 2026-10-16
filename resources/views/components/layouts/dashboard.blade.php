@@ -1,6 +1,6 @@
 <div class="flex items-start gap-8 pt-8 max-md:flex-col max-md:gap-5">
     <aside class="w-full shrink-0 md:sticky md:top-22 md:w-52">
-        <p class="mb-3 px-3 font-mono text-xs tracking-wider text-ink-subtle uppercase">Dashboard</p>
+        <p class="label-mono mb-3 px-3">Dashboard</p>
         <flux:navlist>
             <flux:navlist.item :href="route('dashboard')" icon="home" wire:navigate>{{ __('Overview') }}</flux:navlist.item>
             <flux:navlist.item :href="route('dashboard.blogs.index')" icon="pencil-square" wire:navigate>{{ __('Blogs') }}</flux:navlist.item>

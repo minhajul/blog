@@ -1,11 +1,36 @@
 <x-layouts.app :title="$blog->title">
     <div
-        x-data="{ progress: 0 }"
-        x-on:scroll.window.passive="progress = Math.min(100, Math.max(0, window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100))"
+        x-data="{
+            progress: 0,
+            maxScroll: 1,
+            isFramePending: false,
+            measure() {
+                this.maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                this.update();
+            },
+            update() {
+                this.progress = Math.min(1, window.scrollY / this.maxScroll);
+            },
+            scheduleUpdate() {
+                if (this.isFramePending) {
+                    return;
+                }
+
+                this.isFramePending = true;
+                requestAnimationFrame(() => {
+                    this.update();
+                    this.isFramePending = false;
+                });
+            },
+        }"
+        x-init="measure()"
+        x-on:scroll.window.passive="scheduleUpdate()"
+        x-on:resize.window="measure()"
+        x-on:load.window="measure()"
         class="fixed inset-x-0 top-0 z-50 h-0.5"
         aria-hidden="true"
     >
-        <div class="h-full origin-left bg-primary transition-[width] duration-150 ease-out" :style="`width: ${progress}%`"></div>
+        <div class="h-full origin-left bg-primary" style="transform: scaleX(0)" :style="`transform: scaleX(${progress})`"></div>
     </div>
 
     <article class="pt-10 sm:pt-12">
@@ -49,7 +74,7 @@
                     <p class="font-serif text-xl italic text-ink">Thanks for reading.</p>
                     <p class="mt-1 text-sm text-ink-muted">There’s more where that came from.</p>
                 </div>
-                <a href="{{ route('home') }}" wire:navigate class="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition hover:opacity-90">
+                <a href="{{ route('home') }}" wire:navigate class="group btn-primary shrink-0">
                     Browse all articles
                     <flux:icon.arrow-right variant="micro" class="transition-transform group-hover:translate-x-0.5" />
                 </a>

@@ -23,4 +23,16 @@ enum BlogStatus: string
             self::ARCHIVED => 'Archived'
         };
     }
+
+    /**
+     * The Flux badge color used to display this status.
+     */
+    public function badgeColor(): string
+    {
+        return match ($this) {
+            self::PUBLISHED => 'green',
+            self::DRAFTED => 'amber',
+            self::ARCHIVED => 'zinc',
+        };
+    }
 }

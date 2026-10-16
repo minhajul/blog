@@ -9,12 +9,12 @@
     <div class="mt-2 overflow-hidden card">
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-line text-sm">
-                <thead class="bg-surface-raised">
+                <thead class="bg-surface-raised [&_th]:px-5 [&_th]:py-3 [&_th]:text-left [&_th]:font-medium [&_th]:label-mono">
                     <tr>
-                        <th scope="col" class="px-5 py-3 text-left font-mono text-xs font-medium tracking-wider text-ink-subtle uppercase">ID</th>
-                        <th scope="col" class="px-5 py-3 text-left font-mono text-xs font-medium tracking-wider text-ink-subtle uppercase">Email</th>
-                        <th scope="col" class="px-5 py-3 text-left font-mono text-xs font-medium tracking-wider text-ink-subtle uppercase">Status</th>
-                        <th scope="col" class="relative px-5 py-3"><span class="sr-only">Action</span></th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"><span class="sr-only">Action</span></th>
                     </tr>
                 </thead>
 

@@ -11,7 +11,6 @@
 ]) }}>
     @if($eyebrow)
         <p class="eyebrow mb-4">
-            <span class="h-px w-6 bg-primary/50" aria-hidden="true"></span>
             {{ $eyebrow }}
         </p>
     @endif

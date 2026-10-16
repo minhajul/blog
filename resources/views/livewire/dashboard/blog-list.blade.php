@@ -1,5 +1,3 @@
-@php($statusBadgeColors = ['published' => 'green', 'drafted' => 'amber', 'archived' => 'zinc'])
-
 <x-layouts.dashboard>
     <x-dashboard.heading title="Blogs" description="Write, publish and manage your articles.">
         <x-slot:actions>
@@ -39,7 +37,7 @@
             <div class="group flex flex-col overflow-hidden card">
                 <a href="{{ route('dashboard.blogs.edit', $blog) }}" class="relative block aspect-16/9 overflow-hidden bg-surface-raised">
                     <img class="size-full object-cover transition duration-500 group-hover:scale-[1.03]" src="{{ $blog->bannerUrl() }}" alt="">
-                    <flux:badge size="sm" :color="$statusBadgeColors[$blog->status] ?? 'zinc'" class="absolute top-3 left-3 capitalize">
+                    <flux:badge size="sm" :color="\App\Enums\BlogStatus::tryFrom($blog->status)?->badgeColor() ?? 'zinc'" class="absolute top-3 left-3 capitalize">
                         {{ $blog->status }}
                     </flux:badge>
                 </a>
@@ -74,11 +72,7 @@
                 </div>
             </div>
         @empty
-            <div class="card col-span-full flex flex-col items-center px-6 py-16 text-center">
-                <flux:icon.document-text class="text-ink-subtle" />
-                <p class="mt-3 font-medium text-ink">No blog found</p>
-                <p class="mt-1 text-sm text-ink-muted">Try another status or search term.</p>
-            </div>
+            <x-empty-state class="col-span-full" icon="document-text" title="No blog found" description="Try another status or search term." />
         @endforelse
     </div>
 

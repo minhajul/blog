@@ -33,11 +33,7 @@
                 @endif
             </div>
         @empty
-            <div class="card col-span-full flex flex-col items-center px-6 py-16 text-center">
-                <flux:icon.folder-open class="text-ink-subtle" />
-                <p class="mt-3 font-medium text-ink">No project added</p>
-                <p class="mt-1 text-sm text-ink-muted">Create your first project to show it on the site.</p>
-            </div>
+            <x-empty-state class="col-span-full" icon="folder-open" title="No project added" description="Create your first project to show it on the site." />
         @endforelse
     </div>
 

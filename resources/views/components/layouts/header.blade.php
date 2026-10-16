@@ -1,12 +1,21 @@
-@php($navigation = [
-    ['name' => 'Writing', 'route' => 'home', 'active' => ['home', 'blog.show']],
-    ['name' => 'About', 'route' => 'about', 'active' => ['about']],
-    ['name' => 'Experience', 'route' => 'experiences', 'active' => ['experiences']],
-    ['name' => 'Projects', 'route' => 'projects', 'active' => ['projects']],
-    ['name' => 'Contact', 'route' => 'contact', 'active' => ['contact']],
-])
+@php
+    $navigation = collect([
+        ['name' => 'Writing', 'route' => 'home', 'active' => ['home', 'blog.show']],
+        ['name' => 'About', 'route' => 'about'],
+        ['name' => 'Experience', 'route' => 'experiences'],
+        ['name' => 'Projects', 'route' => 'projects'],
+        ['name' => 'Contact', 'route' => 'contact'],
+    ])->map(fn (array $item) => $item + [
+        'url' => route($item['route']),
+        'isActive' => request()->routeIs(...($item['active'] ?? [$item['route']])),
+    ]);
 
-<header x-data="{ mobileMenu: false }" class="sticky top-0 z-40 border-b border-line/70 bg-canvas/75 backdrop-blur-xl supports-[backdrop-filter]:bg-canvas/60">
+    $accountLink = auth()->check()
+        ? ['url' => route('dashboard'), 'label' => 'Dashboard', 'icon' => 'arrow-up-right']
+        : ['url' => route('login'), 'label' => 'Log in', 'icon' => 'arrow-right'];
+@endphp
+
+<header x-data="{ mobileMenu: false }" class="sticky top-0 z-40 border-b border-line/70 bg-canvas/75 backdrop-blur-md supports-[backdrop-filter]:bg-canvas/60">
     <nav class="container-page flex h-14 items-center justify-between gap-6" aria-label="Global">
         <a href="{{ route('home') }}" wire:navigate class="rounded-lg">
             <x-application-logo />
@@ -14,15 +23,14 @@
 
         <ul class="hidden items-center gap-1 rounded-full border border-line bg-surface/70 p-1 shadow-card lg:flex">
             @foreach($navigation as $item)
-                @php($isActive = request()->routeIs(...$item['active']))
                 <li>
-                    <a href="{{ route($item['route']) }}" wire:navigate
+                    <a href="{{ $item['url'] }}" wire:navigate
                        @class([
                            'block rounded-full px-3.5 py-1 text-sm font-medium transition',
-                           'bg-ink text-canvas' => $isActive,
-                           'text-ink-muted hover:bg-surface-raised hover:text-ink' => ! $isActive,
+                           'bg-ink text-canvas' => $item['isActive'],
+                           'text-ink-muted hover:bg-surface-raised hover:text-ink' => ! $item['isActive'],
                        ])
-                       @if($isActive) aria-current="page" @endif
+                       @if($item['isActive']) aria-current="page" @endif
                     >
                         {{ $item['name'] }}
                     </a>
@@ -49,7 +57,7 @@
         <div class="flex items-center gap-1 lg:hidden">
             <x-theme-toggle />
 
-            <button @click="mobileMenu = true" type="button" class="inline-grid size-9 place-items-center rounded-full text-ink-muted transition hover:bg-surface-raised hover:text-ink">
+            <button @click="mobileMenu = true" type="button" class="icon-button">
                 <span class="sr-only">Open main menu</span>
                 <flux:icon.bars-2 variant="mini" />
             </button>
@@ -81,7 +89,7 @@
                 <a href="{{ route('home') }}" wire:navigate @click="mobileMenu = false">
                     <x-application-logo />
                 </a>
-                <button @click="mobileMenu = false" type="button" class="inline-grid size-9 place-items-center rounded-full text-ink-muted transition hover:bg-surface-raised hover:text-ink">
+                <button @click="mobileMenu = false" type="button" class="icon-button">
                     <span class="sr-only">Close menu</span>
                     <flux:icon.x-mark variant="mini" />
                 </button>
@@ -89,17 +97,16 @@
 
             <nav class="mt-8 flex flex-col gap-1">
                 @foreach($navigation as $item)
-                    @php($isActive = request()->routeIs(...$item['active']))
-                    <a href="{{ route($item['route']) }}" wire:navigate
+                    <a href="{{ $item['url'] }}" wire:navigate
                        @click="mobileMenu = false"
                        @class([
                            'flex items-center justify-between rounded-xl px-3 py-2.5 text-base font-medium transition',
-                           'bg-primary-soft text-primary-ink' => $isActive,
-                           'text-ink-muted hover:bg-surface-raised hover:text-ink' => ! $isActive,
+                           'bg-primary-soft text-primary-ink' => $item['isActive'],
+                           'text-ink-muted hover:bg-surface-raised hover:text-ink' => ! $item['isActive'],
                        ])
                     >
                         {{ $item['name'] }}
-                        @if($isActive)
+                        @if($item['isActive'])
                             <span class="size-1.5 rounded-full bg-primary"></span>
                         @endif
                     </a>
@@ -107,21 +114,10 @@
             </nav>
 
             <div class="mt-auto border-t border-line pt-4">
-                @auth
-                    <a href="{{ route('dashboard') }}"
-                       @click="mobileMenu = false"
-                       class="flex w-full items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-canvas transition hover:opacity-90">
-                        Dashboard
-                        <flux:icon.arrow-up-right variant="micro" />
-                    </a>
-                @else
-                    <a href="{{ route('login') }}" wire:navigate
-                       @click="mobileMenu = false"
-                       class="flex w-full items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-canvas transition hover:opacity-90">
-                        Log in
-                        <flux:icon.arrow-right variant="micro" />
-                    </a>
-                @endauth
+                <a href="{{ $accountLink['url'] }}" @click="mobileMenu = false" class="btn-primary w-full">
+                    {{ $accountLink['label'] }}
+                    <flux:icon :icon="$accountLink['icon']" variant="micro" />
+                </a>
             </div>
         </div>
     </div>

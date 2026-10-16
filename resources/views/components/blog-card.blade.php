@@ -5,12 +5,11 @@
 
 <article {{ $attributes->class([
     'group relative flex flex-col overflow-hidden card-interactive',
-    'lg:flex-row' => $featured,
+    'sm:col-span-2 lg:col-span-3 lg:flex-row' => $featured,
 ]) }}>
     <div @class([
-        'relative overflow-hidden bg-surface-raised',
-        'aspect-16/10' => ! $featured,
-        'aspect-16/10 lg:aspect-auto lg:w-1/2 lg:shrink-0' => $featured,
+        'relative aspect-16/10 overflow-hidden bg-surface-raised',
+        'lg:aspect-auto lg:w-1/2 lg:shrink-0' => $featured,
     ])>
         <img class="absolute inset-0 size-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
              alt=""
