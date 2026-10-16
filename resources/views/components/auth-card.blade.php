@@ -1,7 +1,5 @@
-<div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-    <div class="w-96 rounded-3xl mx-auto overflow-hidden shadow-xl">
-        <div class="px-10 py-6 bg-color">
-            {{ $slot }}
-        </div>
+<div class="flex flex-col items-center pt-6 sm:justify-center sm:pt-0">
+    <div class="card mx-auto w-full max-w-sm px-6 py-8 sm:px-8">
+        {{ $slot }}
     </div>
 </div>

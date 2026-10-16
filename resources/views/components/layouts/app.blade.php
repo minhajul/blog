@@ -1,26 +1,27 @@
+@props(['title' => null])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@minahjcse">
-    <meta name="twitter:creator" content="@">
-    <meta property="og:url" content="{{ route('home') }}">
-    <meta property="og:type" content="blog">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Minimal Blog For Personal Use - {{ config('app.name') }}</title>
+    <x-layouts.head :title="$title" />
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     @fluxAppearance
 
     @stack('styles')
 </head>
-<body class="min-h-screen flex flex-col antialiased bg-surface-muted">
+<body class="relative isolate min-h-screen flex flex-col bg-canvas font-sans text-ink antialiased">
+    <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 focus:rounded-lg focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:shadow-card-hover">
+        Skip to content
+    </a>
+
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[32rem] overflow-hidden">
+        <div class="absolute left-1/2 top-[-12rem] h-[28rem] w-[56rem] -translate-x-1/2 rounded-full bg-brand-400/15 blur-3xl dark:bg-brand-500/10"></div>
+    </div>
+
     <x-layouts.header/>
 
-    <main class="grow max-w-7xl mx-auto px-4 sm:px-6 w-full">
+    <main id="content" class="grow container-page">
         {{ $slot }}
     </main>
 
@@ -31,3 +32,4 @@
     @livewireScripts
     @fluxScripts
 </body>
+</html>
