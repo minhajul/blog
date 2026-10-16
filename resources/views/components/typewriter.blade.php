@@ -114,9 +114,10 @@
 
             .typewriter-cursor {
                 display: inline-block;
-                width: 2px;
-                height: 1em;
-                background-color: currentColor;
+                width: 3px;
+                height: 0.9em;
+                border-radius: 2px;
+                background-color: var(--color-primary);
                 margin-left: 0.25rem;
                 vertical-align: middle;
                 animation: blink 1s step-end infinite;
