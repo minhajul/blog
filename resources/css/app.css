@@ -180,12 +180,12 @@ select:focus[data-flux-control] {
 }
 
 @utility page-title {
-    @apply text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl lg:text-6xl;
-    line-height: 1.05;
+    @apply text-3xl font-semibold tracking-tight text-balance text-ink sm:text-4xl lg:text-5xl;
+    line-height: 1.1;
 }
 
 @utility page-lead {
-    @apply text-lg leading-relaxed text-pretty text-ink-muted sm:text-xl;
+    @apply text-base leading-relaxed text-pretty text-ink-muted sm:text-lg;
 }
 
 /*
@@ -193,21 +193,21 @@ select:focus[data-flux-control] {
  * Styles the Trix-generated HTML for blog posts and rich text descriptions.
  */
 @utility article-content {
-    @apply text-[1.0625rem] leading-[1.8] text-ink/80 sm:text-lg;
+    @apply text-base leading-[1.75] text-ink/80 sm:text-[1.0625rem];
 
     & > * + * {
-        @apply mt-6;
+        @apply mt-5;
     }
 
     & h1,
     & h2 {
-        @apply mt-12 mb-4 text-2xl font-semibold tracking-tight text-ink sm:text-3xl;
+        @apply mt-10 mb-3 text-xl font-semibold tracking-tight text-ink sm:text-2xl;
         line-height: 1.25;
     }
 
     & h3,
     & h4 {
-        @apply mt-10 mb-3 text-xl font-semibold tracking-tight text-ink;
+        @apply mt-8 mb-2 text-lg font-semibold tracking-tight text-ink;
     }
 
     & strong {
@@ -232,7 +232,7 @@ select:focus[data-flux-control] {
     }
 
     & blockquote {
-        @apply border-l-2 border-primary pl-6 font-serif text-2xl leading-snug text-ink italic;
+        @apply border-l-2 border-primary pl-5 font-serif text-xl leading-snug text-ink italic;
     }
 
     & code {
@@ -240,7 +240,7 @@ select:focus[data-flux-control] {
     }
 
     & pre {
-        @apply overflow-x-auto rounded-xl border border-line bg-zinc-950 p-5 font-mono text-sm leading-relaxed text-zinc-100 dark:bg-black/40;
+        @apply overflow-x-auto rounded-xl border border-line bg-zinc-950 p-4 font-mono text-[0.8125rem] leading-relaxed text-zinc-100 dark:bg-black/40;
     }
 
     & pre code {
@@ -252,7 +252,7 @@ select:focus[data-flux-control] {
     }
 
     & figure {
-        @apply my-10;
+        @apply my-8;
     }
 
     & figcaption {
@@ -260,7 +260,7 @@ select:focus[data-flux-control] {
     }
 
     & hr {
-        @apply my-12 border-line;
+        @apply my-10 border-line;
     }
 
     & .attachment {
@@ -295,7 +295,7 @@ trix-toolbar .trix-button.trix-active {
 }
 
 trix-editor {
-    @apply min-h-64 rounded-lg border border-line bg-surface px-4 py-3 text-ink shadow-card transition;
+    @apply min-h-56 rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink shadow-card transition;
 
     &:focus {
         @apply border-primary ring-4 ring-primary/15 outline-none;

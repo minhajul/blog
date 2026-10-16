@@ -16,7 +16,7 @@
     @else
         <ol class="relative max-w-4xl">
             @foreach($experiences as $experience)
-                <li class="relative grid gap-4 pb-12 last:pb-0 sm:grid-cols-[11rem_1fr] sm:gap-10">
+                <li class="relative grid gap-3 pb-8 last:pb-0 sm:grid-cols-[11rem_1fr] sm:gap-10">
                     @unless($loop->last)
                         <span class="absolute top-0 bottom-0 left-[5px] w-px bg-line-strong sm:top-8 sm:left-[calc(13.5rem+5px)] sm:-bottom-8" aria-hidden="true"></span>
                     @endunless
@@ -39,8 +39,8 @@
                             'bg-line-strong' => ! $experience->isCurrent(),
                         ]) aria-hidden="true"></span>
 
-                        <div class="card p-6">
-                            <h2 class="text-lg font-semibold tracking-tight text-ink sm:text-xl">
+                        <div class="card p-5">
+                            <h2 class="text-base font-semibold tracking-tight text-ink sm:text-lg">
                                 {{ $experience->title }}
                             </h2>
                             <p class="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
@@ -54,7 +54,7 @@
                                 @endif
                             </p>
 
-                            <div class="article-content mt-5 !text-[0.9375rem] !leading-relaxed [&>*+*]:!mt-3">
+                            <div class="article-content mt-4 !text-sm !leading-relaxed [&>*+*]:!mt-2.5">
                                 {!! $experience->description !!}
                             </div>
                         </div>

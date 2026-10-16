@@ -10,7 +10,7 @@
     <div @class([
         'relative overflow-hidden bg-surface-raised',
         'aspect-16/10' => ! $featured,
-        'aspect-16/10 lg:aspect-auto lg:w-3/5 lg:shrink-0' => $featured,
+        'aspect-16/10 lg:aspect-auto lg:w-1/2 lg:shrink-0' => $featured,
     ])>
         <img class="absolute inset-0 size-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
              alt=""
@@ -20,8 +20,8 @@
     </div>
 
     <div @class([
-        'flex grow flex-col p-6',
-        'lg:justify-center lg:p-10' => $featured,
+        'flex grow flex-col p-5',
+        'lg:justify-center lg:p-8' => $featured,
     ])>
         <div class="flex items-center gap-3 font-mono text-xs text-ink-subtle">
             @if($featured)
@@ -33,9 +33,9 @@
         </div>
 
         <h2 @class([
-            'mt-3 font-semibold tracking-tight text-balance text-ink transition-colors group-hover:text-primary',
-            'text-xl leading-snug' => ! $featured,
-            'text-2xl leading-tight sm:text-3xl' => $featured,
+            'mt-2.5 font-semibold tracking-tight text-balance text-ink transition-colors group-hover:text-primary',
+            'text-lg leading-snug' => ! $featured,
+            'text-xl leading-tight sm:text-2xl' => $featured,
         ])>
             <a href="{{ route('blog.show', $blog->slug) }}" wire:navigate>
                 <span class="absolute inset-0" aria-hidden="true"></span>
@@ -44,14 +44,14 @@
         </h2>
 
         <p @class([
-            'mt-3 text-[0.9375rem] leading-relaxed text-ink-muted',
+            'mt-2 text-sm leading-relaxed text-ink-muted',
             'line-clamp-3' => ! $featured,
-            'line-clamp-4 sm:text-base' => $featured,
+            'line-clamp-4' => $featured,
         ])>
             {{ $blog->short_details }}
         </p>
 
-        <span class="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-ink">
+        <span class="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-medium text-ink">
             Read article
             <flux:icon.arrow-right variant="micro" class="transition-transform duration-300 group-hover:translate-x-1" />
         </span>

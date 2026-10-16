@@ -1,17 +1,17 @@
-<div class="grid gap-12 pt-16 sm:pt-24 lg:grid-cols-12 lg:gap-16">
+<div class="grid gap-10 pt-12 sm:pt-16 lg:grid-cols-12 lg:gap-12">
     <div class="lg:col-span-5 fadeInUp">
-        <p class="eyebrow mb-5">
+        <p class="eyebrow mb-4">
             <span class="h-px w-6 bg-primary/50" aria-hidden="true"></span>
             Let's collaborate
         </p>
-        <h1 class="text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl sm:leading-[1.05]">
+        <h1 class="text-3xl font-semibold tracking-tight text-balance text-ink sm:text-4xl sm:leading-[1.1]">
             Build something <span class="font-serif font-normal italic tracking-normal text-primary">together</span>
         </h1>
-        <p class="page-lead mt-6">
+        <p class="page-lead mt-4">
             Whether you have a project in mind or just want to chat about ideas, I'm always open to connecting with fellow builders.
         </p>
 
-        <ul class="mt-10 space-y-4">
+        <ul class="mt-8 space-y-4">
             <li class="flex items-start gap-4">
                 <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
                     <flux:icon.chat-bubble-left-right variant="mini" />
@@ -34,11 +34,11 @@
     </div>
 
     <div class="lg:col-span-7 scale">
-        <div class="card p-6 sm:p-10">
+        <div class="card p-6 sm:p-8">
             @include('errors.success')
 
-            <form wire:submit="submit" class="space-y-6">
-                <div class="grid gap-6 sm:grid-cols-2">
+            <form wire:submit="submit" class="space-y-5">
+                <div class="grid gap-5 sm:grid-cols-2">
                     <flux:input
                         type="text"
                         wire:model="name"
@@ -61,7 +61,7 @@
                 <flux:textarea
                     label="Message"
                     wire:model="message"
-                    rows="6"
+                    rows="5"
                     required="true"
                     placeholder="Tell me about your project or idea…"
                 />

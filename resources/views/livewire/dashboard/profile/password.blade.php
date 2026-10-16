@@ -1,5 +1,5 @@
 <form wire:submit.prevent="update">
-    <div class="card p-6">
+    <div class="card p-5">
 
         @include('errors.message')
 

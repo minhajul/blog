@@ -4,8 +4,8 @@
     ['name' => 'Twitter', 'url' => '#'],
 ])
 
-<footer class="mt-24 border-t border-line">
-    <div class="container-page flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
+<footer class="mt-20 border-t border-line">
+    <div class="container-page flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
         <div class="space-y-2">
             <x-application-logo />
             <p class="text-sm text-ink-subtle">

@@ -6,7 +6,7 @@
             </x-slot:actions>
         </x-dashboard.heading>
 
-        <div class="mt-6 card p-6">
+        <div class="mt-6 card p-5">
             <div class="space-y-3">
                 @include('errors.success')
                 @include('errors.message')

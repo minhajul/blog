@@ -9,14 +9,14 @@
             Thoughts, projects <span class="font-serif font-normal italic tracking-normal text-primary">&amp; ideas</span>
         </x-slot:title>
 
-        <div class="relative mt-10 max-w-xl">
+        <div class="relative mt-8 max-w-lg">
             <flux:icon.magnifying-glass variant="mini" class="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-ink-subtle" />
             <input
                 type="search"
                 wire:model.live.debounce.300ms="keywords"
                 placeholder="Search articles…"
                 aria-label="Search articles"
-                class="h-12 w-full rounded-full border border-line bg-surface pr-5 pl-11 text-base text-ink shadow-card transition placeholder:text-ink-subtle hover:border-line-strong focus:border-primary focus:ring-4 focus:ring-primary/15 focus:outline-none"
+                class="h-11 w-full rounded-full border border-line bg-surface pr-5 pl-11 text-sm text-ink shadow-card transition placeholder:text-ink-subtle hover:border-line-strong focus:border-primary focus:ring-4 focus:ring-primary/15 focus:outline-none"
             />
             <div wire:loading.delay wire:target="keywords" class="absolute top-1/2 right-4 -translate-y-1/2">
                 <flux:icon.loading variant="mini" class="text-ink-subtle" />
@@ -39,7 +39,7 @@
             </p>
         </div>
     @else
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($blogs as $blog)
                 @if($showFeatured && $loop->first)
                     <x-blog-card :blog="$blog" featured class="sm:col-span-2 lg:col-span-3" />
@@ -50,7 +50,7 @@
         </div>
 
         @if($blogs->hasPages())
-            <div class="mt-12">
+            <div class="mt-10">
                 <flux:pagination :paginator="$blogs" />
             </div>
         @endif

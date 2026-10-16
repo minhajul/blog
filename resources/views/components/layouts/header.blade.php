@@ -7,7 +7,7 @@
 ])
 
 <header x-data="{ mobileMenu: false }" class="sticky top-0 z-40 border-b border-line/70 bg-canvas/75 backdrop-blur-xl supports-[backdrop-filter]:bg-canvas/60">
-    <nav class="container-page flex h-16 items-center justify-between gap-6" aria-label="Global">
+    <nav class="container-page flex h-14 items-center justify-between gap-6" aria-label="Global">
         <a href="{{ route('home') }}" wire:navigate class="rounded-lg">
             <x-application-logo />
         </a>
@@ -18,7 +18,7 @@
                 <li>
                     <a href="{{ route($item['route']) }}" wire:navigate
                        @class([
-                           'block rounded-full px-4 py-1.5 text-sm font-medium transition',
+                           'block rounded-full px-3.5 py-1 text-sm font-medium transition',
                            'bg-ink text-canvas' => $isActive,
                            'text-ink-muted hover:bg-surface-raised hover:text-ink' => ! $isActive,
                        ])
@@ -34,7 +34,7 @@
             <x-theme-toggle />
 
             @auth
-                <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-ink shadow-card transition hover:border-line-strong">
+                <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3.5 py-1 text-sm font-medium text-ink shadow-card transition hover:border-line-strong">
                     Dashboard
                     <flux:icon.arrow-up-right variant="micro" class="text-ink-subtle" />
                 </a>

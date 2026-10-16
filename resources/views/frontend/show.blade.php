@@ -8,18 +8,18 @@
         <div class="h-full origin-left bg-primary transition-[width] duration-150 ease-out" :style="`width: ${progress}%`"></div>
     </div>
 
-    <article class="pt-12 sm:pt-16">
+    <article class="pt-10 sm:pt-12">
         <header class="mx-auto max-w-2xl fadeInUp">
             <a href="{{ route('home') }}" wire:navigate class="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-muted transition hover:text-ink">
                 <flux:icon.arrow-left variant="micro" class="transition-transform group-hover:-translate-x-0.5" />
                 All articles
             </a>
 
-            <h1 class="mt-8 text-3xl font-semibold tracking-tight text-balance text-ink sm:text-5xl sm:leading-[1.1]">
+            <h1 class="mt-6 text-2xl font-semibold tracking-tight text-balance text-ink sm:text-4xl sm:leading-[1.15]">
                 {{ $blog->title }}
             </h1>
 
-            <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-ink-subtle sm:text-sm">
+            <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-ink-subtle">
                 <span class="inline-flex items-center gap-1.5">
                     <flux:icon.calendar-days variant="micro" />
                     <time datetime="{{ $blog->created_at->toDateString() }}">{{ $blog->created_at->format('M d, Y') }}</time>
@@ -35,21 +35,21 @@
             </div>
         </header>
 
-        <figure class="mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl border border-line bg-surface-raised sm:mt-14 scale">
+        <figure class="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-line bg-surface-raised sm:mt-10 scale">
             <img src="{{ $blog->bannerUrl() }}" alt="" class="aspect-2/1 w-full object-cover">
         </figure>
 
-        <div class="article-content mx-auto mt-12 max-w-2xl sm:mt-16">
+        <div class="article-content mx-auto mt-10 max-w-2xl sm:mt-12">
             {!! $blog->details !!}
         </div>
 
-        <footer class="mx-auto mt-20 max-w-2xl">
-            <div class="card flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+        <footer class="mx-auto mt-16 max-w-2xl">
+            <div class="card flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
                 <div>
-                    <p class="font-serif text-2xl italic text-ink">Thanks for reading.</p>
+                    <p class="font-serif text-xl italic text-ink">Thanks for reading.</p>
                     <p class="mt-1 text-sm text-ink-muted">There’s more where that came from.</p>
                 </div>
-                <a href="{{ route('home') }}" wire:navigate class="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-canvas transition hover:opacity-90">
+                <a href="{{ route('home') }}" wire:navigate class="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition hover:opacity-90">
                     Browse all articles
                     <flux:icon.arrow-right variant="micro" class="transition-transform group-hover:translate-x-0.5" />
                 </a>

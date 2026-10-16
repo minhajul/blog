@@ -3,9 +3,9 @@
     'description' => null,
 ])
 
-<div {{ $attributes->class('flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-end sm:justify-between') }}>
+<div {{ $attributes->class('flex flex-col gap-4 border-b border-line pb-5 sm:flex-row sm:items-end sm:justify-between') }}>
     <div>
-        <h1 class="text-2xl font-semibold tracking-tight text-ink">{{ $title }}</h1>
+        <h1 class="text-xl font-semibold tracking-tight text-ink">{{ $title }}</h1>
         @if($description)
             <p class="mt-1 text-sm text-ink-muted">{{ $description }}</p>
         @endif

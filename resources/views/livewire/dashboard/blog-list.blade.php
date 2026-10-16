@@ -44,7 +44,7 @@
                     </flux:badge>
                 </a>
 
-                <div class="flex grow flex-col p-5">
+                <div class="flex grow flex-col p-4">
                     <a href="{{ route('dashboard.blogs.edit', $blog) }}" class="block">
                         <h2 class="font-semibold leading-snug text-ink transition-colors group-hover:text-primary">{{ $blog->title }}</h2>
                         <p class="mt-2 line-clamp-2 text-sm text-ink-muted">{{ $blog->short_details }}</p>
