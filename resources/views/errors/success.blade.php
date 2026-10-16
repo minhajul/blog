@@ -1,5 +1,6 @@
 @if( session()->has('success') )
-    <div class="text-sm bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-2" role="alert">
-        <span class="block sm:inline">{{ session()->get('success') }}</span>
+    <div class="mb-6 flex items-start gap-3 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-800 dark:text-emerald-300" role="alert">
+        <flux:icon.check-circle variant="mini" class="mt-px shrink-0" />
+        <span>{{ session()->get('success') }}</span>
     </div>
 @endif

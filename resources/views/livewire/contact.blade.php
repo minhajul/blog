@@ -1,65 +1,78 @@
-<div class="min-h-screen flex items-center justify-center py-12">
-    <div class="w-full max-w-3xl">
-        <div class="text-center mb-12">
-            <span class="inline-block py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-widest uppercase mb-4">
-                Let's collaborate
-            </span>
-            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
-                Build something together
-            </h1>
-            <p class="text-lg lg:text-xl text-on-surface-variant font-light leading-relaxed max-w-lg mx-auto">
-                Whether you have a project in mind or just want to chat about ideas, I'm always open to connecting with fellow builders.
-            </p>
-        </div>
+<div class="grid gap-12 pt-16 sm:pt-24 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5 fadeInUp">
+        <p class="eyebrow mb-5">
+            <span class="h-px w-6 bg-primary/50" aria-hidden="true"></span>
+            Let's collaborate
+        </p>
+        <h1 class="text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl sm:leading-[1.05]">
+            Build something <span class="font-serif font-normal italic tracking-normal text-primary">together</span>
+        </h1>
+        <p class="page-lead mt-6">
+            Whether you have a project in mind or just want to chat about ideas, I'm always open to connecting with fellow builders.
+        </p>
 
-        <div class="bg-surface-muted rounded-2xl shadow-md p-6 sm:p-8 ring-1 ring-white/5">
-            @include('errors.success')
-            <form wire:submit="submit" class="space-y-5">
+        <ul class="mt-10 space-y-4">
+            <li class="flex items-start gap-4">
+                <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
+                    <flux:icon.chat-bubble-left-right variant="mini" />
+                </span>
                 <div>
+                    <p class="font-medium text-ink">Project inquiries</p>
+                    <p class="text-sm text-ink-muted">Freelance, consulting or full-time roles.</p>
+                </div>
+            </li>
+            <li class="flex items-start gap-4">
+                <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
+                    <flux:icon.clock variant="mini" />
+                </span>
+                <div>
+                    <p class="font-medium text-ink">Quick turnaround</p>
+                    <p class="text-sm text-ink-muted">I typically respond within 24–48 hours.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="lg:col-span-7 scale">
+        <div class="card p-6 sm:p-10">
+            @include('errors.success')
+
+            <form wire:submit="submit" class="space-y-6">
+                <div class="grid gap-6 sm:grid-cols-2">
                     <flux:input
                         type="text"
                         wire:model="name"
                         label="Name"
-                        value="{{ old('name') }}"
                         autocomplete="name"
                         required="true"
-                        placeholder="Your name"
+                        placeholder="Jane Doe"
                     />
-                </div>
 
-                <div>
                     <flux:input
                         type="email"
                         wire:model="email"
                         label="Email"
-                        value="{{ old('email') }}"
                         autocomplete="email"
                         required="true"
-                        placeholder="your@email.com"
+                        placeholder="jane@example.com"
                     />
                 </div>
 
-                <div>
-                    <flux:textarea
-                        label="Message"
-                        wire:model="message"
-                        rows="4"
-                        required="true"
-                        values="{{ old('email') }}"
-                        placeholder="Tell me about your project or idea..."
-                    />
-                </div>
+                <flux:textarea
+                    label="Message"
+                    wire:model="message"
+                    rows="6"
+                    required="true"
+                    placeholder="Tell me about your project or idea…"
+                />
 
-                <div class="pt-2">
-                    <flux:button type="submit" variant="primary" class="w-full sm:w-auto">
+                <div class="flex flex-col-reverse gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                    <p class="text-xs text-ink-subtle">Your details are only used to reply to you.</p>
+                    <flux:button type="submit" variant="primary" icon:trailing="paper-airplane" class="w-full sm:w-auto">
                         Send message
                     </flux:button>
                 </div>
             </form>
         </div>
-
-        <p class="text-center text-sm text-on-surface-variant/60 mt-8">
-            I typically respond within 24-48 hours
-        </p>
     </div>
 </div>

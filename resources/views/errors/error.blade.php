@@ -1,8 +1,13 @@
 @if ($errors->any())
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <span class="block sm:inline"><strong>Whoops!</strong> There were some problems with your input.<br></span>
-        @foreach ($errors->all() as $error)
-            <li class="text-red-700">{{ $error }}</li>
-        @endforeach
+    <div class="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-800 dark:text-red-300" role="alert">
+        <flux:icon.x-circle variant="mini" class="mt-px shrink-0" />
+        <div>
+            <p class="font-medium">There were some problems with your input.</p>
+            <ul class="mt-1 list-disc space-y-0.5 pl-4">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 @endif
