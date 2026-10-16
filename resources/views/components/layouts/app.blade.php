@@ -21,7 +21,7 @@
 
     <x-layouts.header/>
 
-    <main id="content" class="grow container-page">
+    <main id="content" class="flex grow flex-col container-page">
         {{ $slot }}
     </main>
 

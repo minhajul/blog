@@ -1,4 +1,4 @@
-<div class="grid gap-10 pt-12 sm:pt-16 lg:grid-cols-12 lg:gap-12">
+<div class="my-auto grid w-full gap-10 py-12 sm:py-16 lg:pt-36 lg:grid-cols-12 lg:items-center lg:gap-12">
     <div class="lg:col-span-5 fadeInUp">
         <p class="eyebrow mb-4">
             <span class="h-px w-6 bg-primary/50" aria-hidden="true"></span>
