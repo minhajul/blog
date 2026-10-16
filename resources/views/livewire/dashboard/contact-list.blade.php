@@ -1,80 +1,52 @@
 <x-layouts.dashboard>
-    <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
-        <div class="grid grid-cols-1 lg:col-span-3">
-            <div class="flex py-4">
-                <flux:heading size="xl">Contacts</flux:heading>
-            </div>
+    <x-dashboard.heading title="Contacts" description="Messages sent through the contact form." />
 
-            <div class="py-2">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col">
-                        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                <div class="mt-1 shadow-md overflow-hidden border-b rounded-md">
-                                    <table class="bg-surface-muted min-w-full divide-y divide-gray-900/10 dark:divide-white/10">
-                                        <thead class="bg-color">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
-                                                ID
-                                            </th>
+    <div class="mt-6 overflow-hidden card">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-line text-sm">
+                <thead class="bg-surface-raised">
+                    <tr>
+                        <th scope="col" class="px-5 py-3 text-left font-mono text-xs font-medium tracking-wider text-ink-subtle uppercase">ID</th>
+                        <th scope="col" class="px-5 py-3 text-left font-mono text-xs font-medium tracking-wider text-ink-subtle uppercase">From</th>
+                        <th scope="col" class="px-5 py-3 text-left font-mono text-xs font-medium tracking-wider text-ink-subtle uppercase">Message</th>
+                        <th scope="col" class="relative px-5 py-3"><span class="sr-only">Action</span></th>
+                    </tr>
+                </thead>
 
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
-                                                Name
-                                            </th>
-
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
-                                                Email
-                                            </th>
-
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
-                                                Message
-                                            </th>
-
-                                            <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Action</span>
-                                            </th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody class="bg-color divide-y divide-gray-900/10 dark:divide-white/10" x-max="1">
-
-                                        @foreach($contacts as $contact)
-                                            <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-color">
-                                                    {{ $contact->id }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-color">
-                                                    {{ $contact->name }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-color">
-                                                    {{ $contact->email }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-color">
-                                                    {{ $contact->message }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href="mailto:{{ $contact->email }}">
-                                                        <flux:icon.arrow-uturn-left variant="micro" />
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="py-3">
-                                    {{ $contacts->links() }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <tbody class="divide-y divide-line">
+                    @forelse($contacts as $contact)
+                        <tr class="align-top transition hover:bg-surface-raised/60">
+                            <td class="px-5 py-4 whitespace-nowrap font-mono text-xs text-ink-subtle">{{ $contact->id }}</td>
+                            <td class="px-5 py-4 whitespace-nowrap">
+                                <p class="font-medium text-ink">{{ $contact->name }}</p>
+                                <p class="text-ink-muted">{{ $contact->email }}</p>
+                            </td>
+                            <td class="min-w-64 px-5 py-4 text-ink-muted">
+                                <p class="line-clamp-3 max-w-xl">{{ $contact->message }}</p>
+                            </td>
+                            <td class="px-5 py-4 whitespace-nowrap text-right">
+                                <flux:button
+                                    size="sm"
+                                    variant="ghost"
+                                    icon="arrow-uturn-left"
+                                    href="mailto:{{ $contact->email }}"
+                                    aria-label="Reply to {{ $contact->name }}"
+                                />
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="px-5 py-12 text-center text-ink-muted">No messages yet.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
+
+    @if($contacts->hasPages())
+        <div class="mt-6">
+            <flux:pagination :paginator="$contacts" />
+        </div>
+    @endif
 </x-layouts.dashboard>

@@ -1,53 +1,51 @@
 <x-layouts.dashboard>
-    <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8 py-4">
-        <div class="grid grid-cols-1 lg:col-span-3">
-            <div class="flex justify-between items-center text-color">
-                <div>
-                    <flux:heading size="xl">Experiences</flux:heading>
-                    <flux:subheading>Our Future Plans, One Feature at a Time</flux:subheading>
-                </div>
+    <x-dashboard.heading title="Experiences" description="Roles and companies shown on your career timeline.">
+        <x-slot:actions>
+            <flux:button wire:click="create" variant="primary" icon="plus">New experience</flux:button>
+        </x-slot:actions>
+    </x-dashboard.heading>
 
-                <flux:button wire:click="create">Create New</flux:button>
-            </div>
-
-            <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                @forelse($experiences as $experience)
-                    <div class="bg-color rounded-md p-2">
-                        <div class="flex justify-between items-center">
-                            <p class="text-lg font-medium tracking-tight text-color">
-                                {{ $experience->title }}
-                            </p>
-
-                            <flux:button
-                                wire:click="edit({{ $experience->id }})"
-                                icon="pencil-square"
-                                variant="ghost"
-                                size="xs"
-                            />
-                        </div>
-
-                        <div class="font-medium text-color mb-2">
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        @forelse($experiences as $experience)
+            <div class="card flex flex-col p-5">
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <p class="font-semibold leading-snug text-ink">
+                            {{ $experience->title }}
+                        </p>
+                        <p class="mt-0.5 text-sm font-medium text-primary">
                             {{ $experience->company_name }}
-                        </div>
-
-                        <div class="mt-2 text-sm text-surface uppercase">
-                            {{ $experience->start_date->format('M Y') }}
-                            &mdash;
-                            {{ $experience->end_date ? $experience->end_date->format('M Y') : 'Running' }}
-                        </div>
-                    </div>
-                @empty
-                    <div class="bg-color rounded-md p-4">
-                        <p class="font-medium tracking-tight text-color">
-                            No experience added
                         </p>
                     </div>
-                @endforelse
+
+                    <flux:button
+                        wire:click="edit({{ $experience->id }})"
+                        icon="pencil-square"
+                        variant="ghost"
+                        size="xs"
+                        aria-label="Edit experience"
+                    />
+                </div>
+
+                <div class="mt-auto flex items-center gap-2 pt-4 font-mono text-xs text-ink-subtle uppercase">
+                    {{ $experience->start_date->format('M Y') }}
+                    &mdash;
+                    {{ $experience->end_date ? $experience->end_date->format('M Y') : 'Running' }}
+                    @if($experience->isCurrent())
+                        <flux:badge size="sm" color="green" class="normal-case">Current</flux:badge>
+                    @endif
+                </div>
             </div>
-        </div>
+        @empty
+            <div class="card col-span-full flex flex-col items-center px-6 py-16 text-center">
+                <flux:icon.briefcase class="text-ink-subtle" />
+                <p class="mt-3 font-medium text-ink">No experience added</p>
+                <p class="mt-1 text-sm text-ink-muted">Add a role to start your career timeline.</p>
+            </div>
+        @endforelse
     </div>
 
-    <flux:modal name="experience-modal" class="w-9/12 md:w-1/2 bg-surface-muted">
+    <flux:modal name="experience-modal" class="w-full md:w-2xl">
         <form wire:submit="save">
             <div class="space-y-6">
                 <div>

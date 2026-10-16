@@ -1,5 +1,5 @@
 <form wire:submit.prevent="update">
-    <div class="p-4 bg-color shadow-md rounded-md">
+    <div class="card p-6">
 
         @include('errors.message')
 
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-end text-right mt-5">
+        <div class="mt-6 flex items-center justify-end border-t border-line pt-5">
             <flux:button type="submit" variant="primary">
                 Change Password
             </flux:button>

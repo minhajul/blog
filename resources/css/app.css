@@ -272,6 +272,36 @@ select:focus[data-flux-control] {
     }
 }
 
+/* Trix rich text editor (dashboard) */
+trix-toolbar .trix-button-group {
+    @apply rounded-lg border-line bg-surface;
+}
+
+trix-toolbar .trix-button {
+    @apply border-line;
+}
+
+trix-toolbar .trix-button.trix-active {
+    @apply bg-primary-soft;
+}
+
+.dark trix-toolbar .trix-button--icon::before {
+    filter: invert(1);
+    opacity: 0.7;
+}
+
+.dark trix-toolbar .trix-dialog {
+    @apply border-line bg-surface text-ink shadow-card-hover;
+}
+
+trix-editor {
+    @apply min-h-64 rounded-lg border border-line bg-surface px-4 py-3 text-ink shadow-card transition;
+
+    &:focus {
+        @apply border-primary ring-4 ring-primary/15 outline-none;
+    }
+}
+
 @layer utilities {
     @keyframes fadeInUp {
         0% {
