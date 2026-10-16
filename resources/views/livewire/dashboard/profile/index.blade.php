@@ -1,5 +1,5 @@
 <form wire:submit.prevent="save">
-    <div class="p-4 bg-color shadow-md rounded-md">
+    <div class="card p-5">
 
         @include('errors.message')
         @include('errors.success')
@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-span-6">
-                <label class="block font-medium text-sm text-color mb-2" for="bio">
+                <label class="mb-2 block text-sm font-medium text-ink" for="bio">
                     Bio
                 </label>
 
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-end text-right mt-5">
+        <div class="mt-6 flex items-center justify-end border-t border-line pt-5">
             <flux:button type="submit" variant="primary">
                 Save
             </flux:button>

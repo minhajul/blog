@@ -1,78 +1,58 @@
 <x-layouts.dashboard>
-    <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
-        <div class="grid grid-cols-1 lg:col-span-3">
-            <div class="flex py-4">
-                <flux:heading size="xl">Subscribers</flux:heading>
-            </div>
+    <x-dashboard.heading title="Subscribers" description="People who signed up to hear about new posts." />
 
-            @include('errors.success')
-            @include('errors.message')
+    <div class="mt-6 space-y-3">
+        @include('errors.success')
+        @include('errors.message')
+    </div>
 
-            <div class="py-2">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col">
-                        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                <div class="mt-1 shadow-md overflow-hidden border-b rounded-md">
-                                    <table class="bg-surface-muted min-w-full divide-y divide-gray-900/10 dark:divide-white/10">
-                                        <thead class="bg-color">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
-                                                ID
-                                            </th>
+    <div class="mt-2 overflow-hidden card">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-line text-sm">
+                <thead class="bg-surface-raised [&_th]:px-5 [&_th]:py-3 [&_th]:text-left [&_th]:font-medium [&_th]:label-mono">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"><span class="sr-only">Action</span></th>
+                    </tr>
+                </thead>
 
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
-                                                Email
-                                            </th>
-
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-color uppercase tracking-wider">
-                                                Status
-                                            </th>
-
-                                            <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Action</span>
-                                            </th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody class="bg-color divide-y divide-gray-900/10 dark:divide-white/10" x-max="1">
-
-                                        @foreach($subscribers as $subscriber)
-                                            <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-color">
-                                                    {{ $subscriber->id }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-color">
-                                                    {{ $subscriber->email }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm {{ $subscriber->isVerified() ? 'text-green-500' : 'text-gray-500' }}">
-                                                    {{ $subscriber->status() }}
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <flux:button
-                                                        class="cursor-pointer"
-                                                        wire:click="delete({{ $subscriber->id }})"
-                                                        wire:confirm="Are you sure you want to delete this item?"
-                                                    >
-                                                        <flux:icon.trash variant="micro" class="text-red-500" />
-                                                    </flux:button>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="py-3">
-                                    {{ $subscribers->links() }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <tbody class="divide-y divide-line">
+                    @forelse($subscribers as $subscriber)
+                        <tr class="transition hover:bg-surface-raised/60">
+                            <td class="px-5 py-4 whitespace-nowrap font-mono text-xs text-ink-subtle">{{ $subscriber->id }}</td>
+                            <td class="px-5 py-4 whitespace-nowrap font-medium text-ink">{{ $subscriber->email }}</td>
+                            <td class="px-5 py-4 whitespace-nowrap">
+                                <flux:badge size="sm" :color="$subscriber->isVerified() ? 'green' : 'zinc'">
+                                    {{ $subscriber->status() }}
+                                </flux:badge>
+                            </td>
+                            <td class="px-5 py-4 whitespace-nowrap text-right">
+                                <flux:button
+                                    size="sm"
+                                    variant="ghost"
+                                    icon="trash"
+                                    class="cursor-pointer !text-red-500"
+                                    wire:click="delete({{ $subscriber->id }})"
+                                    wire:confirm="Are you sure you want to delete this item?"
+                                    aria-label="Delete subscriber"
+                                />
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="px-5 py-12 text-center text-ink-muted">No subscribers yet.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
+
+    @if($subscribers->hasPages())
+        <div class="mt-6">
+            <flux:pagination :paginator="$subscribers" />
+        </div>
+    @endif
 </x-layouts.dashboard>

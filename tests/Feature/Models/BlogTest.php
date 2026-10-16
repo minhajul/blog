@@ -39,6 +39,20 @@ describe('Blog Model', function () {
             ->and($archived->isArchived())->toBeTrue();
     });
 
+    it('estimates reading time from the words in the details', function () {
+        $blog = Blog::factory()->make([
+            'details' => '<p>'.str_repeat('word ', 401).'</p>',
+        ]);
+
+        expect($blog->readingTimeInMinutes())->toBe(3);
+    });
+
+    it('reports at least one minute of reading time for short posts', function () {
+        $blog = Blog::factory()->make(['details' => '<p>Hello</p>']);
+
+        expect($blog->readingTimeInMinutes())->toBe(1);
+    });
+
     it('marks blog as archived', function () {
         $blog = Blog::factory()->create([
             'status' => 'published',

@@ -1,39 +1,57 @@
-<x-layouts.app>
-    <div class="py-6 lg:py-10">
-        <div class="max-w-4xl mx-auto text-center py-6 sm:py-10">
-            <div class="grid place-items-center">
-                <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
-                    Professional Trajectory
-                </h1>
-                <p class="text-lg lg:text-xl text-on-surface-variant font-light leading-relaxed">
-                    A chronological breakdown of my journey through architectural software design and engineering leadership.
-                </p>
-            </div>
-        </div>
+<x-layouts.app title="Experience">
+    <x-page-header
+        eyebrow="Career"
+        title="Professional journey"
+        lead="A chronological look at the teams I've worked with and the systems I've helped build along the way."
+    />
 
-        <div class="mt-10 relative border-l-2 border-blue-400 ml-3 space-y-8">
+    @if($experiences->isEmpty())
+        <x-empty-state icon="briefcase" title="Nothing here yet" description="Work experience will be listed here soon." />
+    @else
+        <ol class="relative max-w-4xl [--col-gap:2.5rem] [--date-col:11rem]">
             @foreach($experiences as $experience)
-                <div class="relative pl-6 md:pl-8">
-                    <span class="absolute -left-2.75 top-0 h-5 w-5 rounded-full bg-blue-400"></span>
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                        <h3 class="text-xl lg:text-2xl font-bold text-color tracking-wide">
-                            {{ $experience->title }}
-                        </h3>
+                <li class="relative grid gap-3 pb-8 last:pb-0 sm:grid-cols-[var(--date-col)_1fr] sm:gap-(--col-gap)">
+                    @unless($loop->last)
+                        <span class="absolute top-0 bottom-0 left-[5px] w-px bg-line-strong sm:top-8 sm:left-[calc(var(--date-col)+var(--col-gap)+5px)] sm:-bottom-8" aria-hidden="true"></span>
+                    @endunless
+                    <div class="pl-8 sm:pt-6 sm:pl-0 sm:text-right">
+                        <p class="label-mono">
+                            {{ $experience->workDuration }}
+                        </p>
+                        @if($experience->isCurrent())
+                            <flux:badge size="sm" color="green" class="mt-2">Current</flux:badge>
+                        @endif
                     </div>
 
-                    <div class="text-lg font-medium text-color mb-2">
-                        {{ $experience->company_name }}
-                    </div>
+                    <div class="relative pl-8 sm:pl-10">
+                        <span @class([
+                            'absolute top-1 left-0 size-2.75 rounded-full ring-4 ring-canvas sm:top-7',
+                            'bg-primary' => $experience->isCurrent(),
+                            'bg-line-strong' => ! $experience->isCurrent(),
+                        ]) aria-hidden="true"></span>
 
-                    <div class="text-sm font-mono text-surface uppercase tracking-wider mb-3">
-                        {{ $experience->workDuration  }}
-                    </div>
+                        <div class="card p-5">
+                            <h2 class="text-base font-semibold tracking-tight text-ink sm:text-lg">
+                                {{ $experience->title }}
+                            </h2>
+                            <p class="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                                <flux:icon.building-office-2 variant="micro" />
+                                @if($experience->company_website)
+                                    <a href="{{ $experience->company_website }}" target="_blank" rel="noopener noreferrer" class="hover:underline underline-offset-4">
+                                        {{ $experience->company_name }}
+                                    </a>
+                                @else
+                                    {{ $experience->company_name }}
+                                @endif
+                            </p>
 
-                    <div class="space-y-3 text-surface leading-relaxed">
-                        {!! $experience->description !!}
+                            <div class="article-content article-content-compact mt-4">
+                                {!! $experience->description !!}
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </li>
             @endforeach
-        </div>
-    </div>
+        </ol>
+    @endif
 </x-layouts.app>

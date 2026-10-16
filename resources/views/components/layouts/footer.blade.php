@@ -1,10 +1,31 @@
-<footer class="w-full py-12 bg-surface-muted ring-1 ring-white/5">
-    <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 gap-6">
-        <p class="text-sm font-inter text-zinc-500 dark:text-zinc-400">© {{ date('Y') }} {{ config('app.name') }}. Built with ❤️.</p>
-        <div class="flex items-center gap-8">
-            <a class="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity text-sm font-inter" href="#">LinkedIn</a>
-            <a class="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity text-sm font-inter" href="#">GitHub</a>
-            <a class="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity text-sm font-inter" href="#">Twitter</a>
+@php($socialLinks = [
+    ['name' => 'LinkedIn', 'url' => '#'],
+    ['name' => 'GitHub', 'url' => '#'],
+    ['name' => 'Twitter', 'url' => '#'],
+])
+
+<footer class="border-t border-line">
+    <div class="container-page flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
+        <div class="space-y-2">
+            <x-application-logo />
+            <p class="text-sm text-ink-subtle">
+                Notes on software, systems and the craft of building things.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-4 md:items-end">
+            <ul class="flex items-center gap-1">
+                @foreach($socialLinks as $link)
+                    <li>
+                        <a href="{{ $link['url'] }}" class="rounded-full px-3 py-1.5 text-sm text-ink-muted transition hover:bg-surface-raised hover:text-ink">
+                            {{ $link['name'] }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <p class="font-mono text-xs text-ink-subtle md:px-3">
+                © {{ date('Y') }} {{ config('app.name') }}
+            </p>
         </div>
     </div>
 </footer>

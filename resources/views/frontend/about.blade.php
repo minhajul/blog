@@ -1,77 +1,89 @@
-<x-layouts.app>
-    <div class="py-6">
-        <div class="min-h-screen flex items-center justify-center">
-            <div class="overflow-hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                    <div class="lg:col-span-4 xl:col-span-3">
-                        <div class="relative group max-w-xs mx-auto lg:max-w-none">
-                            <div class="absolute -inset-1 bg-primary/20 rounded-full blur-2xl group-hover:bg-primary/30 transition duration-1000"></div>
-                            <div class="relative aspect-square rounded-full overflow-hidden border-4 border-surface-container-lowest shadow-xl max-w-64 mx-auto">
-                                <img alt="Software Engineer Portrait" class="w-full h-full object-cover"
-                                     data-alt="Profile Pic"
-                                     src="{{ $user->avatarUrl() ?? 'https://placehold.co/150x150' }}"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-8 xl:col-span-9 space-y-5">
-                        <div>
-                            <span class="inline-block py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-widest uppercase mb-3">
-                                Available for work
-                            </span>
-                            <x-typewriter
-                                :phrases="$typewriterText"
-                                class="block text-4xl lg:text-6xl font-black tracking-tight text-on-surface"
-                            />
-                            <p class="mt-2 text-xl md:text-2xl font-medium text-on-surface-variant italic">
-                                Software Engineer &amp; Technical Architect
-                            </p>
-                        </div>
-                        <p class="text-base md:text-lg leading-relaxed text-on-surface-variant">
-                            {!! $user->bio !!}
-                        </p>
-                        <div class="pt-2">
-                            <a href="#" class="group inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300">
-                                <span class="material-symbols-outlined" data-icon="download">Download CV</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<x-layouts.app title="About">
+    <section class="grid items-start gap-8 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-12">
+        <div class="order-2 lg:order-1 lg:col-span-7 fadeInUp">
+            <p class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-ink-muted shadow-card">
+                <span class="relative flex size-2">
+                    <span class="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:hidden"></span>
+                    <span class="relative inline-flex size-2 rounded-full bg-emerald-500"></span>
+                </span>
+                Available for work
+            </p>
 
-                <div class="mt-10">
-                    <div class="text-center mb-10">
-                        <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
-                            Skills & Expertise
-                        </h1>
-                        <p class="text-lg lg:text-xl text-on-surface-variant font-light leading-relaxed">
-                            Technologies and tools I use to bring ideas to life.
-                        </p>
-                    </div>
+            <h1 class="page-title mt-5">
+                Hello, I am Minhaj 👋
+            </h1>
 
-                    <div class="px-1 grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                        @foreach($skills as $skill)
-                            <div class="group will-reveal rounded-2xl shadow-md p-4 bg-surface-muted ring-1 ring-white/5 dark:ring-white/50 overflow-hidden">
-                                <h3 class="text-lg font-semibold text-color">{{ $skill['title'] }}</h3>
-                                <p class="text-xs text-surface">{{ $skill['description'] }}</p>
+            <p class="mt-2 font-serif text-xl italic text-primary sm:text-2xl">
+                Full Stack Software Engineer &amp; Technical Architect
+            </p>
 
-                                <div class="mt-5 flex flex-wrap gap-2">
-                                    @foreach($skill['technologies'] as $technology)
-                                        <span class="{{ $technology['colorCode'] }} px-2 py-1.5 rounded-full text-sm text-nowrap">
-                                            {{ $technology['name'] }}
-                                        </span>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+            <div class="mt-6 max-w-2xl space-y-3 text-base leading-relaxed text-ink-muted">
+                {!! $user->bio !!}
+            </div>
 
-                    <div class="max-w-full lg:max-w-2xl mx-auto text-center my-10">
-                        <p class="border border-blue-400 p-1 rounded-md text-surface">
-                            Always learning and exploring new technologies
-                        </p>
-                    </div>
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a href="#" class="btn-primary">
+                    <flux:icon.arrow-down-tray variant="micro" />
+                    Download CV
+                </a>
+                <a href="{{ route('contact') }}" wire:navigate class="btn-secondary">
+                    Get in touch
+                    <flux:icon.arrow-right variant="micro" />
+                </a>
+            </div>
+        </div>
+
+        <div class="order-1 lg:order-2 lg:col-span-5 lg:pt-10 scale">
+            <div class="relative max-w-32 sm:max-w-40 lg:mx-auto lg:max-w-xs">
+                <div class="absolute -inset-3 rounded-[2.5rem] lg:-inset-4 bg-linear-to-br from-brand-400/30 via-brand-200/10 to-transparent blur-2xl dark:from-brand-500/25" aria-hidden="true"></div>
+                <div class="relative overflow-hidden rounded-3xl border border-line bg-surface p-1.5 shadow-card-hover lg:rounded-[2rem] lg:p-2">
+                    <img alt="Portrait of {{ $user->name }}" class="aspect-square w-full rounded-[1.25rem] object-cover lg:rounded-[1.5rem]"
+                         src="{{ $user->avatarUrl() }}"
+                    />
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="border-t border-line pt-16">
+        <div class="max-w-2xl">
+            <p class="eyebrow">
+                Toolbox
+            </p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                Skills &amp; expertise
+            </h2>
+            <p class="mt-3 text-base text-ink-muted">
+                Technologies and tools I use to bring ideas to life.
+            </p>
+        </div>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach($skills as $skill)
+                <div class="card p-5">
+                    <div class="flex items-start gap-3.5">
+                        <div class="icon-tile">
+                            <flux:icon :icon="$skill['icon']" variant="mini" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-ink">{{ $skill['title'] }}</h3>
+                            <p class="mt-0.5 text-sm text-ink-muted">{{ $skill['description'] }}</p>
+                        </div>
+                    </div>
+
+                    <ul class="mt-5 flex flex-wrap gap-1.5">
+                        @foreach($skill['technologies'] as $technology)
+                            <li class="chip">{{ $technology }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach
+
+            <div class="flex flex-col justify-center rounded-2xl border border-dashed border-line-strong p-5">
+                <flux:icon.light-bulb class="text-ink-subtle" />
+                <p class="mt-3 font-serif text-xl italic text-ink">Always learning.</p>
+                <p class="mt-1 text-sm text-ink-muted">Exploring new technologies, one side project at a time.</p>
+            </div>
+        </div>
+    </section>
 </x-layouts.app>

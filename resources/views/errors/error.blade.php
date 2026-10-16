@@ -1,8 +1,10 @@
 @if ($errors->any())
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <span class="block sm:inline"><strong>Whoops!</strong> There were some problems with your input.<br></span>
-        @foreach ($errors->all() as $error)
-            <li class="text-red-700">{{ $error }}</li>
-        @endforeach
-    </div>
+    <x-alert type="error" icon="x-circle">
+        <p class="font-medium">There were some problems with your input.</p>
+        <ul class="mt-1 list-disc space-y-0.5 pl-4">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </x-alert>
 @endif

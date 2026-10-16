@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Livewire;
 
 use App\Models\Contact;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
+#[Layout('components.layouts.app', ['centered' => true])]
 final class ContactUs extends Component
 {
     #[Validate('required|string')]

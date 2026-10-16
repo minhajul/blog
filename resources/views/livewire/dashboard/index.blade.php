@@ -1,62 +1,48 @@
+@php($stats = [
+    ['label' => 'Blogs posted', 'value' => $analytics['posted_blog'], 'icon' => 'pencil-square'],
+    ['label' => 'Published blogs', 'value' => $analytics['total_published_blog'], 'icon' => 'newspaper'],
+    ['label' => 'Total reads', 'value' => $analytics['total_hit_count'], 'icon' => 'eye'],
+])
+
 <x-layouts.dashboard>
-    <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8 py-4">
-        <div class="grid grid-cols-1 gap-4 lg:col-span-3">
-            <section aria-labelledby="profile-overview-title">
-                <div class="rounded-md shadow-md bg-color overflow-hidden">
-                    <div class="bg-color p-6">
-                        <div class="sm:flex sm:items-center sm:justify-between">
-                            <div class="sm:flex sm:space-x-5">
-                                <div class="shrink-0">
-                                    <div class="bg-linear-to-r from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-lg">
-                                        <img src="{{ $user->avatarUrl() }}" alt="Admin Account" class="h-20 w-20 shrink-0 rounded-full md:h-32 md:w-32 p-2">
-                                    </div>
-                                </div>
-                                <div class="mt-8 text-center sm:pt-1 sm:text-left">
-                                    <p class="text-xl font-bold text-color sm:text-2xl">
-                                        {{ $user->name }}
-                                    </p>
-                                    <p class="text-sm font-medium text-color">
-                                        Logged in as {{ $user->email }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-surface-muted grid grid-cols-1 divide-y divide-gray-900/10 dark:divide-white/10 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
-                        <div class="px-6 py-5 text-sm font-medium text-center">
-                            <span class="text-color">{{ $analytics['posted_blog'] }}</span>
-                            <span class="text-color">Blogs posted</span>
-                        </div>
-
-                        <div class="px-6 py-5 text-sm font-medium text-center">
-                            <span class="text-color">{{ $analytics['total_published_blog'] }}</span>
-                            <span class="text-color">Published Blogs</span>
-                        </div>
-
-                        <div class="px-6 py-5 text-sm font-medium text-center">
-                            <span class="text-color">{{ $analytics['total_hit_count'] }}</span>
-                            <span class="text-color">Blog viewed</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            @include('errors.error')
-            @include('errors.success')
-            @include('errors.message')
-
-            <livewire:dashboard.profile.index/>
-
-            <div class="py-4">
-                <flux:separator />
-            </div>
-
-            <div class="py-10 sm:py-4">
-                <div class="xsm:p-4 md:col-span-2">
-                    <livewire:dashboard.profile.password/>
-                </div>
-            </div>
+    <div class="card flex flex-col gap-5 p-5 sm:flex-row sm:items-center">
+        <img src="{{ $user->avatarUrl() }}" alt="" class="size-16 shrink-0 rounded-xl border border-line object-cover">
+        <div>
+            <p class="label-mono">Welcome back</p>
+            <h1 class="mt-1 text-xl font-semibold tracking-tight text-ink">{{ $user->name }}</h1>
+            <p class="mt-0.5 text-sm text-ink-muted">Logged in as {{ $user->email }}</p>
         </div>
     </div>
+
+    <div class="mt-4 grid gap-4 sm:grid-cols-3">
+        @foreach($stats as $stat)
+            <div class="card p-4">
+                <div class="flex items-center justify-between text-ink-subtle">
+                    <span class="text-sm font-medium text-ink-muted">{{ $stat['label'] }}</span>
+                    <flux:icon :icon="$stat['icon']" variant="mini" />
+                </div>
+                <p class="mt-2 text-2xl font-semibold tracking-tight text-ink tabular-nums">{{ number_format($stat['value']) }}</p>
+            </div>
+        @endforeach
+    </div>
+
+    <div class="mt-6 space-y-3">
+        @include('errors.error')
+        @include('errors.success')
+        @include('errors.message')
+    </div>
+
+    <section class="mt-8">
+        <x-dashboard.heading title="Profile" description="Update your public name, photo and bio." />
+        <div class="mt-6">
+            <livewire:dashboard.profile.index/>
+        </div>
+    </section>
+
+    <section class="mt-10">
+        <x-dashboard.heading title="Password" description="Use a long, unique password to keep your account secure." />
+        <div class="mt-6">
+            <livewire:dashboard.profile.password/>
+        </div>
+    </section>
 </x-layouts.dashboard>

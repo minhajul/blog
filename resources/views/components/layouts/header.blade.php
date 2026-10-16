@@ -1,52 +1,80 @@
-<header x-data="{ mobileMenu: false }">
-    <nav class="flex items-center justify-between py-4 max-w-7xl px-4 sm:px-6 mx-auto" aria-label="Global">
-        <div class="flex lg:flex-1 items-center">
-            <a href="{{ route('home') }}">
-                <x-application-logo />
-            </a>
-        </div>
+@php
+    $navigation = collect([
+        ['name' => 'Writing', 'route' => 'home', 'active' => ['home', 'blog.show']],
+        ['name' => 'About', 'route' => 'about'],
+        ['name' => 'Experience', 'route' => 'experiences'],
+        ['name' => 'Projects', 'route' => 'projects'],
+        ['name' => 'Contact', 'route' => 'contact'],
+    ])->map(fn (array $item) => $item + [
+        'url' => route($item['route']),
+        'isActive' => request()->routeIs(...($item['active'] ?? [$item['route']])),
+    ]);
 
-        <div class="flex lg:hidden">
-            <button @click="mobileMenu = true" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-surface">
-                <span class="sr-only">Open main menu</span>
-                <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </button>
-        </div>
-        <div class="hidden lg:flex lg:gap-x-12">
-            <flux:navbar>
-                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('home') }}" wire:navigate>Home</flux:navbar.item>
-                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('about') }}" wire:navigate>About</flux:navbar.item>
-                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('experiences') }}" wire:navigate>Experiences</flux:navbar.item>
-                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('projects') }}" wire:navigate>Projects</flux:navbar.item>
-                <flux:navbar.item class="text-sm/6 font-semibold text-surface" href="{{ route('contact') }}" wire:navigate>Contact</flux:navbar.item>
-            </flux:navbar>
-        </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+    $accountLink = auth()->check()
+        ? ['url' => route('dashboard'), 'label' => 'Dashboard', 'icon' => 'arrow-up-right']
+        : ['url' => route('login'), 'label' => 'Log in', 'icon' => 'arrow-right'];
+@endphp
+
+<header x-data="{ mobileMenu: false }" class="sticky top-0 z-40 border-b border-line/70 bg-canvas/75 backdrop-blur-md supports-[backdrop-filter]:bg-canvas/60">
+    <nav class="container-page flex h-14 items-center justify-between gap-6" aria-label="Global">
+        <a href="{{ route('home') }}" wire:navigate class="rounded-lg">
+            <x-application-logo />
+        </a>
+
+        <ul class="hidden items-center gap-1 rounded-full border border-line bg-surface/70 p-1 shadow-card lg:flex">
+            @foreach($navigation as $item)
+                <li>
+                    <a href="{{ $item['url'] }}" wire:navigate
+                       @class([
+                           'block rounded-full px-3.5 py-1 text-sm font-medium transition',
+                           'bg-ink text-canvas' => $item['isActive'],
+                           'text-ink-muted hover:bg-surface-raised hover:text-ink' => ! $item['isActive'],
+                       ])
+                       @if($item['isActive']) aria-current="page" @endif
+                    >
+                        {{ $item['name'] }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+
+        <div class="hidden items-center gap-2 lg:flex">
             <x-theme-toggle />
 
             @auth
-                <a href="{{ route('dashboard') }}" class="ml-2 text-sm/6 font-semibold text-surface">
-                    Dashboard →
+                <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3.5 py-1 text-sm font-medium text-ink shadow-card transition hover:border-line-strong">
+                    Dashboard
+                    <flux:icon.arrow-up-right variant="micro" class="text-ink-subtle" />
                 </a>
             @else
-                <a href="{{ route('login') }}" class="ml-2 text-sm/6 font-semibold text-surface">
-                    Log in →
+                <a href="{{ route('login') }}" class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-ink-muted transition hover:text-ink">
+                    Log in
+                    <flux:icon.arrow-right variant="micro" />
                 </a>
             @endauth
+        </div>
+
+        <div class="flex items-center gap-1 lg:hidden">
+            <x-theme-toggle />
+
+            <button @click="mobileMenu = true" type="button" class="icon-button">
+                <span class="sr-only">Open main menu</span>
+                <flux:icon.bars-2 variant="mini" />
+            </button>
         </div>
     </nav>
 
     <div x-show="mobileMenu" x-cloak
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0"
+         @keydown.escape.window="mobileMenu = false"
          class="lg:hidden" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm" @click="mobileMenu = false" aria-hidden="true"></div>
+        <div x-show="mobileMenu"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 z-50 bg-zinc-950/40 backdrop-blur-sm" @click="mobileMenu = false" aria-hidden="true"></div>
 
         <div x-show="mobileMenu"
              x-transition:enter="transition ease-out duration-300"
@@ -55,65 +83,41 @@
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="translate-x-0"
              x-transition:leave-end="translate-x-full"
-             class="fixed inset-y-0 right-0 z-50 w-full max-w-xs"
+             class="fixed inset-y-0 right-0 z-50 flex w-full max-w-xs flex-col overflow-y-auto border-l border-line bg-surface px-5 py-4 shadow-2xl"
         >
-            <div class="flex h-full bg-surface-muted dark:bg-zinc-900 shadow-2xl overflow-y-auto">
-                <div class="w-full py-6 px-5">
-                    <div class="flex items-center justify-between mb-8">
-                        <a href="{{ route('home') }}" @click="mobileMenu = false">
-                            <x-application-logo />
-                        </a>
-                        <button @click="mobileMenu = false" type="button" class="p-2 rounded-full text-surface hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-                            <span class="sr-only">Close menu</span>
-                            <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
+            <div class="flex h-8 items-center justify-between">
+                <a href="{{ route('home') }}" wire:navigate @click="mobileMenu = false">
+                    <x-application-logo />
+                </a>
+                <button @click="mobileMenu = false" type="button" class="icon-button">
+                    <span class="sr-only">Close menu</span>
+                    <flux:icon.x-mark variant="mini" />
+                </button>
+            </div>
 
-                    <nav class="space-y-1">
-                        @php($routes = [
-                            ['name' => 'Home', 'route' => route('home')],
-                            ['name' => 'About', 'route' => route('about')],
-                            ['name' => 'Experiences', 'route' => route('experiences')],
-                            ['name' => 'Projects', 'route' => route('projects')],
-                            ['name' => 'Contact', 'route' => route('contact')],
-                        ])
-                        @foreach($routes as $item)
-                            <a href="{{ $item['route'] }}" wire:navigate
-                               @click="mobileMenu = false"
-                               class="flex items-center gap-3 py-2 text-base font-medium text-surface rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-200">
-                                {{ $item['name'] }}
-                            </a>
-                        @endforeach
-                    </nav>
+            <nav class="mt-8 flex flex-col gap-1">
+                @foreach($navigation as $item)
+                    <a href="{{ $item['url'] }}" wire:navigate
+                       @click="mobileMenu = false"
+                       @class([
+                           'flex items-center justify-between rounded-xl px-3 py-2.5 text-base font-medium transition',
+                           'bg-primary-soft text-primary-ink' => $item['isActive'],
+                           'text-ink-muted hover:bg-surface-raised hover:text-ink' => ! $item['isActive'],
+                       ])
+                    >
+                        {{ $item['name'] }}
+                        @if($item['isActive'])
+                            <span class="size-1.5 rounded-full bg-primary"></span>
+                        @endif
+                    </a>
+                @endforeach
+            </nav>
 
-                    <div class="mt-5 pt-3 border-t border-zinc-200 dark:border-zinc-700">
-                        @auth
-                            <div class="flex mb-4">
-                                <x-theme-toggle />
-
-                                <a href="{{ route('dashboard') }}" wire:navigate
-                                   @click="mobileMenu = false"
-                                   class="flex items-center justify-center gap-2 px-4 py-2 text-base font-semibold text-surface bg-primary rounded-xl hover:bg-primary/90 transition-colors">
-                                    Dashboard
-                                    <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
-                                </a>
-                            </div>
-                        @else
-                            <a href="{{ route('login') }}" wire:navigate
-                               @click="mobileMenu = false"
-                               class="flex items-center justify-center gap-2 px-4 py-3 w-full text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-colors">
-                                Log in
-                                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
-                            </a>
-                        @endauth
-                    </div>
-                </div>
+            <div class="mt-auto border-t border-line pt-4">
+                <a href="{{ $accountLink['url'] }}" @click="mobileMenu = false" class="btn-primary w-full">
+                    {{ $accountLink['label'] }}
+                    <flux:icon :icon="$accountLink['icon']" variant="micro" />
+                </a>
             </div>
         </div>
     </div>

@@ -1,63 +1,63 @@
-<x-layouts.app>
+<x-layouts.app title="Edit post">
     <x-layouts.dashboard>
-        <div class="py-5 max-w-3xl mx-auto lg:max-w-7xl">
-            <div class="flex justify-between">
-                <flux:heading size="xl">Update</flux:heading>
+        <x-dashboard.heading title="Edit post" description="Update the content, banner or status of this article.">
+            <x-slot:actions>
+                <flux:button href="{{ route('dashboard.blogs.index') }}" variant="ghost" icon="arrow-left">All blogs</flux:button>
+            </x-slot:actions>
+        </x-dashboard.heading>
 
-                <flux:button href="{{ route('dashboard.blogs.index') }}"> View Blogs</flux:button>
-            </div>
-
-            <div class="mt-5 p-4 bg-color shadow-md rounded-md">
+        <div class="mt-6 card p-5">
+            <div class="space-y-3">
                 @include('errors.success')
                 @include('errors.message')
-
-                <form method="post" action="{{ route('dashboard.blogs.update', $blog) }}" enctype="multipart/form-data">
-                    @method('PUT')
-                    @csrf
-                    <div class="grid grid-cols-6 gap-6">
-                        <div class="col-span-6">
-                            <flux:input
-                                name="title"
-                                label="Title"
-                                required="true"
-                                value="{{ old('title', $blog->title) }}"
-                            />
-                        </div>
-
-                        <div class="col-span-6">
-                            <flux:input
-                                type="file"
-                                name="banner"
-                                label="Upload Banner"
-                            />
-                            <small class="italic">{{ $blog->bannerUrl() }}</small>
-                        </div>
-
-                        <div class="col-span-6">
-                            <x-trix-editor label="Details" required="true" name="details" value="{{ old('details', $blog->details) }}"></x-trix-editor>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex justify-between">
-                        <flux:button
-                            type="submit"
-                            name="status"
-                            value="drafted"
-                        >
-                            Save as Draft
-                        </flux:button>
-
-                        <flux:button
-                            type="submit"
-                            name="status"
-                            value="published"
-                            variant="primary"
-                        >
-                            Publish
-                        </flux:button>
-                    </div>
-                </form>
             </div>
+
+            <form method="post" action="{{ route('dashboard.blogs.update', $blog) }}" enctype="multipart/form-data">
+                @method('PUT')
+                @csrf
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6">
+                        <flux:input
+                            name="title"
+                            label="Title"
+                            required="true"
+                            value="{{ old('title', $blog->title) }}"
+                        />
+                    </div>
+
+                    <div class="col-span-6">
+                        <flux:input
+                            type="file"
+                            name="banner"
+                            label="Upload Banner"
+                        />
+                        <img src="{{ $blog->bannerUrl() }}" alt="Current banner" class="mt-3 h-28 rounded-lg border border-line object-cover">
+                    </div>
+
+                    <div class="col-span-6">
+                        <x-trix-editor label="Details" required="true" name="details" value="{{ old('details', $blog->details) }}"></x-trix-editor>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex items-center justify-end gap-3 border-t border-line pt-6">
+                    <flux:button
+                        type="submit"
+                        name="status"
+                        value="drafted"
+                    >
+                        Save as Draft
+                    </flux:button>
+
+                    <flux:button
+                        type="submit"
+                        name="status"
+                        value="published"
+                        variant="primary"
+                    >
+                        Publish
+                    </flux:button>
+                </div>
+            </form>
         </div>
     </x-layouts.dashboard>
 </x-layouts.app>
