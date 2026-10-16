@@ -58,6 +58,16 @@ final class Blog extends Model
         return 'https://picsum.photos/seed/picsum/450/250';
     }
 
+    /**
+     * Estimate how long the post takes to read, assuming 200 words per minute.
+     */
+    public function readingTimeInMinutes(): int
+    {
+        $wordCount = str_word_count(strip_tags((string) $this->details));
+
+        return max(1, (int) ceil($wordCount / 200));
+    }
+
     public function isPublished(): bool
     {
         return $this->status === 'published';
