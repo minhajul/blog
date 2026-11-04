@@ -6,18 +6,18 @@
         "build": "bun run vite build"
     },
     "devDependencies": {
-        "@tailwindcss/vite": "^4.3.3",
+        "@tailwindcss/vite": "^4.3.4",
         "axios": "^1.21.0",
         "concurrently": "^9.2.5",
         "jquery": "^3.7.1",
         "laravel-vite-plugin": "^2.1.0",
-        "tailwindcss": "^4.3.3",
+        "tailwindcss": "^4.3.4",
         "trix": "^2.1.19",
         "vite": "^8.3.5"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
-        "@tailwindcss/oxide-linux-x64-gnu": "^4.3.3",
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.3.4",
         "lightningcss-linux-x64-gnu": "^1.33.0"
     }
 }
