@@ -7373,16 +7373,16 @@
         },
         {
             "name": "laravel/mcp",
-            "version": "v1.2.1",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/mcp.git",
-                "reference": "a8057f222549e42384d49482042d762a547aaf2a"
+                "reference": "f63967363cd6a41b50036cb9250beab21ee8b1c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/mcp/zipball/a8057f222549e42384d49482042d762a547aaf2a",
-                "reference": "a8057f222549e42384d49482042d762a547aaf2a",
+                "url": "https://api.github.com/repos/laravel/mcp/zipball/f63967363cd6a41b50036cb9250beab21ee8b1c4",
+                "reference": "f63967363cd6a41b50036cb9250beab21ee8b1c4",
                 "shasum": ""
             },
             "require": {
@@ -7397,7 +7397,9 @@
                 "illuminate/support": "^12.41.1|^13.0",
                 "illuminate/validation": "^12.41.1|^13.0",
                 "php": "^8.2",
-                "symfony/process": "^7.4.5|^8.0.5"
+                "symfony/mime": "^7.4|^8.0",
+                "symfony/process": "^7.4.5|^8.0.5",
+                "symfony/yaml": "^7.4|^8.0"
             },
             "require-dev": {
                 "jasonmccreary/double": "^1.0",
@@ -7444,8 +7446,8 @@
                 "issues": "https://github.com/laravel/mcp/issues",
                 "source": "https://github.com/laravel/mcp"
             },
-            "time": "2026-11-17T16:36:18+00:00",
-            "published-time": "2026-11-17T18:52:14+00:00"
+            "time": "2026-11-23T11:10:06+00:00",
+            "published-time": "2026-11-24T17:06:12+00:00"
         },
         {
             "name": "laravel/pail",
